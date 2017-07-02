@@ -570,10 +570,10 @@ Webflow.push(function () {
                     </a>
                   </div>
                   <ul class="legal-links w-list-unstyled">
-                    <li><a id="legal-link" href="es/terms-and-conditions.html" class="legal-link">{{ Lang::get('message.terms') }}</a></li>
-                    <li><a href="es/privacy.html" class="legal-link">{{ Lang::get('message.privacy') }}</a></li>
-                    <li><a href="es/contract.html" class="legal-link">{{ Lang::get('message.contract') }}</a></li>
-                    <li><a href="http://help.keweno.com/help_center">{{ Lang::get('message.help') }}</a></li>
+                    <li><a id="legal-link" href="{{ URL('terms') }}" class="legal-link">{{ Lang::get('message.terms') }}</a></li>
+                    <li><a href="{{ URL('privacy') }}" class="legal-link">{{ Lang::get('message.privacy') }}</a></li>
+                    <li><a href="{{ URL('contract') }}" class="legal-link">{{ Lang::get('message.contract') }}</a></li>
+                    <li><a href="#">{{ Lang::get('message.help') }}</a></li>
                   </ul>
                 </div>
               </div>

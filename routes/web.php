@@ -14,6 +14,9 @@
 Route::get('/', 'HomeController@index');
 
 Route::get('index', array('as'=>'index', 'uses'=>'HomeController@index'));
+Route::get('terms', array('as'=>'terms', 'uses'=>'HomeController@terms'));
+Route::get('privacy', array('as'=>'privacy', 'uses'=>'HomeController@privacy'));
+Route::get('contract', array('as'=>'contract', 'uses'=>'HomeController@contract'));
 
 Route::get('lang/{lang}', function ($lang) {
     session_start();
