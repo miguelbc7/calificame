@@ -10,15 +10,14 @@
         {   
             App::setLocale('en');
         }
-        elseif($_SESSION['lang'] == 'pt')
+        elseif($_SESSION['lang'] == 'pt-BR')
         {
-            App::setLocale('pt');
+            App::setLocale('pt-BR');
         }
         else
         {
 
         }
-        echo $_SESSION['lang'];
     }
 ?>
 <!DOCTYPE html><!-- Last Published: Mon Jun 26 2017 11:32:10 GMT+0000 (UTC) --><html data-wf-domain="www.keweno.com" data-wf-page="58ff57253eae93580fa17c3f" data-wf-site="576bbb263b0f04c134edb9ab">
@@ -228,34 +227,41 @@ Webflow.push(function () {
         </div>
 
         <div class="section whykeweno" id="why-keweno">
-          <div class="w-container"><h2 class="section__header">{{ Lang::get('message.menu1') }}</h2>
+          <div class="w-container"><h2 class="section__header">{{ Lang::get('message.why') }}</h2>
             <div class="w-row">
-              <div class="column w-col w-col-4">
+              <div class="column w-col w-col-3">
                 <div class="whykeweno__imagecontainer">
                   <img class="column__image" data-ix="appear" src="{{ asset('web/images/chart.png') }}" width="143">
                 </div>
                 <h3 class="column__header">{{ Lang::get('message.why1') }}</h3>
                 <div class="paragraph">{{ Lang::get('message.whydes1') }}</div>
               </div>
-              <div class="column w-col w-col-4">
+              <div class="column w-col w-col-3">
                 <div class="whykeweno__imagecontainer">
                   <img class="column__image" data-ix="appear-2" src="{{ asset('web/images/handshake.png') }}" width="150">
                 </div>
                 <h3 class="column__header">{{ Lang::get('message.why2') }}</h3>
                 <div class="paragraph">{{ Lang::get('message.whydes2') }}</div>
               </div>
-              <div class="column w-col w-col-4">
+              <div class="column w-col w-col-3">
                 <div class="whykeweno__imagecontainer">
                   <img class="column__image grow" data-ix="appear-3" src="{{ asset('web/images/empty.png') }}">
                 </div>
                 <h3 class="column__header">{{ Lang::get('message.why3') }}</h3>
                 <div class="paragraph">{{ Lang::get('message.whydes3') }}</div>
               </div>
+              <div class="column w-col w-col-3">
+                <div class="whykeweno__imagecontainer">
+                  <img class="column__image grow" data-ix="appear-3" src="{{ asset('web/images/empty.png') }}">
+                </div>
+                <h3 class="column__header">{{ Lang::get('message.why4') }}</h3>
+                <div class="paragraph">{{ Lang::get('message.whydes4') }}</div>
+              </div>
             </div>
           </div>
         </div>
 
-        <div class="testimonial">
+        <!--<div class="testimonial">
           <div class="testimonial__container w-container">
             <div class="testimonial__quotecontainer">
               <div class="testimonial__quote">{{ Lang::get('message.review1') }}</div>
@@ -268,44 +274,36 @@ Webflow.push(function () {
               </div>
             </div>
           </div>
-        </div>
+        </div>-->
 
         <div class="howitworks section" id="how-it-works">
-          <div class="w-container"><h2 class="section__header">{{ Lang::get('message.menu2') }}</h2>
+          <div class="w-container"><h2 class="section__header">{{ Lang::get('message.how') }}</h2>
             <div class="w-row">
-              <div class="column w-col w-col-3 w-col-medium-6 w-col-small-6">
+              <div class="column w-col w-col-4 w-col-medium-12 w-col-small-12">
                 <div class="howworks_imagecointainer">
                   <img class="column__image" src="{{ asset('web/images/macbookpro.png') }}" width="226">
                 </div>
                 <h3 class="column__header">{{ Lang::get('message.how1') }}</h3>
                 <div class="paragraph">{{ Lang::get('message.howdes1') }}</div>
               </div>
-              <div class="column w-col w-col-3 w-col-medium-6 w-col-small-6">
+              <div class="column w-col w-col-4 w-col-medium-12 w-col-small-12">
                 <div class="howworks_imagecointainer">
                   <img class="column__image" src="{{ asset('web/images/polaroid.png') }}" width="232">
                 </div>
                 <h3 class="column__header">{{ Lang::get('message.how2') }}</h3>
                 <div class="paragraph">{{ Lang::get('message.howdes2') }}</div>
               </div>
-              <div class="column w-col w-col-3 w-col-medium-6 w-col-small-6">
+              <div class="column w-col w-col-4 w-col-medium-12 w-col-small-12">
                 <div class="howworks_imagecointainer">
                   <img class="column__image" src="{{ asset('web/images/iphone.png') }}" width="231">
                 </div>
                 <h3 class="column__header">{{ Lang::get('message.how3') }}</h3>
                 <div class="paragraph">{{ Lang::get('message.howdes3') }}</div>
               </div>
-              <div class="w-col w-col-3 w-col-medium-6 w-col-small-6">
-                <div class="howworks_imagecointainer">
-                  <img class="column__image" src="{{ asset('web/images/restaurante.png') }}" width="235">
-                </div>
-                <h3 class="column__header">{{ Lang::get('message.how4') }}</h3>
-                <div class="paragraph">{{ Lang::get('message.how4') }}</div>
-              </div>
-            </div>
           </div>
         </div>
 
-        <div class="testimonial">
+        <!--<div class="testimonial">
           <div class="testimonial__container w-container">
             <div class="testimonial__quotecontainer">
               <div class="testimonial__quote">{{ Lang::get('message.review2') }}</div>
@@ -317,15 +315,16 @@ Webflow.push(function () {
               </div>
             </div>
           </div>
-        </div>
+        </div>-->
 
         <div class="plans section" id="plans">
           <div class="container w-container">
             <h2 class="section__header">{{ Lang::get('message.planslogan') }}</h2>
             <p class="customers_subheading">{{ Lang::get('message.plansubslogan') }}</p>
             <div class="pricingcard__container" data-ix="close-contact">
+              
               <div class="pricingcard__card">
-                <div class="pricingcard__headercontainer">
+                <!--<div class="pricingcard__headercontainer">
                   <h3 class="pricingcard__heading--basic">{{ Lang::get('message.plan1') }}</h3>
                   <div class="pricingcard__pricingwraper">
                     <div class="pricingcard__pricing">{{ Lang::get('message.price1') }}<br><em class="pricingcard__pricing--em">{{ Lang::get('message.subprice1') }}</em>
@@ -338,7 +337,7 @@ Webflow.push(function () {
                   <li class="list-item-3">{{ Lang::get('message.plandes1.3') }}</li>
                   <li class="list-item-4">{{ Lang::get('message.plandes1.4') }}</li>
                 </ul>
-                <a class="button w-button" data-ix="open-signup-pro" href="#">{{ Lang::get('message.planbutton1') }}</a>
+                <a class="button w-button" data-ix="open-signup-pro" href="#">{{ Lang::get('message.planbutton1') }}</a>-->
               </div>
 
               <div class="pricingcard__card pricingcard__card--highlighted">
@@ -356,14 +355,13 @@ Webflow.push(function () {
                   <li>{{ Lang::get('message.plandes2.2') }}</li>
                   <li>{{ Lang::get('message.plandes2.3') }}</li>
                   <li>{{ Lang::get('message.plandes2.4') }}</li>
-                  <li>{{ Lang::get('message.plandes2.5') }}</li>
                 </ul>
 
                 <a class="button w-button" data-ix="open-signup-pro" href="#">{{ Lang::get('message.planbutton2') }}</a>
               </div>
 
               <div class="pricingcard__card">
-                <div class="pricingcard__headercontainer">
+                <!--<div class="pricingcard__headercontainer">
                   <h3 class="pricingcard__heading--basic">{{ Lang::get('message.plan3') }}</h3>
                   <div class="pricingcard__pricingwraper">
                     <div class="pricingcard__pricing">{{ Lang::get('message.price3') }}<br>
@@ -379,13 +377,14 @@ Webflow.push(function () {
                   <li>{{ Lang::get('message.plandes3.4') }}</li>
                 </ul>
 
-                <a class="button w-button" data-ix="open-signup-pro" href="#">{{ Lang::get('message.planbutton3') }}</a>
+                <a class="button w-button" data-ix="open-signup-pro" href="#">{{ Lang::get('message.planbutton3') }}</a>-->
               </div>
+
             </div>
           </div>
         </div>
 
-        <div class="testimonial w-hidden-tiny">
+        <!--<div class="testimonial w-hidden-tiny">
           <div class="testimonial__container w-container">
             <div class="testimonial__quotecontainer">
               <div class="testimonial__quote">{{ Lang::get('message.review3') }}</div>
@@ -398,9 +397,9 @@ Webflow.push(function () {
               </div>
             </div>
           </div>
-        </div>
+        </div>-->
 
-        <div class="section whouseskeweno">
+        <!--<div class="section whouseskeweno">
           <div class="w-container">
             <h2 class="section__header">{{ Lang::get('message.who') }}</h2>
             <p class="customers_subheading">{{ Lang::get('message.whoslogan') }}</p>
@@ -449,9 +448,9 @@ Webflow.push(function () {
               </div>
             </div>
           </div>
-        </div>
+        </div>-->
         
-        <div class="testimonial w-hidden-tiny">
+        <!--<div class="testimonial w-hidden-tiny">
           <div class="testimonial__container w-container">
             <div class="testimonial__quotecontainer">
               <div class="testimonial__quote">{{ Lang::get('message.review4') }}</div>
@@ -464,9 +463,9 @@ Webflow.push(function () {
               </div>
             </div>
           </div>
-        </div>
+        </div>-->
 
-        <div class="press section w-hidden-tiny">
+        <!--<div class="press section w-hidden-tiny">
           <div class="w-container">
             <h2 class="section__header">{{ Lang::get('message.press') }}</h2></div>
             <div class="w-container">
@@ -520,20 +519,36 @@ Webflow.push(function () {
                 <div class="press__slidernavigation w-round w-slider-nav w-slider-nav-invert"></div>
               </div>
             </div>
-          </div>
+          </div>-->
+
           <div class="testimonial w-hidden-tiny">
             <div class="testimonial__container w-container">
               <div class="testimonial__quotecontainer">
-                <div class="testimonial__quote">{{ Lang::get('message.review5') }}</div>
+                <div class="testimonial__quote">{{ Lang::get('message.review1') }}</div>
               </div>
               <div class="testimonial__authorcontainer">
                 <img class="testimonial__authorpicture" src="{{ asset('web/images/manfred.png') }}"><div>
-                  <div class="testimonia__authorname">{{ Lang::get('message.reviewer5') }}</div>
-                  <div class="testimonial__authortitle">{{ Lang::get('message.reviewerdes5') }}</div>
+                  <div class="testimonia__authorname">{{ Lang::get('message.reviewer1') }}</div>
+                  <div class="testimonial__authortitle">{{ Lang::get('message.reviewerdes1') }}</div>
                 </div>
               </div>
             </div>
           </div>
+
+          <div class="testimonial w-hidden-tiny">
+            <div class="testimonial__container w-container">
+              <div class="testimonial__quotecontainer">
+                <div class="testimonial__quote">{{ Lang::get('message.review2') }}</div>
+              </div>
+              <div class="testimonial__authorcontainer">
+                <img class="testimonial__authorpicture" src="{{ asset('web/images/foto.png') }}"><div>
+                  <div class="testimonia__authorname">{{ Lang::get('message.reviewer2') }}</div>
+                  <div class="testimonial__authortitle">{{ Lang::get('message.reviewerdes2') }}</div>
+                </div>
+              </div>
+            </div>
+          </div>
+
           <div class="footer">
             <div class="w-container">
               <div class="footer__column w-row">
