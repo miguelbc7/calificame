@@ -58,7 +58,8 @@
       <p>Keweno is a service used to design and conduct user satisfaction surveys, with the purpose of providing information to the business about their opinions, recommendations and complaints. The surveys consist of a series of questions and a method of alternative responses, represented by symbols.</p>
       <p>Keweno is implemented as an anonymous service, since the User, in principle, is not obligated to provide any personal data that may identify him/her. Nevertheless, in certain circumstances, the Client may want to communicate with the User, requesting his/her contact details. In this event, the communication of his/her personal information implies the user’s knowledge and acceptance of, as well as his/her consent for the transfer of such personal data from EMTRICS S.L. to the Client.</p>
       <p>Additionally, the User expressly acknowledges being informed that, when accessing Keweno to complete the survey from an SMS, email, or any other communication that contains the User’s identifying information, the Client, at his own risk, can define collection mechanisms of information embedded in the URL to access the survey, which would enable the Client to recover and eventually identify the User. EMTRICS S.L. is not responsible for the actions of this nature that the Client may undertake.</p>
-      <p>EMTRICS S.L. is the only provider of an intermediation service with the sole purpose of providing the feedback services described above, without assuming any responsibility for the data content or its reproduction.</p><p>Any person accessing the Website / Service or any information contained on Keweno’s website, expressly declares to be at or above the age of majority and agrees to these terms and conditions of use. Consequently, the mere access, use and utilization of Keweno´s services, implies the compliance with such conditions and the acceptance by the User. If the User does not meet the conditions and does not accept its terms, he/she shall not be authorized to use the services.</p>
+      <p>EMTRICS S.L. is the only provider of an intermediation service with the sole purpose of providing the feedback services described above, without assuming any responsibility for the data content or its reproduction.</p>
+      <p>Any person accessing the Website / Service or any information contained on Keweno’s website, expressly declares to be at or above the age of majority and agrees to these terms and conditions of use. Consequently, the mere access, use and utilization of Keweno´s services, implies the compliance with such conditions and the acceptance by the User. If the User does not meet the conditions and does not accept its terms, he/she shall not be authorized to use the services.</p>
       
       <h2>Object of service</h2>
       <p>The service consists of i) a short question survey where the User can choose an answer among the options presented in the form of graphics, type emoticons (Unsatisfied, Neutral, Satisfied), ii) an open field the User can use to leave a message or suggestion to the Client and iii) an optional field to leave his/her contact details, in case the User accepts that the Client get in touch with him/her.</p>
@@ -86,9 +87,7 @@
         <li>Globe icon designed by&nbsp;<a href="http://www.thenounproject.com/schumanncombo"><strong>Richard Schumann</strong></a>&nbsp;from the&nbsp;<a href="http://www.thenounproject.com/"><strong>Noun Project</strong></a>.</li>
         <li>Tablet icon designed by&nbsp;<a href="http://www.thenounproject.com/useiconic.com"><strong>useiconic.com</strong></a>&nbsp;from the&nbsp;<a href="http://www.thenounproject.com/"><strong>Noun Project</strong></a>.</li>
       </ul>
-
-      <h2>Language</h2>
-      <p>In case of&nbsp;discrepancy,&nbsp;the Spanish version&nbsp;of this&nbsp;document, available at <a href="http://keweno.com/es/terms-and-conditions/"><strong>http://keweno.com/es/terms-and-conditions/</strong></a>, shall prevail.</p>
+      
     </div>
   </div>
 </div>

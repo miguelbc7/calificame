@@ -56,7 +56,14 @@
       <p><em>Last update 1 February, 2016</em></p>
 
       <h1>Privacy Policy</h1>
-      <p>Company name:&nbsp;<strong>EMTRICS, S.L.<br></strong>Commercial brand:&nbsp;<strong>KEWENO<br></strong>Address:&nbsp;<strong>SAN ENRIQUE DE OSSO 19, 28050 Madrid<br></strong>VAT Number:&nbsp;<strong>B86355344<br></strong>E-Mail:&nbsp;<strong><a href="mailto:hello@keweno.com"><strong>hello@ keweno.com<br></strong></a></strong>Domain name:&nbsp;<strong><a href="http:// keweno.com/"><strong>keweno.com</strong></a></strong></p>
+      <p>
+        Company name:&nbsp;<strong>EMTRICS, S.L.<br></strong>
+        Commercial brand:&nbsp;<strong>KEWENO<br></strong>
+        Address:&nbsp;<strong>SAN ENRIQUE DE OSSO 19, 28050 Madrid<br></strong>
+        VAT Number:&nbsp;<strong>B86355344<br></strong>
+        E-Mail:&nbsp;<strong><a href="mailto:hello@keweno.com"><strong>hello@ keweno.com<br></strong></a></strong>
+        Domain name:&nbsp;<strong><a href="http:// keweno.com/"><strong>keweno.com</strong></a></strong>
+      </p>
 
       <h2>Personal data treatment</h2>
       <p>According to Spanish regulations, as stated by the Spanish Organic Law 15/1999, on the Protection of Personal Data (Act), the company responsible with the website, EMTRICS SL, the Provider, in compliance with article. 5 y 6 de la LOPD, informs to all its Clients and Users of the website that facilitates or will facilitate their personal data, that such information will be incorporated in an electronic file that will be registered in the Spanish Data Protection Agency “Agencia Española de Protección de Datos”.</p>
