@@ -81,150 +81,154 @@ Webflow.push(function () {
   <div class="signupbasic" data-ix="modal-interaction">
     <a class="close_link" data-ix="close-signup-basic" href="#">Cerrar</a>
     <h2 class="modal_header">Prueba Keweno gratis</h2>
-      <div class="signupform__container w-form">
-        <form action="https://dashboard.keweno.com/users" data-name="Email Form" id="signup_basic_form" method="post" name="email-form">
-          <input autofocus="autofocus" class="signupform__field w-input" data-name="business[name]" id="business[name]-4" maxlength="256" name="business[name]" placeholder="Nombre de tu negocio" required="required" type="text">
-          <input class="signupform__field w-input" data-name="user[email]" id="user[email]-4" maxlength="256" name="user[email]" placeholder="Tu e-mail" required="required" type="email">
-          <input class="signupform__field w-input" data-name="user[password]" id="user[password]-4" maxlength="256" name="user[password]" placeholder="Una contraseña" required="required" type="password">
-          <div class="w-embed">
-            <input id="user_time_zone_modal" type="hidden" name="user[time_zone]" value="">
-            <input id="business_subscription_plan_id_basic" type="hidden" name="business[subscription][plan_id]" value="basic">
-          </div>
-          <div class="signupform__buttoncontainer">
-            <input class="big button w-button" data-wait="Por favor, espera" type="submit" value="Crear cuenta" wait="Por favor, espera">
-            <div class="modal_formterms">Al registrarte aceptas nuestros&nbsp;<a href="http://keweno.com/es/terms-and-conditions/" class="modal_formtems--link">terminos y condiciones</a>.</div>
-          </div>
-        </form>
-          
-        <div class="formsuccess success-message w-form-done" id="formSuccess">
-          <div class="text-block">Registro completado correctamente</div></div><div class="w-form-fail">
-            <div class="text-block-4">Se ha producido un error mandando el formulario</div></div>
+    <div class="signupform__container w-form">
+      <form action="https://dashboard.keweno.com/users" data-name="Email Form" id="signup_basic_form" method="post" name="email-form">
+        <input autofocus="autofocus" class="signupform__field w-input" data-name="business[name]" id="business[name]-4" maxlength="256" name="business[name]" placeholder="Nombre de tu negocio" required="required" type="text">
+        <input class="signupform__field w-input" data-name="user[email]" id="user[email]-4" maxlength="256" name="user[email]" placeholder="Tu e-mail" required="required" type="email">
+        <input class="signupform__field w-input" data-name="user[password]" id="user[password]-4" maxlength="256" name="user[password]" placeholder="Una contraseña" required="required" type="password">
+        <div class="w-embed">
+          <input id="user_time_zone_modal" type="hidden" name="user[time_zone]" value="">
+          <input id="business_subscription_plan_id_basic" type="hidden" name="business[subscription][plan_id]" value="basic">
+        </div>
+        <div class="signupform__buttoncontainer">
+          <input class="big button w-button" data-wait="Por favor, espera" type="submit" value="Crear cuenta" wait="Por favor, espera">
+          <div class="modal_formterms">Al registrarte aceptas nuestros&nbsp;<a href="http://keweno.com/es/terms-and-conditions/" class="modal_formtems--link">terminos y condiciones</a>.</div>
+        </div>
+      </form>
+        
+      <div class="formsuccess success-message w-form-done" id="formSuccess">
+        <div class="text-block">Registro completado correctamente</div>
+      </div>
+      <div class="w-form-fail">
+        <div class="text-block-4">Se ha producido un error mandando el formulario</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="signuppro" data-ix="modal-interaction">
+    <a class="close_link" data-ix="close-signup-pro" href="#">Cerrar</a>
+    <h2 class="modal_header">Prueba Keweno gratis</h2>
+    <div class="signupform__container w-form">
+      <form action="https://dashboard.keweno.com/users" data-name="Email Form" id="signup_pro_form" method="post" name="email-form">
+        <input autofocus="autofocus" class="signupform__field w-input" data-name="business[name]" id="business[name]-4" maxlength="256" name="business[name]" placeholder="Nombre de tu negocio" required="required" type="text">
+        <input class="signupform__field w-input" data-name="user[email]" id="user[email]-4" maxlength="256" name="user[email]" placeholder="Tu e-mail" required="required" type="email">
+        <input class="signupform__field w-input" data-name="user[password]" id="user[password]-4" maxlength="256" name="user[password]" placeholder="Una contraseña" required="required" type="password">
+        <div class="w-embed">
+          <input id="user_time_zone_modal" type="hidden" name="user[time_zone]" value="">
+          <input id="business_subscription_plan_id_pro" type="hidden" name="business[subscription][plan_id]" value="pro">
+        </div>
+        <div class="signupform__buttoncontainer">
+          <input class="big button w-button" data-wait="Por favor, espera" type="submit" value="Crear cuenta" wait="Por favor, espera">
+          <div class="modal_formterms">Al registrarte aceptas nuestros&nbsp;<a href="http://keweno.com/es/terms-and-conditions/" class="modal_formtems--link">terminos y condiciones</a>.
           </div>
         </div>
+      </form>
 
-        <div class="signuppro" data-ix="modal-interaction">
-          <a class="close_link" data-ix="close-signup-pro" href="#">Cerrar</a>
-          <h2 class="modal_header">Prueba Keweno gratis</h2>
-          <div class="signupform__container w-form">
-            <form action="https://dashboard.keweno.com/users" data-name="Email Form" id="signup_pro_form" method="post" name="email-form">
-              <input autofocus="autofocus" class="signupform__field w-input" data-name="business[name]" id="business[name]-4" maxlength="256" name="business[name]" placeholder="Nombre de tu negocio" required="required" type="text">
-              <input class="signupform__field w-input" data-name="user[email]" id="user[email]-4" maxlength="256" name="user[email]" placeholder="Tu e-mail" required="required" type="email">
-              <input class="signupform__field w-input" data-name="user[password]" id="user[password]-4" maxlength="256" name="user[password]" placeholder="Una contraseña" required="required" type="password">
-              <div class="w-embed">
-                <input id="user_time_zone_modal" type="hidden" name="user[time_zone]" value="">
-                <input id="business_subscription_plan_id_pro" type="hidden" name="business[subscription][plan_id]" value="pro">
-              </div>
-              <div class="signupform__buttoncontainer">
-                <input class="big button w-button" data-wait="Por favor, espera" type="submit" value="Crear cuenta" wait="Por favor, espera">
-                <div class="modal_formterms">Al registrarte aceptas nuestros&nbsp;<a href="http://keweno.com/es/terms-and-conditions/" class="modal_formtems--link">terminos y condiciones</a>.
-                </div>
-              </div>
-            </form>
+      <div class="success-message w-form-done">
+        <div class="text-block-2">Registro completado correctamente</div>
+      </div>
 
-            <div class="success-message w-form-done">
-              <div class="text-block-2">Registro completado correctamente</div>
-            </div>
+      <div class="w-form-fail">
+        <div class="text-block-3">Se ha producido un error mandando el formulario</div>
+      </div>
+    </div>
+  </div>
 
-            <div class="w-form-fail">
-              <div class="text-block-3">Se ha producido un error mandando el formulario</div>
-            </div>
-          
-          </div>
+  <div class="contactform" data-ix="modal-interaction">
+    <a class="close_link" data-ix="close-contact-form" href="#">Cerrar</a>
+    <h2 class="modal_header">Contáctanos</h2>
+    <div class="signupform__container w-form">
+      <form data-name="Email Form" id="email-form" method="post" name="email-form">
+        <input autofocus="autofocus" class="signupform__field w-input" data-name="business-name" id="business-name-2" maxlength="256" name="business-name" placeholder="Nombre de tu negocio" required="required" type="text">
+        <input class="signupform__field w-input" data-name="user-name" id="user-name" maxlength="256" name="user-name" placeholder="Tu nombre" required="required" type="text">
+        <input class="signupform__field w-input" data-name="e-mail" id="e-mail" maxlength="256" name="e-mail" placeholder="Tu e-mail" required="required" type="email">
+        <textarea class="signupform__field w-input" data-name="description" id="description" maxlength="5000" name="description" placeholder="Tu mensaje"></textarea>
+        <div class="signupform__buttoncontainer">
+          <input class="big button w-button" data-wait="Por favor, espera" type="submit" value="Enviar mensaje" wait="Por favor, espera">
         </div>
+      </form>
 
-        <div class="contactform" data-ix="modal-interaction">
-          <a class="close_link" data-ix="close-contact-form" href="#">Cerrar</a>
-          <h2 class="modal_header">Contáctanos</h2>
-          <div class="signupform__container w-form">
-            <form data-name="Email Form" id="email-form" method="post" name="email-form">
-              <input autofocus="autofocus" class="signupform__field w-input" data-name="business-name" id="business-name-2" maxlength="256" name="business-name" placeholder="Nombre de tu negocio" required="required" type="text">
-              <input class="signupform__field w-input" data-name="user-name" id="user-name" maxlength="256" name="user-name" placeholder="Tu nombre" required="required" type="text">
-              <input class="signupform__field w-input" data-name="e-mail" id="e-mail" maxlength="256" name="e-mail" placeholder="Tu e-mail" required="required" type="email">
-                <textarea class="signupform__field w-input" data-name="description" id="description" maxlength="5000" name="description" placeholder="Tu mensaje"></textarea>
-                <div class="signupform__buttoncontainer">
-                  <input class="big button w-button" data-wait="Por favor, espera" type="submit" value="Enviar mensaje" wait="Por favor, espera">
-                </div>
-            </form>
+      <div class="success-message w-form-done">
+        <div>¡Gracias! Tu mensaje se ha guardado correctamente.</div>
+      </div>
 
-            <div class="success-message w-form-done">
-              <div>¡Gracias! Tu mensaje se ha guardado correctamente.</div>
+      <div class="error-message w-form-fail">
+        <div>Se ha producido un error mandando el formulario.</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="nav--fixed w-nav" data-animation="default" data-collapse="medium" data-duration="400" data-ix="display-none">
+    <div class="w-container">
+      <a class="w-nav-brand" href="{{ URL('/') }}">
+        <img alt="Keweno" class="nav__logo" src="{{ asset('web/images/logo.png') }}" width="128">
+      </a>
+      <nav class="nav_menu w-clearfix w-nav-menu" role="navigation">
+        <a class="nav__link w-nav-link" href="#why-keweno">{{ Lang::get('message.menu1') }}</a>
+        <a class="nav__link w-nav-link" href="#how-it-works">{{ Lang::get('message.menu2') }}</a>
+        <a class="nav__link w-nav-link" href="#plans">{{ Lang::get('message.menu3') }}</a>
+        <a class="button nav__button w-button" href="#plans">{{ Lang::get('message.menu4') }}</a>
+      </nav>
+
+      <div class="menu_button w-nav-button">
+        <div class="w-icon-nav-menu"></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="hero" data-ix="display-nav">
+    <div class="nav w-nav" data-animation="default" data-collapse="medium" data-duration="400">
+      <div class="w-container">
+        <a class="w-nav-brand" href="{{ URL('/') }}"><img alt="Keweno" class="nav__logo" src="{{ asset('web/images/logo.png') }}" width="128"></a>
+        <nav class="nav_menu nav_menu_not_fixed w-nav-menu" role="navigation">
+          <a class="nav__link w-nav-link" href="#why-keweno">{{ Lang::get('message.menu1') }}</a>
+          <a class="nav__link w-nav-link" href="#how-it-works">{{ Lang::get('message.menu2') }}</a>
+          <a class="nav__link w-nav-link" href="#plans">{{ Lang::get('message.menu3') }}</a>
+          <a class="nav__link w-nav-link" href="http://dashboard.keweno.com/">{{ Lang::get('message.menu4') }}</a>
+          <div class="language_switch_dropdow w-dropdown w-hidden-medium w-hidden-small w-hidden-tiny" data-delay="0" data-hover="1">
+            <div class="language_switch_toggle w-dropdown-toggle w-hidden-medium w-hidden-small w-hidden-tiny">
+              @if(App::getLocale() == 'es')
+                <div class="language_swith_text">Español</div>
+              @elseif(App::getLocale() == 'en')
+                <div class="language_swith_text">English</div>
+              @elseif(App::getLocale() == 'pt-BR')
+                <div class="language_swith_text">Português</div>
+              @endif
+              <img class="language_switch_icon" src="{{ asset('web/images/triangle.png') }}">
             </div>
 
-            <div class="error-message w-form-fail">
-              <div>Se ha producido un error mandando el formulario.</div>
-            </div>
-          </div>
-        </div>
-
-        <div class="nav--fixed w-nav" data-animation="default" data-collapse="medium" data-duration="400" data-ix="display-none">
-          <div class="w-container">
-            <a class="w-nav-brand" href="#"><img alt="Keweno" class="nav__logo" src="{{ asset('web/images/logo.png') }}" width="128"></a>
-            <nav class="nav_menu w-clearfix w-nav-menu" role="navigation">
-              <a class="nav__link w-nav-link" href="#why-keweno">{{ Lang::get('message.menu1') }}</a>
-              <a class="nav__link w-nav-link" href="#how-it-works">{{ Lang::get('message.menu2') }}</a>
-              <a class="nav__link w-nav-link" href="#plans">{{ Lang::get('message.menu3') }}</a>
-              <a class="button nav__button w-button" href="#plans">{{ Lang::get('message.menu4') }}</a>
+            <nav class="language_witch_list w-dropdown-list">
+            @if(App::getLocale() == 'es')
+              <a class="language_swith_link w-dropdown-link" href="{{ URL('lang', Lang::get('message.en')) }}">Ingles</a>
+              <a class="language_swith_link w-dropdown-link" href="{{ URL('lang', Lang::get('message.pt-BR')) }}">Portugués</a>
+            @elseif(App::getLocale() == 'en')
+              <a class="language_swith_link w-dropdown-link" href="{{ URL('lang', Lang::get('message.es')) }}">Spanish</a>
+              <a class="language_swith_link w-dropdown-link" href="{{ URL('lang', Lang::get('message.pt-BR')) }}">Portuguese</a>
+            @elseif(App::getLocale() == 'pt-BR')
+              <a class="language_swith_link w-dropdown-link" href="{{ URL('lang', Lang::get('message.es')) }}">Espanhol</a>
+              <a class="language_swith_link w-dropdown-link" href="{{ URL('lang', Lang::get('message.en')) }}">Inglês</a>
+            @endif
             </nav>
-
-            <div class="menu_button w-nav-button">
-              <div class="w-icon-nav-menu"></div>
-            </div>
           </div>
+        </nav>
+
+        <div class="menu_toggle w-nav-button" id="menu">
+          <div class="w-icon-nav-menu"></div>
         </div>
+      </div>
+    </div>
 
-        <div class="hero" data-ix="display-nav">
-          <div class="nav w-nav" data-animation="default" data-collapse="medium" data-duration="400">
-            <div class="w-container">
-              <a class="w-nav-brand" href="index.html"><img alt="Keweno" class="nav__logo" src="{{ asset('web/images/logo.png') }}" width="128"></a>
-              <nav class="nav_menu nav_menu_not_fixed w-nav-menu" role="navigation">
-                <a class="nav__link w-nav-link" href="#why-keweno">{{ Lang::get('message.menu1') }}</a>
-                <a class="nav__link w-nav-link" href="#how-it-works">{{ Lang::get('message.menu2') }}</a>
-                <a class="nav__link w-nav-link" href="#plans">{{ Lang::get('message.menu3') }}</a>
-                <a class="nav__link w-nav-link" href="http://dashboard.keweno.com/">{{ Lang::get('message.menu4') }}</a>
-                <div class="language_switch_dropdow w-dropdown w-hidden-medium w-hidden-small w-hidden-tiny" data-delay="0" data-hover="1">
-                  <div class="language_switch_toggle w-dropdown-toggle w-hidden-medium w-hidden-small w-hidden-tiny">
-                    @if(App::getLocale() == 'es')
-                      <div class="language_swith_text">Español</div>
-                    @elseif(App::getLocale() == 'en')
-                      <div class="language_swith_text">English</div>
-                    @elseif(App::getLocale() == 'pt-BR')
-                      <div class="language_swith_text">Português</div>
-                    @endif
-                    <img class="language_switch_icon" src="{{ asset('web/images/triangle.png') }}">
-                  </div>
-
-                  <nav class="language_witch_list w-dropdown-list">
-                  @if(App::getLocale() == 'es')
-                    <a class="language_swith_link w-dropdown-link" href="{{ URL('lang', Lang::get('message.en')) }}">Ingles</a>
-                    <a class="language_swith_link w-dropdown-link" href="{{ URL('lang', Lang::get('message.pt-BR')) }}">Portugués</a>
-                  @elseif(App::getLocale() == 'en')
-                    <a class="language_swith_link w-dropdown-link" href="{{ URL('lang', Lang::get('message.es')) }}">Spanish</a>
-                    <a class="language_swith_link w-dropdown-link" href="{{ URL('lang', Lang::get('message.pt-BR')) }}">Portuguese</a>
-                  @elseif(App::getLocale() == 'pt-BR')
-                    <a class="language_swith_link w-dropdown-link" href="{{ URL('lang', Lang::get('message.es')) }}">Espanhol</a>
-                    <a class="language_swith_link w-dropdown-link" href="{{ URL('lang', Lang::get('message.en')) }}">Inglês</a>
-                  @endif
-                  </nav>
-                </div>
-              </nav>
-
-              <div class="menu_toggle w-nav-button" id="menu">
-                <div class="w-icon-nav-menu"></div>
-              </div>
-            </div>
-          </div>
-
-          <div class="w-container">
-            <h1 class="hero__heading">{{ Lang::get('message.slogan') }}</h1>
-            <p class="hero__subheading">{{ Lang::get('message.subslogan') }}</p>
-            <div class="hero__videocontainer">
-              <div class="hero__video w-embed w-video" style="padding-top: 56.17021276595745%;">
-                <iframe class="embedly-embed" src="http://cdn.embedly.com/widgets/media.html?src=https%3A%2F%2Fplayer.vimeo.com%2Fvideo%2F129528622&amp;url=https%3A%2F%2Fvimeo.com%2F129528622&amp;image=http%3A%2F%2Fi.vimeocdn.com%2Fvideo%2F521080412_640.jpg&amp;key=c4e54deccf4d4ec997a64902e9a30300&amp;type=text%2Fhtml&amp;schema=vimeo" scrolling="no" frameborder="0" allowfullscreen></iframe>
-              </div>
-            </div>
-            <a class="button hero__cta w-button" href="#plans">{{ Lang::get('message.button1') }}&nbsp;</a>
-          </div>
+    <div class="w-container">
+      <h1 class="hero__heading">{{ Lang::get('message.slogan') }}</h1>
+      <p class="hero__subheading">{{ Lang::get('message.subslogan') }}</p>
+      <div class="hero__videocontainer">
+        <div class="hero__video w-embed w-video" style="padding-top: 56.17021276595745%;">
+          <iframe class="embedly-embed" src="http://cdn.embedly.com/widgets/media.html?src=https%3A%2F%2Fplayer.vimeo.com%2Fvideo%2F129528622&amp;url=https%3A%2F%2Fvimeo.com%2F129528622&amp;image=http%3A%2F%2Fi.vimeocdn.com%2Fvideo%2F521080412_640.jpg&amp;key=c4e54deccf4d4ec997a64902e9a30300&amp;type=text%2Fhtml&amp;schema=vimeo" scrolling="no" frameborder="0" allowfullscreen></iframe>
         </div>
+      </div>
+      <a class="button hero__cta w-button" href="#plans">{{ Lang::get('message.button1') }}&nbsp;</a>
+    </div>
+  </div>
 
         <div class="section whykeweno" id="why-keweno">
           <div class="w-container"><h2 class="section__header">{{ Lang::get('message.why') }}</h2>
@@ -573,7 +577,6 @@ Webflow.push(function () {
                     <li><a id="legal-link" href="{{ URL('terms') }}" class="legal-link">{{ Lang::get('message.terms') }}</a></li>
                     <li><a href="{{ URL('privacy') }}" class="legal-link">{{ Lang::get('message.privacy') }}</a></li>
                     <li><a href="{{ URL('contract') }}" class="legal-link">{{ Lang::get('message.contract') }}</a></li>
-                    <li><a href="#">{{ Lang::get('message.help') }}</a></li>
                   </ul>
                 </div>
               </div>

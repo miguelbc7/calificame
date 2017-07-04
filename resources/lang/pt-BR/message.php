@@ -112,6 +112,8 @@ return [
 
         // -------------------------Terms mensajes-------------------------
 
+        'terms' => 'Terms and Conditions',
+
         'last1' => 'Last update 8 October, 2014',
 
         'title1' => 'Terms and Conditions of use',
@@ -148,6 +150,8 @@ return [
         'list5' => 'Tablet icon designed by useiconic.com from the Noun Project.',
 
         // -------------------------Privacy mensajes-------------------------
+
+        'privacy' => 'Privacy',
 
         'last2' => 'Last update 1 February, 2016',
 
@@ -198,6 +202,8 @@ return [
         'section35' => 'All subscription process that involves the introduction of highly personal information protected nature, will always be transmitted via secure communication protocol, so that no third party have access to the information transmitted electronically.',
 
         // -------------------------Contract mensajes-------------------------
+
+        'contract' => 'Contract',
 
         'last3' => 'Last update: last update 2 February, 2014',
 

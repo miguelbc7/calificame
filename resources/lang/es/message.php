@@ -20,7 +20,7 @@ return [
         'menu1' => '¿Por qué usar Keweno?',
         'menu2' => '¿Cómo funciona?',
         'menu3' => 'Planes',
-        'menu4' => 'Registrate',
+        'menu4' => '¿Ya usas Keweno? Entra',
         'es' => 'es',
         'en' => 'en',
         'pt-BR' => 'pt-BR',
@@ -112,6 +112,8 @@ return [
 
         // -------------------------Terms mensajes-------------------------
 
+        'terms' => 'Terminos y Condiciones',
+
         'last1' => 'Última actualización 8 de Octubre de 2014',
 
         'title1' => 'Términos y Condiciones de uso',
@@ -148,6 +150,8 @@ return [
         'list5' => 'Icono del Tablet diseñado por useiconic.com del The Noun Project.',
 
         // -------------------------Privacy mensajes-------------------------
+
+        'privacy' => 'Privacidad',
 
         'last2' => 'Última actualización 1 de Febrero de 2016',
 
@@ -198,6 +202,8 @@ return [
         'section35' => 'Todo proceso de contratación que conlleve la introducción de datos personales de carácter altamente protegido, serán siempre transmitidos mediante protocolo de comunicación segura, de tal forma que ningún tercero tenga acceso a la información transmitida vía electrónica.',
 
         // -------------------------Contract mensajes-------------------------
+
+        'contract' => 'Contrato',
 
         'last3' => 'Última actualización 2 de Febrero de 2014',
 
