@@ -50,4 +50,9 @@ class HomeController extends Controller
     {
         return view('pages.contract');
     }
+
+    public function regis()
+    {
+        return view('adminlte::auth/register');
+    }
 }

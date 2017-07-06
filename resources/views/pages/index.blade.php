@@ -361,7 +361,7 @@ Webflow.push(function () {
                   <li>{{ Lang::get('message.plandes2.4') }}</li>
                 </ul>
 
-                <a class="button w-button" data-ix="open-signup-pro" href="#">{{ Lang::get('message.planbutton2') }}</a>
+                <a class="button w-button" href="{{ URL('regis') }}">{{ Lang::get('message.planbutton2') }}</a>
               </div>
 
               <div class="pricingcard__card">
