@@ -184,7 +184,7 @@ Webflow.push(function () {
           <a class="nav__link w-nav-link" href="#why-keweno">{{ Lang::get('message.menu1') }}</a>
           <a class="nav__link w-nav-link" href="#how-it-works">{{ Lang::get('message.menu2') }}</a>
           <a class="nav__link w-nav-link" href="#plans">{{ Lang::get('message.menu3') }}</a>
-          <a class="nav__link w-nav-link" href="http://dashboard.keweno.com/">{{ Lang::get('message.menu4') }}</a>
+          <a class="nav__link w-nav-link" href="{{ url('/logi') }}">{{ Lang::get('message.menu4') }}</a>
           <div class="language_switch_dropdow w-dropdown w-hidden-medium w-hidden-small w-hidden-tiny" data-delay="0" data-hover="1">
             <div class="language_switch_toggle w-dropdown-toggle w-hidden-medium w-hidden-small w-hidden-tiny">
               @if(App::getLocale() == 'es')

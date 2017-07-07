@@ -32,10 +32,10 @@
                     <form class="form-horizontal" role="form" method="POST" action="{{ route('userstore') }}">
                         {{ csrf_field() }}
 
-                        <div class="form-group has-feedback{{ $errors->has('name') ? ' has-error' : '' }}">
+                        <div class="form-group has-feedback{{ $errors->has('company') ? ' has-error' : '' }}">
 
                             <div class="col-md-12">
-                                <input id="name" type="text" class="form-control" placeholder="Nombre de la compañia" name="company" value="{{ old('name') }}" required autofocus>
+                                <input id="company" type="text" class="form-control" placeholder="Nombre de la compañia" name="company" value="{{ old('company') }}" required autofocus>
                                 <span class="glyphicon glyphicon-home form-control-feedback"></span>
 
                                 @if ($errors->has('name'))
@@ -99,7 +99,7 @@
 
                 @include('adminlte::auth.partials.social_login')
 
-                <a href="{{ url('/login') }}" class="text-center">{{ trans('adminlte_lang::message.membreship') }}</a>
+                <a href="{{ url('/logi') }}" class="text-center">{{ trans('adminlte_lang::message.membreship') }}</a>
             </div><!-- /.form-box -->
         </div><!-- /.register-box -->
     </div>

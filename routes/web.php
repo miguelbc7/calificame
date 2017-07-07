@@ -21,6 +21,7 @@ Route::get('contract', array('as'=>'contract', 'uses'=>'HomeController@contract'
 Route::post('userstore', array('as'=>'userstore', 'uses'=>'HomeController@userstore'));
 
 Route::get('regis', array('as'=>'regis', 'uses'=>'HomeController@regis'));
+Route::get('logi', array('as'=>'logi', 'uses'=>'HomeController@login'));
 
 Route::get('lang/{lang}', function ($lang) {
     session_start();
@@ -35,4 +36,12 @@ Route::group(['middleware' => 'auth'], function () {
 
     //Please do not remove this if you want adminlte:route and adminlte:link commands to works correctly.
     #adminlte_routes
+    Route::get('admin', array('as'=>'admin', 'uses'=>'HomeController@admin'));
+
+    Route::get('logout', function()
+    {
+        Auth::logout();
+        Session::flush();
+        return Redirect::to('/');
+    });
 });

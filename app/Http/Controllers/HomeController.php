@@ -7,8 +7,12 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
+use Session;
+use App;
+use Redirect;
+use App\User;
 
 /**
  * Class HomeController
@@ -68,15 +72,20 @@ class HomeController extends Controller
 
         $user = new User;
         $user->fill($request->all());
-        $user->lastname = $request->lastname;
-        $user->cellphone = $request->cellphone;
         $user->password = bcrypt($request->password);
-        $user->type = $request->type;
         $user->save();
 
         auth()->login($user);
-        return redirect('/');
-
+        return view('adminlte::home');
     }
 
+    public function login()
+    {
+        return view('adminlte::auth/login');
+    }
+
+    public function admin()
+    {
+        return view('adminlte::home');
+    }
 }
