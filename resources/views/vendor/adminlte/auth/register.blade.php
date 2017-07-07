@@ -1,7 +1,7 @@
 @extends('adminlte::layouts.auth')
 
 @section('htmlheader_title')
-    Register
+    Registrar
 @endsection
 
 @section('content')
@@ -10,7 +10,7 @@
     <div id="app" v-cloak>
         <div class="register-box">
             <div class="register-logo">
-                <a href="{{ url('/home') }}"><b>Keweno</b></a>
+                <a href="{{ url('/') }}"><b>Keweno</b></a>
             </div>
 
             @if (count($errors) > 0)
@@ -27,16 +27,16 @@
             <div class="register-box-body">
                 <p class="login-box-msg">{{ trans('adminlte_lang::message.registermember') }}</p>
 
-                <register-form></register-form>
+                <!--<register-form></register-form>-->
 
-                                   <form class="form-horizontal" role="form" method="POST" action="{{ route('register') }}">
+                    <form class="form-horizontal" role="form" method="POST" action="{{ route('userstore') }}">
                         {{ csrf_field() }}
 
-                        <div class="form-group{{ $errors->has('name') ? ' has-error' : '' }}">
-                            <label for="name" class="col-md-4 control-label">Name</label>
+                        <div class="form-group has-feedback{{ $errors->has('name') ? ' has-error' : '' }}">
 
-                            <div class="col-md-6">
-                                <input id="name" type="text" class="form-control" name="name" value="{{ old('name') }}" required autofocus>
+                            <div class="col-md-12">
+                                <input id="name" type="text" class="form-control" placeholder="Nombre de la compañia" name="company" value="{{ old('name') }}" required autofocus>
+                                <span class="glyphicon glyphicon-home form-control-feedback"></span>
 
                                 @if ($errors->has('name'))
                                     <span class="help-block">
@@ -46,11 +46,11 @@
                             </div>
                         </div>
 
-                        <div class="form-group{{ $errors->has('email') ? ' has-error' : '' }}">
-                            <label for="email" class="col-md-4 control-label">E-Mail Address</label>
+                        <div class="form-group has-feedback{{ $errors->has('email') ? ' has-error' : '' }}">
 
-                            <div class="col-md-6">
-                                <input id="email" type="email" class="form-control" name="email" value="{{ old('email') }}" required>
+                            <div class="col-md-12">
+                                <input id="email" type="email" class="form-control" placeholder="Correo Electrónico" name="email" value="{{ old('email') }}" required>
+                                <span class="glyphicon glyphicon-envelope form-control-feedback"></span>
 
                                 @if ($errors->has('email'))
                                     <span class="help-block">
@@ -60,11 +60,11 @@
                             </div>
                         </div>
 
-                        <div class="form-group{{ $errors->has('password') ? ' has-error' : '' }}">
-                            <label for="password" class="col-md-4 control-label">Password</label>
+                        <div class="form-group has-feedback{{ $errors->has('password') ? ' has-error' : '' }}">
 
-                            <div class="col-md-6">
-                                <input id="password" type="password" class="form-control" name="password" required>
+                            <div class="col-md-12">
+                                <input id="password" type="password" class="form-control" placeholder="Contraseña" name="password" required>
+                                <span class="glyphicon glyphicon-lock form-control-feedback"></span>
 
                                 @if ($errors->has('password'))
                                     <span class="help-block">
@@ -74,21 +74,27 @@
                             </div>
                         </div>
 
-                        <div class="form-group">
-                            <label for="password-confirm" class="col-md-4 control-label">Confirm Password</label>
+                        <div class="form-group has-feedback">
+
+                            <div class="col-md-12">
+                                <input id="password-confirm" type="password" class="form-control" placeholder="Vuelva a escribir la contraseña" name="password_confirmation" required>
+                            </div>
+                        </div>
+
+                        <div class="form-group has-feedback">
+                            <div class="col-md-6">
+                                <input type="checkbox" name="terms"><a href="">Términos y Condiciones</a>
+                            </div><!-- /.col-lg-6 -->
 
                             <div class="col-md-6">
-                                <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required>
-                            </div>
-                        </div>
-
-                        <div class="form-group">
-                            <div class="col-md-6 col-md-offset-4">
-                                <button type="submit" class="btn btn-primary">
-                                    Register
+                                <button type="submit" class="btn btn-primary pull-right">
+                                    Registrar
                                 </button>
                             </div>
+
                         </div>
+
+
                     </form>
 
                 @include('adminlte::auth.partials.social_login')

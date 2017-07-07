@@ -55,4 +55,28 @@ class HomeController extends Controller
     {
         return view('adminlte::auth/register');
     }
+
+    public function userstore(Request $request)
+    {
+        $this->validate($request, [
+            'company' => 'required|max:255',
+            'email' => 'required|email|unique:users',
+            'password' => 'required|confirmed',
+            'password_confirmation' => 'required',
+            'terms' => 'accepted',
+        ]);
+
+        $user = new User;
+        $user->fill($request->all());
+        $user->lastname = $request->lastname;
+        $user->cellphone = $request->cellphone;
+        $user->password = bcrypt($request->password);
+        $user->type = $request->type;
+        $user->save();
+
+        auth()->login($user);
+        return redirect('/');
+
+    }
+
 }
