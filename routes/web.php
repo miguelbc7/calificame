@@ -38,6 +38,8 @@ Route::group(['middleware' => 'auth'], function () {
     #adminlte_routes
     Route::get('admin', array('as'=>'admin', 'uses'=>'HomeController@admin'));
 
+    Route::resource('answers', 'AnswersController');
+
     Route::get('logout', function()
     {
         Auth::logout();

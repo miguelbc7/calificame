@@ -11,7 +11,7 @@
 			<div class="col-md-8 col-md-offset-2">
 
 				<!-- Default box -->
-				<div class="box">
+				<!--<div class="box">
 					<div class="box-header with-border">
 						<h3 class="box-title">Home</h3>
 
@@ -24,9 +24,9 @@
 					</div>
 					<div class="box-body">
 						{{ trans('adminlte_lang::message.logged') }}. Start creating your amazing application!
-					</div>
+					</div>-->
 					<!-- /.box-body -->
-				</div>
+				<!--</div>-->
 				<!-- /.box -->
 
 			</div>
