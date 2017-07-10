@@ -92,7 +92,6 @@ class AnswersController extends Controller
         $answers->fill($request->all());
         $answers->save();
         return redirect('/answers')->with('message','Pregunta Actualizada Correctamente');
-
     }
 
     /**

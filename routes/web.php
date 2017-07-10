@@ -39,6 +39,7 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('admin', array('as'=>'admin', 'uses'=>'HomeController@admin'));
 
     Route::resource('answers', 'AnswersController');
+    Route::resource('surveys', 'SurveysController');
 
     Route::get('logout', function()
     {

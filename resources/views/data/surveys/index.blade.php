@@ -1,11 +1,11 @@
 @extends('adminlte::layouts.app')
 
 @section('htmlheader_title')
-	Preguntas
+	Encuestas
 @endsection
 
 @section('contentheader_title')
-    Preguntas
+    Encuestas
 @endsection
 
 @section('main-content')
@@ -42,7 +42,7 @@
 		</a>
 	</div>
 	<div class="col-md-4 noleftpadding">
-		<a href="{{ route('answers.create') }}" class="btn btn-success" type="button" style="width:100%;">Agregar Pregunta</a>
+		<a href="{{ route('answers.create') }}" class="btn btn-success" type="button" style="width:100%;">Agregar Encuesta</a>
 	</div>
 </div>
 
@@ -53,7 +53,7 @@
 			<div class="box">
 				<div class="box-header with-border">
 					<div class="col-md-9">
-						<h3 class="box-title">Lista de Preguntas</h3>
+						<h3 class="box-title">Lista de Encuestas</h3>
 					</div>
 				</div>
 				<div id="tbl-main" class="box-body">
@@ -61,19 +61,19 @@
 					<table class="table table-bordered table-hover">
 						<thead>
 							<tr>
-								<th>Pregunta</th>
+								<th>Nombre</th>
 								<th>Opciones</th>
 							</tr>
 						</thead>
-						@foreach($answers as $a)
+						@foreach($surveys as $s)
 						<tbody>
 							<tr>
-								<td>{!!$a->answer!!}</td>
+								<td>{!!$s->name!!}</td>
 								<td align="center">
 									
-									{!!Form::open(['route'=>['answers.destroy', $a], 'method'=>'DELETE'])!!}					
+									{!!Form::open(['route'=>['surveys.destroy', $s], 'method'=>'DELETE'])!!}					
 									<div class="btn-group">
-										<a href="{{ route('answers.edit', $a->id) }}" class="btn btn-default" type="edit"><i class="fa fa-edit"></i></a>
+										<a href="{{ route('surveys.edit', $s->id) }}" class="btn btn-default" type="edit"><i class="fa fa-edit"></i></a>
 										
 										<button class="btn btn-danger" type="submit">
     									<i class="fa fa-remove"></i> </button>
@@ -85,7 +85,7 @@
 						</tbody>
 						@endforeach
 					</table>
-					{!!$answers->render()!!}
+					{!!$surveys->render()!!}
 					</div>
 				</div>
 				<div class="box-footer clearfix">

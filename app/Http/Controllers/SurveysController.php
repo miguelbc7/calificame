@@ -3,6 +3,12 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
+use Session;
+use Redirect;
+use Illuminate\Routing\Route;
+use Illuminate\Support\Facades\Auth;
+use App\Surveys;
 
 class SurveysController extends Controller
 {
@@ -13,7 +19,8 @@ class SurveysController extends Controller
      */
     public function index()
     {
-        //
+        $surveys = Surveys::where('user_id', '=', Auth::id())->paginate(10);
+        return view('data.surveys.index', ['surveys'=>$surveys]);
     }
 
     /**
@@ -23,7 +30,7 @@ class SurveysController extends Controller
      */
     public function create()
     {
-        //
+        return view('data.surveys.create');
     }
 
     /**
@@ -34,7 +41,15 @@ class SurveysController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $this->validate($request, [
+            'name' => 'required|max:255',
+        ]);
+
+        $surveys = new Surveys;
+        $surveys->fill($request->all());
+        $surveys->user_id = Auth::id();
+        $surveys->save();
+        return redirect('/surveys')->with('message','Encuesta Registrada Correctamente');
     }
 
     /**
@@ -56,7 +71,8 @@ class SurveysController extends Controller
      */
     public function edit($id)
     {
-        //
+        $surveys = Surveys::find($id);
+        return view('data.surveys.edit', ['surveys'=>$surveys]);
     }
 
     /**
@@ -68,7 +84,14 @@ class SurveysController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $this->validate($request, [
+            'name' => 'required|max:255',
+        ]);
+
+        $surveys = Surveys::find($id);
+        $surveys->fill($request->all());
+        $surveys->save();
+        return redirect('/surveys')->with('message','Encuesta Actualizada Correctamente');
     }
 
     /**
@@ -79,6 +102,8 @@ class SurveysController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $surveys = Surveys::find($id);
+        $surveys->delete();
+        return redirect('/surveys')->with('error','Encuesta Eliminada Correctamente');
     }
 }
