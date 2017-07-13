@@ -112,11 +112,11 @@
 												{!!Form::open(['route'=>['surveys.destroy', $s], 'method'=>'DELETE'])!!}					
 												<div class="btn-group">
 													<a href="{{ route('surveys.edit', $s->id) }}" class="btn btn-default" type="edit"><i class="fa fa-edit"></i></a>
-
+													@if($s->position != 1)
 													<a href="#" class="btn btn-info" type="up"><i class="fa fa-arrow-up"></i></a>
-
+													@elseif($s->position != $last)
 													<a href="#" class="btn btn-info" type="down"><i class="fa fa-arrow-down"></i></a>
-													
+													@endif
 													<button class="btn btn-danger" type="submit">
 			    									<i class="fa fa-remove"></i> </button>
 												</div>
