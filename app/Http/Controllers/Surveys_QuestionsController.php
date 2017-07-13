@@ -8,9 +8,11 @@ use Session;
 use Redirect;
 use Illuminate\Routing\Route;
 use Illuminate\Support\Facades\Auth;
-use App\Answers;
+use App\Surveys;
+use App\Questions;
+use App\Surveys_QuestionS;
 
-class AnswersController extends Controller
+class Surveys_QuestionsController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -19,8 +21,7 @@ class AnswersController extends Controller
      */
     public function index()
     {
-        $answers = Answers::where('user_id', '=', 1)->orWhere('user_id', '=', Auth::id())->paginate(10);
-        return view('data.answers.index', ['answers'=>$answers]);
+        //
     }
 
     /**
@@ -30,7 +31,7 @@ class AnswersController extends Controller
      */
     public function create()
     {
-        return view('data.answers.create');
+        //
     }
 
     /**
@@ -41,15 +42,36 @@ class AnswersController extends Controller
      */
     public function store(Request $request)
     {
-        $this->validate($request, [
-            'answer' => 'required',
-        ]);
+        if(isset($request->question))
+        {
+            $this->validate($request, [
+                'question' => 'required',
+            ]);
+            $questions = new Questions;
+            $questions->fill($request->all());
+            $questions->user_id = Auth::id();
+            $questions->save();
 
-        $answers = new Answers;
-        $answers->fill($request->all());
-        $answers->user_id = Auth::id();
-        $answers->save();
-        return redirect('/answers')->with('message','Pregunta Registrada Correctamente');
+            $surques = new Surveys_Questions;
+            $surques->survey_id = $request->survey_id;
+            $surques->question_id = $questions->id;
+            $surques->save();
+
+            return Redirect::back()->with('message','Pregunta Agregada Correctamente');
+        }
+        elseif(isset($request->question_id))
+        {
+            $this->validate($request, [
+                'question_id' => 'required',
+            ]);
+
+            $surques = new Surveys_Questions;
+            $surques->survey_id = $request->survey_id;
+            $surques->question_id = $request->question_id;
+            $surques->save();
+
+            return Redirect::back()->with('message','Pregunta Agregada Correctamente');
+        }
     }
 
     /**
@@ -71,8 +93,7 @@ class AnswersController extends Controller
      */
     public function edit($id)
     {
-        $answers = Answers::find($id);
-        return view('data.answers.edit', ['answers'=>$answers]);
+        //
     }
 
     /**
@@ -84,14 +105,7 @@ class AnswersController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $this->validate($request, [
-            'answer' => 'required',
-        ]);
-
-        $answers = Answers::find($id);
-        $answers->fill($request->all());
-        $answers->save();
-        return redirect('/answers')->with('message','Pregunta Actualizada Correctamente');
+        //
     }
 
     /**
@@ -102,8 +116,6 @@ class AnswersController extends Controller
      */
     public function destroy($id)
     {
-        $answers = Answers::find($id);
-        $answers->delete();
-        return redirect('/answers')->with('error','Pregunta Eliminada Correctamente');
+        //
     }
 }

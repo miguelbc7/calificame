@@ -42,7 +42,7 @@
 		</a>
 	</div>
 	<div class="col-md-4 noleftpadding">
-		<a href="{{ route('answers.create') }}" class="btn btn-success" type="button" style="width:100%;">Agregar Pregunta</a>
+		<a href="{{ route('questions.create') }}" class="btn btn-success" type="button" style="width:100%;">Agregar Pregunta</a>
 	</div>
 </div>
 
@@ -65,15 +65,15 @@
 								<th>Opciones</th>
 							</tr>
 						</thead>
-						@foreach($answers as $a)
+						@foreach($questions as $q)
 						<tbody>
 							<tr>
-								<td>{!!$a->answer!!}</td>
+								<td>{!!$q->question!!}</td>
 								<td align="center">
 									
-									{!!Form::open(['route'=>['answers.destroy', $a], 'method'=>'DELETE'])!!}					
+									{!!Form::open(['route'=>['questions.destroy', $q], 'method'=>'DELETE'])!!}					
 									<div class="btn-group">
-										<a href="{{ route('answers.edit', $a->id) }}" class="btn btn-default" type="edit"><i class="fa fa-edit"></i></a>
+										<a href="{{ route('questions.edit', $q->id) }}" class="btn btn-default" type="edit"><i class="fa fa-edit"></i></a>
 										
 										<button class="btn btn-danger" type="submit">
     									<i class="fa fa-remove"></i> </button>
@@ -85,7 +85,7 @@
 						</tbody>
 						@endforeach
 					</table>
-					{!!$answers->render()!!}
+					{!!$questions->render()!!}
 					</div>
 				</div>
 				<div class="box-footer clearfix">

@@ -42,7 +42,7 @@
 		</a>
 	</div>
 	<div class="col-md-4 noleftpadding">
-		<a href="{{ route('answers.create') }}" class="btn btn-success" type="button" style="width:100%;">Agregar Encuesta</a>
+		<a href="{{ route('surveys.create') }}" class="btn btn-success" type="button" style="width:100%;">Agregar Encuesta</a>
 	</div>
 </div>
 

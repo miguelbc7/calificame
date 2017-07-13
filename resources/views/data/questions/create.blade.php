@@ -38,11 +38,11 @@
 					</div>
 				</div>
 				<div class="box-body">
-					{!!Form::open(['route'=>'answers.store', 'method'=>'POST', 'files' => true])!!}
+					{!!Form::open(['route'=>'questions.store', 'method'=>'POST', 'files' => true])!!}
 					<div class="form-group col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
 						<div class="row">
 							<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-								{!!Form::text('answer',null,['class'=>'form-control','placeholder'=>'Ingrese la pregunta', 'style'=>'-webkit-border-radius: 8px;-moz-border-radius: 8px;border-radius: 8px;'])!!}
+								{!!Form::text('question',null,['class'=>'form-control','placeholder'=>'Ingrese la pregunta', 'style'=>'-webkit-border-radius: 8px;-moz-border-radius: 8px;border-radius: 8px;'])!!}
 							</div>
 						</div>
 					</div>
@@ -51,7 +51,7 @@
 
 					{!!Form::close()!!}
 
-					{!!link_to_route('answers.index', $title = 'Atras',  $parameters = '', $attributes = ['class' => 'btn btn-default btn3d', 'style'=>'-webkit-border-radius: 8px;-moz-border-radius: 8px;border-radius: 8px;'])!!}
+					{!!link_to_route('questions.index', $title = 'Atras',  $parameters = '', $attributes = ['class' => 'btn btn-default btn3d', 'style'=>'-webkit-border-radius: 8px;-moz-border-radius: 8px;border-radius: 8px;'])!!}
 					</div>
 				</div>
 				<div class="box-footer clearfix">	

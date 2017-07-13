@@ -39,7 +39,7 @@
                 <a href="#"><i class='fa fa-link'></i> <span>Data</span> <i class="fa fa-angle-left pull-right"></i></a>
                 <ul class="treeview-menu">
                     <li><a href="{{ url('surveys') }}">Encuestas</a></li>
-                    <li><a href="{{ url('answers') }}">Preguntas</a></li>
+                    <li><a href="{{ url('questions') }}">Preguntas</a></li>
                 </ul>
             </li>
         </ul><!-- /.sidebar-menu -->

@@ -8,11 +8,9 @@ use Session;
 use Redirect;
 use Illuminate\Routing\Route;
 use Illuminate\Support\Facades\Auth;
-use App\Surveys;
 use App\Questions;
-use App\Surveys_QuestionS;
 
-class SurveysController extends Controller
+class QuestionsController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -21,8 +19,8 @@ class SurveysController extends Controller
      */
     public function index()
     {
-        $surveys = Surveys::where('user_id', '=', Auth::id())->paginate(10);
-        return view('data.surveys.index', ['surveys'=>$surveys]);
+        $questions = Questions::where('user_id', '=', 1)->orWhere('user_id', '=', Auth::id())->paginate(10);
+        return view('data.questions.index', ['questions'=>$questions]);
     }
 
     /**
@@ -32,7 +30,7 @@ class SurveysController extends Controller
      */
     public function create()
     {
-        return view('data.surveys.create');
+        return view('data.questions.create');
     }
 
     /**
@@ -44,14 +42,14 @@ class SurveysController extends Controller
     public function store(Request $request)
     {
         $this->validate($request, [
-            'name' => 'required|max:255',
+            'question' => 'required',
         ]);
 
-        $surveys = new Surveys;
-        $surveys->fill($request->all());
-        $surveys->user_id = Auth::id();
-        $surveys->save();
-        return redirect('/surveys/'.$surveys->id.'/questions')->with('message','Encuesta Registrada Correctamente');
+        $questions = new Questions;
+        $questions->fill($request->all());
+        $questions->user_id = Auth::id();
+        $questions->save();
+        return redirect('/questions')->with('message','Pregunta Registrada Correctamente');
     }
 
     /**
@@ -73,8 +71,8 @@ class SurveysController extends Controller
      */
     public function edit($id)
     {
-        $surveys = Surveys::find($id);
-        return view('data.surveys.edit', ['surveys'=>$surveys]);
+        $questions = Questions::find($id);
+        return view('data.questions.edit', ['questions'=>$questions]);
     }
 
     /**
@@ -87,13 +85,13 @@ class SurveysController extends Controller
     public function update(Request $request, $id)
     {
         $this->validate($request, [
-            'name' => 'required|max:255',
+            'question' => 'required',
         ]);
 
-        $surveys = Surveys::find($id);
-        $surveys->fill($request->all());
-        $surveys->save();
-        return redirect('/surveys')->with('message','Encuesta Actualizada Correctamente');
+        $questions = Questions::find($id);
+        $questions->fill($request->all());
+        $questions->save();
+        return redirect('/questions')->with('message','Pregunta Actualizada Correctamente');
     }
 
     /**
@@ -104,16 +102,8 @@ class SurveysController extends Controller
      */
     public function destroy($id)
     {
-        $surveys = Surveys::find($id);
-        $surveys->delete();
-        return redirect('/surveys')->with('error','Encuesta Eliminada Correctamente');
-    }
-
-    public function questions($id)
-    {
-        $surveys = Surveys::find($id);
-        $surquestions = Surveys_Questions::join('questions', 'surveys_questions.question_id', '=', 'questions.id')->select('questions.question AS question')->where('survey_id', '=', $id)->paginate(10);
-        $questions = Questions::where('user_id', '=', Auth::id())->orderBy('question')->pluck('question', 'id');
-        return view('data.surveys.questions', ['surveys'=>$surveys, 'surquestions'=>$surquestions, 'questions'=>$questions]);
+        $questions = Questions::find($id);
+        $questions->delete();
+        return redirect('/questions')->with('error','Pregunta Eliminada Correctamente');
     }
 }
