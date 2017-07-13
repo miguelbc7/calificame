@@ -97,6 +97,7 @@
 								<table class="table table-bordered table-hover">
 									<thead>
 										<tr>
+											<th>Posicion</th>
 											<th>Pregunta</th>
 											<th>Opciones</th>
 										</tr>
@@ -104,12 +105,17 @@
 									@foreach($surquestions as $s)
 									<tbody>
 										<tr>
+											<td>{!!$s->position!!}</td>
 											<td>{!!$s->question!!}</td>
 											<td align="center">
 												
 												{!!Form::open(['route'=>['surveys.destroy', $s], 'method'=>'DELETE'])!!}					
 												<div class="btn-group">
 													<a href="{{ route('surveys.edit', $s->id) }}" class="btn btn-default" type="edit"><i class="fa fa-edit"></i></a>
+
+													<a href="#" class="btn btn-info" type="up"><i class="fa fa-arrow-up"></i></a>
+
+													<a href="#" class="btn btn-info" type="down"><i class="fa fa-arrow-down"></i></a>
 													
 													<button class="btn btn-danger" type="submit">
 			    									<i class="fa fa-remove"></i> </button>

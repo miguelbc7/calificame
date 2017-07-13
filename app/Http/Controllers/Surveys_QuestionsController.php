@@ -47,12 +47,26 @@ class Surveys_QuestionsController extends Controller
             $this->validate($request, [
                 'question' => 'required',
             ]);
+
+            $sq = Surveys_Questions::where('survey_id', '=', $request->survey_id)->count();
+
+            if($sq == 0)
+            {
+                $position = 1;
+            }
+            elseif($sq == 1)
+            {
+                $sq2 = Surveys_Questions::orderBy('position', 'desc')->first();
+                $position = $sq2->position + 1;
+            }
+
             $questions = new Questions;
             $questions->fill($request->all());
             $questions->user_id = Auth::id();
             $questions->save();
 
             $surques = new Surveys_Questions;
+            $surques->position = $position;
             $surques->survey_id = $request->survey_id;
             $surques->question_id = $questions->id;
             $surques->save();

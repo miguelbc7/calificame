@@ -112,7 +112,7 @@ class SurveysController extends Controller
     public function questions($id)
     {
         $surveys = Surveys::find($id);
-        $surquestions = Surveys_Questions::join('questions', 'surveys_questions.question_id', '=', 'questions.id')->select('questions.question AS question')->where('survey_id', '=', $id)->paginate(10);
+        $surquestions = Surveys_Questions::join('questions', 'surveys_questions.question_id', '=', 'questions.id')->select('questions.question AS question', 'surveys_questions.position AS position')->where('survey_id', '=', $id)->orderBy('position', 'asc')->paginate(10);
         $questions = Questions::where('user_id', '=', Auth::id())->orderBy('question')->pluck('question', 'id');
         return view('data.surveys.questions', ['surveys'=>$surveys, 'surquestions'=>$surquestions, 'questions'=>$questions]);
     }

@@ -18,5 +18,5 @@ class Surveys_Questions extends Model
      *
      * @var array
      */
-    protected $fillable = ['survey_id', 'question_id'];
+    protected $fillable = ['position', 'survey_id', 'question_id'];
 }
