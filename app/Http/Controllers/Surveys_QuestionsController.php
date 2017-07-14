@@ -54,7 +54,7 @@ class Surveys_QuestionsController extends Controller
             {
                 $position = 1;
             }
-            elseif($sq == 1)
+            else
             {
                 $sq2 = Surveys_Questions::orderBy('position', 'desc')->first();
                 $position = $sq2->position + 1;
@@ -131,5 +131,59 @@ class Surveys_QuestionsController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+    public function up($id)
+    {
+        $surques = Surveys_Questions::find($id);
+        $i = $surques->position - 1;
+        $sq = Surveys_Questions::where('position', '=', $i)->update(['position' => $surques->position]);
+        $surques->position = $i;
+        $surques->save();
+        return Redirect::back();
+    }
+
+    public function down($id)
+    {
+        $surques = Surveys_Questions::find($id);
+        $i = $surques->position + 1;
+        $sq = Surveys_Questions::where('position', '=', $i)->update(['position' => $surques->position]);
+        $surques->position = $i;
+        $surques->save();
+        return Redirect::back();
+    }
+
+    public function fullUp($id)
+    {
+        $surques = Surveys_Questions::find($id);
+        $sq = Surveys_Questions::where('position', '<', $surques->position)->get();
+
+        foreach($sq as $s)
+        {
+            $sq = Surveys_Questions::find($s->id);
+            $sq->position = $s->position + 1;
+            $sq->save();
+        }
+        $surques->position = 1;
+        $surques->save();
+        return Redirect::back();
+    }
+
+    public function fullDown($id)
+    {
+        $surques = Surveys_Questions::find($id);
+        $sq = Surveys_Questions::where('position', '>', $surques->position)->get();
+        $pos = Surveys_Questions::select('position')->orderBy('position', 'desc')->first();
+        
+        foreach($sq as $s)
+        {
+            $sq = Surveys_Questions::find($s->id);
+            $sq->position = $s->position - 1;
+            $sq->save();
+        }
+        
+        $surques->position = $pos->position;
+        $surques->save();
+        return Redirect::back();
     }
 }

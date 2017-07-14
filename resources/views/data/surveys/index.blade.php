@@ -74,6 +74,8 @@
 									{!!Form::open(['route'=>['surveys.destroy', $s], 'method'=>'DELETE'])!!}					
 									<div class="btn-group">
 										<a href="{{ route('surveys.edit', $s->id) }}" class="btn btn-default" type="edit"><i class="fa fa-edit"></i></a>
+
+										<a href="{{ route('surques', $s->id) }}" class="btn btn-info" type="edit"><i class="fa fa-edit"></i></a>
 										
 										<button class="btn btn-danger" type="submit">
     									<i class="fa fa-remove"></i> </button>

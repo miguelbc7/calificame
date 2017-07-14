@@ -42,7 +42,13 @@ Route::group(['middleware' => 'auth'], function () {
     Route::resource('surveys', 'SurveysController');
     Route::resource('surveys_questions', 'Surveys_QuestionsController');
 
-    Route::get('surveys/{id}/questions', 'SurveysController@questions');
+    Route::get('surveys/{id}/questions', array('as'=>'surques', 'uses'=>'SurveysController@questions'));
+
+    Route::get('surveys/{id}/up', array('as'=>'up', 'uses'=>'Surveys_QuestionsController@up'));
+    Route::get('surveys/{id}/down', array('as'=>'down', 'uses'=>'Surveys_QuestionsController@down'));
+
+    Route::get('surveys/{id}/fullUp', array('as'=>'fullUp', 'uses'=>'Surveys_QuestionsController@fullUp'));
+    Route::get('surveys/{id}/fullDown', array('as'=>'fullDown', 'uses'=>'Surveys_QuestionsController@fullDown'));
 
     Route::get('logout', function()
     {
