@@ -3,6 +3,16 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
+use Session;
+use Redirect;
+use Illuminate\Routing\Route;
+use Illuminate\Support\Facades\Auth;
+use App\Surveys;
+use App\Questions;
+use App\Surveys_Questions;
+use App\Answers;
+use App\AnswersDetails;
 
 class AnswersController extends Controller
 {

@@ -10,7 +10,7 @@ use Illuminate\Routing\Route;
 use Illuminate\Support\Facades\Auth;
 use App\Surveys;
 use App\Questions;
-use App\Surveys_QuestionS;
+use App\Surveys_Questions;
 
 class SurveysController extends Controller
 {
@@ -112,7 +112,7 @@ class SurveysController extends Controller
     public function questions($id)
     {
         $surveys = Surveys::find($id);
-        $surquestions = Surveys_Questions::join('questions', 'surveys_questions.question_id', '=', 'questions.id')->select('surveys_questions.id AS id', 'questions.question AS question', 'surveys_questions.position AS position')->where('survey_id', '=', $id)->orderBy('position', 'asc')->paginate(10);
+        $surquestions = Surveys_Questions::join('questions', 'surveys_questions.question_id', '=', 'questions.id')->select('surveys_questions.id AS id', 'questions.question AS question', 'surveys_questions.position AS position')->where('surveys_questions.survey_id', '=', $id)->orderBy('position', 'asc')->paginate(10);
         $questions = Questions::where('user_id', '=', Auth::id())->orderBy('question')->pluck('question', 'id');
         $last = Surveys_Questions::select('position')->orderBy('position', 'desc')->first();
         if(isset($last))
@@ -127,5 +127,10 @@ class SurveysController extends Controller
         return view('data.surveys.questions', ['surveys'=>$surveys, 'surquestions'=>$surquestions, 'questions'=>$questions, 'last'=>$last]);
     }
 
-
+    public function survey($id)
+    {
+        $surveys = Surveys::find($id);
+        $surquestions = Surveys_Questions::join('questions', 'surveys_questions.question_id', '=', 'questions.id')->select('surveys_questions.id AS id', 'questions.question AS question', 'surveys_questions.position AS position')->where('surveys_questions.survey_id', '=', $id)->get();
+        return view('pages.survey', ['surveys'=>$surveys, 'surquestions'=>$surquestions]);
+    }
 }
