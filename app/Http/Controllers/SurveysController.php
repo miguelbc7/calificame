@@ -115,7 +115,15 @@ class SurveysController extends Controller
         $surquestions = Surveys_Questions::join('questions', 'surveys_questions.question_id', '=', 'questions.id')->select('surveys_questions.id AS id', 'questions.question AS question', 'surveys_questions.position AS position')->where('survey_id', '=', $id)->orderBy('position', 'asc')->paginate(10);
         $questions = Questions::where('user_id', '=', Auth::id())->orderBy('question')->pluck('question', 'id');
         $last = Surveys_Questions::select('position')->orderBy('position', 'desc')->first();
-        $last = $last->position;
+        if(isset($last))
+        {
+            $last = $last->position;
+        }
+        else
+        {
+            $last = 0;
+        }
+        
         return view('data.surveys.questions', ['surveys'=>$surveys, 'surquestions'=>$surquestions, 'questions'=>$questions, 'last'=>$last]);
     }
 

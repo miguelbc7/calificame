@@ -50,6 +50,8 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('surveys/{id}/fullUp', array('as'=>'fullUp', 'uses'=>'Surveys_QuestionsController@fullUp'));
     Route::get('surveys/{id}/fullDown', array('as'=>'fullDown', 'uses'=>'Surveys_QuestionsController@fullDown'));
 
+    Route::get('surveys/{id}/survey')
+
     Route::get('logout', function()
     {
         Auth::logout();

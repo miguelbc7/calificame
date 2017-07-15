@@ -50,7 +50,7 @@
 						<div class="pull-left">
 							{!!Form::submit('Agregar',['class'=>'btn btn-success btn3d', 'style'=>'-webkit-border-radius: 8px;-moz-border-radius: 8px;border-radius: 8px;'])!!}
 
-							{!!Form::close()!!}
+				{!!Form::close()!!}
 						</div>
 					</div>
 				</div>
@@ -75,7 +75,7 @@
 						<div class="pull-left">
 							{!!Form::submit('Agregar',['class'=>'btn btn-success btn3d', 'style'=>'-webkit-border-radius: 8px;-moz-border-radius: 8px;border-radius: 8px;'])!!}
 
-							{!!Form::close()!!}
+				{!!Form::close()!!}
 						</div>
 					</div>
 				</div>
@@ -112,18 +112,18 @@
 												{!!Form::open(['route'=>['surveys.destroy', $s], 'method'=>'DELETE'])!!}					
 												<div class="btn-group">
 													<a href="{{ route('surveys.edit', $s->id) }}" class="btn btn-default" type="edit"><i class="fa fa-edit"></i></a>
-													@if($s->position == 1)
-														<a href="{{ route('down', $s->id) }}" class="btn btn-info" type="down"><i class="fa fa-arrow-down"></i></a>
-														<a href="{{ route('fullDown', $s->id) }}" class="btn btn-info" type="fullDown"><i class="fa fa-download"></i></a>
-													@elseif($s->position == $last)
-														<a href="{{ route('up', $s->id) }}" class="btn btn-info" type="up"><i class="fa fa-arrow-up"></i></a>
-														<a href="{{ route('fullUp', $s->id) }}" class="btn btn-info" type="fullUp"><i class="fa fa-upload"></i></a>
-													@else
-														<a href="{{ route('up', $s->id) }}" class="btn btn-info" type="up"><i class="fa fa-arrow-up"></i></a>
-														<a href="{{ route('fullUp', $s->id) }}" class="btn btn-info" type="fullUp"><i class="fa fa-upload"></i></a>
-														<a href="{{ route('down', $s->id) }}" class="btn btn-info" type="down"><i class="fa fa-arrow-down"></i></a>
-														<a href="{{ route('fullDown', $s->id) }}" class="btn btn-info" type="fullDown"><i class="fa fa-download"></i></a>
-													@endif
+														@if($s->position == 1)
+															<a href="{{ route('down', $s->id) }}" class="btn btn-info" type="down"><i class="fa fa-arrow-down"></i></a>
+															<a href="{{ route('fullDown', $s->id) }}" class="btn btn-info" type="fullDown"><i class="fa fa-download"></i></a>
+														@elseif($s->position == $last)
+															<a href="{{ route('up', $s->id) }}" class="btn btn-info" type="up"><i class="fa fa-arrow-up"></i></a>
+															<a href="{{ route('fullUp', $s->id) }}" class="btn btn-info" type="fullUp"><i class="fa fa-upload"></i></a>
+														@else
+															<a href="{{ route('up', $s->id) }}" class="btn btn-info" type="up"><i class="fa fa-arrow-up"></i></a>
+															<a href="{{ route('fullUp', $s->id) }}" class="btn btn-info" type="fullUp"><i class="fa fa-upload"></i></a>
+															<a href="{{ route('down', $s->id) }}" class="btn btn-info" type="down"><i class="fa fa-arrow-down"></i></a>
+															<a href="{{ route('fullDown', $s->id) }}" class="btn btn-info" type="fullDown"><i class="fa fa-download"></i></a>
+														@endif
 													<button class="btn btn-danger" type="submit">
 			    									<i class="fa fa-remove"></i> </button>
 												</div>
