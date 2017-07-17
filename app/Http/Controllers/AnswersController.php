@@ -42,7 +42,7 @@ class AnswersController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request, $id)
+    public function store(Request $request)
     {
         $this->validate($request, [
             'name' => 'required|max:255',
@@ -50,31 +50,29 @@ class AnswersController extends Controller
         ]);
 
         $surveys = Surveys::find($request->survey_id);
-        $questions = Questions::where('survey_id','=',$request->survey_id)->count();
+        $questions = Surveys_Questions::join('questions', 'surveys_questions.question_id', '=', 'questions.id')->where('surveys_questions.survey_id','=',$request->survey_id)->count();
 
         $surquestions = Surveys_Questions::join('questions', 'surveys_questions.question_id', '=', 'questions.id')->select('surveys_questions.id AS id', 'questions.question AS question', 'surveys_questions.position AS position')->where('surveys_questions.survey_id', '=', $request->survey_id)->get();
 
         $answer = new Answers;
-        $answer->fill($request->all());
+        $answer->name = $request->name;
+        $answer->email = $request->email;
         $answer->survey_id = $request->survey_id;
         $answer->save();
 
         foreach($surquestions as $sq)
         {
-            $i = 1;
-            while ($i <= $questions)
-            {
-                 $this->validate($request, [
-                    'optionsRadios'.$sq->position => 'required',
-                ]);
+            $this->validate($request, [
+                'optionsRadios'.$sq->position => 'required',
+            ]);
 
-                 $answerdetail = new AnswersDetails;
-                 $answerdetail->answer = $request->optionsRadios.$sq->position;
-                 $answerdetail->answer_id = $answer->id;
-                 $answerdetail->question_id = $request->question_id;
-                 $answerdetail->save();
-            }
+            $answerdetail = new AnswersDetails;
+            $answerdetail->answer = $request->input('optionsRadios'.$sq->position);
+            $answerdetail->answer_id = $answer->id;
+            $answerdetail->question_id = $request->question_id.$sq->position;
+            $answerdetail->save();
        }
+       return Redirect::back();
 
     }
 

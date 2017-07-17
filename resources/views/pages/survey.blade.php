@@ -15,7 +15,9 @@
 
 @foreach($surquestions as $sq)
 	{{ $sq->question }}
-	{!!Form::hidden('question_id',$sq->question_id)!!}
+
+	<input type="hidden" name="question_id{{ $sq->position }}" value="{{ $sq->question_id }}">
+
 	<div class="radio{{ $sq->position }}">
 	  <label>
 	    <input type="radio" name="optionsRadios{{ $sq->position }}" id="optionsRadios{{ $sq->position }}1" value="1">
