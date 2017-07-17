@@ -42,9 +42,34 @@ class AnswersController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(Request $request, $id)
     {
-        //
+        $this->validate($request, [
+            'name' => 'required|max:255',
+            'email' => 'required|max:255|email',
+        ]);
+
+        $surveys = Surveys::find($request->survey_id);
+        $questions = Questions::where('survey_id','=',$request->survey_id)->count();
+
+        $surquestions = Surveys_Questions::join('questions', 'surveys_questions.question_id', '=', 'questions.id')->select('surveys_questions.id AS id', 'questions.question AS question', 'surveys_questions.position AS position')->where('surveys_questions.survey_id', '=', $request->survey_id)->get();
+
+        $answer = new Answers;
+        $answer->fill($request->all());
+        $answer->save();
+
+        foreach($surquestions as $sq)
+        {
+            $i = 1;
+            while ($i <= $questions)
+            {
+                 $this->validate($request, [
+                    'name' => 'required|max:255',
+                    'email' => 'required|max:255|email',
+                ]);
+            }
+       }
+
     }
 
     /**
