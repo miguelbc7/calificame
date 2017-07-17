@@ -56,6 +56,7 @@ class AnswersController extends Controller
 
         $answer = new Answers;
         $answer->fill($request->all());
+        $answer->survey_id = $request->survey_id;
         $answer->save();
 
         foreach($surquestions as $sq)
@@ -64,9 +65,14 @@ class AnswersController extends Controller
             while ($i <= $questions)
             {
                  $this->validate($request, [
-                    'name' => 'required|max:255',
-                    'email' => 'required|max:255|email',
+                    'optionsRadios'.$sq->position => 'required',
                 ]);
+
+                 $answerdetail = new AnswersDetails;
+                 $answerdetail->answer = $request->optionsRadios.$sq->position;
+                 $answerdetail->answer_id = $answer->id;
+                 $answerdetail->question_id = $request->question_id;
+                 $answerdetail->save();
             }
        }
 

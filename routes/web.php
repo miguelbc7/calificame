@@ -41,6 +41,8 @@ Route::group(['middleware' => 'auth'], function () {
     Route::resource('questions', 'QuestionsController');
     Route::resource('surveys', 'SurveysController');
     Route::resource('surveys_questions', 'Surveys_QuestionsController');
+    Route::resource('answers', 'AnswersController');
+    Route::resource('answersdetails', 'AnswersDetailsController');
 
     Route::get('surveys/{id}/questions', array('as'=>'surques', 'uses'=>'SurveysController@questions'));
 

@@ -18,5 +18,5 @@ class AnswersDetails extends Model
      *
      * @var array
      */
-    protected $fillable = ['answer, survey_question_id'];
+    protected $fillable = ['answer_id, question_id'];
 }
