@@ -60,6 +60,9 @@
 							<tr>
 								<th>Nombre</th>
 								<th>Email</th>
+								@foreach($questions as $q)
+									<th>{{ $q->name }}</th>
+								@endforeach
 								<th>Comentario</th>
 								<th>Opciones</th>
 							</tr>
@@ -69,6 +72,19 @@
 							<tr>
 								<td>{!!$s->clientname!!}</td>
 								<td>{!!$s->clientemail!!}</td>
+								@foreach($questions as $q)
+									@if($q->answer == 1)
+										<td>Muy malo</td>
+									@elseif($q->answer == 2)
+										<td>Malo</td>
+									@elseif($q->answer == 3)
+										<td>Regular</td>
+									@elseif($q->answer == 4)
+										<td>Bueno</td>
+									@elseif($q->answer == 5)
+										<td>Muy Bueno</td>
+									@endif
+								@endforeach
 								<td>{!!$s->comment!!}</td>
 								<td align="center">
 									
@@ -76,10 +92,10 @@
 									<div class="btn-group">
 										<a href="{{ route('answers.edit', $s->id) }}" class="btn btn-default" data-toggle="tooltip" data-original-title="Editar" type="edit"><i class="fa fa-edit"></i></a>
 
-										<a href="{{ route('suranswersdetails', $s->id) }}" class="btn btn-info" data-toggle="tooltip" data-original-title="Respuestas de las preguntas" type="suranswersdetails"><i class="fa fa-address-card-o"></i></a>
+										<a href="#" class="btn btn-primary" data-toggle="tooltip" data-original-title="Compartir comentario en Facebook" type="fbshare"><i class="fa fa-facebook-square"></i></a>
 
-										<a href="#" class="btn btn-info" data-toggle="tooltip" data-original-title="Compartir comentario en facebook" type="fbshare"><i class="fa fa-facebook-square"></i></a>
-										
+										<a href="#" class="btn btn-info" data-toggle="tooltip" data-original-title="Compartir comentario en Twitter" type="fbshare"><i class="fa fa-twitter-square"></i></a>
+
 										<button class="btn btn-danger" data-toggle="tooltip" data-original-title="Eliminar" type="submit">
     									<i class="fa fa-remove"></i> </button>
 									</div>

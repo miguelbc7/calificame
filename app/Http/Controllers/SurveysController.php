@@ -145,11 +145,9 @@ class SurveysController extends Controller
     public function suranswers($id)
     {
         $suranswers = Surveys_Questions::join('surveys', 'surveys_questions.survey_id', '=', 'surveys.id')->join('questions', 'surveys_questions.question_id', '=', 'questions.id')->join('answers', 'surveys.id', '=', 'answers.survey_id')->select('answers.id AS id', 'answers.name AS clientname', 'answers.email AS clientemail', 'answers.comment AS comment')->where('surveys_questions.survey_id', '=', $id)->paginate(10);
-        return view('data.surveys.answers', ['suranswers'=>$suranswers]);
-    }
 
-    public function suranswersdetails($id)
-    {
-        return view('data.surveys.answersdetails');
+        $questions = Surveys_Questions::join('questions', 'surveys_questions.question_id', '=', 'questions.id')->join('answers_details', 'questions.id', '=', 'answers_details.question_id')->select('questions.question AS name', 'answers_details.answer AS answer')->where('surveys_questions.survey_id', '=', $id)->get();
+
+        return view('data.surveys.answers', ['suranswers'=>$suranswers, 'questions'=>$questions]);
     }
 }

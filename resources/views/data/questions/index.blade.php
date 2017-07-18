@@ -73,9 +73,9 @@
 									
 									{!!Form::open(['route'=>['questions.destroy', $q], 'method'=>'DELETE'])!!}					
 									<div class="btn-group">
-										<a href="{{ route('questions.edit', $q->id) }}" class="btn btn-default" type="edit"><i class="fa fa-edit"></i></a>
+										<a href="{{ route('questions.edit', $q->id) }}" class="btn btn-default" data-toggle="tooltip" title data-original-title="Editar" type="edit"><i class="fa fa-edit"></i></a>
 										
-										<button class="btn btn-danger" type="submit">
+										<button class="btn btn-danger" data-toggle="tooltip" title data-original-title="Eliminar" type="submit">
     									<i class="fa fa-remove"></i> </button>
 									</div>
 									{!!Form::close()!!}

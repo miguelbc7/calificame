@@ -75,7 +75,7 @@
 									<div class="btn-group">
 										<a href="{{ route('surveys.edit', $s->id) }}" class="btn btn-default" data-toggle="tooltip" data-original-title="Editar" type="edit"><i class="fa fa-edit"></i></a>
 
-										<a href="{{ route('surques', $s->id) }}" class="btn btn-info" data-toggle="tooltip" data-original-title="Modificar Preguntas" type="surques"><i class="fa fa-edit"></i></a>
+										<a href="{{ route('surques', $s->id) }}" class="btn btn-info" data-toggle="tooltip" data-original-title="Cambiar Preguntas" type="surques"><i class="fa fa-edit"></i></a>
 
 										<a href="{{ route('links', $s->id) }}" class="btn btn-info" data-toggle="tooltip" data-original-title="Hipervinculos" type="links"><i class="fa fa-link"></i></a>
 
