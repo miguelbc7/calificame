@@ -1,14 +1,14 @@
 {!!Form::open(['route'=>'answers.store', 'method'=>'POST', 'files' => true])!!}
 
 <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
-	{!!Form::text('name',null,['class'=>'form-control','placeholder'=>'Ingrese su nombre'])!!}
+	{!!Form::text('name', null, ['class'=>'form-control', 'autofocus'=>'autofocus', 'placeholder'=>'Ingrese su nombre'])!!}
 	{!!Form::hidden('survey_id',$surveys->id)!!}
 </div>
 
 <br>
 
 <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
-	{!!Form::text('email',null,['class'=>'form-control','placeholder'=>'Ingrese su correo'])!!}
+	{!!Form::text('email', null, ['class'=>'form-control', 'placeholder'=>'Ingrese su correo'])!!}
 </div>
 
 <br>
@@ -42,7 +42,18 @@
 	</div>
 	<br>
 @endforeach
+
+<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
+	{!!Form::label('Dejanos un comentario:')!!}<br>
+</div>
+
+<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
+	{!!Form::textarea('comment',null,['class'=>'form-control'])!!}
+</div>
+
+<br>
+
 <div class="pull-left">
 	{!!Form::submit('Enviar',['class'=>'btn btn-success btn3d', 'style'=>'-webkit-border-radius: 8px;-moz-border-radius: 8px;border-radius: 8px;'])!!}
 </div>
-{!!Form::close()!!}
+{!! Form::close() !!}

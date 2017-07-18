@@ -1,11 +1,11 @@
 @extends('adminlte::layouts.app')
 
 @section('htmlheader_title')
-	Encuestas
+	Respuestas de la Encuestas
 @endsection
 
 @section('contentheader_title')
-    Encuestas
+    Respuestas de la Encuestas
 @endsection
 
 @section('main-content')
@@ -41,9 +41,6 @@
 			<i class="fa fa-refresh"></i>
 		</a>
 	</div>
-	<div class="col-md-4 noleftpadding">
-		<a href="{{ route('surveys.create') }}" class="btn btn-success" type="button" style="width:100%;">Agregar Encuesta</a>
-	</div>
 </div>
 
 <section class="content">
@@ -53,7 +50,7 @@
 			<div class="box">
 				<div class="box-header with-border">
 					<div class="col-md-9">
-						<h3 class="box-title">Lista de Encuestas</h3>
+						<h3 class="box-title">Lista de Respuestas</h3>
 					</div>
 				</div>
 				<div id="tbl-main" class="box-body">
@@ -62,24 +59,26 @@
 						<thead>
 							<tr>
 								<th>Nombre</th>
+								<th>Email</th>
+								<th>Comentario</th>
 								<th>Opciones</th>
 							</tr>
 						</thead>
-						@foreach($surveys as $s)
+						@foreach($suranswers as $s)
 						<tbody>
 							<tr>
-								<td>{!!$s->name!!}</td>
+								<td>{!!$s->clientname!!}</td>
+								<td>{!!$s->clientemail!!}</td>
+								<td>{!!$s->comment!!}</td>
 								<td align="center">
 									
-									{!!Form::open(['route'=>['surveys.destroy', $s], 'method'=>'DELETE'])!!}					
+									{!!Form::open(['route'=>['answers.destroy', $s], 'method'=>'DELETE'])!!}					
 									<div class="btn-group">
-										<a href="{{ route('surveys.edit', $s->id) }}" class="btn btn-default" data-toggle="tooltip" data-original-title="Editar" type="edit"><i class="fa fa-edit"></i></a>
+										<a href="{{ route('answers.edit', $s->id) }}" class="btn btn-default" data-toggle="tooltip" data-original-title="Editar" type="edit"><i class="fa fa-edit"></i></a>
 
-										<a href="{{ route('surques', $s->id) }}" class="btn btn-info" data-toggle="tooltip" data-original-title="Modificar Preguntas" type="surques"><i class="fa fa-edit"></i></a>
+										<a href="{{ route('suranswersdetails', $s->id) }}" class="btn btn-info" data-toggle="tooltip" data-original-title="Respuestas de las preguntas" type="suranswersdetails"><i class="fa fa-address-card-o"></i></a>
 
-										<a href="{{ route('links', $s->id) }}" class="btn btn-info" data-toggle="tooltip" data-original-title="Hipervinculos" type="links"><i class="fa fa-link"></i></a>
-
-										<a href="{{ route('suranswers', $s->id) }}" class="btn btn-info" data-toggle="tooltip" data-original-title="Respuestas de los Clientes" type="suranswers"><i class="fa fa-address-card-o"></i></a>
+										<a href="#" class="btn btn-info" data-toggle="tooltip" data-original-title="Compartir comentario en facebook" type="fbshare"><i class="fa fa-facebook-square"></i></a>
 										
 										<button class="btn btn-danger" data-toggle="tooltip" data-original-title="Eliminar" type="submit">
     									<i class="fa fa-remove"></i> </button>
@@ -91,7 +90,7 @@
 						</tbody>
 						@endforeach
 					</table>
-					{!!$surveys->render()!!}
+					{!!$suranswers->render()!!}
 					</div>
 				</div>
 				<div class="box-footer clearfix">

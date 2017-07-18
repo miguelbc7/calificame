@@ -42,7 +42,7 @@
 					<div class="form-group col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
 						<div class="row">
 							<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-								{!!Form::text('name',null,['class'=>'form-control','placeholder'=>'Ingrese el nombre de la encuesta', 'style'=>'-webkit-border-radius: 8px;-moz-border-radius: 8px;border-radius: 8px;'])!!}
+								{!!Form::text('name',null,['class'=>'form-control','placeholder'=>'Ingrese el nombre de la encuesta', 'autofocus'=>'autofocus', 'style'=>'-webkit-border-radius: 8px;-moz-border-radius: 8px;border-radius: 8px;'])!!}
 							</div>
 						</div>
 					</div>

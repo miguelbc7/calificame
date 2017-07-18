@@ -202,6 +202,11 @@ return [
         */
         Acacha\AdminLTETemplateLaravel\Providers\AdminLTETemplateServiceProvider::class,
 
+        /*
+        * Milon Barcode Provider
+        */
+        Milon\Barcode\BarcodeServiceProvider::class,
+
     ],
 
     /*
@@ -276,6 +281,12 @@ return [
         * Acacha AdminLTE Alias
         */
         'AdminLTE' => Acacha\AdminLTETemplateLaravel\Facades\AdminLTE::class,
+
+        /*
+        * Milon Barcode
+        */
+        'DNS1D' => Milon\Barcode\Facades\DNS1DFacade::class,
+        'DNS2D' => Milon\Barcode\Facades\DNS2DFacade::class,
 
     ],
 

@@ -11,6 +11,8 @@ use Illuminate\Support\Facades\Auth;
 use App\Surveys;
 use App\Questions;
 use App\Surveys_Questions;
+use App\Answers;
+use App\AnswersDetails;
 
 class SurveysController extends Controller
 {
@@ -132,5 +134,22 @@ class SurveysController extends Controller
         $surveys = Surveys::find($id);
         $surquestions = Surveys_Questions::join('questions', 'surveys_questions.question_id', '=', 'questions.id')->select('surveys_questions.id AS id', 'questions.id AS question_id', 'questions.question AS question', 'surveys_questions.position AS position')->where('surveys_questions.survey_id', '=', $id)->get();
         return view('pages.survey', ['surveys'=>$surveys, 'surquestions'=>$surquestions]);
+    }
+
+    public function links($id)
+    {
+        $survey = Surveys::find($id);
+        return view('data.surveys.links', ['survey'=>$survey]);
+    }
+
+    public function suranswers($id)
+    {
+        $suranswers = Surveys_Questions::join('surveys', 'surveys_questions.survey_id', '=', 'surveys.id')->join('questions', 'surveys_questions.question_id', '=', 'questions.id')->join('answers', 'surveys.id', '=', 'answers.survey_id')->select('answers.id AS id', 'answers.name AS clientname', 'answers.email AS clientemail', 'answers.comment AS comment')->where('surveys_questions.survey_id', '=', $id)->paginate(10);
+        return view('data.surveys.answers', ['suranswers'=>$suranswers]);
+    }
+
+    public function suranswersdetails($id)
+    {
+        return view('data.surveys.answersdetails');
     }
 }

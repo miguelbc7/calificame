@@ -57,6 +57,10 @@ class AnswersController extends Controller
         $answer = new Answers;
         $answer->name = $request->name;
         $answer->email = $request->email;
+        if(isset($request->comment))
+        {
+            $answer->comment = $request->comment;
+        }
         $answer->survey_id = $request->survey_id;
         $answer->save();
 

@@ -45,14 +45,17 @@ Route::group(['middleware' => 'auth'], function () {
     Route::resource('answersdetails', 'AnswersDetailsController');
 
     Route::get('surveys/{id}/questions', array('as'=>'surques', 'uses'=>'SurveysController@questions'));
+    Route::get('surveys/{id}/links', array('as'=>'links', 'uses'=>'SurveysController@links'));
+    Route::get('surveys/{id}/survey', 'SurveysController@survey');
+    Route::get('surveys/{id}/answers', array('as'=>'suranswers', 'uses'=>'SurveysController@suranswers'));
+    Route::get('surveys/{id}/answersdetails', array('as'=>'suranswersdetails', 'uses'=>'SurveysController@suranswersdetails'));
 
     Route::get('surveys/{id}/up', array('as'=>'up', 'uses'=>'Surveys_QuestionsController@up'));
     Route::get('surveys/{id}/down', array('as'=>'down', 'uses'=>'Surveys_QuestionsController@down'));
 
+
     Route::get('surveys/{id}/fullUp', array('as'=>'fullUp', 'uses'=>'Surveys_QuestionsController@fullUp'));
     Route::get('surveys/{id}/fullDown', array('as'=>'fullDown', 'uses'=>'Surveys_QuestionsController@fullDown'));
-
-    Route::get('surveys/{id}/survey', 'SurveysController@survey');
 
     Route::get('logout', function()
     {
