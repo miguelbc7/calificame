@@ -29,7 +29,7 @@
   <meta content="Keweno – Encuestas de Satisfacción para tu Restaurante" property="og:title"><meta content="Keweno es un sistema para hacer encuestas de satisfacción fáciles para restaurantes. Pruébalo gratis durante 30 días y descubre la opinión de tus clientes." property="og:description">
   <meta content="summary" name="twitter:card">
   <meta content="width=device-width, initial-scale=1" name="viewport">
-  <link href="{{ asset('web/css/webflow.min.css') }}" rel="stylesheet" type="text/css">
+  <link href="{{ asset('web/css/webflow.css') }}" rel="stylesheet" type="text/css">
   <script src="{{ asset('web/js/webfont.js') }}"></script>
   <script type="text/javascript">WebFont.load({
   google: {
