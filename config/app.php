@@ -207,6 +207,11 @@ return [
         */
         Milon\Barcode\BarcodeServiceProvider::class,
 
+        /*
+        * Khill Lavacharts Provider
+        */
+        Khill\Lavacharts\Laravel\LavachartsServiceProvider::class,
+
     ],
 
     /*
@@ -283,11 +288,15 @@ return [
         'AdminLTE' => Acacha\AdminLTETemplateLaravel\Facades\AdminLTE::class,
 
         /*
-        * Milon Barcode
+        * Milon Barcode Alias
         */
         'DNS1D' => Milon\Barcode\Facades\DNS1DFacade::class,
         'DNS2D' => Milon\Barcode\Facades\DNS2DFacade::class,
 
+        /*
+        * Khill Lavacharts Alias
+        */
+        Khill\Lavacharts\Laravel\LavachartsFacade::class,
     ],
 
 ];

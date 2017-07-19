@@ -13,7 +13,8 @@
         "laravelcollective/html": "^5.4.0",
         "milon/barcode": "^5.3",
         "netshell/paypal": "dev-master",
-        "zizaco/entrust": "5.2.x-dev"
+        "zizaco/entrust": "5.2.x-dev",
+        "khill/lavacharts" : "3.0.*"
     },
     "require-dev": {
         "fzaninotto/faker": "~1.4",

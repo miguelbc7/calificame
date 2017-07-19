@@ -13,6 +13,7 @@ use App\Questions;
 use App\Surveys_Questions;
 use App\Answers;
 use App\AnswersDetails;
+use Khill\Lavacharts\Lavacharts;
 
 class SurveysController extends Controller
 {
@@ -149,5 +150,19 @@ class SurveysController extends Controller
         $questions = Surveys_Questions::join('questions', 'surveys_questions.question_id', '=', 'questions.id')->join('answers_details', 'questions.id', '=', 'answers_details.question_id')->select('questions.question AS name', 'answers_details.answer AS answer')->where('surveys_questions.survey_id', '=', $id)->get();
 
         return view('data.surveys.answers', ['suranswers'=>$suranswers, 'questions'=>$questions]);
+    }
+
+    public function graphs($id)
+    {
+       
+        $lava = new Lavacharts; // See note below for Laravel
+
+        $reasons = $lava->DataTable();
+
+        $reasons->addStringColumn('Respuestas')->addNumberColumn('Percent')->addRow(['Check Reviews', 5])->addRow(['Watch Trailers', 2])->addRow(['See Actors Other Work', 4])->addRow(['Settle Argument', 89]);
+
+        $lava->PieChart('IMDB', $reasons, ['title'  => 'Reasons I visit IMDB','is3D'   => true,'slices' => [['offset' => 0.2],['offset' => 0.25],['offset' => 0.3]]]);
+
+        return view('data.surveys.graphs', compact('lava'));
     }
 }
