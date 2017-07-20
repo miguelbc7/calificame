@@ -1,16 +1,18 @@
 @extends('adminlte::layouts.app')
 
 @section('htmlheader_title')
-	Graficas de la Encuesta
+	Graficas de la Encuestas
 @endsection
 
 @section('contentheader_title')
-    Graficas de la Encuesta
+    Graficas de la Encuestas
 @endsection
 
 @section('main-content')
 
+@foreach($answersdet as $a)
 <div id="chart-div"></div>
-<?= $lava->render('PieChart', 'Encuesta 1', 'chart-div') ?>
+<?= $lava[]->renderAll() ?>
+@endforeach
 
 @endsection

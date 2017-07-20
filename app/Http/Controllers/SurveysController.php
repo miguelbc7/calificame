@@ -145,24 +145,99 @@ class SurveysController extends Controller
 
     public function suranswers($id)
     {
-        $suranswers = Surveys_Questions::join('surveys', 'surveys_questions.survey_id', '=', 'surveys.id')->join('questions', 'surveys_questions.question_id', '=', 'questions.id')->join('answers', 'surveys.id', '=', 'answers.survey_id')->select('answers.id AS id', 'answers.name AS clientname', 'answers.email AS clientemail', 'answers.comment AS comment')->where('surveys_questions.survey_id', '=', $id)->paginate(10);
+        $suranswers = Answers::join('surveys', 'answers.survey_id', '=', 'surveys.id')->select('answers.id AS id', 'answers.name AS name', 'answers.email AS email', 'answers.comment As comment', 'surveys.id as surid')->where('surveys.id', '=', $id)->paginate(10);
+        $questions = Surveys_Questions::join('questions', 'surveys_questions.question_id', '=', 'questions.id')->join('surveys', 'surveys_questions.survey_id', '=', 'surveys.id')->select('questions.question AS name')->where('surveys.id', '=', $id)->get();
+        $answersdet =  AnswersDetails::join('questions', 'answers_details.question_id', '=', 'questions.id')->select('answers_details.id AS id', 'answers_details.answer AS answer', 'answers_details.survey_id AS survey', 'answers_details.answer_id AS ansid')->where('answers_details.survey_id', '=', $id)->get();
 
-        $questions = Surveys_Questions::join('questions', 'surveys_questions.question_id', '=', 'questions.id')->join('answers_details', 'questions.id', '=', 'answers_details.question_id')->select('questions.question AS name', 'answers_details.answer AS answer')->where('surveys_questions.survey_id', '=', $id)->get();
-
-        return view('data.surveys.answers', ['suranswers'=>$suranswers, 'questions'=>$questions]);
+        return view('data.surveys.answers', ['suranswers'=>$suranswers, 'questions'=>$questions, 'answersdet'=>$answersdet]);
     }
 
     public function graphs($id)
     {
-       
-        $lava = new Lavacharts; // See note below for Laravel
+        $answersdet = AnswersDetails::join('questions', 'answers_details.question_id', '=', 'questions.id')->join('surveys', 'answers_details.survey_id', '=', 'surveys.id')->select('answers_details.id AS id', 'answers_details.answer AS answer', 'answers_details.survey_id AS surid')->where('answers_details.survey_id', '=', $id)->get();
 
-        $reasons = $lava->DataTable();
+        $quest = AnswersDetails::join('questions', 'answers_details.question_id', '=', 'questions.id')->join('surveys', 'answers_details.survey_id', '=', 'surveys.id')->select('answers_details.id AS id', 'answers_details.answer AS answer', 'answers_details.survey_id AS surid')->where('answers_details.survey_id', '=', $id)->count();
 
-        $reasons->addStringColumn('Respuestas')->addNumberColumn('Percent')->addRow(['Check Reviews', 5])->addRow(['Watch Trailers', 2])->addRow(['See Actors Other Work', 4])->addRow(['Settle Argument', 89]);
+        $a1 = 0;
+        $a2 = 0;
+        $a3 = 0;
+        $a4 = 0;
+        $a5 = 0;
+        
+        foreach($answersdet as $a)
+        {
+            $answer1 = AnswersDetails::where('survey_id','=', $a->surid)->where('answer', '=', 1)->count();
+            $answer2 = AnswersDetails::where('survey_id','=', $a->surid)->where('answer', '=', 2)->count();
+            $answer3 = AnswersDetails::where('survey_id','=', $a->surid)->where('answer', '=', 3)->count();
+            $answer4 = AnswersDetails::where('survey_id','=', $a->surid)->where('answer', '=', 4)->count();
+            $answer5 = AnswersDetails::where('survey_id','=', $a->surid)->where('answer', '=', 5)->count();
 
-        $lava->PieChart('IMDB', $reasons, ['title'  => 'Reasons I visit IMDB','is3D'   => true,'slices' => [['offset' => 0.2],['offset' => 0.25],['offset' => 0.3]]]);
+            $a1 = $a1 + $answer1;
+            $a2 = $a2 + $answer2;
+            $a3 = $a3 + $answer3;
+            $a4 = $a4 + $answer4;
+            $a5 = $a5 + $answer5;
+        }
+
+        $i = 0;
+
+        while($i <= $quest)
+        {
+            $lava = new Lavacharts; // See note below for Laravel
+            $reasons = $lava->DataTable();
+            
+            $reasons->addStringColumn('Respuestas')->addNumberColumn('Porcentaje')->addRow(['Muy Mala', $a1])->addRow(['Mala', $a2])->addRow(['Regular', $a3])->addRow(['Buena', $a4])->addRow(['Muy Buena', $a5]);
+
+            $lava->PieChart('Encuesta 1', $reasons, ['title'  => 'Encuesta 1', 'is3D' => true,'slices' => [['offset' => 0],['offset' => 0],['offset' => 0]]]);
+            $i++;
+        }
 
         return view('data.surveys.graphs', compact('lava'));
+    }
+
+    public function graphsdetails($id)
+    {
+        $answersdet = AnswersDetails::join('questions', 'answers_details.question_id', '=', 'questions.id')->join('surveys', 'answers_details.survey_id', '=', 'surveys.id')->select('answers_details.id AS id', 'answers_details.answer AS answer', 'answers_details.survey_id AS surid', 'surveys.name AS surname', 'questions.id AS questid')->where('answers_details.survey_id', '=', $id)->get();
+
+        $questions = Surveys_Questions::join('questions', 'surveys_questions.question_id', '=', 'questions.id')->join('surveys', 'surveys_questions.survey_id', '=', 'surveys.id')->select('questions.question AS name')->where('surveys.id', '=', $id)->get();
+
+        $quest = AnswersDetails::join('questions', 'answers_details.question_id', '=', 'questions.id')->join('surveys', 'answers_details.survey_id', '=', 'surveys.id')->select('answers_details.id AS id', 'answers_details.answer AS answer', 'answers_details.survey_id AS surid')->where('answers_details.survey_id', '=', $id)->count();
+
+        $a1 = 0;
+        $a2 = 0;
+        $a3 = 0;
+        $a4 = 0;
+        $a5 = 0;
+        
+        foreach($answersdet as $a)
+        {
+            $answer1 = AnswersDetails::where('survey_id','=', $id)->where('question_id', '=', $a->questid)->where('answer', '=', 1)->count();
+            $answer2 = AnswersDetails::where('survey_id','=', $id)->where('question_id', '=', $a->questid)->where('answer', '=', 2)->count();
+            $answer3 = AnswersDetails::where('survey_id','=', $id)->where('question_id', '=', $a->questid)->where('answer', '=', 3)->count();
+            $answer4 = AnswersDetails::where('survey_id','=', $id)->where('question_id', '=', $a->questid)->where('answer', '=', 4)->count();
+            $answer5 = AnswersDetails::where('survey_id','=', $id)->where('question_id', '=', $a->questid)->where('answer', '=', 5)->count();
+            
+            $a1 = $a1 + $answer1;
+            $a2 = $a2 + $answer2;
+            $a3 = $a3 + $answer3;
+            $a4 = $a4 + $answer4;
+            $a5 = $a5 + $answer5;
+        }
+
+        $i = 0;
+
+        while($i <= $quest)
+        {
+            $lava = new Lavacharts; // See note below for Laravel
+            $reasons = $lava->DataTable();
+            
+            $reasons->addStringColumn('Respuestas')->addNumberColumn('Porcentaje')->addRow(['Muy Mala', $a1])->addRow(['Mala', $a2])->addRow(['Regular', $a3])->addRow(['Buena', $a4])->addRow(['Muy Buena', $a5]);
+
+            $lava->PieChart($a->surname, $reasons, ['title'  => $a->surname, 'is3D' => true,'slices' => [['offset' => 0],['offset' => 0],['offset' => 0]]]);
+           
+            $i++;
+        }
+
+        return view('data.surveys.graphs', ['lava'=>$lava, 'answersdet'=>$answersdet]);
     }
 }

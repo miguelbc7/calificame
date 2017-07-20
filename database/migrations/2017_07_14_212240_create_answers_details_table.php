@@ -18,6 +18,8 @@ class CreateAnswersDetailsTable extends Migration
             $table->integer('answer');
             $table->integer('answer_id')->unsigned();
             $table->foreign('answer_id')->references('id')->on('answers');
+            $table->integer('survey_id')->unsigned();
+            $table->foreign('survey_id')->references('id')->on('surveys');
             $table->integer('question_id')->unsigned();
             $table->foreign('question_id')->references('id')->on('questions');
             $table->timestamps();

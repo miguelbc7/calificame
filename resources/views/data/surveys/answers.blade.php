@@ -43,6 +43,7 @@
 	</div>
 </div>
 
+
 <section class="content">
 
 	<div class="row">
@@ -70,21 +71,25 @@
 						@foreach($suranswers as $s)
 						<tbody>
 							<tr>
-								<td>{!!$s->clientname!!}</td>
-								<td>{!!$s->clientemail!!}</td>
-								@foreach($questions as $q)
-									@if($q->answer == 1)
-										<td>Muy malo</td>
-									@elseif($q->answer == 2)
-										<td>Malo</td>
-									@elseif($q->answer == 3)
-										<td>Regular</td>
-									@elseif($q->answer == 4)
-										<td>Bueno</td>
-									@elseif($q->answer == 5)
-										<td>Muy Bueno</td>
-									@endif
-								@endforeach
+								<td>{!!$s->name!!}</td>
+								<td>{!!$s->email!!}</td>
+									@foreach($answersdet as $a)
+										@if($a->ansid == $s->id)
+											@if($s->surid == $a->survey)
+												@if($a->answer == 1)
+													<td>Muy malo</td>
+												@elseif($a->answer == 2)
+													<td>Malo</td>
+												@elseif($a->answer == 3)
+													<td>Regular</td>
+												@elseif($a->answer == 4)
+													<td>Bueno</td>
+												@elseif($a->answer == 5)
+													<td>Muy Bueno</td>
+												@endif
+											@endif
+										@endif
+									@endforeach
 								<td>{!!$s->comment!!}</td>
 								<td align="center">
 									
@@ -96,8 +101,8 @@
 
 										<a href="#" class="btn btn-info" data-toggle="tooltip" data-original-title="Compartir comentario en Twitter" type="fbshare"><i class="fa fa-twitter-square"></i></a>
 
-										<a href="{{ route('graphs', $s->id) }}" class="btn btn-warning" data-toggle="tooltip" data-original-title="Estadisticas de la Encuesta" type="fbshare"><i class="fa fa-pie-chart"></i></a>
-
+										<a href="{{ route('graphsdetails', $s->id) }}" class="btn btn-warning" data-toggle="tooltip" data-original-title="Estadisticas de la Encuesta" type="fbshare"><i class="fa fa-pie-chart"></i></a>
+										
 										<button class="btn btn-danger" data-toggle="tooltip" data-original-title="Eliminar" type="submit">
     									<i class="fa fa-remove"></i> </button>
 									</div>

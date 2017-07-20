@@ -49,6 +49,7 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('surveys/{id}/survey', 'SurveysController@survey');
     Route::get('surveys/{id}/answers', array('as'=>'suranswers', 'uses'=>'SurveysController@suranswers'));
     Route::get('surveys/{id}/graphs', array('as'=>'graphs', 'uses'=>'SurveysController@graphs'));
+    Route::get('surveys/{id}/graphsdetails', array('as'=>'graphsdetails', 'uses'=>'SurveysController@graphsdetails'));
 
     Route::get('surveys/{id}/up', array('as'=>'up', 'uses'=>'Surveys_QuestionsController@up'));
     Route::get('surveys/{id}/down', array('as'=>'down', 'uses'=>'Surveys_QuestionsController@down'));

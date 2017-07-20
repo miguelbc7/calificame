@@ -73,6 +73,7 @@ class AnswersController extends Controller
             $answerdetail = new AnswersDetails;
             $answerdetail->answer = $request->input('optionsRadios'.$sq->position);
             $answerdetail->answer_id = $answer->id;
+            $answerdetail->survey_id = $answer->survey_id;
             $answerdetail->question_id = $request->question_id.$sq->position;
             $answerdetail->save();
        }
