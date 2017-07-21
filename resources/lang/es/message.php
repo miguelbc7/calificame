@@ -17,10 +17,10 @@ return [
         'title' => 'Encuestas de Satisfacción para tu Restaurante',
 
         //Navbar mensajes
-        'menu1' => '¿Por qué usar Keweno?',
+        'menu1' => '¿Por qué usar Calificame?',
         'menu2' => '¿Cómo funciona?',
         'menu3' => 'Planes',
-        'menu4' => '¿Ya usas Keweno? Entra',
+        'menu4' => '¿Ya usas Calificame? Entra',
         'es' => 'es',
         'en' => 'en',
         'pt-BR' => 'pt-BR',
@@ -31,7 +31,7 @@ return [
 
         'button1' => 'Crea tu cuenta, ¡es gratis!',
 
-        //Why use Keweno
+        //Why use Calificame
         'why' => 'Beneficios de usar ...',
         'why1' => 'Mide tu servicio',
         'whydes1' => 'Measure at all times the quality of your services and products, detect the failures of your business and correct them before it is too late.',
@@ -83,16 +83,16 @@ return [
         'planbutton3' => 'Contáctanos ahora',
 
         //Who use
-        'who' => 'Who uses Keweno?',
-        'whoslogan' => 'Más de 9000 restaurantes confían en Keweno para mejorar su negocio.',
+        'who' => 'Who uses Calificame?',
+        'whoslogan' => 'Más de 9000 restaurantes confían en Calificame para mejorar su negocio.',
 
         //Press
         'press' => 'Qué dice la prensa',
         'press1' => 'Atrás han quedado los tiempos en los que tenías que  rellenar un largo y tedioso formulario de opinión para  evaluar el servicio ofrecido',
-        'press2' => 'Keweno facilita una relación más cercana con el cliente y su fidelización. Ha tenido una gran acogida, está presente en 35 países.',
-        'press3' => 'Keweno permite conocer la opinión del usuario de forma rápida, inmediata, sencilla, sin necesidad de intermediarios.',
-        'press4' => 'Hoy es vital conocer la opinión de los clientes, nada tan efectivo como que el cliente de su opinión en el propio establecimiento. Esto es lo que propone Keweno.',
-        'press5' => 'Keweno permite obtener la opinión de tus clientes de un modo fácil, anónimo y en solo 30 segundos..',
+        'press2' => 'Calificame facilita una relación más cercana con el cliente y su fidelización. Ha tenido una gran acogida, está presente en 35 países.',
+        'press3' => 'Calificame permite conocer la opinión del usuario de forma rápida, inmediata, sencilla, sin necesidad de intermediarios.',
+        'press4' => 'Hoy es vital conocer la opinión de los clientes, nada tan efectivo como que el cliente de su opinión en el propio establecimiento. Esto es lo que propone Calificame.',
+        'press5' => 'Calificame permite obtener la opinión de tus clientes de un modo fácil, anónimo y en solo 30 segundos..',
 
         //Reviewers
         'reviewer1' => 'Saddam Gavilanes',
@@ -108,7 +108,7 @@ return [
         'contract' => 'Contrato',
         'help' => 'Ayuda',
 
-        'enter' => '¿Ya usas Keweno? Entra',
+        'enter' => '¿Ya usas Calificame? Entra',
 
         // -------------------------Terms mensajes-------------------------
 
@@ -119,19 +119,19 @@ return [
         'title1' => 'Términos y Condiciones de uso',
         'section1' => 'El presente texto describe las condiciones para la utilización por parte de los usuarios de los servicios que ofrece EMTRICS, S.L. A estos efectos, se entiende por Usuario aquella personal natural que hace uso de los medios técnicos y soportes de EMTRICS, S.L. con el fin de responder a las encuestas de satisfacción de la empresa cliente.',
         'section2' => 'A efectos de los presentes Términos de Uso, se entiende por Cliente la persona natural o jurídica que ha contratado los servicios de EMTRICS, S.L. para la realización de encuestas de satisfacción entre sus propios clientes y/o usuarios, como medio para la mejora de sus explotaciones empresariales o profesionales. Se entiende por Usuario aquella persona física que hace uso de los medios técnicos y soportes que Emtrics pone a disposición del Cliente con el fin de responder a las encuestas de satisfacción diseñadas.',
-        'section3' => 'Keweno es una marca registrada propiedad de EMTRICS, S.L., empresa española domiciliada en San Enrique de Ossó, nº 19, 28050 Madrid.',
-        'section4' => 'Keweno es un servicio de diseño y realización de encuestas de satisfacción de usuarios, destinado a ofrecer información a los proveedores y empresas comercializadoras sobre sus opiniones, recomendaciones y quejas. Las encuestas constan de un batería de preguntas y un método de respuestas alternativas, representadas por símbolos.',
-        'section5' => 'Em Keweno trics se configura como un servicio anónimo, dado que el Usuario en principio no tiene que introducir ningún dato personal que le identifique para poder contestar las preguntas. Sin embargo, en determinadas circunstancias, el Cliente puede desear comunicarse con el Usuario, solicitándole sus datos de contacto. En este caso, la comunicación por el Usuario de sus datos personales implica su conocimiento, aceptación y consentimiento implícito para que Emtrics, S.L. ceda los datos personales suministrados al Cliente.',
-        'section6' => 'Asimismo, el Usuario expresamente reconoce ser informado que, cuando accede a Keweno para la realización de la encuesta desde un SMS, un email o cualquier otro tipo de comunicación que contenga datos identificativo, el Cliente, bajo su propia responsabilidad, puede definir mecanismos de recogida de información insertados en la URL de acceso a la encuesta, que haría posible que el Cliente pudiera recuperar y, eventualmente, identificar al Usuario. EMTRICS S.L. no asume responsabilidad alguna por las actuaciones de esta naturaleza que el Cliente pudiera realizar.',
+        'section3' => 'Calificame es una marca registrada propiedad de EMTRICS, S.L., empresa española domiciliada en San Enrique de Ossó, nº 19, 28050 Madrid.',
+        'section4' => 'Calificame es un servicio de diseño y realización de encuestas de satisfacción de usuarios, destinado a ofrecer información a los proveedores y empresas comercializadoras sobre sus opiniones, recomendaciones y quejas. Las encuestas constan de un batería de preguntas y un método de respuestas alternativas, representadas por símbolos.',
+        'section5' => 'Em Calificame trics se configura como un servicio anónimo, dado que el Usuario en principio no tiene que introducir ningún dato personal que le identifique para poder contestar las preguntas. Sin embargo, en determinadas circunstancias, el Cliente puede desear comunicarse con el Usuario, solicitándole sus datos de contacto. En este caso, la comunicación por el Usuario de sus datos personales implica su conocimiento, aceptación y consentimiento implícito para que Emtrics, S.L. ceda los datos personales suministrados al Cliente.',
+        'section6' => 'Asimismo, el Usuario expresamente reconoce ser informado que, cuando accede a Calificame para la realización de la encuesta desde un SMS, un email o cualquier otro tipo de comunicación que contenga datos identificativo, el Cliente, bajo su propia responsabilidad, puede definir mecanismos de recogida de información insertados en la URL de acceso a la encuesta, que haría posible que el Cliente pudiera recuperar y, eventualmente, identificar al Usuario. EMTRICS S.L. no asume responsabilidad alguna por las actuaciones de esta naturaleza que el Cliente pudiera realizar.',
         'section7' => 'EMTICS S.L. es exclusivamente prestador de un servicio de intermediación con la única finalidad de prestar los servicios de encuestas descritos, no siendo responsable por el contenido de los datos ni por su reproducción.',
-        'section8' => 'Cualquier persona física que acceda al sitio web/Servicio o a cualquier información contenida en el sitio web de Keweno, declara expresamente ser mayor de edad y aceptar los siguientes términos y condiciones de uso de Keweno. En consecuencia, el mero acceso, uso y utilización de los servicios Keweno implicará el cumplimiento de tales condiciones y la aceptación por el usuario de los mismos. Si el Usuario no cumple las condiciones y no acepta los términos del mismo, no estará autorizado a utilizar los servicios.',
+        'section8' => 'Cualquier persona física que acceda al sitio web/Servicio o a cualquier información contenida en el sitio web de Calificame, declara expresamente ser mayor de edad y aceptar los siguientes términos y condiciones de uso de Calificame. En consecuencia, el mero acceso, uso y utilización de los servicios Calificame implicará el cumplimiento de tales condiciones y la aceptación por el usuario de los mismos. Si el Usuario no cumple las condiciones y no acepta los términos del mismo, no estará autorizado a utilizar los servicios.',
 
         'title2' => 'Objeto del servicio',
         'section9' => 'El servicio consta de i) una breve encuesta con preguntas y posibilidad de que el Usuario elija la respuesta entre las opciones presentadas con elementos gráficos, tipo emoticones (Insatisfecho, Neutro, Satisfecho); ii) un campo abierto para que el Usuario deposite un mensaje o una sugerencia al Cliente: y iii) un campo opcional para datos de contacto, en el que el Usuario puede dejar registro de los mismos a efectos que el Cliente se pueda comunicar con él.',
         'section10' => 'El Usuario puede acceder a la encuesta i) escaneando, a través de su teléfono móvil, un Código QR que le es presentado por el Cliente en algún otro soporte de comunicación, ii) introduciendo una URL o dirección de internet, que se encuentra visible presentado por el Cliente en algún soporte de comunicación, y que el Usuario utiliza en su teléfono móvil o en otro dispositivo con acceso a internet, o iii) redirigido desde otro sitio de internet o aplicación móvil.',
         'section11' => 'Las respuestas emitidas por el Usuario son almacenadas por EMTRICS S.L. y sirven para que el Cliente conozca mejor su opinión y pueda ofrecer mejores productos y servicios. EMTRICS S.L. no publicará en ningún caso en medios abiertos, como internet o redes sociales, ninguna de las opiniones o comentarios que hayan sido introducidos por el usuario a través del servicio, sin su debida autorización.',
         'section12' => 'EMTRICS S.L. no cobra nada al Usuario por utilizar el servicio. Es posible que, debido a que el servicio se desarrolla por navegación internet, el Usuario pueda incurrir en costes ligados a la transmisión y recepción de datos de su terminal. Dichos costes son ajenos a EMTRICS S.L. y son repercutidos por el proveedor de telecomunicaciones del Usuario.',
-        'section13' => 'De manera temporal, el servicio está en fase Beta, puede ser que el terminal que utilice el Usuario no disponga de alguna funcionalidad necesaria, por lo que es posible que no funcione correctamente. Para cualquier duda o cuestión, puede dirigirse a la dirección de correo hello@keweno.com',
+        'section13' => 'De manera temporal, el servicio está en fase Beta, puede ser que el terminal que utilice el Usuario no disponga de alguna funcionalidad necesaria, por lo que es posible que no funcione correctamente. Para cualquier duda o cuestión, puede dirigirse a la dirección de correo hello@Calificame.com',
 
         'title3' => 'Responsabilidades',
         'section14' => 'EMTRICS, S.L. no es titular de los servicios comercializados por las empresas clientes En consecuencia, EMTRICS S.L. no tiene responsabilidad alguna por la prestación de tales servicios, ni por el contenido de los medios publicitarios utilizados para su promoción.',
@@ -159,29 +159,29 @@ return [
         'data1' => 'Denominación Social:',
         'strong1' => 'EMTRICS, S.L.',
         'data2' => 'Nombre Comercial:',
-        'strong2' => 'KEWENO',
+        'strong2' => 'Calificame',
         'data3' => 'Domicilio Social:',
         'strong3' => 'SAN ENRIQUE DE OSSO 19, 28050 Madrid',
         'data4' => 'CIF / NIF:',
         'strong4' => 'B86355344',
         'data5' => 'E-Mail:',
-        'strong5' => 'hello@keweno.com',
+        'strong5' => 'hello@Calificame.com',
         'data6' => 'Nombre de dominio:',
-        'strong6' => 'keweno.com',
+        'strong6' => 'Calificame.com',
 
         'title7' => 'Tratamiento de datos personales',
         'section19' => 'De conformidad con lo dispuesto en la Ley Orgánica 15/1999, de Protección de Datos de Carácter Personal (LOPD) y su normativa de desarrollo, el responsable del sitio web, EMTRICS SL, el Prestador, en cumplimiento de lo dispuesto en el art. 5 y 6 de la LOPD, informa a todos los Clientes y Usuarios del sitio web que faciliten o vayan a facilitar sus datos personales, que estos serán incorporados en un fichero automatizado que se encontrará debidamente inscrito en la Agencia Española de Protección de Datos.',
         'section20' => 'Los Clientes y Usuarios, a través del registro o el acceso mediante las claves de identificación necesarias al área de clientes, o haciendo uso activo del servicio, aceptan expresamente y de forma libre e inequívoca que sus datos personales sean tratados por parte del Prestador para realizar las siguientes finalidades:',
         'list6' => '1. Remisión de comunicaciones comerciales publicitarias por e-mail, fax, SMS, MMS, comunidades sociales o cualesquier otro medio electrónico o físico, presente o futuro, que posibilite realizar comunicación comerciales. Dichas comunicaciones comerciales estarán relacionadas con productos o servicios ofrecidos por el prestador del producto o servicio con el que el usuario hubiere entablado la relación comercial inicio del servicio de EMTRICS S.L..',
         'list7' => '2. Realizar estudios estadísticos y de mercado',
-        'list8' => '3. Tramitar encargos, solicitudes o cualquier tipo de petición que sea realizada por el usuario a través de cualquiera de las formas de contacto que se ponen a disposición del usuario en el sitio web de Keweno',
+        'list8' => '3. Tramitar encargos, solicitudes o cualquier tipo de petición que sea realizada por el usuario a través de cualquiera de las formas de contacto que se ponen a disposición del usuario en el sitio web de Calificame',
         'list9' => '4. Remitir el boletín de noticias de la página web.',
         'list10' => '5. Establecer comunicaciones entre el Cliente y los Usuarios propios de sus servicios o bienes, solicitadas voluntariamente por éstos.',
         'section21' => 'Asimismo, los Usuarios, a través del registro o el acceso mediante las claves de identificación necesarias al área de clientes, o haciendo uso activo del servicio, declaran conocer y aceptan expresamente que sus datos personales sean cedidos a los posibles terceros prestadores de productos o servicios, con los que hubieren entablado contacto a través del uso del servicio de EMTRICS S.L. o con los que hayan contratado los servicios de EMTRICS S.L. para que los Usuarios hagan uso de los servicios que presta.',
         'section22' => 'El Prestador informa y garantiza expresamente a los Clientes, que sus datos personales no serán cedidos en ningún caso a terceras compañías, y que siempre que fuera a realizarse algún tipo de cesión de datos personales, de forma previa, se solicitaría el consentimiento expreso, informado, e inequívoco por parte de los titulares.',
         'section23' => 'En caso de solicitar datos para la prestación de los servicios, si éstos no fueren facilitados de forma completa o de forma adecuada o veraz, el Prestador no garantiza que la información y servicios facilitados sean completamente ajustados a sus necesidades.',
         'section24' => 'El Prestador garantiza en todo caso al usuario el ejercicio de los derechos de acceso, rectificación, cancelación, información y oposición, en los términos dispuestos en la legislación vigente. Por ello, de conformidad con lo dispuesto en la Ley Orgánica 15/1999, de Protección de Datos de Carácter Personal (LOPD) podrá ejercer sus derechos remitiendo una solicitud expresa, junto a una copia de su DNI, a través de los siguientes medios:',
-        'list11' => '1. E-Mail: hola@ keweno.com',
+        'list11' => '1. E-Mail: hola@ Calificame.com',
         'list12' => '2. Correo Postal: C/San Enrique de Osso 19, 28050 Madrid',
         'section25' => 'Del mismo modo, el usuario podrá darse de baja de cualquiera de los servicios de suscripción facilitados haciendo clic en el apartado darse de baja de todos los correos electrónicos remitidos por parte del Prestador.',
         'section26' => 'Del mismo modo, el Prestador ha adoptado todas las medidas técnicas y de organización necesarias para garantizar la seguridad e integridad de los datos de carácter personal que trate, así como para evitar su pérdida, alteración y/o acceso por parte de terceros no autorizados.',
@@ -208,7 +208,7 @@ return [
         'last3' => 'Última actualización 2 de Febrero de 2014',
 
         'title11' => 'Condiciones generales de contratación para el uso de los servicios de EMTRICS, S.L.',
-        'section36' => 'El presente texto describe las condiciones para la utilización de los servicios que ofrece EMTRICS S.L.. Keweno es una marca registrada, propiedad de EMTRICS, S.L., empresa española domiciliada en San Enrique de Osso, nº19, 28050 Madrid. Todos los derechos de explotación están reservados y corresponde a EMTRICS, S.L. el ejercicio exclusivo de los mismos en cualquier forma y, en especial, de los derechos de reproducción, distribución, comunicación pública y transformación.',
+        'section36' => 'El presente texto describe las condiciones para la utilización de los servicios que ofrece EMTRICS S.L.. Calificame es una marca registrada, propiedad de EMTRICS, S.L., empresa española domiciliada en San Enrique de Osso, nº19, 28050 Madrid. Todos los derechos de explotación están reservados y corresponde a EMTRICS, S.L. el ejercicio exclusivo de los mismos en cualquier forma y, en especial, de los derechos de reproducción, distribución, comunicación pública y transformación.',
 
         'title12' => 'Aceptación de las Condiciones Generales de Servicio',
         'section36' => 'El acceso al sitio web/Servicio o a cualquier información contenida en el sitio web de EMTRICS, S.L., implica la aceptación explicita de las siguientes Condiciones Generales de Servicio.',
@@ -222,28 +222,28 @@ return [
         'section41' => 'Antes de continuar, le recomendamos que imprima o guarde una copia de este Contrato a los efectos oportunos.',
 
         'title13' => 'Registro',
-        'section42' => 'Una vez aceptados los presentes términos del servicio, el Cliente deberá registrase previamente, rellenando el formulario de registro que se encuentra en http://dashboard.keweno.com/users/signup, incluyendo una dirección de email y una Clave de Cliente.',
+        'section42' => 'Una vez aceptados los presentes términos del servicio, el Cliente deberá registrase previamente, rellenando el formulario de registro que se encuentra en http://dashboard.Calificame.com/users/signup, incluyendo una dirección de email y una Clave de Cliente.',
         'section43' => 'Cuando el Cliente termine el proceso de registro recibirá una notificación a la dirección de correo electrónico que ha suministrado en el registro, informándole de que ha sido de alta como cliente de EMTRICS, S.L. y pidiéndole su confirmación mediante el clic en un hipervínculo de confirmación.',
-        'section44' => 'Una vez confirmado el registro, el Cliente tendrá activado email y Clave de Cliente, pudiendo ya acceder ya a todas las funcionalidades ofrecidas por Keweno.',
+        'section44' => 'Una vez confirmado el registro, el Cliente tendrá activado email y Clave de Cliente, pudiendo ya acceder ya a todas las funcionalidades ofrecidas por Calificame.',
 
         'title14' => 'Objeto y alcance del Servicio',
-        'section45' => 'Keweno es un servicio de diseño y realización de encuestas de satisfacción de Usuarios, destinado, además, a recabar información y comentarios sobre opiniones, recomendaciones y quejas de usuarios de un servicio o un producto de un Cliente. Las encuestas constan de un batería de preguntas y un método de respuesta alternativas, representadas por emoticones. Además existe un campo abierto en el que el usuario podrá dejar comentarios o sugerencias al Cliente. En el futuro se prevé la posibilidad de añadir otros formatos de pregunta y respuesta.',
+        'section45' => 'Calificame es un servicio de diseño y realización de encuestas de satisfacción de Usuarios, destinado, además, a recabar información y comentarios sobre opiniones, recomendaciones y quejas de usuarios de un servicio o un producto de un Cliente. Las encuestas constan de un batería de preguntas y un método de respuesta alternativas, representadas por emoticones. Además existe un campo abierto en el que el usuario podrá dejar comentarios o sugerencias al Cliente. En el futuro se prevé la posibilidad de añadir otros formatos de pregunta y respuesta.',
         'section46' => 'El servicio comprende el diseño y confección de la batería de preguntas y posibles respuestas, en función de los objetivos de información perseguidos y las características de la explotación comercial del Cliente.',
         'section47' => 'Se denomina “Punto de Opinión” (en adelante, OP) a aquella ubicación (establecimiento, punto de venta, etc.) o soporte (factura, folleto, etc) del Cliente, donde éste está interesado en utilizar los servicios de encuestas y recogidas de información proporcionados por EMTRICS, S.L.. El Cliente podrá determinar la existencia de uno o varios OPs, y el servicio se facturará en base al número de OPs existentes, entre otros conceptos de facturación. Un mismo OP podrá estar en una ubicación o soporte del Cliente, o en varios, si bien, en este último caso, no se podrá diferenciar a qué OP se refieren (en qué lugar se han realizado) las respuestas. Cada OP vendrá definido por una seria de datos administrativos que lo identificarán (Nombre del OP, Cliente, Breve Descripción, Dirección física del establecimiento, Persona de contacto, Email de contacto, etc) y tendrá asociada una batería de preguntas. Además, por cada OP, EMTRICS, S.L. generará una dirección de internet única para el acceso a la encuesta de satisfacción y un código bidireccional (QR) de dicha dirección.',
         'section48' => 'Asimismo, el servicio comprende i) el tratamiento de la información recogida, su agrupamiento y elaboración en ilustraciones gráficas, en tiempo real o con informes periódicos durante el tiempo de vigencia del contrato; ii) la posibilidad de comparación en el tiempo de la información recogida entre establecimientos o puntos de venta del Cliente; y iii) la recepción de mensajes y comentarios del Usuario y la transmisión al Cliente, y la recepción de mensajes del Cliente y la transmisión al Usuario.',
-        'section49' => 'El Cliente elige los aspectos/preguntas sobre los que le quiere preguntar a los Usuarios en cada punto de medida de opinión u OP. A partir de este momento, cada vez que un Usuario utilice Keweno, se le invitará a responder a las preguntas elegidas por el Cliente.',
+        'section49' => 'El Cliente elige los aspectos/preguntas sobre los que le quiere preguntar a los Usuarios en cada punto de medida de opinión u OP. A partir de este momento, cada vez que un Usuario utilice Calificame, se le invitará a responder a las preguntas elegidas por el Cliente.',
         'section50' => 'Las respuestas de los Usuarios son recogidas a través de la plataforma de Emtrics SL y están disponibles para que sean consultadas por el Cliente. Dichas consultas podrán ser, entre otras: i) visualización de opiniones y comentarios, ii) visualización de la evolución de la satisfacción de Usuarios en los distintos OPs y iii) comparación de la satisfacción de Usuarios entre distintos OPs pertenecientes al Cliente.',
         'section51' => 'Adicionalmente, el Cliente podrá seleccionar la periodicidad para el envío de toda o parte de la información obtenida , así como informes de seguimiento y reporte definidos por Emtrics, S.L..',
 
         'title15' => 'Precio del Servicio',
-        'section52' => 'El precio del Servicio vigente se encuentra disponible la página principal de Keweno, esto es www.keweno.com.',
+        'section52' => 'El precio del Servicio vigente se encuentra disponible la página principal de Calificame, esto es www.Calificame.com.',
         'section53' => 'La tarifa de precios podrá ser objeto de descuentos en función del volumen contratado por el Cliente, o de las características del servicio contratado.',
         'section54' => 'EMTRICS, S.L.se reserva el derecho de modificar la lista de precios vigentes en cada momento. La modificación será anunciada y recogida en la página web del servicio y entra en vigor desde el momento de su publicación, sin necesidad de notificación directa y personal al Cliente. Dicha modificación dará derecho al Cliente a dar por terminado el contrato mediante comunicación fehaciente a tal efecto. .',
 
         'title16' => 'Obligaciones de EMTRICS, S.L.',
         'list16' => '1. Disponibilidad y calidad de servicio. El servicio se presta sobre Internet y está diseñado para estar en funcionamiento de manera continua. No obstante, dada la naturaleza de Internet, el prestador no puede descartar la posibilidad de fallos o errores, o la aparición de casos de fuerza mayor, catástrofes naturales, huelgas, o circunstancias semejantes, que hagan imposible eventualmente el acceso a la página web. Durante la vigencia de la relación contractual entre EMTRICS S.L., y el Cliente, EMTRICS S.L. llevará a cabo las operaciones necesarias de mantenimiento y actualización de las plataformas tecnológicas y el resto de medios técnicos (hardware y software) necesarios para la prestación del servicio contratado. El acceso al servicio por el Cliente se realizará, en consecuencia, en el estado de desarrollo disponible e implementado en cada momento. EMTRICS S.L. podrá modificar o remplazar, total o parcialmente, la configuración del servicio en cualquier momento, con el fin de adaptarlos a nuevos entornos o versiones tecnológicas, bastando para ello la simple comunicación en la página web del servicio. Asimismo, EMTRICS S.L. podrá suspender provisionalmente el acceso o la continuidad del Servicio con el fin de llevar a cabo las operaciones de mantenimiento y reconfiguración que resulten necesarias a los efectos establecidos en la presente estipulación.',
         'list17' => '2. Acceso a websites de terceros. El Servicio puede, en algún caso y situación, incluir el redireccionamiento a websites de terceros. En estos casos, el Cliente deberá revisar por sí mismo las condiciones de uso, políticas de privacidad y demás condiciones legales que resulten de aplicación a los mismos. EMTRICS, S.L., no asume ninguna responsabilidad derivada del acceso y uso a websites de terceros.',
-        'list18' => '3. Uso y conservación de informaciones del Cliente. El Cliente expresamente reconoce y acepta que EMTRIC,S.L., podrá acceder, utilizar y conservar las informaciones proporcionadas por el Cliente cuando ello sea necesario por imperativo legal o para el correcto funcionamiento o provisión del Servicio, y en todo caso cuando: a) sea consecuencia de un requerimiento de autoridad; b) sea necesario para el cumplimiento del presente contrato; c) sea necesario para responder una queja o reclamación, o d) sea necesario o conveniente para proteger los intereses y derechos de EMTRICS, S.L.o de su personal autorizado. Asimismo, el Cliente declara conocer y acepta expresamente que EMTRICS, S.L. pueda utilizar los datos obtenidos y tratados a través de los encargos del Cliente y de sus encuestas para comparativas y análisis del sector y subsectores. Cualquier otro uso de la información del Cliente no contemplado en los supuestos anteriores estará regido por la Política de Privacidad vigente en cada momento a disposición del Cliente en la página web de Keweno.',
+        'list18' => '3. Uso y conservación de informaciones del Cliente. El Cliente expresamente reconoce y acepta que EMTRIC,S.L., podrá acceder, utilizar y conservar las informaciones proporcionadas por el Cliente cuando ello sea necesario por imperativo legal o para el correcto funcionamiento o provisión del Servicio, y en todo caso cuando: a) sea consecuencia de un requerimiento de autoridad; b) sea necesario para el cumplimiento del presente contrato; c) sea necesario para responder una queja o reclamación, o d) sea necesario o conveniente para proteger los intereses y derechos de EMTRICS, S.L.o de su personal autorizado. Asimismo, el Cliente declara conocer y acepta expresamente que EMTRICS, S.L. pueda utilizar los datos obtenidos y tratados a través de los encargos del Cliente y de sus encuestas para comparativas y análisis del sector y subsectores. Cualquier otro uso de la información del Cliente no contemplado en los supuestos anteriores estará regido por la Política de Privacidad vigente en cada momento a disposición del Cliente en la página web de Calificame.',
         'list19' => '4. Identificación de usuarios. La gestión y custodia de las claves de uso del Servicio son de exclusiva responsabilidad del Cliente. EMTRICS, S.L. no tiene obligación alguna de controlar la identidad de las personas que acceden a sus servicios, ni asume ninguna responsabilidad por el mal uso de las claves de identificación. Si el Cliente sospecha que se está haciendo uso no autorizado de su cuenta, deberá ponerse en contacto de inmediato con EMTRICS, S.L. de forma fehaciente.',
 
         'title17' => 'Utilización de logos, marcas y signos externos propiedad del Cliente',
@@ -265,18 +265,18 @@ return [
         'list25' => 'Realiza actividades de comercialización o utilización de los servicios de EMTRICS, S.L. distintas de aquellas destinadas a un uso propio y exclusivo, sin la expresa autorización por escrito de EMTRICS, S.L. Quedan incluidas en este punto, con carácter descriptivo y no limitativo, las actividades de reventa, centralización de compras o distribución a terceros.',
 
         'title19' => 'Propiedad de los contenidos del website',
-        'section63' => 'Keweno pertenece a EMTRICS, S.L. y en consecuencia EMTRICS, S.L. es titular de todos los derechos de propiedad intelectual o industrial derivados del website, incluyendo a título enunciativo pero no limitativo su programación, edición, compilación, diseños, logotipos, texto, imágenes y/o gráficos, incluidos dominios y subdominios utilizados, salvo que se indique expresamente otra titularidad, quedando prohibido el uso parcial o total, por cualquier título, de tales derechos por parte de cualquier tercero, sin la previa y expresa autorización de EMTRICS, S.L.',
+        'section63' => 'Calificame pertenece a EMTRICS, S.L. y en consecuencia EMTRICS, S.L. es titular de todos los derechos de propiedad intelectual o industrial derivados del website, incluyendo a título enunciativo pero no limitativo su programación, edición, compilación, diseños, logotipos, texto, imágenes y/o gráficos, incluidos dominios y subdominios utilizados, salvo que se indique expresamente otra titularidad, quedando prohibido el uso parcial o total, por cualquier título, de tales derechos por parte de cualquier tercero, sin la previa y expresa autorización de EMTRICS, S.L.',
         'section64' => 'El acceso por parte del Cliente al sitio web no le otorga ningún derecho de propiedad sobre los mismos.',
         'section65' => 'Queda prohibido todo uso reproducción, distribución, comercialización o comunicación pública de la totalidad o parte de los derechos de los que es titular EMTRICS, S.L., sin su previa y expresa autorización.',
         'section66' => 'El uso de denominaciones de terceros se encuentra autorizado expresamente por sus propietarios, por lo que el prestador no se responsabiliza de las controversias que sobre ellas pudieran suscitarse al respecto, procediendo a su retirada inmediata tan pronto tenga constancia fehaciente de las mismas.',
-        'section67' => 'Si ve en el sitio web cualquier contenido que pudiera vulnerar derechos de propiedad intelectual e industrial, rogamos lo pongan en conocimiento del prestador con la mayor brevedad posible, remitiendo un correo electrónico a la dirección hello@keweno.com',
+        'section67' => 'Si ve en el sitio web cualquier contenido que pudiera vulnerar derechos de propiedad intelectual e industrial, rogamos lo pongan en conocimiento del prestador con la mayor brevedad posible, remitiendo un correo electrónico a la dirección hello@Calificame.com',
 
         'title20' => 'Utilización de los contenidos del website',
         'section68' => 'El Cliente podrá hacer uso de todos los contenidos y materiales que EMTRICS, S.L., pone en cada momento a disposición de los mismos en el website, únicamente para los fines privados que han sido establecidos por las presentes Condiciones Generales. El Cliente deberá hacer uso de los mismos respetando la legislación de Propiedad Intelectual vigente en cada momento, y en modo alguno podrá hacer uso de los citados contenidos para otros fines distintos del uso privado de los mismos.',
         'section69' => 'El uso, reproducción, distribución, comercialización o transformación no autorizada, en todo o en parte, de los derechos de los que es titular EMTRICS, S.L., supondrán una infracción en los términos de la normativa de propiedad intelectual y demás de aplicación.',
 
         'title21' => 'Confidencialidad',
-        'section70' => 'El Cliente se compromete expresamente a no facilitar ni utilizar ninguna información, dato o contenido que pueda o pudiera obtener mediante el conocimiento adquirido por su acceso y uso del servicio Keweno para ponerlo en conocimiento de ninguna otra persona natural o jurídica que pueda ostentar la condición de competidor, directo o indirecto, de EMTRICS, S.L.',
+        'section70' => 'El Cliente se compromete expresamente a no facilitar ni utilizar ninguna información, dato o contenido que pueda o pudiera obtener mediante el conocimiento adquirido por su acceso y uso del servicio Calificame para ponerlo en conocimiento de ninguna otra persona natural o jurídica que pueda ostentar la condición de competidor, directo o indirecto, de EMTRICS, S.L.',
         'section71' => 'El Cliente acepta expresamente y presta su consentimiento por la aceptación de las Condiciones Generales de Servicio, para que EMTRICS, S.L. pueda utilizar los datos utilizados y tratados a través de sus encuestas para comparativas y análisis del sector y subsectores.',
 
         'title22' => 'Terminación y Política de Devolución de Pagos',
@@ -286,7 +286,7 @@ return [
 
         'title23' => 'Modificaciones de las Condiciones generales de Servicio',
         'section75' => 'Las presentes Condiciones Generales de Servicio podrán ser modificadas unilateralmente por EMTRICS, S.L. en cualquier momento, comprometiendo a las partes por su simple publicación en la página web del servicio. No será, por tanto, necesaria la previa comunicación de las modificaciones de ninguna forma y su aplicación será efectiva desde el mismo día de su publicación.',
-        'section76' => 'A estos efectos, la versión de las Condiciones Generales de Servicio en vigor será siempre la que conste en la página web del servicio, www.keweno.com.',
+        'section76' => 'A estos efectos, la versión de las Condiciones Generales de Servicio en vigor será siempre la que conste en la página web del servicio, www.Calificame.com.',
 
         'title24' => 'Idioma',
         'section77' => 'Para una mayor comodidad de algunos clientes, las presentes Condiciones Generales de Servicio pueden encontrarse traducidas a diferentes idiomas. Sin perjuicio del idioma en que el Cliente disponga de las Condiciones Generales, el Cliente declara expresamente conocer y aceptar que la versión en español de las Condiciones Generales de Servicio tiene aplicación preferente sobre cualquier otro idioma, en caso de conflicto entre ellas.',

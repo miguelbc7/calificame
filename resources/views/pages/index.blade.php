@@ -27,8 +27,19 @@
   <title>Keweno – Encuestas de Satisfacción para tu Restaurante</title>
   <meta content="Keweno es un sistema para hacer encuestas de satisfacción fáciles para restaurantes. Pruébalo gratis durante 30 días y descubre la opinión de tus clientes." name="description">
   <meta content="Keweno – Encuestas de Satisfacción para tu Restaurante" property="og:title"><meta content="Keweno es un sistema para hacer encuestas de satisfacción fáciles para restaurantes. Pruébalo gratis durante 30 días y descubre la opinión de tus clientes." property="og:description">
+  
   <meta content="summary" name="twitter:card">
   <meta content="width=device-width, initial-scale=1" name="viewport">
+  
+  <link href="{{ asset('web/css/webflow.css') }}" rel="stylesheet" type="text/css">
+   <!-- Latest compiled and minified CSS -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <!-- jQuery library -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <!-- Latest compiled JavaScript -->
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <!-- Latest compiled and minified CSS -->
+
   <link href="{{ asset('web/css/webflow.css') }}" rel="stylesheet" type="text/css">
   <script src="{{ asset('web/js/webfont.js') }}"></script>
   <script type="text/javascript">WebFont.load({
@@ -77,8 +88,9 @@ Webflow.push(function () {
     })(window,document,'//static.hotjar.com/c/hotjar-','.js?sv=');
 </script>
 </head>
+
 <body class="body">
-  <div class="signupbasic" data-ix="modal-interaction">
+    <div class="signupbasic" data-ix="modal-interaction">
     <a class="close_link" data-ix="close-signup-basic" href="#">Cerrar</a>
     <h2 class="modal_header">Prueba Keweno gratis</h2>
     <div class="signupform__container w-form">
@@ -105,7 +117,7 @@ Webflow.push(function () {
     </div>
   </div>
 
-  <div class="signuppro" data-ix="modal-interaction">
+    <div class="signuppro" data-ix="modal-interaction">
     <a class="close_link" data-ix="close-signup-pro" href="#">Cerrar</a>
     <h2 class="modal_header">Prueba Keweno gratis</h2>
     <div class="signupform__container w-form">
@@ -161,7 +173,7 @@ Webflow.push(function () {
   <div class="nav--fixed w-nav" data-animation="default" data-collapse="medium" data-duration="400" data-ix="display-none">
     <div class="w-container">
       <a class="w-nav-brand" href="{{ URL('/') }}">
-        <img alt="Keweno" class="nav__logo" src="{{ asset('web/images/logo.png') }}" width="128">
+        <img alt="Keweno" class="nav__logo" src="{{ asset('web/images/logo.png') }}" width="163" height="40">
       </a>
       <nav class="nav_menu w-clearfix w-nav-menu" role="navigation">
         <a class="nav__link w-nav-link" href="#why-keweno">{{ Lang::get('message.menu1') }}</a>
@@ -179,7 +191,7 @@ Webflow.push(function () {
   <div class="hero" data-ix="display-nav">
     <div class="nav w-nav" data-animation="default" data-collapse="medium" data-duration="400">
       <div class="w-container">
-        <a class="w-nav-brand" href="{{ URL('/') }}"><img alt="Keweno" class="nav__logo" src="{{ asset('web/images/logo.png') }}" width="128"></a>
+        <a class="w-nav-brand" href="{{ URL('/') }}"><img alt="Keweno" class="nav__logo" src="{{ asset('web/images/logo.png') }}" width="163" height="40"></a>
         <nav class="nav_menu nav_menu_not_fixed w-nav-menu" role="navigation">
           <a class="nav__link w-nav-link" href="#why-keweno">{{ Lang::get('message.menu1') }}</a>
           <a class="nav__link w-nav-link" href="#how-it-works">{{ Lang::get('message.menu2') }}</a>
@@ -230,82 +242,83 @@ Webflow.push(function () {
     </div>
   </div>
 
-        <div class="section whykeweno" id="why-keweno">
-          <div class="w-container"><h2 class="section__header">{{ Lang::get('message.why') }}</h2>
-            <div class="w-row">
-              <div class="column w-col w-col-3">
-                <div class="whykeweno__imagecontainer">
-                  <img class="column__image" data-ix="appear" src="{{ asset('web/images/chart.png') }}" width="143">
-                </div>
-                <h3 class="column__header">{{ Lang::get('message.why1') }}</h3>
-                <div class="paragraph">{{ Lang::get('message.whydes1') }}</div>
-              </div>
-              <div class="column w-col w-col-3">
-                <div class="whykeweno__imagecontainer">
-                  <img class="column__image" data-ix="appear-2" src="{{ asset('web/images/handshake.png') }}" width="150">
-                </div>
-                <h3 class="column__header">{{ Lang::get('message.why2') }}</h3>
-                <div class="paragraph">{{ Lang::get('message.whydes2') }}</div>
-              </div>
-              <div class="column w-col w-col-3">
-                <div class="whykeweno__imagecontainer">
-                  <img class="column__image grow" data-ix="appear-3" src="{{ asset('web/images/empty.png') }}">
-                </div>
-                <h3 class="column__header">{{ Lang::get('message.why3') }}</h3>
-                <div class="paragraph">{{ Lang::get('message.whydes3') }}</div>
-              </div>
-              <div class="column w-col w-col-3">
-                <div class="whykeweno__imagecontainer">
-                  <img class="column__image grow" data-ix="appear-3" src="{{ asset('web/images/empty.png') }}">
-                </div>
-                <h3 class="column__header">{{ Lang::get('message.why4') }}</h3>
-                <div class="paragraph">{{ Lang::get('message.whydes4') }}</div>
-              </div>
-            </div>
+  <!-- Beneficios de Usar -->
+  <div class="section whykeweno" id="why-keweno">
+    <div class="w-container">
+     <h2 class="section__header">{{ Lang::get('message.why') }} <img alt="Keweno" class="nav__logo" src="{{ asset('web/images/logo.png') }}" width="183" height="50"></h2> 
+      <div class="w-row">
+        <div class="column w-col w-col-4">
+          <div class="whykeweno__imagecontainer">
+            <img class="column__image" data-ix="appear" src="{{ asset('web/images/midelo.png') }}" title="¡Mídelo!">
           </div>
+          <h3 class="column__header">{{ Lang::get('message.why1') }}</h3>
+          <div class="paragraph">{{ Lang::get('message.whydes1') }}</div>
         </div>
-
-        <!--<div class="testimonial">
-          <div class="testimonial__container w-container">
-            <div class="testimonial__quotecontainer">
-              <div class="testimonial__quote">{{ Lang::get('message.review1') }}</div>
-            </div>
-            <div class="testimonial__authorcontainer">
-              <img class="testimonial__authorpicture" src="{{ asset('web/images/foto.png') }}">
-              <div class="testimonial__authordetails">
-                <div class="testimonia__authorname">{{ Lang::get('message.reviewer1') }}</div>
-                <div class="testimonial__authortitle">{{ Lang::get('message.reviewerdes1') }}</div>
-              </div>
-            </div>
+        <div class="column w-col w-col-4">
+          <div class="whykeweno__imagecontainer">
+            <img class="column__image" data-ix="appear-2" src="{{ asset('web/images/escuchalos.png') }}" title="¡Escúchalos!">
           </div>
-        </div>-->
-
-        <div class="howitworks section" id="how-it-works">
-          <div class="w-container"><h2 class="section__header">{{ Lang::get('message.how') }}</h2>
-            <div class="w-row">
-              <div class="column w-col w-col-4 w-col-medium-12 w-col-small-12">
-                <div class="howworks_imagecointainer">
-                  <img class="column__image" src="{{ asset('web/images/macbookpro.png') }}" width="226">
-                </div>
-                <h3 class="column__header">{{ Lang::get('message.how1') }}</h3>
-                <div class="paragraph">{{ Lang::get('message.howdes1') }}</div>
-              </div>
-              <div class="column w-col w-col-4 w-col-medium-12 w-col-small-12">
-                <div class="howworks_imagecointainer">
-                  <img class="column__image" src="{{ asset('web/images/polaroid.png') }}" width="232">
-                </div>
-                <h3 class="column__header">{{ Lang::get('message.how2') }}</h3>
-                <div class="paragraph">{{ Lang::get('message.howdes2') }}</div>
-              </div>
-              <div class="column w-col w-col-4 w-col-medium-12 w-col-small-12">
-                <div class="howworks_imagecointainer">
-                  <img class="column__image" src="{{ asset('web/images/iphone.png') }}" width="231">
-                </div>
-                <h3 class="column__header">{{ Lang::get('message.how3') }}</h3>
-                <div class="paragraph">{{ Lang::get('message.howdes3') }}</div>
-              </div>
-          </div>
+          <h3 class="column__header">{{ Lang::get('message.why2') }}</h3>
+          <div class="paragraph">{{ Lang::get('message.whydes2') }}</div>
         </div>
+        <div class="column w-col w-col-4">
+          <div class="whykeweno__imagecontainer">
+            <img class="column__image grow" data-ix="appear-3" src="{{ asset('web/images/mejoralo.png') }}" title="¡Mejóralo!">
+          </div>
+          <h3 class="column__header">{{ Lang::get('message.why3') }}</h3>
+          <div class="paragraph">{{ Lang::get('message.whydes3') }}</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+        <!-- Beneficios de Usar -->
+
+<!--<div class="testimonial">
+  <div class="testimonial__container w-container">
+    <div class="testimonial__quotecontainer">
+      <div class="testimonial__quote">{{ Lang::get('message.review1') }}</div>
+    </div>
+    <div class="testimonial__authorcontainer">
+      <img class="testimonial__authorpicture" src="{{ asset('web/images/foto.png') }}">
+      <div class="testimonial__authordetails">
+        <div class="testimonia__authorname">{{ Lang::get('message.reviewer1') }}</div>
+        <div class="testimonial__authortitle">{{ Lang::get('message.reviewerdes1') }}</div>
+      </div>
+    </div>
+  </div>
+</div>-->
+
+
+        <!-- Fácil de Usar -->
+    <div class="howitworks section" id="how-it-works">
+      <div class="w-container"><h2 class="section__header">{{ Lang::get('message.how') }}</h2>
+        <div class="w-row">
+          <div class="column w-col w-col-4 w-col-medium-12 w-col-small-12">
+            <div class="howworks_imagecointainer">
+              <img class="column__image" src="{{ asset('web/images/creatyouraccount.png') }}" title="Crea tu encuesta">
+            </div>
+            <h3 class="column__header">{{ Lang::get('message.how1') }}</h3>
+            <div class="paragraph">{{ Lang::get('message.howdes1') }}</div>
+          </div>
+          <div class="column w-col w-col-4 w-col-medium-12 w-col-small-12">
+            <div class="howworks_imagecointainer">
+              <img class="column__image" src="{{ asset('web/images/makeitvisible.png') }}" width="120" title="Hazla Visible">
+            </div>
+            <h3 class="column__header">{{ Lang::get('message.how2') }}</h3>
+            <div class="paragraph">{{ Lang::get('message.howdes2') }}</div>
+          </div>
+          <div class="column w-col w-col-4 w-col-medium-12 w-col-small-12">
+            <div class="howworks_imagecointainer">
+              <img class="column__image" src="{{ asset('web/images/findout.png') }}" title="Conoce la opinión de tus clientes">
+            </div>
+            <h3 class="column__header">{{ Lang::get('message.how3') }}</h3>
+            <div class="paragraph">{{ Lang::get('message.howdes3') }}</div>
+          </div>
+      </div>
+    </div>
+    </div> <!-- Hacia Falta este Div -->
+    <!-- Fácil de Usar -->
 
         <!--<div class="testimonial">
           <div class="testimonial__container w-container">
@@ -321,6 +334,113 @@ Webflow.push(function () {
           </div>
         </div>-->
 
+       <!-- Llamados de los Script -->
+<link rel="stylesheet" href="/web/js/jquery.flipster.min.css">
+<script src="/web/js/jquery.min.js"></script>
+<script src="/web/js/jquery.flipster.min.js"></script>
+ <!-- Llamados de los Script -->
+ <!-- Section Plan de Pagos con Carousel Nuevo / 24/7 -->
+        <div class="plans section" id="plans">
+          <div class="container w-container">
+            <h2 class="section__header">{{ Lang::get('message.planslogan') }}</h2>
+            <p class="customers_subheading">{{ Lang::get('message.plansubslogan') }}</p>
+            <div class="pricingcard__container" data-ix="close-contact">
+              <div id="carousel" class="demo">
+                <ul class="flip-items">
+                    <li data-flip-title="Plan 24/7" id="demo1">
+                    <div class="pricingcard__card pricingcard__card--highlighted">
+                      <div class="pricingcard__headercontainer">
+                        <h3 class="pricingcard__heading">{{ Lang::get('message.plan2') }}</h3>
+                        <div class="pricingcard__maspopular">{{ Lang::get('message.subplan2') }}</div>
+                        <div class="pricingcard__pricingwraper">
+                          <div class="pricingcard__pricing">{{ Lang::get('message.price2') }}<br><em class="pricingcard__pricing--em">{{ Lang::get('message.subprice2') }}</em>
+                          </div>
+                        </div>
+                        <dl class="pricingcard__features" id="text-color">
+                          <dt>Aquí va el término que definiremos</dt> 
+                            <dd>Y aquí dentro irá la definición propiamente dicha.</dd>
+                        </dl>
+                        <dl class="pricingcard__features" id="text-color">
+                          <dt>Aquí va el término que definiremos</dt> 
+                            <dd>Y aquí dentro irá la definición propiamente dicha.</dd>
+                        </dl>
+                        <dl class="pricingcard__features" id="text-color">
+                          <dt>Aquí va el término que definiremos</dt> 
+                            <dd>Y aquí dentro irá la definición propiamente dicha.</dd>
+                        </dl>
+                          <a class="button w-button" href="{{ URL('regis') }}">{{ Lang::get('message.planbutton2') }}</a>
+                      </div>
+                    </div>
+                    </li>
+                    <li data-flip-title="Plan 24/7" id="demo1">
+                    <div class="pricingcard__card pricingcard__card--highlighted">
+                      <div class="pricingcard__headercontainer">
+                        <h3 class="pricingcard__heading">{{ Lang::get('message.plan2') }}</h3>
+                        <div class="pricingcard__maspopular">{{ Lang::get('message.subplan2') }}</div>
+                        <div class="pricingcard__pricingwraper">
+                          <div class="pricingcard__pricing">{{ Lang::get('message.price2') }}<br><em class="pricingcard__pricing--em">{{ Lang::get('message.subprice2') }}</em>
+                          </div>
+                        </div>
+                        <dl class="pricingcard__features" id="text-color">
+                          <dt>Aquí va el término que definiremos</dt> 
+                            <dd>Y aquí dentro irá la definición propiamente dicha.</dd>
+                        </dl>
+                        <dl class="pricingcard__features" id="text-color">
+                          <dt>Aquí va el término que definiremos</dt> 
+                            <dd>Y aquí dentro irá la definición propiamente dicha.</dd>
+                        </dl>
+                        <dl class="pricingcard__features" id="text-color">
+                          <dt>Aquí va el término que definiremos</dt> 
+                            <dd>Y aquí dentro irá la definición propiamente dicha.</dd>
+                        </dl>
+                          <a class="button w-button" href="{{ URL('regis') }}">{{ Lang::get('message.planbutton2') }}</a>
+                      </div>
+                    </div>
+                    </li>
+                    <li data-flip-title="Plan 24/7" id="demo1">
+                    <div class="pricingcard__card pricingcard__card--highlighted">
+                      <div class="pricingcard__headercontainer">
+                        <h3 class="pricingcard__heading">{{ Lang::get('message.plan2') }}</h3>
+                        <div class="pricingcard__maspopular">{{ Lang::get('message.subplan2') }}</div>
+                        <div class="pricingcard__pricingwraper">
+                          <div class="pricingcard__pricing">{{ Lang::get('message.price2') }}<br><em class="pricingcard__pricing--em">{{ Lang::get('message.subprice2') }}</em>
+                          </div>
+                        </div>
+                        <dl class="pricingcard__features" id="text-color">
+                          <dt>Aquí va el término que definiremos</dt> 
+                            <dd>Y aquí dentro irá la definición propiamente dicha.</dd>
+                        </dl>
+                        <dl class="pricingcard__features" id="text-color">
+                          <dt>Aquí va el término que definiremos</dt> 
+                            <dd>Y aquí dentro irá la definición propiamente dicha.</dd>
+                        </dl>
+                        <dl class="pricingcard__features" id="text-color">
+                          <dt>Aquí va el término que definiremos</dt> 
+                            <dd>Y aquí dentro irá la definición propiamente dicha.</dd>
+                        </dl>
+                          <a class="button w-button" href="{{ URL('regis') }}">{{ Lang::get('message.planbutton2') }}</a>
+                      </div>
+                    </div>
+                    </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- Section Plan de Pagos con Carousel Nuevo / 24/7 -->
+
+              <!-- Section Plan de Pagos con Carousel Nuevo Script / 24/7 -->
+<script>
+    var carousel = $("#carousel").flipster({
+        style: 'carousel',
+        spacing: -0.5,
+        nav: true,
+        buttons:   true,
+    });
+</script>
+<!-- Section Plan de Pagos con Carousel Nuevo Script / 24/7 -->   
+
+      <!-- Section Plan / 24/7 Desactivado
         <div class="plans section" id="plans">
           <div class="container w-container">
             <h2 class="section__header">{{ Lang::get('message.planslogan') }}</h2>
@@ -344,7 +464,7 @@ Webflow.push(function () {
                 <a class="button w-button" data-ix="open-signup-pro" href="#">{{ Lang::get('message.planbutton1') }}</a>-->
               </div>
 
-              <div class="pricingcard__card pricingcard__card--highlighted">
+              <!--<div class="pricingcard__card pricingcard__card--highlighted">
                 <div class="pricingcard__headercontainer">
                   <h3 class="pricingcard__heading">{{ Lang::get('message.plan2') }}</h3>
                   <div class="pricingcard__maspopular">{{ Lang::get('message.subplan2') }}</div>
@@ -387,6 +507,7 @@ Webflow.push(function () {
             </div>
           </div>
         </div>
+        <!-- Section Plan / 24/7 Desactivado -->
 
         <!--<div class="testimonial w-hidden-tiny">
           <div class="testimonial__container w-container">
@@ -524,7 +645,8 @@ Webflow.push(function () {
               </div>
             </div>
           </div>-->
-
+          
+          <!--
           <div class="testimonial w-hidden-tiny">
             <div class="testimonial__container w-container">
               <div class="testimonial__quotecontainer">
@@ -551,37 +673,100 @@ Webflow.push(function () {
                 </div>
               </div>
             </div>
-          </div>
+          </div> -->
 
-          <div class="footer">
-            <div class="w-container">
-              <div class="footer__column w-row">
-                <div class="w-col w-col-9 w-col-small-6 w-col-tiny-6">
-                  <img alt="Keweno" class="logo_footer" src="{{ asset('web/images/logo.png') }}" width="128">
-                  <div class="footer__address">2011-2017 © Emtrics S.L.</div>
-                  <div class="footer__address">Leganitos 47, 9º (Arrabe Integra)<br>28013 Madrid<br> Spain</div>
+      <!-- Desactivado <div class="footer">
+          <div class="w-container">
+            <div class="footer__column w-row">
+              <div class="w-col w-col-9 w-col-small-6 w-col-tiny-6">
+                <img alt="Keweno" class="logo_footer" src="{{ asset('web/images/logo.png') }}" width="158">
+                <div class="footer__address">2011-2017 © Emtrics S.L.</div>
+                <div class="footer__address">Leganitos 47, 9º (Arrabe Integra)<br>28013 Madrid<br> Spain</div>
+              </div>
+              <div class="w-col w-col-3 w-col-small-6 w-col-tiny-6">
+                <div class="footer_social">
+                  <a class="footer__sociallink w-inline-block" href="https://www.facebook.com/keweno/">
+                    <img alt="Facebook" class="footer__socialimage" src="{{ asset('web/images/facebook.png') }}" width="42">
+                  </a>
+                  <a class="footer__sociallink w-inline-block" href="https://twitter.com/keweno">
+                    <img alt="Twitter" class="footer__socialimage" src="{{ asset('web/images/twitter.png') }}" width="43">
+                  </a>
+                  <a class="footer__sociallink w-inline-block" href="https://www.linkedin.com/company/keweno">
+                    <img alt="LinkedIn" class="footer__socialimage" src="{{ asset('web/images/linkedin.png') }}" width="42">
+                  </a>
                 </div>
-                <div class="w-col w-col-3 w-col-small-6 w-col-tiny-6">
-                  <div class="footer_social">
-                    <a class="footer__sociallink w-inline-block" href="https://www.facebook.com/keweno/">
-                      <img alt="Facebook" class="footer__socialimage" src="{{ asset('web/images/facebook.png') }}" width="42">
-                    </a>
-                    <a class="footer__sociallink w-inline-block" href="https://twitter.com/keweno">
-                      <img alt="Twitter" class="footer__socialimage" src="{{ asset('web/images/twitter.png') }}" width="43">
-                    </a>
-                    <a class="footer__sociallink w-inline-block" href="https://www.linkedin.com/company/keweno">
-                      <img alt="LinkedIn" class="footer__socialimage" src="{{ asset('web/images/linkedin.png') }}" width="42">
-                    </a>
-                  </div>
-                  <ul class="legal-links w-list-unstyled">
-                    <li><a id="legal-link" href="{{ URL('terms') }}" class="legal-link">{{ Lang::get('message.terms') }}</a></li>
-                    <li><a href="{{ URL('privacy') }}" class="legal-link">{{ Lang::get('message.privacy') }}</a></li>
-                    <li><a href="{{ URL('contract') }}" class="legal-link">{{ Lang::get('message.contract') }}</a></li>
-                  </ul>
-                </div>
+                <ul class="legal-links w-list-unstyled">
+                  <li><a id="legal-link" href="{{ URL('terms') }}" class="legal-link">{{ Lang::get('message.terms') }}</a></li>
+                  <li><a href="{{ URL('privacy') }}" class="legal-link">{{ Lang::get('message.privacy') }}</a></li>
+                  <li><a href="{{ URL('contract') }}" class="legal-link">{{ Lang::get('message.contract') }}</a></li>
+                </ul>
               </div>
             </div>
           </div>
+        </div> -->
+
+<!-- New Footer -->          
+  <footer id="footer-Section">
+    <div class="footer-top-layout">
+      <div class="container">
+        <div class="row">
+          <div class="OurBlog">
+            <img alt="Keweno" class="nav__logo" src="{{ asset('web/images/logo.png') }}" width="250" height="60">
+            <p>Encuestas fáciles para tu restaurante.</p>
+            <div class="post-blog-date">19 Julio 2017.</div>
+          </div>
+          <div class=" col-lg-8 col-lg-offset-2">
+            <div class="col-sm-4">
+              <div class="footer-col-item">
+                <h4>Encuentranos</h4>
+                <address>
+                2011-2017 © Emtrics S.L.<br>
+                Leganitos 47, 9º (Arrabe Integra)
+                28013 Madrid
+                Spain
+                </address>
+              </div>
+            </div>
+            <div class="col-sm-4">
+              <div class="footer-col-item">
+                <h4>Compromiso</h4>
+                <div class="item-contact"> 
+                <a id="legal-link" href="{{ URL('terms') }}" class="legal-link">{{ Lang::get('message.terms') }}</a>
+                <a href="{{ URL('privacy') }}" class="legal-link">{{ Lang::get('message.privacy') }}</a> 
+                <a href="{{ URL('contract') }}" class="legal-link">{{ Lang::get('message.contract') }}</a> 
+                </div>
+              </div>
+            </div>
+            <div class="col-sm-4">
+              <div class="footer-col-item">
+                <h4>Contáctanos</h4>
+                <form class="signUpNewsletter" action="" method="get">
+                  <textarea class="form-control" rows="2" placeholder="Dejanos tu comentario..."></textarea>
+                </form>
+                <br>
+                <form class="signUpNewsletter" action="" method="get">
+                  <input name="" class="gt-email form-control" placeholder="You@youremail.com" type="text">
+                  <input name="" class="btn-go" value="Go" type="button">
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom-layout">
+      <div class="socialMedia-footer"> 
+      <a class="footer__sociallink w-inline-block" href="https://www.facebook.com/keweno/">
+      <img alt="Facebook" class="footer__socialimage" src="{{ asset('web/images/facebook.png') }}" width="42"></a> 
+      <a class="footer__sociallink w-inline-block" href="https://twitter.com/keweno">
+      <img alt="Twitter" class="footer__socialimage" src="{{ asset('web/images/twitter.png') }}" width="43"></a> 
+      <a class="footer__sociallink w-inline-block" href="https://www.linkedin.com/company/keweno">
+      <img alt="LinkedIn" class="footer__socialimage" src="{{ asset('web/images/linkedin.png') }}" width="42"></a> 
+      </div>
+      <div class="copyright-tag">Copyright © 2017 Califícame. All Rights Reserved.</div>
+    </div>
+  </footer>
+<!-- New Footer --> 
 
     <script src="{{ asset('web/js/jquery.min.js') }}" type="text/javascript"></script>
     <script src="{{ asset('web/js/webflow.js') }}" type="text/javascript"></script>

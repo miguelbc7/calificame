@@ -1,3 +1,7 @@
+/* Inicio de Style Fronted */
+
+/* Autores: SageCrow */
+
 .w-dropdown-toggle:focus, .w-lightbox-backdrop, a:active, a:focus, a:hover {
     outline:0
 }
@@ -1559,16 +1563,11 @@ ol, ul {
 .hero {
     z-index:0;
     padding-top:16px;
-    background-image:-webkit-radial-gradient(circle farthest-corner at 50% 50%, rgba(216, 227, 242, 0), rgba(216, 227, 242, .45)), 
-    url(https://daks2k3a4ib2z.cloudfront.net/576bbb263b0f04c134edb9ab/57723b3efb148f107c0181cd_background.png);
-    background-image:radial-gradient(circle farthest-corner at 50% 50%, rgba(216, 227, 242, 0), rgba(216, 227, 242, .45)), 
-    url("../images/fondo1.png");
+    background-image:-webkit-radial-gradient(circle farthest-corner at 50% 50%, rgba(216, 227, 242, 0), rgba(216, 227, 242, .45)), url("/web/images/fondonew.png");
+    background-image:radial-gradient(circle farthest-corner at 50% 50%, rgba(216, 227, 242, 0), rgba(216, 227, 242, .45)), url("/web/images/fondonew.png");
     background-position:0 0, 0 0;
-    background-size:auto, 150px
-    background-repeat: repeat;
-    height: 100vh;
+    background-size:auto;
 }
-
 .testimonial {
     margin-top:32px;
     margin-bottom:32px;
@@ -1633,7 +1632,7 @@ ol, ul {
     background-color:transparent
 }
 .nav.legal {
-    background-image:url(https://daks2k3a4ib2z.cloudfront.net/576bbb263b0f04c134edb9ab/57723b3efb148f107c0181cd_background.png);
+    background-image:url("/web/images/fondonew.png");
     background-position:0 0;
     background-size:150px
 }
@@ -1726,7 +1725,7 @@ ol, ul {
     margin-left:auto;
     padding:8px 16px;
     border-radius:5px;
-    background-image:url(https://daks2k3a4ib2z.cloudfront.net/576bbb263b0f04c134edb9ab/577244bcfb148f107c019459_quote_background-36a0b9aa.png);
+    background-image:url("/web/images/fondonew.png");
     background-position:0 0;
     background-size:90px
 }
@@ -1836,7 +1835,7 @@ ol, ul {
     padding-bottom:20px;
     border-radius:5px 5px 0 0;
     background-color:#6290ca;
-    background-image:url(https://daks2k3a4ib2z.cloudfront.net/576bbb263b0f04c134edb9ab/57723b3efb148f107c0181cd_background.png);
+    background-image:url("/web/images/fondonew.png");
     background-position:0 0;
     background-size:150px;
     font-family:'Source Sans Pro', sans-serif;
@@ -1873,10 +1872,10 @@ ol, ul {
     background-image:-webkit-radial-gradient(circle farthest-corner at 50% 50%, rgba(216, 227, 242, 0), rgba(216, 227, 242, .45)), url(https://daks2k3a4ib2z.cloudfront.net/576bbb263b0f04c134edb9ab/57723b3efb148f107c0181cd_background.png);
     background-image:radial-gradient(circle farthest-corner at 50% 50%, rgba(216, 227, 242, 0), rgba(216, 227, 242, .45)), url(https://daks2k3a4ib2z.cloudfront.net/576bbb263b0f04c134edb9ab/57723b3efb148f107c0181cd_background.png);
     background-position:0 0, 0 0;
-    background-size:auto, 150px
+    background-size: auto;
 }
 .nav--fixed, .pricingcard__heading--basic {
-    background-image:url(https://daks2k3a4ib2z.cloudfront.net/576bbb263b0f04c134edb9ab/577244bcfb148f107c019459_quote_background-36a0b9aa.png);
+    background-image:url("/web/images/fondonew.png");
     background-position:0 0;
     background-size:90px
 }
@@ -2047,7 +2046,7 @@ ol, ul {
     background-color:#6290ca;
     -webkit-transition:background-color .2s ease;
     transition:background-color .2s ease;
-    text-align:center
+    text-align:center;
 }
 .button:hover {
     background-color:#3869a7
@@ -2326,6 +2325,7 @@ html.w-mod-js[data-ix=handsup] {
     -ms-transform:translate(0, 400px);
     transform:translate(0, 400px)
 }
+
 @media (max-width:991px) {
     .contactform, .language_switch_dropdow, .language_switch_toggle, .signupbasic, .signuppro {
         display:none
@@ -2370,6 +2370,7 @@ html.w-mod-js[data-ix=handsup] {
         background-color:#505c6a
     }
 }
+
 @media (max-width:767px) {
     .pricingcard__card, .pricingcard__container {
         margin-right:auto;
@@ -2537,3 +2538,205 @@ html.w-mod-js[data-ix=handsup] {
         position:static
     }
 }
+
+/* Inicio de Style Footer Css */
+
+.footer-top-layout {
+  background: #1c1c1c none repeat scroll 0 0;
+  color: #ffffff;
+  padding: 40px 0;
+}
+.OurBlog {
+  margin-bottom: 32px;
+  text-align: center;
+}
+.footer-top-layout h4 {
+  color: #ffffff;
+  font-size: 18px;
+  margin-bottom: 21px;
+}
+.OurBlog > p {
+  color: #888888;
+}
+.post-blog-date::after {
+  background: #ffffff none repeat scroll 0 0;
+  bottom: 0;
+  content: "";
+  height: 4px;
+  left: 0;
+  margin: auto;
+  position: absolute;
+  right: 0;
+  width: 50px;
+}
+.post-blog-date {
+  padding-bottom: 25px;
+  position: relative;
+}
+
+body {
+  color: #666666;
+  font-family: "Open Sans",sans-serif;
+  line-height: 24px;
+}
+
+.footer-top-layout [class*="col-sm-"]:first-child {
+  padding: 0;
+}
+.footer-top-layout [class*="col-sm-"] {
+  border-right: 2px solid #333333;
+  padding: 0 0 0 28px;
+  
+}
+.footer-top-layout {
+  color: #ffffff;
+}
+.footer-col-item {
+  min-height: 140px;
+}
+
+address {
+  color: #545454;
+}
+
+.footer-top-layout [class*="col-sm-"]:last-child {
+  border-right: medium none;
+} 
+.footer-top-layout {
+  color: #ffffff;
+}
+body {
+  color: #666666;
+  font-family: "Open Sans",sans-serif;
+
+}
+.footer-top-layout h4 {
+  color: #ffffff;
+  font-size: 18px;
+  margin-bottom: 21px;
+}
+.h1, .h2, .h3, .h4, .h5, .h6, h1, h2, h3, h4, h5, h6 {
+  color: #333333;
+  font-family: "Roboto",sans-serif;
+  font-weight: 500;
+  line-height: 1.1;
+  margin-top: 0;
+}
+body {
+  color: #666666;
+  font-family: "Open Sans",sans-serif;
+  line-height: 24px;
+}
+.footer-col-item .item-contact a {
+  color: #545454;
+  display: inline-block;
+  margin-bottom: 7px;
+  width: 100%;
+}
+
+.footer-col-item .item-contact a .link-id {
+  color: #ffffff;
+  margin-left: 0;
+  margin-right: 6px;
+}
+.footer-col-item span {
+  margin-left: 7px;
+}
+.footer-col-item .item-contact a {
+  color: #545454;
+}
+
+.footer-top-layout h4 {
+  color: #ffffff;
+  font-size: 18px;
+  margin-bottom: 21px;
+}
+.signUpNewsletter {
+  position: relative;
+}
+.signUpNewsletter .gt-email {
+  background: rgba(0, 0, 0, 0) none repeat scroll 0 0;
+  border: 1px solid #666666;
+  border-radius: 0;
+  color: #ffffff;
+  height: 52px;
+}
+.signUpNewsletter .btn-go {
+  background: rgba(0, 0, 0, 0) none repeat scroll 0 0;
+  border-color: #666666;
+  border-style: solid;
+  border-width: 0 0 0 1px;
+  bottom: 0;
+  color: #ffffff;
+  font-size: 16px;
+  position: absolute;
+  right: 0;
+  text-transform: uppercase;
+  top: 0;
+  width: 52px;
+}
+.footer-bottom-layout {
+  background: #222222 none repeat scroll 0 0;
+  padding: 20px 0;
+  text-align: center;
+}
+body {
+  color: #666666;
+  font-family: "Open Sans",sans-serif;
+  line-height: 24px;
+}
+.socialMedia-footer {
+  margin-bottom: 20px;
+}
+.socialMedia-footer > a {
+  display: inline-block;
+  margin: 0 8px;
+}
+.footer-bottom-layout {
+  text-align: center;
+}
+
+/* Inicio de Style Footer Css */
+
+/* Section Facil de Usar Style Css */
+
+#how-it-works {
+    background-image:url("/web/images/fondosection.png");
+}
+/* Section Facil de Usar Style Css */
+
+/*
+* Combines HTML5 Boilerplate & Boostrap. Includes some basic templating.
+* Authored by SageCrow
+*/
+
+/* @group SageCrow */
+
+/* @end */
+
+/* Modificado */
+.demo {
+  padding: 6em 2em;
+  margin-top: -70px;
+      margin-bottom: -160px;
+}
+/* Modificado */
+.demo h2 {
+  text-align: center;
+  font-size: 22px;
+  margin-bottom: 1em;
+}
+
+.demo .flipster {
+  margin: 0 -2em;
+}
+/* Modificado */
+#demo1 {
+    margin-top: -70px;
+    position: relative;
+
+}
+#text-color {
+    color: #000;
+}
+/* Modificado */
