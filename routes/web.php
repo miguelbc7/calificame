@@ -17,6 +17,7 @@ Route::get('index', array('as'=>'index', 'uses'=>'HomeController@index'));
 Route::get('terms', array('as'=>'terms', 'uses'=>'HomeController@terms'));
 Route::get('privacy', array('as'=>'privacy', 'uses'=>'HomeController@privacy'));
 Route::get('contract', array('as'=>'contract', 'uses'=>'HomeController@contract'));
+Route::get('surveys2', 'HomeController@survey');
 
 Route::post('userstore', array('as'=>'userstore', 'uses'=>'HomeController@userstore'));
 

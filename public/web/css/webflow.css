@@ -2740,3 +2740,208 @@ body {
     color: #000;
 }
 /* Modificado */
+
+/* Encuestas */
+
+.carta {
+  border-radius: 66px 66px 66px 66px;
+  -moz-border-radius: 66px 66px 66px 66px;
+  -webkit-border-radius: 66px 66px 66px 66px;
+  border: 60px solid #17d1b2;
+
+  -webkit-box-shadow: -1px 2px 20px 15px rgba(0,0,0,0.66);
+  -moz-box-shadow: -1px 2px 20px 15px rgba(0,0,0,0.66);
+  box-shadow: -1px 2px 20px 15px rgba(0,0,0,0.66);
+}
+
+.posicion {
+  position: absolute;
+  height: 80px;
+  width: 500px;
+  top:40px;
+  left: 378px;
+
+}
+
+.fondo {
+  background-color: #333;
+  height: 50px;
+  width: 200px;
+  position: absolute;
+  z-index: -2;
+  left: 31%;
+  border-radius: 20px;
+}
+
+.fondo:after{ 
+  content:""; 
+  display:block; 
+  width:15px; 
+  height:15px;  
+  -webkit-transform : rotate(45deg); 
+  -moz-transform : rotate(45deg); 
+  -ms-transform : rotate(45deg); 
+  transform : rotate(45deg); 
+  z-index: 8;
+  background-color:#333;
+  position:relative;
+  left:45%;
+  top:40px;
+}
+
+.rangeText {
+ text-align: center;
+ margin-left: -1%;
+ margin-bottom: 30px;
+  font-size: 35px;
+  color: #fff;
+  font-weight: 700;
+}
+
+.questionlabel {
+  font-size: 1.6em;
+  font-weight: 500;
+  margin:20px 0 20px 0;
+
+}
+
+.center {
+  text-align: center;
+}
+
+.inputDiv {
+  width: 550px;
+  display:block;
+  margin: 50px auto;
+  color:#aaa;
+  position:relative;
+}
+
+
+/* BARRA Y BOTON DE DESLIZAMIENTO*/
+
+input[type='range'] {
+  display: inline-block;
+  width: 500px;
+  border-radius: 20px;
+}
+
+input[type='range']:focus {
+  outline: none;
+}
+
+input[type='range'],
+input[type='range']::-webkit-slider-runnable-track,
+input[type='range']::-webkit-slider-thumb {
+  -webkit-appearance: none;
+}
+
+input[type=range]::-webkit-slider-thumb {
+    height: 40px;
+    box-shadow: 1px 1px 10px #fff;
+    width: 40px;
+    border-radius: 50%;
+    background: #FFF;
+    margin-top: -9px;
+    vertical-align: middle;
+    border: 10px solid #02e0e8;
+    transition: 0.15s;
+}
+
+input[type=range][value='2']::-webkit-slider-thumb {
+    height: 40px;
+    box-shadow: 1px 1px 10px #fff;
+    width: 40px;
+    border-radius: 50%;
+    background: #FFF;
+    margin-top: -9px;
+    vertical-align: middle;
+    border: 10px solid #000;
+    transition: 0.15s;
+}
+
+input[type=range]:active::-webkit-slider-thumb {
+  width: 65px;
+  height: 65px;
+  margin-top: -25px;
+ background: radial-gradient(circle, black, white);
+  transition: 0.40s;
+}
+
+
+input[type=range]::-moz-range-thumb {
+    height: 40px;
+    box-shadow: 1px 1px 10px #fff;
+    width: 40px;
+    border-radius: 50%;
+    background: #FFF;
+    margin-top: -9px;
+    vertical-align: middle;
+    border: 10px solid #02e0e8;
+    transition: 0.50s;
+}
+
+input[type=range]:active::-moz-slider-thumb {
+  width: 70px;
+  height: 70px;
+  margin-top: -25px;
+  background: radial-gradient(circle, black, white);
+}
+
+input[type=range]::-ms-thumb {
+  background-color: #777;
+  width: 20px;
+  height: 20px;
+  border: 3px solid #333;
+  border-radius: 50%;
+}
+
+input[type=range][value='5']::-webkit-slider-runnable-track {
+  background-color: #000;
+}
+
+input[type=range]::-webkit-slider-runnable-track {
+  background-image:linear-gradient(90deg,#b9bfbe -10%,#02e0e8 500px);
+  box-shadow: 1px 1px 10px #000000;
+  background-color: #333;
+  background-repeat: no-repeat;
+  border-radius: 20px;
+  background-position:0% 0%;
+  height: 20px;
+}
+
+input[type=range]:focus::-webkit-slider-runnable-track {
+  outline: none;
+}
+
+input[type=range]::-moz-range-track {
+  background-image:linear-gradient(90deg,#b9bfbe -20%,#02e0e8 500px);
+  background-color: #333;
+  background-repeat: no-repeat;
+  height: 4px;
+}
+
+input[type=range]::-ms-track {
+  background-color: #777;
+  height: 20px;
+}
+
+input[type=range]::-ms-fill-lower {
+ background-image:linear-gradient(90deg,#b9bfbe -20%,#02e0e8 500px);
+}
+
+input[type=range]::-ms-fill-upper {
+  background-color: #333;
+} 
+
+input[type=range]:active::-ms-slider-thumb {
+ height: 40px;
+    box-shadow: 1px 1px 10px #fff;
+    width: 40px;
+    border-radius: 50%;
+    background: #FFF;
+    margin-top: -9px;
+    vertical-align: middle;
+    border: 10px solid #02e0e8;
+    transition: 0.15s;
+}

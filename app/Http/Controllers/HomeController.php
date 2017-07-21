@@ -88,4 +88,10 @@ class HomeController extends Controller
     {
         return view('adminlte::home');
     }
+
+    public function survey()
+    {
+        return view('pages.survey2');
+
+    }
 }
