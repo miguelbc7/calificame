@@ -4,9 +4,9 @@
     <!-- Logo -->
     <a href="{{ url('/home') }}" class="logo">
         <!-- mini logo for sidebar mini 50x50 pixels -->
-        <span class="logo-mini"><b>KWN</b></span>
+        <span class="logo-mini"><img  src="{{ asset('web/images/favicon-32.fw.png') }}"></span>
         <!-- logo for regular state and mobile devices -->
-        <span class="logo-lg"><b>Keweno</b> </span>
+        <span class="logo-lg"><img width="120px" height="20px" src="{{ asset('web/images/logo.png') }}"> </span>
     </a>
 
     <!-- Header Navbar -->

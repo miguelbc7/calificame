@@ -7,6 +7,8 @@
 	<title>Preguntas</title>
 	<link href="{{ asset('css/bootstrap.css') }}" rel="stylesheet">
 	<link rel="stylesheet" href="{{ asset('web/css/webflow.css') }}">
+	<link href="{{ asset('web/images/favicon-32.fw.png') }}" rel="shortcut icon" type="image/x-icon">
+	<link href="{{ asset('web/images/favicon-256.fw.png') }}" rel="apple-touch-icon">
 </head>
 
 <body>

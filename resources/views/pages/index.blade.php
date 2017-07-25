@@ -20,13 +20,13 @@
         }
     }
 ?>
-<!DOCTYPE html><!-- Last Published: Mon Jun 26 2017 11:32:10 GMT+0000 (UTC) --><html data-wf-domain="www.keweno.com" data-wf-page="58ff57253eae93580fa17c3f" data-wf-site="576bbb263b0f04c134edb9ab">
-<!-- Mirrored from www.keweno.com/ by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 27 Jun 2017 15:01:08 GMT -->
+<!DOCTYPE html><!-- Last Published: Mon Jun 26 2017 11:32:10 GMT+0000 (UTC) --><html data-wf-domain="www.calificame.com" data-wf-page="58ff57253eae93580fa17c3f" data-wf-site="576bbb263b0f04c134edb9ab">
+<!-- Mirrored from www.calificame.com/ by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 27 Jun 2017 15:01:08 GMT -->
 <head>
   <meta charset="utf-8">
-  <title>Keweno – Encuestas de Satisfacción para tu Restaurante</title>
-  <meta content="Keweno es un sistema para hacer encuestas de satisfacción fáciles para restaurantes. Pruébalo gratis durante 30 días y descubre la opinión de tus clientes." name="description">
-  <meta content="Keweno – Encuestas de Satisfacción para tu Restaurante" property="og:title"><meta content="Keweno es un sistema para hacer encuestas de satisfacción fáciles para restaurantes. Pruébalo gratis durante 30 días y descubre la opinión de tus clientes." property="og:description">
+  <title>Calificame – Encuestas de Satisfacción para tu Restaurante</title>
+  <meta content="Calificame es un sistema para hacer encuestas de satisfacción fáciles para restaurantes. Pruébalo gratis durante 30 días y descubre la opinión de tus clientes." name="description">
+  <meta content="Calificame – Encuestas de Satisfacción para tu Restaurante" property="og:title"><meta content="Calificame es un sistema para hacer encuestas de satisfacción fáciles para restaurantes. Pruébalo gratis durante 30 días y descubre la opinión de tus clientes." property="og:description">
   
   <meta content="summary" name="twitter:card">
   <meta content="width=device-width, initial-scale=1" name="viewport">
@@ -51,8 +51,8 @@
   <!--[if lt IE 9]><script src="https://cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv.min.js" type="text/javascript"></script><![endif]-->
   <script type="text/javascript">!function(o,c){var n=c.documentElement,t=" w-mod-";n.className+=t+"js",("ontouchstart"in o||o.DocumentTouch&&c instanceof DocumentTouch)&&(n.className+=t+"touch")}(window,document);
   </script>
-  <link href="{{ asset('web/images/favicon-32.png') }}" rel="shortcut icon" type="image/x-icon">
-  <link href="{{ asset('web/images/favicon-256.png') }}" rel="apple-touch-icon">
+  <link href="{{ asset('web/images/favicon-32.fw.png') }}" rel="shortcut icon" type="image/x-icon">
+  <link href="{{ asset('web/images/favicon-256.fw.png') }}" rel="apple-touch-icon">
   <script>
   (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
   (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
@@ -76,7 +76,7 @@ Webflow.push(function () {
 });
 </script>
 
-<!-- Hotjar Tracking Code for http://keweno.com -->
+<!-- Hotjar Tracking Code for http://calificame.com -->
 <script>
     (function(h,o,t,j,a,r){
         h.hj=h.hj||function(){(h.hj.q=h.hj.q||[]).push(arguments)};
@@ -92,9 +92,9 @@ Webflow.push(function () {
 <body class="body">
     <div class="signupbasic" data-ix="modal-interaction">
     <a class="close_link" data-ix="close-signup-basic" href="#">Cerrar</a>
-    <h2 class="modal_header">Prueba Keweno gratis</h2>
+    <h2 class="modal_header">Prueba Calificame gratis</h2>
     <div class="signupform__container w-form">
-      <form action="https://dashboard.keweno.com/users" data-name="Email Form" id="signup_basic_form" method="post" name="email-form">
+      <form action="https://dashboard.calificame.com/users" data-name="Email Form" id="signup_basic_form" method="post" name="email-form">
         <input autofocus="autofocus" class="signupform__field w-input" data-name="business[name]" id="business[name]-4" maxlength="256" name="business[name]" placeholder="Nombre de tu negocio" required="required" type="text">
         <input class="signupform__field w-input" data-name="user[email]" id="user[email]-4" maxlength="256" name="user[email]" placeholder="Tu e-mail" required="required" type="email">
         <input class="signupform__field w-input" data-name="user[password]" id="user[password]-4" maxlength="256" name="user[password]" placeholder="Una contraseña" required="required" type="password">
@@ -104,7 +104,7 @@ Webflow.push(function () {
         </div>
         <div class="signupform__buttoncontainer">
           <input class="big button w-button" data-wait="Por favor, espera" type="submit" value="Crear cuenta" wait="Por favor, espera">
-          <div class="modal_formterms">Al registrarte aceptas nuestros&nbsp;<a href="http://keweno.com/es/terms-and-conditions/" class="modal_formtems--link">terminos y condiciones</a>.</div>
+          <div class="modal_formterms">Al registrarte aceptas nuestros&nbsp;<a href="http://calificame.com/es/terms-and-conditions/" class="modal_formtems--link">terminos y condiciones</a>.</div>
         </div>
       </form>
         
@@ -119,9 +119,9 @@ Webflow.push(function () {
 
     <div class="signuppro" data-ix="modal-interaction">
     <a class="close_link" data-ix="close-signup-pro" href="#">Cerrar</a>
-    <h2 class="modal_header">Prueba Keweno gratis</h2>
+    <h2 class="modal_header">Prueba Calificame gratis</h2>
     <div class="signupform__container w-form">
-      <form action="https://dashboard.keweno.com/users" data-name="Email Form" id="signup_pro_form" method="post" name="email-form">
+      <form action="https://dashboard.calificame.com/users" data-name="Email Form" id="signup_pro_form" method="post" name="email-form">
         <input autofocus="autofocus" class="signupform__field w-input" data-name="business[name]" id="business[name]-4" maxlength="256" name="business[name]" placeholder="Nombre de tu negocio" required="required" type="text">
         <input class="signupform__field w-input" data-name="user[email]" id="user[email]-4" maxlength="256" name="user[email]" placeholder="Tu e-mail" required="required" type="email">
         <input class="signupform__field w-input" data-name="user[password]" id="user[password]-4" maxlength="256" name="user[password]" placeholder="Una contraseña" required="required" type="password">
@@ -131,7 +131,7 @@ Webflow.push(function () {
         </div>
         <div class="signupform__buttoncontainer">
           <input class="big button w-button" data-wait="Por favor, espera" type="submit" value="Crear cuenta" wait="Por favor, espera">
-          <div class="modal_formterms">Al registrarte aceptas nuestros&nbsp;<a href="http://keweno.com/es/terms-and-conditions/" class="modal_formtems--link">terminos y condiciones</a>.
+          <div class="modal_formterms">Al registrarte aceptas nuestros&nbsp;<a href="http://calificame.com/es/terms-and-conditions/" class="modal_formtems--link">terminos y condiciones</a>.
           </div>
         </div>
       </form>
@@ -173,10 +173,10 @@ Webflow.push(function () {
   <div class="nav--fixed w-nav" data-animation="default" data-collapse="medium" data-duration="400" data-ix="display-none">
     <div class="w-container">
       <a class="w-nav-brand" href="{{ URL('/') }}">
-        <img alt="Keweno" class="nav__logo" src="{{ asset('web/images/logo.png') }}" width="163" height="40">
+        <img alt="calificame" class="nav__logo" src="{{ asset('web/images/logo.png') }}" width="163" height="40">
       </a>
       <nav class="nav_menu w-clearfix w-nav-menu" role="navigation">
-        <a class="nav__link w-nav-link" href="#why-keweno">{{ Lang::get('message.menu1') }}</a>
+        <a class="nav__link w-nav-link" href="#why-calificame">{{ Lang::get('message.menu1') }}</a>
         <a class="nav__link w-nav-link" href="#how-it-works">{{ Lang::get('message.menu2') }}</a>
         <a class="nav__link w-nav-link" href="#plans">{{ Lang::get('message.menu3') }}</a>
         <a class="button nav__button w-button" href="#plans">{{ Lang::get('message.menu4') }}</a>
@@ -191,9 +191,9 @@ Webflow.push(function () {
   <div class="hero" data-ix="display-nav">
     <div class="nav w-nav" data-animation="default" data-collapse="medium" data-duration="400">
       <div class="w-container">
-        <a class="w-nav-brand" href="{{ URL('/') }}"><img alt="Keweno" class="nav__logo" src="{{ asset('web/images/logo.png') }}" width="163" height="40"></a>
+        <a class="w-nav-brand" href="{{ URL('/') }}"><img alt="calificame" class="nav__logo" src="{{ asset('web/images/logo.png') }}" width="163" height="40"></a>
         <nav class="nav_menu nav_menu_not_fixed w-nav-menu" role="navigation">
-          <a class="nav__link w-nav-link" href="#why-keweno">{{ Lang::get('message.menu1') }}</a>
+          <a class="nav__link w-nav-link" href="#why-calificame">{{ Lang::get('message.menu1') }}</a>
           <a class="nav__link w-nav-link" href="#how-it-works">{{ Lang::get('message.menu2') }}</a>
           <a class="nav__link w-nav-link" href="#plans">{{ Lang::get('message.menu3') }}</a>
           <a class="nav__link w-nav-link" href="{{ url('/logi') }}">{{ Lang::get('message.menu4') }}</a>
@@ -243,26 +243,26 @@ Webflow.push(function () {
   </div>
 
   <!-- Beneficios de Usar -->
-  <div class="section whykeweno" id="why-keweno">
+  <div class="section whycalificame" id="why-calificame">
     <div class="w-container">
-     <h2 class="section__header">{{ Lang::get('message.why') }} <img alt="Keweno" class="nav__logo" src="{{ asset('web/images/logo.png') }}" width="183" height="50"></h2> 
+     <h2 class="section__header">{{ Lang::get('message.why') }} <img alt="Calificame" class="nav__logo" src="{{ asset('web/images/logo.png') }}" width="183" height="50"></h2> 
       <div class="w-row">
         <div class="column w-col w-col-4">
-          <div class="whykeweno__imagecontainer">
+          <div class="whycalificame__imagecontainer">
             <img class="column__image" data-ix="appear" src="{{ asset('web/images/midelo.png') }}" title="¡Mídelo!">
           </div>
           <h3 class="column__header">{{ Lang::get('message.why1') }}</h3>
           <div class="paragraph">{{ Lang::get('message.whydes1') }}</div>
         </div>
         <div class="column w-col w-col-4">
-          <div class="whykeweno__imagecontainer">
+          <div class="whycalificame__imagecontainer">
             <img class="column__image" data-ix="appear-2" src="{{ asset('web/images/escuchalos.png') }}" title="¡Escúchalos!">
           </div>
           <h3 class="column__header">{{ Lang::get('message.why2') }}</h3>
           <div class="paragraph">{{ Lang::get('message.whydes2') }}</div>
         </div>
         <div class="column w-col w-col-4">
-          <div class="whykeweno__imagecontainer">
+          <div class="whycalificame__imagecontainer">
             <img class="column__image grow" data-ix="appear-3" src="{{ asset('web/images/mejoralo.png') }}" title="¡Mejóralo!">
           </div>
           <h3 class="column__header">{{ Lang::get('message.why3') }}</h3>
@@ -524,7 +524,7 @@ Webflow.push(function () {
           </div>
         </div>-->
 
-        <!--<div class="section whouseskeweno">
+        <!--<div class="section whousescalificame">
           <div class="w-container">
             <h2 class="section__header">{{ Lang::get('message.who') }}</h2>
             <p class="customers_subheading">{{ Lang::get('message.whoslogan') }}</p>
@@ -599,7 +599,7 @@ Webflow.push(function () {
                   <div class="w-slide">
                     <div class="press_container">
                       <blockquote class="press_quote">{{ Lang::get('message.press1') }}</blockquote>
-                      <a class="w-inline-block" href="#" id="http-www.abc.es-tecnologia-redes-20141102-abci-keweno-hosteleria-201410301745.html"><img class="press_logo" src="{{ asset('web/images/abc.png') }}"></a>
+                      <a class="w-inline-block" href="#" id="http-www.abc.es-tecnologia-redes-20141102-abci-calificame-hosteleria-201410301745.html"><img class="press_logo" src="{{ asset('web/images/abc.png') }}"></a>
                     </div>
                   </div>
                   <div class="w-slide">
@@ -613,7 +613,7 @@ Webflow.push(function () {
                   <div class="w-slide">
                     <div class="press_container">
                       <blockquote class="press_quote">{{ Lang::get('message.press3') }}</blockquote>
-                      <a class="w-inline-block" href="http://www.techfoodmag.com/keweno-valora-mi-restaurante-pero-cuentamelo-a-mi/http://www.techfoodmag.com/keweno-valora-mi-restaurante-pero-cuentamelo-a-mi/">
+                      <a class="w-inline-block" href="http://www.techfoodmag.com/calificame-valora-mi-restaurante-pero-cuentamelo-a-mi/http://www.techfoodmag.com/calificame-valora-mi-restaurante-pero-cuentamelo-a-mi/">
                         <img class="press_logo" src="{{ asset('web/images/techfood.png') }}">
                       </a>
                     </div>
@@ -621,7 +621,7 @@ Webflow.push(function () {
                   <div class="w-slide">
                     <div class="press_container">
                       <blockquote class="press_quote">{{ Lang::get('message.press4') }}</blockquote>
-                      <a class="w-inline-block" href="http://profesionalhoreca.com/keweno-el-sistema-de-encuestas-mas-facil-para-el-restaurante/">
+                      <a class="w-inline-block" href="http://profesionalhoreca.com/calificame-el-sistema-de-encuestas-mas-facil-para-el-restaurante/">
                         <img class="press_logo" src="{{ asset('web/images/horeca.png') }}">
                       </a>
                     </div>
@@ -629,7 +629,7 @@ Webflow.push(function () {
                   <div class="w-slide">
                     <div class="press_container">
                       <blockquote class="press_quote">{{ Lang::get('message.press5') }}</blockquote>
-                      <a class="w-inline-block" href="http://marketingastronomico.com/como-subir-las-ventas-en-un-restaurante-con-keweno/">
+                      <a class="w-inline-block" href="http://marketingastronomico.com/como-subir-las-ventas-en-un-restaurante-con-calificame/">
                         <img class="press_logo" src="{{ asset('web/images/mg.png') }}">
                       </a>
                     </div>
@@ -679,19 +679,19 @@ Webflow.push(function () {
           <div class="w-container">
             <div class="footer__column w-row">
               <div class="w-col w-col-9 w-col-small-6 w-col-tiny-6">
-                <img alt="Keweno" class="logo_footer" src="{{ asset('web/images/logo.png') }}" width="158">
+                <img alt="Calificame" class="logo_footer" src="{{ asset('web/images/logo.png') }}" width="158">
                 <div class="footer__address">2011-2017 © Emtrics S.L.</div>
                 <div class="footer__address">Leganitos 47, 9º (Arrabe Integra)<br>28013 Madrid<br> Spain</div>
               </div>
               <div class="w-col w-col-3 w-col-small-6 w-col-tiny-6">
                 <div class="footer_social">
-                  <a class="footer__sociallink w-inline-block" href="https://www.facebook.com/keweno/">
+                  <a class="footer__sociallink w-inline-block" href="https://www.facebook.com/calificame/">
                     <img alt="Facebook" class="footer__socialimage" src="{{ asset('web/images/facebook.png') }}" width="42">
                   </a>
-                  <a class="footer__sociallink w-inline-block" href="https://twitter.com/keweno">
+                  <a class="footer__sociallink w-inline-block" href="https://twitter.com/calificame">
                     <img alt="Twitter" class="footer__socialimage" src="{{ asset('web/images/twitter.png') }}" width="43">
                   </a>
-                  <a class="footer__sociallink w-inline-block" href="https://www.linkedin.com/company/keweno">
+                  <a class="footer__sociallink w-inline-block" href="https://www.linkedin.com/company/calificame">
                     <img alt="LinkedIn" class="footer__socialimage" src="{{ asset('web/images/linkedin.png') }}" width="42">
                   </a>
                 </div>
@@ -711,7 +711,7 @@ Webflow.push(function () {
       <div class="container">
         <div class="row">
           <div class="OurBlog">
-            <img alt="Keweno" class="nav__logo" src="{{ asset('web/images/logo.png') }}" width="250" height="60">
+            <img alt="Calificame" class="nav__logo" src="{{ asset('web/images/logo.png') }}" width="250" height="60">
             <p>Encuestas fáciles para tu restaurante.</p>
             <div class="post-blog-date">19 Julio 2017.</div>
           </div>
@@ -756,11 +756,11 @@ Webflow.push(function () {
     </div>
     <div class="footer-bottom-layout">
       <div class="socialMedia-footer"> 
-      <a class="footer__sociallink w-inline-block" href="https://www.facebook.com/keweno/">
+      <a class="footer__sociallink w-inline-block" href="https://www.facebook.com/calificame/">
       <img alt="Facebook" class="footer__socialimage" src="{{ asset('web/images/facebook.png') }}" width="42"></a> 
-      <a class="footer__sociallink w-inline-block" href="https://twitter.com/keweno">
+      <a class="footer__sociallink w-inline-block" href="https://twitter.com/calificame">
       <img alt="Twitter" class="footer__socialimage" src="{{ asset('web/images/twitter.png') }}" width="43"></a> 
-      <a class="footer__sociallink w-inline-block" href="https://www.linkedin.com/company/keweno">
+      <a class="footer__sociallink w-inline-block" href="https://www.linkedin.com/company/calificame">
       <img alt="LinkedIn" class="footer__socialimage" src="{{ asset('web/images/linkedin.png') }}" width="42"></a> 
       </div>
       <div class="copyright-tag">Copyright © 2017 Califícame. All Rights Reserved.</div>
@@ -776,5 +776,5 @@ Webflow.push(function () {
     olark.identify('7458-228-10-3338');</script>
     <!-- end olark code -->
   </body>
-  <!-- Mirrored from www.keweno.com/ by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 27 Jun 2017 15:01:54 GMT -->
+  <!-- Mirrored from www.calificame.com/ by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 27 Jun 2017 15:01:54 GMT -->
 </html>

@@ -10,7 +10,7 @@ use Illuminate\Routing\Route;
 use Illuminate\Support\Facades\Auth;
 use App\Surveys;
 use App\Questions;
-use App\Surveys_QuestionS;
+use App\Surveys_Questions;
 
 class Surveys_QuestionsController extends Controller
 {
@@ -79,7 +79,20 @@ class Surveys_QuestionsController extends Controller
                 'question_id' => 'required',
             ]);
 
+            $sq = Surveys_Questions::where('survey_id', '=', $request->survey_id)->count();
+
+            if($sq == 0)
+            {
+                $position = 1;
+            }
+            else
+            {
+                $sq2 = Surveys_Questions::orderBy('position', 'desc')->first();
+                $position = $sq2->position + 1;
+            }
+
             $surques = new Surveys_Questions;
+            $surques->position = $position;
             $surques->survey_id = $request->survey_id;
             $surques->question_id = $request->question_id;
             $surques->save();

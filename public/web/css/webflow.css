@@ -1563,8 +1563,8 @@ ol, ul {
 .hero {
     z-index:0;
     padding-top:16px;
-    background-image:-webkit-radial-gradient(circle farthest-corner at 50% 50%, rgba(216, 227, 242, 0), rgba(216, 227, 242, .45)), url("/web/images/fondonew.png");
-    background-image:radial-gradient(circle farthest-corner at 50% 50%, rgba(216, 227, 242, 0), rgba(216, 227, 242, .45)), url("/web/images/fondonew.png");
+    background-image:-webkit-radial-gradient(circle farthest-corner at 50% 50%, rgba(216, 227, 242, 0), rgba(216, 227, 242, .45)), url("assets/web/images/fondonew.png");
+    background-image:radial-gradient(circle farthest-corner at 50% 50%, rgba(216, 227, 242, 0), rgba(216, 227, 242, .45)), url("assets/web/images/fondonew.png");
     background-position:0 0, 0 0;
     background-size:auto;
 }
@@ -1632,7 +1632,7 @@ ol, ul {
     background-color:transparent
 }
 .nav.legal {
-    background-image:url("/web/images/fondonew.png");
+    background-image:url("assets/web/images/fondonew.png");
     background-position:0 0;
     background-size:150px
 }
@@ -1725,7 +1725,7 @@ ol, ul {
     margin-left:auto;
     padding:8px 16px;
     border-radius:5px;
-    background-image:url("/web/images/fondonew.png");
+    background-image:url("assets/web/images/fondonew.png");
     background-position:0 0;
     background-size:90px
 }
@@ -1835,7 +1835,7 @@ ol, ul {
     padding-bottom:20px;
     border-radius:5px 5px 0 0;
     background-color:#6290ca;
-    background-image:url("/web/images/fondonew.png");
+    background-image:url("assets/web/images/fondonew.png");
     background-position:0 0;
     background-size:150px;
     font-family:'Source Sans Pro', sans-serif;
@@ -1875,7 +1875,7 @@ ol, ul {
     background-size: auto;
 }
 .nav--fixed, .pricingcard__heading--basic {
-    background-image:url("/web/images/fondonew.png");
+    background-image:url("assets/web/images/fondonew.png");
     background-position:0 0;
     background-size:90px
 }
@@ -2701,7 +2701,7 @@ body {
 /* Section Facil de Usar Style Css */
 
 #how-it-works {
-    background-image:url("/web/images/fondosection.png");
+    background-image:url("assets/web/images/fondosection.png");
 }
 /* Section Facil de Usar Style Css */
 
