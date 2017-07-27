@@ -39,8 +39,15 @@
 				{!!Form::model($questions,['route'=>['questions.update',$questions],'method'=>'PUT', 'files' => true])!!}
 				<div class="form-group col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
 					<div class="row">
-						<div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
-							{!!Form::text('question',null,['class'=>'form-control','placeholder'=>'Ingrese la pregunta', 'style'=>'-webkit-border-radius: 8px;-moz-border-radius: 8px;border-radius: 8px;'])!!}
+						<div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 col-xl-6">
+							<div data-toggle="tooltip" title data-original-title="La pregunta debe ser de respuesta cerrada">
+								{!!Form::text('question',null,['class'=>'form-control','placeholder'=>'Ingrese la pregunta', 'style'=>'-webkit-border-radius: 8px;-moz-border-radius: 8px;border-radius: 8px;'])!!}
+							</div>
+						</div>
+						<div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 col-xl-6">
+							<div data-toggle="tooltip" title data-original-title="Directo: Si o No / Indirecto: Opciones">
+								{!!Form::select('type', ['1' => 'Directo', '2' => 'Indirecto'], null, ['class'=>'form-control', 'placeholder' => 'Seleccione un tipo', 'style'=>'-webkit-border-radius: 8px;-moz-border-radius: 8px;border-radius: 8px;'])!!}
+							</div>
 						</div>
 					</div>
 					</div>

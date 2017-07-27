@@ -154,43 +154,46 @@ class SurveysController extends Controller
 
     public function graphs($id)
     {
-        $answersdet = AnswersDetails::join('questions', 'answers_details.question_id', '=', 'questions.id')->join('surveys', 'answers_details.survey_id', '=', 'surveys.id')->select('answers_details.id AS id', 'answers_details.answer AS answer', 'answers_details.survey_id AS surid')->where('answers_details.survey_id', '=', $id)->get();
+        $answersdet = AnswersDetails::join('surveys', 'answers_details.survey_id', '=', 'surveys.id')->select('answers_details.id AS id', 'answers_details.answer AS answer', 'answers_details.survey_id AS surid')->where('answers_details.survey_id', '=', $id)->get();
 
-        $quest = AnswersDetails::join('questions', 'answers_details.question_id', '=', 'questions.id')->join('surveys', 'answers_details.survey_id', '=', 'surveys.id')->select('answers_details.id AS id', 'answers_details.answer AS answer', 'answers_details.survey_id AS surid')->where('answers_details.survey_id', '=', $id)->count();
+        $count = AnswersDetails::join('questions', 'answers_details.question_id', '=', 'questions.id')->join('surveys', 'answers_details.survey_id', '=', 'surveys.id')->select('answers_details.id AS id', 'answers_details.answer AS answer', 'answers_details.survey_id AS surid')->where('answers_details.survey_id', '=', $id)->count();
+
+        $pos = Surveys_Questions::join('questions', 'surveys_questions.question_id', '=', 'questions.id')->join('surveys', 'surveys_questions.survey_id', '=', 'surveys.id')->select('questions.id as id', 'surveys_questions.position AS pos')->where('surveys_questions.survey_id', '=', $id)->get();
+
+        $surveys = Surveys::find($id);
 
         $a1 = 0;
         $a2 = 0;
         $a3 = 0;
         $a4 = 0;
         $a5 = 0;
-        
+
+        $lava = new Lavacharts();
+
+        $table = $lava->DataTable();
+
+        $table->addStringColumn('Respuestas')
+              ->addNumberColumn('Porcentaje');
+
         foreach($answersdet as $a)
         {
-            $answer1 = AnswersDetails::where('survey_id','=', $a->surid)->where('answer', '=', 1)->count();
-            $answer2 = AnswersDetails::where('survey_id','=', $a->surid)->where('answer', '=', 2)->count();
-            $answer3 = AnswersDetails::where('survey_id','=', $a->surid)->where('answer', '=', 3)->count();
-            $answer4 = AnswersDetails::where('survey_id','=', $a->surid)->where('answer', '=', 4)->count();
-            $answer5 = AnswersDetails::where('survey_id','=', $a->surid)->where('answer', '=', 5)->count();
-
+            $answer1 = AnswersDetails::where('survey_id','=', $id)->where('answer', '=', 1)->count();
+            $answer2 = AnswersDetails::where('survey_id','=', $id)->where('answer', '=', 2)->count();
+            $answer3 = AnswersDetails::where('survey_id','=', $id)->where('answer', '=', 3)->count();
+            $answer4 = AnswersDetails::where('survey_id','=', $id)->where('answer', '=', 4)->count();
+            $answer5 = AnswersDetails::where('survey_id','=', $id)->where('answer', '=', 5)->count();
+            
             $a1 = $a1 + $answer1;
             $a2 = $a2 + $answer2;
             $a3 = $a3 + $answer3;
             $a4 = $a4 + $answer4;
             $a5 = $a5 + $answer5;
+
         }
+        return $a1;
+        $table->addRow(['Muy Mala', $a1])->addRow(['Mala', $a2])->addRow(['Regular', $a3])->addRow(['Buena', $a4])->addRow(['Muy Buena', $a5]);
 
-        $i = 0;
-
-        while($i <= $quest)
-        {
-            $lava = new Lavacharts; // See note below for Laravel
-            $reasons = $lava->DataTable();
-            
-            $reasons->addStringColumn('Respuestas')->addNumberColumn('Porcentaje')->addRow(['Muy Mala', $a1])->addRow(['Mala', $a2])->addRow(['Regular', $a3])->addRow(['Buena', $a4])->addRow(['Muy Buena', $a5]);
-
-            $lava->PieChart('Encuesta 1', $reasons, ['title'  => 'Encuesta 1', 'is3D' => true,'slices' => [['offset' => 0],['offset' => 0],['offset' => 0]]]);
-            $i++;
-        }
+        $lava->PieChart('Encuesta',$table);
 
         return view('data.surveys.graphs', compact('lava'));
     }

@@ -25,14 +25,13 @@
 <head>
   <meta charset="utf-8">
   <title>Calificame – Encuestas de Satisfacción para tu Restaurante</title>
-  <meta content="Calificame es un sistema para hacer encuestas de satisfacción fáciles para restaurantes. Pruébalo gratis durante 30 días y descubre la opinión de tus clientes." name="description">
-  <meta content="Calificame – Encuestas de Satisfacción para tu Restaurante" property="og:title"><meta content="Calificame es un sistema para hacer encuestas de satisfacción fáciles para restaurantes. Pruébalo gratis durante 30 días y descubre la opinión de tus clientes." property="og:description">
-  
+  <meta content="calificame es un sistema para hacer encuestas de satisfacción fáciles para restaurantes. Pruébalo gratis durante 30 días y descubre la opinión de tus clientes." name="description">
+  <meta content="calificame – Encuestas de Satisfacción para tu Restaurante" property="og:title"><meta content="calificame es un sistema para hacer encuestas de satisfacción fáciles para restaurantes. Pruébalo gratis durante 30 días y descubre la opinión de tus clientes." property="og:description">
   <meta content="summary" name="twitter:card">
   <meta content="width=device-width, initial-scale=1" name="viewport">
-  
-  <link href="{{ asset('web/css/webflow.css') }}" rel="stylesheet" type="text/css">
-   <!-- Latest compiled and minified CSS -->
+
+
+  <!-- Latest compiled and minified CSS -->
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
   <!-- jQuery library -->
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
@@ -51,8 +50,8 @@
   <!--[if lt IE 9]><script src="https://cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv.min.js" type="text/javascript"></script><![endif]-->
   <script type="text/javascript">!function(o,c){var n=c.documentElement,t=" w-mod-";n.className+=t+"js",("ontouchstart"in o||o.DocumentTouch&&c instanceof DocumentTouch)&&(n.className+=t+"touch")}(window,document);
   </script>
-  <link href="{{ asset('web/images/favicon-32.fw.png') }}" rel="shortcut icon" type="image/x-icon">
-  <link href="{{ asset('web/images/favicon-256.fw.png') }}" rel="apple-touch-icon">
+  <link href="{{ asset('web/images/favicon-32.png') }}" rel="shortcut icon" type="image/x-icon">
+  <link href="{{ asset('web/images/favicon-256.png') }}" rel="apple-touch-icon">
   <script>
   (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
   (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
@@ -61,7 +60,7 @@
 
   ga('create', 'UA-47841060-1', 'auto', {'allowLinker': true});
   ga('require', 'linker');
-  ga('linker:autoLink', ['dashboard.keweno.com', 'blog.keweno.com'] );
+  ga('linker:autoLink', ['dashboard.calificame.com', 'blog.calificame.com'] );
   ga('send', 'pageview');
 
   </script>
@@ -88,11 +87,10 @@ Webflow.push(function () {
     })(window,document,'//static.hotjar.com/c/hotjar-','.js?sv=');
 </script>
 </head>
-
 <body class="body">
-    <div class="signupbasic" data-ix="modal-interaction">
+  <div class="signupbasic" data-ix="modal-interaction">
     <a class="close_link" data-ix="close-signup-basic" href="#">Cerrar</a>
-    <h2 class="modal_header">Prueba Calificame gratis</h2>
+    <h2 class="modal_header">Prueba calificame gratis</h2>
     <div class="signupform__container w-form">
       <form action="https://dashboard.calificame.com/users" data-name="Email Form" id="signup_basic_form" method="post" name="email-form">
         <input autofocus="autofocus" class="signupform__field w-input" data-name="business[name]" id="business[name]-4" maxlength="256" name="business[name]" placeholder="Nombre de tu negocio" required="required" type="text">
@@ -117,9 +115,9 @@ Webflow.push(function () {
     </div>
   </div>
 
-    <div class="signuppro" data-ix="modal-interaction">
+  <div class="signuppro" data-ix="modal-interaction">
     <a class="close_link" data-ix="close-signup-pro" href="#">Cerrar</a>
-    <h2 class="modal_header">Prueba Calificame gratis</h2>
+    <h2 class="modal_header">Prueba calificame gratis</h2>
     <div class="signupform__container w-form">
       <form action="https://dashboard.calificame.com/users" data-name="Email Form" id="signup_pro_form" method="post" name="email-form">
         <input autofocus="autofocus" class="signupform__field w-input" data-name="business[name]" id="business[name]-4" maxlength="256" name="business[name]" placeholder="Nombre de tu negocio" required="required" type="text">
@@ -173,7 +171,7 @@ Webflow.push(function () {
   <div class="nav--fixed w-nav" data-animation="default" data-collapse="medium" data-duration="400" data-ix="display-none">
     <div class="w-container">
       <a class="w-nav-brand" href="{{ URL('/') }}">
-        <img alt="calificame" class="nav__logo" src="{{ asset('web/images/logo.png') }}" width="163" height="40">
+        <img alt="calificame" class="nav__logo" src="{{ asset('web/images/logo.png') }}" width="150" height="50">
       </a>
       <nav class="nav_menu w-clearfix w-nav-menu" role="navigation">
         <a class="nav__link w-nav-link" href="#why-calificame">{{ Lang::get('message.menu1') }}</a>
@@ -191,7 +189,7 @@ Webflow.push(function () {
   <div class="hero" data-ix="display-nav">
     <div class="nav w-nav" data-animation="default" data-collapse="medium" data-duration="400">
       <div class="w-container">
-        <a class="w-nav-brand" href="{{ URL('/') }}"><img alt="calificame" class="nav__logo" src="{{ asset('web/images/logo.png') }}" width="163" height="40"></a>
+        <a class="w-nav-brand" href="{{ URL('/') }}"><img alt="calificame" class="nav__logo" src="{{ asset('web/images/logo.png') }}" width="160" height="50"></a>
         <nav class="nav_menu nav_menu_not_fixed w-nav-menu" role="navigation">
           <a class="nav__link w-nav-link" href="#why-calificame">{{ Lang::get('message.menu1') }}</a>
           <a class="nav__link w-nav-link" href="#how-it-works">{{ Lang::get('message.menu2') }}</a>
@@ -245,7 +243,7 @@ Webflow.push(function () {
   <!-- Beneficios de Usar -->
   <div class="section whycalificame" id="why-calificame">
     <div class="w-container">
-     <h2 class="section__header">{{ Lang::get('message.why') }} <img alt="Calificame" class="nav__logo" src="{{ asset('web/images/logo.png') }}" width="183" height="50"></h2> 
+     <h2 class="section__header">{{ Lang::get('message.why') }} <img alt="calificame" class="nav__logo" src="{{ asset('web/images/logo.png') }}" width="183" height="50"></h2> 
       <div class="w-row">
         <div class="column w-col w-col-4">
           <div class="whycalificame__imagecontainer">
@@ -271,8 +269,7 @@ Webflow.push(function () {
       </div>
     </div>
   </div>
-
-        <!-- Beneficios de Usar -->
+  <!-- Beneficios de Usar -->
 
 <!--<div class="testimonial">
   <div class="testimonial__container w-container">
@@ -289,8 +286,7 @@ Webflow.push(function () {
   </div>
 </div>-->
 
-
-        <!-- Fácil de Usar -->
+    <!-- Fácil de Usar -->
     <div class="howitworks section" id="how-it-works">
       <div class="w-container"><h2 class="section__header">{{ Lang::get('message.how') }}</h2>
         <div class="w-row">
@@ -334,20 +330,21 @@ Webflow.push(function () {
           </div>
         </div>-->
 
-       <!-- Llamados de los Script -->
+
+<!-- Llamados de los Script -->
 <link rel="stylesheet" href="/web/js/jquery.flipster.min.css">
 <script src="/web/js/jquery.min.js"></script>
 <script src="/web/js/jquery.flipster.min.js"></script>
  <!-- Llamados de los Script -->
  <!-- Section Plan de Pagos con Carousel Nuevo / 24/7 -->
-        <div class="plans section" id="plans">
+ <!--   <div class="plans section" id="plans">
           <div class="container w-container">
             <h2 class="section__header">{{ Lang::get('message.planslogan') }}</h2>
             <p class="customers_subheading">{{ Lang::get('message.plansubslogan') }}</p>
             <div class="pricingcard__container" data-ix="close-contact">
               <div id="carousel" class="demo">
                 <ul class="flip-items">
-                    <li data-flip-title="Plan 24/7" id="demo1">
+                  <li data-flip-title="Plan 24/7" id="demo1">
                     <div class="pricingcard__card pricingcard__card--highlighted">
                       <div class="pricingcard__headercontainer">
                         <h3 class="pricingcard__heading">{{ Lang::get('message.plan2') }}</h3>
@@ -429,7 +426,7 @@ Webflow.push(function () {
         </div>
         <!-- Section Plan de Pagos con Carousel Nuevo / 24/7 -->
 
-              <!-- Section Plan de Pagos con Carousel Nuevo Script / 24/7 -->
+<!-- Section Plan de Pagos con Carousel Nuevo Script / 24/7 -->
 <script>
     var carousel = $("#carousel").flipster({
         style: 'carousel',
@@ -440,7 +437,7 @@ Webflow.push(function () {
 </script>
 <!-- Section Plan de Pagos con Carousel Nuevo Script / 24/7 -->   
 
-      <!-- Section Plan / 24/7 Desactivado
+      
         <div class="plans section" id="plans">
           <div class="container w-container">
             <h2 class="section__header">{{ Lang::get('message.planslogan') }}</h2>
@@ -464,7 +461,7 @@ Webflow.push(function () {
                 <a class="button w-button" data-ix="open-signup-pro" href="#">{{ Lang::get('message.planbutton1') }}</a>-->
               </div>
 
-              <!--<div class="pricingcard__card pricingcard__card--highlighted">
+              <div class="pricingcard__card pricingcard__card--highlighted">
                 <div class="pricingcard__headercontainer">
                   <h3 class="pricingcard__heading">{{ Lang::get('message.plan2') }}</h3>
                   <div class="pricingcard__maspopular">{{ Lang::get('message.subplan2') }}</div>
@@ -679,7 +676,7 @@ Webflow.push(function () {
           <div class="w-container">
             <div class="footer__column w-row">
               <div class="w-col w-col-9 w-col-small-6 w-col-tiny-6">
-                <img alt="Calificame" class="logo_footer" src="{{ asset('web/images/logo.png') }}" width="158">
+                <img alt="calificame" class="logo_footer" src="{{ asset('web/images/logo.png') }}" width="158">
                 <div class="footer__address">2011-2017 © Emtrics S.L.</div>
                 <div class="footer__address">Leganitos 47, 9º (Arrabe Integra)<br>28013 Madrid<br> Spain</div>
               </div>
@@ -711,7 +708,7 @@ Webflow.push(function () {
       <div class="container">
         <div class="row">
           <div class="OurBlog">
-            <img alt="Calificame" class="nav__logo" src="{{ asset('web/images/logo.png') }}" width="250" height="60">
+            <img alt="calificame" class="nav__logo" src="{{ asset('web/images/logo.png') }}" width="250" height="60">
             <p>Encuestas fáciles para tu restaurante.</p>
             <div class="post-blog-date">19 Julio 2017.</div>
           </div>

@@ -18,5 +18,5 @@ class Questions extends Model
      *
      * @var array
      */
-    protected $fillable = ['question'];
+    protected $fillable = ['question', 'type'];
 }

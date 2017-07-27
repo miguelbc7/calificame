@@ -43,6 +43,7 @@ class QuestionsController extends Controller
     {
         $this->validate($request, [
             'question' => 'required',
+            'type' => 'required',
         ]);
 
         $questions = new Questions;
@@ -86,6 +87,7 @@ class QuestionsController extends Controller
     {
         $this->validate($request, [
             'question' => 'required',
+            'type' => 'required',
         ]);
 
         $questions = Questions::find($id);
