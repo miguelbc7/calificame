@@ -36,7 +36,7 @@
 @endif
 
 <div class="col-md-12" style="margin-top:20px;margin-bottom:10px;">
-	<div class="col-md-3 noleftpadding">
+	<div class="col-md-1 noleftpadding">
 		<a href class="btn btn-block btn-default" data-toggle="tooltip" title data-original-title="Actualizar" style="font-size: 14px">
 			<i class="fa fa-refresh"></i>
 		</a>

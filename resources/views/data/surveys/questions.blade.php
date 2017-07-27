@@ -43,17 +43,23 @@
 				{!!Form::open(['route'=>'surveys_questions.store', 'method'=>'POST', 'files' => true])!!}
 				<div class="form-group col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
 					<div class="row">
-						<div class="col-xs-11 col-sm-11 col-md-11 col-lg-11">
-							{!!Form::text('question',null,['class'=>'form-control','placeholder'=>'Ingrese la pregunta', 'autofocus'=>'autofocus', 'style'=>'-webkit-border-radius: 8px;-moz-border-radius: 8px;border-radius: 8px;'])!!}
-							{!!Form::hidden('survey_id',$surveys->id)!!}
+						<div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 col-xl-6">
+							<div data-toggle="tooltip" title data-original-title="La pregunta debe ser de respuesta cerrada">
+								{!!Form::text('question',null,['class'=>'form-control','placeholder'=>'Ingrese la pregunta', 'autofocus'=>'autofocus', 'style'=>'-webkit-border-radius: 8px;-moz-border-radius: 8px;border-radius: 8px;'])!!}
+								{!!Form::hidden('survey_id',$surveys->id)!!}
+							</div>
+						</div>
+						<div class="col-xs-12 col-sm-12 col-md-5 col-lg-5 col-xl-5">
+							<div data-toggle="tooltip" title data-original-title="Directo: Si o No / Indirecto: Opciones">
+								{!!Form::select('type', ['1' => 'Directo', '2' => 'Indirecto'], null, ['class'=>'form-control', 'placeholder' => 'Seleccione un tipo', 'style'=>'-webkit-border-radius: 8px;-moz-border-radius: 8px;border-radius: 8px;'])!!}
+							</div>
 						</div>
 						<div class="pull-left">
 							{!!Form::submit('Agregar',['class'=>'btn btn-success btn3d', 'style'=>'-webkit-border-radius: 8px;-moz-border-radius: 8px;border-radius: 8px;'])!!}
-
-				{!!Form::close()!!}
 						</div>
 					</div>
 				</div>
+				{!!Form::close()!!}
 			
 			</div>
 
@@ -69,16 +75,17 @@
 				<div class="form-group col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
 					<div class="row">
 						<div class="col-xs-11 col-sm-11 col-md-11 col-lg-11">
-							{!!Form::select('question_id',$questions, null, ['class'=>'form-control','placeholder'=>'Seleccione la pregunta', 'style'=>'-webkit-border-radius: 8px;-moz-border-radius: 8px;border-radius: 8px;'])!!}
-							{!!Form::hidden('survey_id',$surveys->id)!!}
+							<div data-toggle="tooltip" title data-original-title="Preguntas previamente creadas">
+								{!!Form::select('question_id',$questions, null, ['class'=>'form-control','placeholder'=>'Seleccione la pregunta', 'style'=>'-webkit-border-radius: 8px;-moz-border-radius: 8px;border-radius: 8px;'])!!}
+								{!!Form::hidden('survey_id',$surveys->id)!!}
+							</div>
 						</div>
 						<div class="pull-left">
 							{!!Form::submit('Agregar',['class'=>'btn btn-success btn3d', 'style'=>'-webkit-border-radius: 8px;-moz-border-radius: 8px;border-radius: 8px;'])!!}
-
-				{!!Form::close()!!}
 						</div>
 					</div>
 				</div>
+				{!!Form::close()!!}
 			
 			</div>
 
@@ -112,7 +119,9 @@
 												{!!Form::open(['route'=>['surveys.destroy', $s], 'method'=>'DELETE'])!!}					
 												<div class="btn-group">
 													<a href="{{ route('surveys.edit', $s->id) }}" class="btn btn-default" type="edit"><i class="fa fa-edit"></i></a>
-														@if($s->position == 1)
+														@if($s->position == 1 && $count == 1)
+
+														@elseif($s->position == 1 && $count != 1)
 															<a href="{{ route('down', $s->id) }}" class="btn btn-info" type="down"><i class="fa fa-arrow-down"></i></a>
 															<a href="{{ route('fullDown', $s->id) }}" class="btn btn-info" type="fullDown"><i class="fa fa-download"></i></a>
 														@elseif($s->position == $last)

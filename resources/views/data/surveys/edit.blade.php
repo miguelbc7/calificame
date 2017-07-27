@@ -39,8 +39,10 @@
 				{!!Form::model($surveys,['route'=>['surveys.update',$surveys],'method'=>'PUT', 'files' => true])!!}
 				<div class="form-group col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
 					<div class="row">
-						<div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
-							{!!Form::text('name',null,['class'=>'form-control','placeholder'=>'Ingrese la pregunta', 'style'=>'-webkit-border-radius: 8px;-moz-border-radius: 8px;border-radius: 8px;'])!!}
+						<div class="col-xs-1 col-sm-1 col-md-6 col-lg-12 col-xl-12">
+							<div data-toggle="tooltip" title data-original-title="El nombre de la encuesta no tiene parametros especificos">
+								{!!Form::text('name',null,['class'=>'form-control','placeholder'=>'Ingrese la pregunta', 'style'=>'-webkit-border-radius: 8px;-moz-border-radius: 8px;border-radius: 8px;'])!!}
+							</div>
 						</div>
 					</div>
 					</div>

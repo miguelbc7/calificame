@@ -36,13 +36,13 @@
 @endif
 
 <div class="col-md-12" style="margin-top:20px;margin-bottom:10px;">
-	<div class="col-md-3 noleftpadding">
+	<div class="col-md-1 noleftpadding">
 		<a href class="btn btn-block btn-default" data-toggle="tooltip" title data-original-title="Actualizar" style="font-size: 14px">
 			<i class="fa fa-refresh"></i>
 		</a>
 	</div>
-	<div class="col-md-4 noleftpadding">
-		<a href="{{ route('surveys.create') }}" class="btn btn-success" type="button" style="width:100%;">Agregar Encuesta</a>
+	<div class="col-md-1 noleftpadding">
+		<a href="{{ route('surveys.create') }}" class="btn btn-success" data-toggle="tooltip" title data-original-title="Agregar Encuesta" type="button" style="width:100%;"><i class="fa fa-plus"></i></a>
 	</div>
 </div>
 

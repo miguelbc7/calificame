@@ -118,6 +118,8 @@ class SurveysController extends Controller
         $surquestions = Surveys_Questions::join('questions', 'surveys_questions.question_id', '=', 'questions.id')->select('surveys_questions.id AS id', 'questions.question AS question', 'surveys_questions.position AS position')->where('surveys_questions.survey_id', '=', $id)->orderBy('position', 'asc')->paginate(10);
         $questions = Questions::where('user_id', '=', Auth::id())->orderBy('question')->pluck('question', 'id');
         $last = Surveys_Questions::select('position')->orderBy('position', 'desc')->first();
+        $count = Surveys_Questions::join('questions', 'surveys_questions.question_id', '=', 'questions.id')->select('surveys_questions.id AS id', 'questions.question AS question', 'surveys_questions.position AS position')->where('surveys_questions.survey_id', '=', $id)->count();
+
         if(isset($last))
         {
             $last = $last->position;
@@ -127,13 +129,13 @@ class SurveysController extends Controller
             $last = 0;
         }
         
-        return view('data.surveys.questions', ['surveys'=>$surveys, 'surquestions'=>$surquestions, 'questions'=>$questions, 'last'=>$last]);
+        return view('data.surveys.questions', ['surveys'=>$surveys, 'surquestions'=>$surquestions, 'questions'=>$questions, 'last'=>$last, 'count'=>$count]);
     }
 
     public function survey($id)
     {
         $surveys = Surveys::find($id);
-        $surquestions = Surveys_Questions::join('questions', 'surveys_questions.question_id', '=', 'questions.id')->select('surveys_questions.id AS id', 'questions.id AS question_id', 'questions.question AS question', 'surveys_questions.position AS position')->where('surveys_questions.survey_id', '=', $id)->get();
+        $surquestions = Surveys_Questions::join('questions', 'surveys_questions.question_id', '=', 'questions.id')->select('surveys_questions.id AS id', 'questions.id AS question_id', 'questions.question AS question', 'surveys_questions.position AS position', 'questions.type AS type')->where('surveys_questions.survey_id', '=', $id)->get();
         return view('pages.survey', ['surveys'=>$surveys, 'surquestions'=>$surquestions]);
     }
 

@@ -18,29 +18,43 @@
 
 	<input type="hidden" name="question_id{{ $sq->position }}" value="{{ $sq->question_id }}">
 
-	<div class="radio{{ $sq->position }}">
-	  <label>
-	    <input type="radio" name="optionsRadios{{ $sq->position }}" id="optionsRadios{{ $sq->position }}1" value="1">
-	    Muy Malo
-	  </label>
-	  <label>
-	    <input type="radio" name="optionsRadios{{ $sq->position }}" id="optionsRadios{{ $sq->position }}2" value="2">
-	    Malo
-	  </label>
-	  <label>
-	    <input type="radio" name="optionsRadios{{ $sq->position }}" id="optionsRadios{{ $sq->position }}3" value="3">
-	    Regular
-	  </label>
-	  <label>
-	    <input type="radio" name="optionsRadios{{ $sq->position }}" id="optionsRadios{{ $sq->position }}4" value="4">
-	    Bueno
-	  </label>
-	  <label>
-	    <input type="radio" name="optionsRadios{{ $sq->position }}" id="optionsRadios{{ $sq->position }}5" value="5">
-	    Muy Bueno
-	  </label>
-	</div>
-	<br>
+	@if($sq->type == 1)
+		<div class="radio{{ $sq->position }}">
+			<label>
+		   		<input type="radio" name="optionsRadios{{ $sq->position }}" id="optionsRadios{{ $sq->position }}1" value="1">
+		    	Si
+		  	</label>
+		  	<label>
+		   		<input type="radio" name="optionsRadios{{ $sq->position }}" id="optionsRadios{{ $sq->position }}2" value="2">
+		    	No
+		  	</label>
+		</div>
+		<br>
+	@elseif($sq->type == 2)
+		<div class="radio{{ $sq->position }}">
+		 	<label>
+		   		<input type="radio" name="optionsRadios{{ $sq->position }}" id="optionsRadios{{ $sq->position }}1" value="3">
+				Muy Malo
+			</label>
+			<label>
+		 		<input type="radio" name="optionsRadios{{ $sq->position }}" id="optionsRadios{{ $sq->position }}2" value="4">
+				Malo
+			</label>
+			<label>
+				<input type="radio" name="optionsRadios{{ $sq->position }}" id="optionsRadios{{ $sq->position }}3" value="5">
+		 		Regular
+	  		</label>
+	  		<label>
+		    	<input type="radio" name="optionsRadios{{ $sq->position }}" id="optionsRadios{{ $sq->position }}4" value="6">
+		    	Bueno
+	  		</label>
+	  		<label>
+		    	<input type="radio" name="optionsRadios{{ $sq->position }}" id="optionsRadios{{ $sq->position }}5" value="7">
+		    	Muy Bueno
+		  	</label>
+		</div>
+		<br>
+	@endif
 @endforeach
 
 <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
