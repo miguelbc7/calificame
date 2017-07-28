@@ -77,14 +77,18 @@
 										@if($a->ansid == $s->id)
 											@if($s->surid == $a->survey)
 												@if($a->answer == 1)
-													<td>Muy malo</td>
+													<td>Si</td>
 												@elseif($a->answer == 2)
-													<td>Malo</td>
+													<td>No</td>
 												@elseif($a->answer == 3)
-													<td>Regular</td>
+													<td>Muy Malo</td>
 												@elseif($a->answer == 4)
-													<td>Bueno</td>
+													<td>Malo</td>
 												@elseif($a->answer == 5)
+													<td>Regular</td>
+												@elseif($a->answer == 6)
+													<td>Bueno</td>
+												@elseif($a->answer == 7)
 													<td>Muy Bueno</td>
 												@endif
 											@endif

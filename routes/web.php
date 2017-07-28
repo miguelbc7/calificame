@@ -38,6 +38,7 @@ Route::group(['middleware' => 'auth'], function () {
     //Please do not remove this if you want adminlte:route and adminlte:link commands to works correctly.
     #adminlte_routes
     Route::get('admin', array('as'=>'admin', 'uses'=>'HomeController@admin'));
+    Route::get('user/profile', array('as'=>'profile', 'uses'=>'HomeController@profile'));
 
     Route::resource('questions', 'QuestionsController');
     Route::resource('surveys', 'SurveysController');

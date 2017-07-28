@@ -81,6 +81,13 @@
                             </div>
                         </div>
 
+                        <div class="form-group has-feedback{{ $errors->has('avatar') ? ' has-error' : '' }}">
+                            <div class="col-md-12">
+                                {!!Form::label('Avatar')!!}
+                                {!!Form::file('avatar',null,['class'=>'form-control', 'style'=>'-webkit-border-radius: 8px;-moz-border-radius: 8px;border-radius: 8px;'])!!}
+                            </div>
+                        </div>
+
                         <div class="form-group has-feedback">
                             <div class="col-md-6">
                                 <input type="checkbox" name="terms"><a href="">Términos y Condiciones</a>

@@ -74,8 +74,28 @@ class HomeController extends Controller
         $user->fill($request->all());
         $user->password = bcrypt($request->password);
         $user->save();
-
         auth()->login($user);
+
+        $user = User::find(Auth::id());
+        
+        if(isset($request->avatar))
+        {
+            $destinationPath = 'img/Users/'.Auth::id().'/avatar/'; // upload path
+            $destinationPath2 = base_path() . '/public/img/Users/'.Auth::id().'/avatar/'; // upload path
+            $extension = 'jpg'; // getting image extension
+            $fileName = 'avatar.'.$extension; // renameing image
+            $request->file('avatar')->move($destinationPath2, $fileName); // uploading file to given path
+            $user->image = $destinationPath.'/'.$fileName;
+            $user->save();      
+        }
+        else
+        {
+            $destinationPath = 'img/Users/0/avatar/'; // upload path
+            $destinationPath2 = base_path() . '/public/img/Users/0/avatar/'; // upload path
+            $extension = 'jpg'; // getting image extension
+            $user->image = $destinationPath.'/avatar.png';
+            $user->save();
+        }
         return view('adminlte::home');
     }
 
