@@ -59,13 +59,13 @@
 					<table class="table table-bordered table-hover">
 						<thead>
 							<tr>
-								<th>Nombre</th>
-								<th>Email</th>
+								<th class="fondo">Nombre</th>
+								<th class="fondo">Email</th>
 								@foreach($questions as $q)
-									<th>{{ $q->name }}</th>
+									<th class="fondo">{{ $q->name }}</th>
+									<th class="fondo">Comentario</th>
 								@endforeach
-								<th>Comentario</th>
-								<th>Opciones</th>
+								<th class="fondo">Opciones</th>
 							</tr>
 						</thead>
 						@foreach($suranswers as $s)
@@ -78,23 +78,29 @@
 											@if($s->surid == $a->survey)
 												@if($a->answer == 1)
 													<td>Si</td>
+													<td>{!!$a->comment!!}</td>
 												@elseif($a->answer == 2)
 													<td>No</td>
+													<td>{!!$a->comment!!}</td>
 												@elseif($a->answer == 3)
 													<td>Muy Malo</td>
+													<td>{!!$a->comment!!}</td>
 												@elseif($a->answer == 4)
 													<td>Malo</td>
+													<td>{!!$a->comment!!}</td>
 												@elseif($a->answer == 5)
 													<td>Regular</td>
+													<td>{!!$a->comment!!}</td>
 												@elseif($a->answer == 6)
 													<td>Bueno</td>
+													<td>{!!$a->comment!!}</td>
 												@elseif($a->answer == 7)
 													<td>Muy Bueno</td>
+													<td>{!!$a->comment!!}</td>
 												@endif
 											@endif
 										@endif
 									@endforeach
-								<td>{!!$s->comment!!}</td>
 								<td align="center">
 									
 									<!--{!!Form::open(['route'=>['answers.destroy', $s], 'method'=>'DELETE'])!!}-->			

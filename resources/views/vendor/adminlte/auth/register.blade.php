@@ -29,8 +29,32 @@
 
                 <!--<register-form></register-form>-->
 
-                    <form class="form-horizontal" role="form" method="POST" action="{{ route('userstore') }}">
+                    <form class="form-horizontal" role="form" method="POST" action="{{ route('saveuser') }}">
                         {{ csrf_field() }}
+
+                        <div class="form-group has-feedback{{ $errors->has('type') ? ' has-error' : '' }}">
+                            <div class="col-md-12">
+                                {!!Form::select('type', ['1' => '1 mes', '2' => '3 meses', '3'=>'6 meses', '4'=>'12 meses'], null, ['class'=>'form-control', 'placeholder' => 'Seleccione un plan'])!!}
+                            </div>
+                        </div>
+
+                        <div class="form-group has-feedback{{ $errors->has('pay') ? ' has-error' : '' }}">
+                            <div class="col-md-12">
+                                {!!Form::select('pay', ['1' => 'Paypal', '2' => 'Otro metodo'], null, ['class'=>'form-control', 'placeholder' => 'Seleccione un metodo de pago'])!!}
+                            </div>
+                        </div>
+
+                        <div class="form-group has-feedback{{ $errors->has('branch') ? ' has-error' : '' }}">
+                            <div class="col-md-12">
+                                <input id="branch" type="number" class="form-control" placeholder="Numero de sucursales" name="branch" value="{{ old('branch') }}" required>
+
+                                @if ($errors->has('branch'))
+                                    <span class="help-block">
+                                        <strong>{{ $errors->first('branch') }}</strong>
+                                    </span>
+                                @endif
+                            </div>
+                        </div>
 
                         <div class="form-group has-feedback{{ $errors->has('company') ? ' has-error' : '' }}">
 
@@ -94,9 +118,7 @@
                             </div><!-- /.col-lg-6 -->
 
                             <div class="col-md-6">
-                                <button type="submit" class="btn btn-primary pull-right">
-                                    Registrar
-                                </button>
+                                <button type="submit" class="btn btn-primary btn-block btn-flat">Guardar</button>
                             </div>
 
                         </div>

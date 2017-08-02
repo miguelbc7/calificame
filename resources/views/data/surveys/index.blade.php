@@ -41,9 +41,12 @@
 			<i class="fa fa-refresh"></i>
 		</a>
 	</div>
+	@if($s < Auth::user()->branch)
 	<div class="col-md-1 noleftpadding">
 		<a href="{{ route('surveys.create') }}" class="btn btn-success" data-toggle="tooltip" title data-original-title="Agregar Encuesta" type="button" style="width:100%;"><i class="fa fa-plus"></i></a>
 	</div>
+	@endif
+
 </div>
 
 <section class="content">
@@ -61,15 +64,15 @@
 					<table class="table table-bordered table-hover">
 						<thead>
 							<tr>
-								<th>Nombre</th>
-								<th>Opciones</th>
+								<th class="fondo">Nombre</th>
+								<th class="fondo">Opciones</th>
 							</tr>
 						</thead>
 						@foreach($surveys as $s)
 						<tbody>
 							<tr>
 								<td>{!!$s->name!!}</td>
-								<td align="center">
+								<td style="text-align: right;">
 									
 									{!!Form::open(['route'=>['surveys.destroy', $s], 'method'=>'DELETE'])!!}					
 									<div class="btn-group">

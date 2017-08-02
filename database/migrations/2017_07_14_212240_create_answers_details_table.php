@@ -16,6 +16,7 @@ class CreateAnswersDetailsTable extends Migration
         Schema::create('answers_details', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('answer');
+            $table->string('comment')->nullable();
             $table->integer('answer_id')->unsigned();
             $table->foreign('answer_id')->references('id')->on('answers');
             $table->integer('survey_id')->unsigned();

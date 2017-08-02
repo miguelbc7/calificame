@@ -17,6 +17,9 @@ class UsersTableSeed extends Seeder
             'avatar' => 'img/users/0/avatar/avatar.jpg',
             'email' => 'admin@admin.com',
             'password' => bcrypt('12345'),
+            'type' => '1',
+            'status' => '1',
+            'branch' => '1',
         ]);
 
         DB::table('users')->insert([
@@ -25,6 +28,9 @@ class UsersTableSeed extends Seeder
             'avatar' => 'img/users/0/avatar/avatar.jpg',
             'email' => 'miguel.lm21@gmail.com',
             'password' => bcrypt('19956004'),
+            'type' => '2',
+            'status' => '1',
+            'branch' => '2',
         ]);
     }
 }

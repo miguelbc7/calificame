@@ -55,15 +55,12 @@
 		</div>
 		<br>
 	@endif
+	<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
+		{!!Form::label('Comentario:')!!}<br>
+		{!!Form::textarea('comment'.$sq->position,null,['class'=>'form-control'])!!}
+		<br>
+	</div>
 @endforeach
-
-<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
-	{!!Form::label('Dejanos un comentario:')!!}<br>
-</div>
-
-<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
-	{!!Form::textarea('comment',null,['class'=>'form-control'])!!}
-</div>
 
 <br>
 

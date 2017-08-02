@@ -25,7 +25,8 @@ class SurveysController extends Controller
     public function index()
     {
         $surveys = Surveys::where('user_id', '=', Auth::id())->paginate(10);
-        return view('data.surveys.index', ['surveys'=>$surveys]);
+        $s = Surveys::where('user_id', '=', Auth::id())->count();
+        return view('data.surveys.index', ['surveys'=>$surveys, 's'=>$s]);
     }
 
     /**
@@ -50,11 +51,21 @@ class SurveysController extends Controller
             'name' => 'required|max:255',
         ]);
 
-        $surveys = new Surveys;
-        $surveys->fill($request->all());
-        $surveys->user_id = Auth::id();
-        $surveys->save();
-        return redirect('/surveys/'.$surveys->id.'/questions')->with('message','Encuesta Registrada Correctamente');
+        $s = Surveys::where('user_id', '=', Auth::id())->count();
+
+        if($s < Auth::user()->branch)
+        {
+            $surveys = new Surveys;
+            $surveys->fill($request->all());
+            $surveys->user_id = Auth::id();
+            $surveys->save();
+            return redirect('/surveys/'.$surveys->id.'/questions')->with('message','Encuesta Registrada Correctamente');
+        }
+        elseif($s == Auth::user()->branch)
+        {
+            return redirect('/surveys')->with('error','Has superado el limite de encuestas que puedes crear');
+        }
+        
     }
 
     /**
@@ -147,9 +158,9 @@ class SurveysController extends Controller
 
     public function suranswers($id)
     {
-        $suranswers = Answers::join('surveys', 'answers.survey_id', '=', 'surveys.id')->select('answers.id AS id', 'answers.name AS name', 'answers.email AS email', 'answers.comment As comment', 'surveys.id as surid')->where('surveys.id', '=', $id)->paginate(10);
+        $suranswers = Answers::join('surveys', 'answers.survey_id', '=', 'surveys.id')->select('answers.id AS id', 'answers.name AS name', 'answers.email AS email', 'surveys.id as surid')->where('surveys.id', '=', $id)->paginate(10);
         $questions = Surveys_Questions::join('questions', 'surveys_questions.question_id', '=', 'questions.id')->join('surveys', 'surveys_questions.survey_id', '=', 'surveys.id')->select('questions.question AS name')->where('surveys.id', '=', $id)->get();
-        $answersdet =  AnswersDetails::join('questions', 'answers_details.question_id', '=', 'questions.id')->select('answers_details.id AS id', 'answers_details.answer AS answer', 'answers_details.survey_id AS survey', 'answers_details.answer_id AS ansid')->where('answers_details.survey_id', '=', $id)->get();
+        $answersdet =  AnswersDetails::join('questions', 'answers_details.question_id', '=', 'questions.id')->select('answers_details.id AS id', 'answers_details.answer AS answer', 'answers_details.survey_id AS survey', 'answers_details.answer_id AS ansid', 'answers_details.comment As comment')->where('answers_details.survey_id', '=', $id)->get();
 
         return view('data.surveys.answers', ['suranswers'=>$suranswers, 'questions'=>$questions, 'answersdet'=>$answersdet]);
     }

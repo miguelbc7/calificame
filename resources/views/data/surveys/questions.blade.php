@@ -104,17 +104,17 @@
 								<table class="table table-bordered table-hover">
 									<thead>
 										<tr>
-											<th>Posicion</th>
-											<th>Pregunta</th>
-											<th>Opciones</th>
+											<th class="fondo">Posicion</th>
+											<th class="fondo">Pregunta</th>
+											<th class="fondo">Opciones</th>
 										</tr>
 									</thead>
 									@foreach($surquestions as $s)
 									<tbody>
 										<tr>
-											<td>{!!$s->position!!}</td>
-											<td>{!!$s->question!!}</td>
-											<td align="center">
+											<td align="center">{!!$s->position!!}</td>
+											<td align="center">{!!$s->question!!}</td>
+											<td align="right">
 												
 												{!!Form::open(['route'=>['surveys.destroy', $s], 'method'=>'DELETE'])!!}					
 												<div class="btn-group">

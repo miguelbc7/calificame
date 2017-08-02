@@ -40,30 +40,19 @@
   <!-- Latest compiled and minified CSS -->
 
   <link href="{{ asset('web/css/webflow.css') }}" rel="stylesheet" type="text/css">
-  <script src="{{ asset('web/js/webfont.js') }}"></script>
-  <script type="text/javascript">WebFont.load({
+  <!--<script src="{{ asset('web/js/webfont.js') }}"></script>-->
+  <!--<script type="text/javascript">WebFont.load({
   google: {
     families: ["Open Sans:300,300italic,400,400italic,600,600italic,700,700italic,800,800italic","Source Sans Pro:300,300italic,regular,600"]
   }
   });
-  </script>
+  </script>-->
   <!--[if lt IE 9]><script src="https://cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv.min.js" type="text/javascript"></script><![endif]-->
   <script type="text/javascript">!function(o,c){var n=c.documentElement,t=" w-mod-";n.className+=t+"js",("ontouchstart"in o||o.DocumentTouch&&c instanceof DocumentTouch)&&(n.className+=t+"touch")}(window,document);
   </script>
   <link href="{{ asset('web/images/favicon-32.png') }}" rel="shortcut icon" type="image/x-icon">
   <link href="{{ asset('web/images/favicon-256.png') }}" rel="apple-touch-icon">
-  <script>
-  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-  })(window,document,'script','js/analytics.js','ga');
-
-  ga('create', 'UA-47841060-1', 'auto', {'allowLinker': true});
-  ga('require', 'linker');
-  ga('linker:autoLink', ['dashboard.calificame.com', 'blog.calificame.com'] );
-  ga('send', 'pageview');
-
-  </script>
+  
   <script type="text/javascript" src="{{ asset('web/js/jstz.min.js') }}"></script>
 
 <script type="text/javascript">
@@ -332,9 +321,9 @@ Webflow.push(function () {
 
 
 <!-- Llamados de los Script -->
-<link rel="stylesheet" href="/web/js/jquery.flipster.min.css">
-<script src="/web/js/jquery.min.js"></script>
-<script src="/web/js/jquery.flipster.min.js"></script>
+<link rel="stylesheet" href="{{ asset('web/js/jquery.flipster.min.css') }}">
+<script src="{{ asset('web/js/jquery.min.js') }}"></script>
+<script src="{{ asset('web/js/jquery.flipster.min.js') }}"></script>
  <!-- Llamados de los Script -->
  <!-- Section Plan de Pagos con Carousel Nuevo / 24/7 -->
  <!--   <div class="plans section" id="plans">
@@ -768,9 +757,9 @@ Webflow.push(function () {
     <script src="{{ asset('web/js/jquery.min.js') }}" type="text/javascript"></script>
     <script src="{{ asset('web/js/webflow.js') }}" type="text/javascript"></script>
     <!--[if lte IE 9]><script src="//cdnjs.cloudflare.com/ajax/libs/placeholders/3.0.2/placeholders.min.js"></script><![endif]--><!-- begin olark code -->
-    <script type="text/javascript" async> ;(function(o,l,a,r,k,y){if(o.olark)return; r="script";y=l.createElement(r);r=l.getElementsByTagName(r)[0]; y.async=1;y.src="//"+a;r.parentNode.insertBefore(y,r); y=o.olark=function(){k.s.push(arguments);k.t.push(+new Date)}; y.extend=function(i,j){y("extend",i,j)}; y.identify=function(i){y("identify",k.i=i)}; y.configure=function(i,j){y("configure",i,j);k.c[i]=j}; k=y._={s:[],t:[+new Date],c:{},l:a}; })(window,document,"static.olark.com/jsclient/loader.html");
+    <!--<script type="text/javascript" async> ;(function(o,l,a,r,k,y){if(o.olark)return; r="script";y=l.createElement(r);r=l.getElementsByTagName(r)[0]; y.async=1;y.src="//"+a;r.parentNode.insertBefore(y,r); y=o.olark=function(){k.s.push(arguments);k.t.push(+new Date)}; y.extend=function(i,j){y("extend",i,j)}; y.identify=function(i){y("identify",k.i=i)}; y.configure=function(i,j){y("configure",i,j);k.c[i]=j}; k=y._={s:[],t:[+new Date],c:{},l:a}; })(window,document,"static.olark.com/jsclient/loader.html");
     /* custom configuration goes here (www.olark.com/documentation) */
-    olark.identify('7458-228-10-3338');</script>
+    olark.identify('7458-228-10-3338');</script>-->
     <!-- end olark code -->
   </body>
   <!-- Mirrored from www.calificame.com/ by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 27 Jun 2017 15:01:54 GMT -->

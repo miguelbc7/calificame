@@ -33,15 +33,22 @@
         <ul class="sidebar-menu">
             <li class="header">Inicio</li>
             <!-- Optionally, you can add icons to the links -->
-            <li class="active"><a href="{{ url('admin') }}"><i class='fa fa-link'></i> <span>{{ trans('adminlte_lang::message.home') }}</span></a></li>
+            <li class="active"><a href="{{ url('admin') }}"><i class='fa fa-home'></i> <span>{{ trans('adminlte_lang::message.home') }}</span></a></li>
+            @if(Session::get('status') == 1)
             <li><a href="{{ url('/surveys/1/survey') }}"><i class="fa fa-link"></i> <span>Encuesta</span></a></li>
             <li class="treeview">
-                <a href="#"><i class='fa fa-link'></i> <span>Data</span> <i class="fa fa-angle-left pull-right"></i></a>
+                <a href="#"><i class='fa fa-cog'></i> <span>Data</span> <i class="fa fa-angle-left pull-right"></i></a>
                 <ul class="treeview-menu">
                     <li><a href="{{ url('surveys') }}">Encuestas</a></li>
                     <li><a href="{{ url('questions') }}">Preguntas</a></li>
                 </ul>
             </li>
+            @elseif(Session::get('status') == 2)
+            <li><a href="{{ url('renew') }}"><i class="fa fa-link"></i> <span>Renovar</span></a></li>
+            @endif
+            @if(Session::get('utype') == 1)
+            <li><a href="{{ url('users') }}"><i class="fa fa-user"></i> <span>Usuarios</span></a></li>
+            @endif
         </ul><!-- /.sidebar-menu -->
     </section>
     <!-- /.sidebar -->

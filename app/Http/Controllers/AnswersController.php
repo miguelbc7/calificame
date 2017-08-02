@@ -68,10 +68,12 @@ class AnswersController extends Controller
         {
             $this->validate($request, [
                 'optionsRadios'.$sq->position => 'required',
+                'comment'.$sq->position => 'required',
             ]);
 
             $answerdetail = new AnswersDetails;
             $answerdetail->answer = $request->input('optionsRadios'.$sq->position);
+            $answerdetail->comment = $request->input('comment'.$sq->position);
             $answerdetail->answer_id = $answer->id;
             $answerdetail->survey_id = $answer->survey_id;
             $answerdetail->question_id = $request->question_id.$sq->position;

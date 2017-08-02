@@ -1,11 +1,11 @@
 @extends('adminlte::layouts.app')
 
 @section('htmlheader_title')
-	Preguntas
+	Usuarios
 @endsection
 
 @section('contentheader_title')
-    Preguntas
+    Usuarios
 @endsection
 
 @section('main-content')
@@ -42,7 +42,7 @@
 		</a>
 	</div>
 	<div class="col-md-1 noleftpadding">
-		<a href="{{ route('questions.create') }}" class="btn btn-success" data-toggle="tooltip" title data-original-title="Agregar Pregunta" type="button" style="width:100%;"><i class="fa fa-plus"></i></a>
+		<a href="{{ route('surveys.create') }}" class="btn btn-success" data-toggle="tooltip" title data-original-title="Agregar Encuesta" type="button" style="width:100%;"><i class="fa fa-plus"></i></a>
 	</div>
 </div>
 
@@ -53,7 +53,7 @@
 			<div class="box">
 				<div class="box-header with-border">
 					<div class="col-md-9">
-						<h3 class="box-title">Lista de Preguntas</h3>
+						<h3 class="box-title">Lista de Usuarios</h3>
 					</div>
 				</div>
 				<div id="tbl-main" class="box-body">
@@ -61,31 +61,47 @@
 					<table class="table table-bordered table-hover">
 						<thead>
 							<tr>
-								<th class="fondo">Preguntas</th>
-								<th style="text-align: center;" class="fondo">Opciones</th>
+								<th>Compañia</th>
+								<th>Email</th>
+								<th>Estatus</th>
+								<th>Fecha de pago</th>
+								<th>Fecha de vencimiento</th>
+								<th>Opciones</th>
 							</tr>
 						</thead>
-						@foreach($questions as $q)
+						@foreach($users as $u)
 						<tbody>
 							<tr>
-								<td>{!!$q->question!!}</td>
-								<td align="right">
+								<td>{!!$u->company!!}</td>
+								<td>{!!$u->email!!}</td>
+								@if($u->status == 1)
+									<td>Activo</td>
+								@elseif($u->status == 2)
+									<td>Inactivo</td>
+								@endif		
+								<td>{!!$u->datein!!}</td>
+								<td>{!!$u->dateout!!}</td>
+								<td align="center">
 									
-									{!!Form::open(['route'=>['questions.destroy', $q], 'method'=>'DELETE'])!!}					
+									<!--{!!Form::open(['route'=>['users.destroy', $u], 'method'=>'DELETE'])!!}					
 									<div class="btn-group">
-										<a href="{{ route('questions.edit', $q->id) }}" class="btn btn-default" data-toggle="tooltip" title data-original-title="Editar" type="edit"><i class="fa fa-edit"></i></a>
+										<a href="{{ route('users.edit', $u->id) }}" class="btn btn-default" data-toggle="tooltip" data-original-title="Editar" type="edit"><i class="fa fa-edit"></i></a>
 										
-										<button class="btn btn-danger" data-toggle="tooltip" title data-original-title="Eliminar" type="submit">
+										<button class="btn btn-danger" data-toggle="tooltip" data-original-title="Eliminar" type="submit">
     									<i class="fa fa-remove"></i> </button>
 									</div>
-									{!!Form::close()!!}
-									
+									{!!Form::close()!!}-->
+									@if($u->status == 1)
+
+									@elseif($u->status = 2)
+									<a href="{{ route('uservalidate', $u->id) }}" class="btn btn-default" data-toggle="tooltip" data-original-title="Activar Usuario" type="edit"><i class="fa fa-play"></i></a>
+									@endif
 								</td>
 							</tr>
 						</tbody>
 						@endforeach
 					</table>
-					{!!$questions->render()!!}
+					{!!$users->render()!!}
 					</div>
 				</div>
 				<div class="box-footer clearfix">
