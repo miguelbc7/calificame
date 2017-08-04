@@ -208,9 +208,9 @@ return [
         Milon\Barcode\BarcodeServiceProvider::class,
 
         /*
-        * Khill Lavacharts Provider
+        * ConsoleTV Charts PRovider
         */
-        Khill\Lavacharts\Laravel\LavachartsServiceProvider::class,
+        ConsoleTVs\Charts\ChartsServiceProvider::class,
 
     ],
 
@@ -294,9 +294,9 @@ return [
         'DNS2D' => Milon\Barcode\Facades\DNS2DFacade::class,
 
         /*
-        * Khill Lavacharts Alias
+        * ConsoleTV Charts Alias
         */
-        Khill\Lavacharts\Laravel\LavachartsFacade::class,
+        'Charts' => ConsoleTVs\Charts\Facades\Charts::class,
     ],
 
 ];

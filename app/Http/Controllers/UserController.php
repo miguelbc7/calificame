@@ -154,27 +154,29 @@ class UserController extends Controller
     {
         $this->validate($request, [
             'type' => 'required|max:255',
+            'branch' => 'required',
         ]);
 
         if($request->type == 1)
         {
-            $total = 400 * Auth::user()->branch;
+            $total = 400 * $request->branch;
         }
         elseif($request->type == 2)
         {
-            $total = 1100 * Auth::user()->branch;
+            $total = 1100 * $request->branch;
         }
         elseif($request->type == 3)
         {
-            $total = 2000 * Auth::user()->branch;
+            $total = 2000 * $request->branch;
         }
         elseif($request->type == 4)
         {
-            $total = 4000 * Auth::user()->branch;
+            $total = 4000 * $request->branch;
         }
 
         Session::put('type', $request->type);
         Session::put('amount', $total);
+        Session::put('brnach', $request->branch);
 
         session_start();
         $payer = PayPal::Payer();
@@ -254,6 +256,7 @@ class UserController extends Controller
         $payment->user_id = Auth::id();
         $payment->save();
         $user->status = 1;
+        $user->branch = Session::get('branch');
         $user->save();
 
         // Clear the shopping cart, write to database, send notifications, etc.

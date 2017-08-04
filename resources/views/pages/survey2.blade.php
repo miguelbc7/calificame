@@ -7,7 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
     <title>Encuensta</title>
     <link href="{{ asset('css/bootstrap.css') }}" rel="stylesheet">
-    <link rel="stylesheet" href="{{ asset('web/css/webflow.css') }}">
+    <link rel="stylesheet" href="{{ asset('web/css/survey.css') }}">
     <link href="{{ asset('web/images/favicon-32.fw.png') }}" rel="shortcut icon" type="image/x-icon">
     <link href="{{ asset('web/images/favicon-256.fw.png') }}" rel="apple-touch-icon">
 </head>

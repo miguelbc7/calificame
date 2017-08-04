@@ -18,6 +18,11 @@
 						{!!Form::select('type', [''=>'Seleccione un plan', '1' => '1 mes', '2' => '3 meses', '3'=>'6 meses', '4'=>'12 meses'], null, ['class'=>'form-control', 'placeholder' => 'Seleccione un plan', 'style'=>'-webkit-border-radius: 8px;-moz-border-radius: 8px;border-radius: 8px;'])!!}
 					</div>
 				</div>
+                <div class="col-md-12">
+                	<div data-toggle="tooltip" title data-original-title="Cantidad de sucursales">
+                        <input id="branch" type="number" class="form-control" placeholder="Numero de sucursales" name="branch" value="{{ old('branch') }}" required>
+                    </div>
+                </div>
 			</div>
 		</div>
 		<div class="pull-right">

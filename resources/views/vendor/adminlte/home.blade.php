@@ -10,7 +10,7 @@
 	<!-- Panel Administrativo LTE ADMIN -->
 	<div class="row col-md-12" id="Links">
 	<h2>Panel Administrativo</h2>
-	<img alt="calificame" class="nav__logo" src="{{ asset('web/images/logo.png') }}" width="220" height="50">
+	<img alt="calificame" class="nav__logo" src="{{ asset('web/images/logo.png') }}" width="220" height="40">
 	</div>
 	<br><br>
 	<div class="wrap">
