@@ -44,36 +44,35 @@ class AnswersController extends Controller
      */
     public function store(Request $request)
     {
-        $this->validate($request, [
-            'name' => 'required|max:255',
-            'email' => 'required|max:255|email',
-        ]);
-
         $surveys = Surveys::find($request->survey_id);
-        $questions = Surveys_Questions::join('questions', 'surveys_questions.question_id', '=', 'questions.id')->where('surveys_questions.survey_id','=',$request->survey_id)->count();
-
         $surquestions = Surveys_Questions::join('questions', 'surveys_questions.question_id', '=', 'questions.id')->select('surveys_questions.id AS id', 'questions.question AS question', 'surveys_questions.position AS position')->where('surveys_questions.survey_id', '=', $request->survey_id)->get();
 
         $answer = new Answers;
-        $answer->name = $request->name;
-        $answer->email = $request->email;
-        if(isset($request->comment))
+        if ($request->name != null)
         {
-            $answer->comment = $request->comment;
+            $answer->name = $request->name;
         }
+        if($request->email != null)
+        {
+            $answer->email = $request->email;
+        }
+        $answer->date = date('Y-m-d');
         $answer->survey_id = $request->survey_id;
         $answer->save();
 
         foreach($surquestions as $sq)
         {
             $this->validate($request, [
-                'optionsRadios'.$sq->position => 'required',
-                'comment'.$sq->position => 'required',
+                'option'.$sq->position => 'required',
             ]);
 
             $answerdetail = new AnswersDetails;
-            $answerdetail->answer = $request->input('optionsRadios'.$sq->position);
-            $answerdetail->comment = $request->input('comment'.$sq->position);
+            $answerdetail->answer = $request->input('option'.$sq->position);
+            if ('comment'.$sq->position != null)
+            {
+                $answerdetail->comment = $request->input('comment'.$sq->position);
+            }
+            $answerdetail->date = date('Y-m-d');
             $answerdetail->answer_id = $answer->id;
             $answerdetail->survey_id = $answer->survey_id;
             $answerdetail->question_id = $request->question_id.$sq->position;

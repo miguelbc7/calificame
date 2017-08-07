@@ -84,7 +84,7 @@
 
 										<a href="{{ route('suranswers', $s->id) }}" class="btn btn-info" data-toggle="tooltip" data-original-title="Respuestas de los Clientes" type="suranswers"><i class="fa fa-address-card-o"></i></a>
 
-										<a href="{{ route('graphs', $s->id) }}" class="btn btn-warning" data-toggle="tooltip" data-original-title="Estadisticas de la Encuesta" type="fbshare"><i class="fa fa-pie-chart"></i></a>
+										<a href="{{ route('pregraphs', $s->id) }}" class="btn btn-warning" data-toggle="tooltip" data-original-title="Estadisticas de la Encuesta" type="fbshare"><i class="fa fa-pie-chart"></i></a>
 										
 										<button class="btn btn-danger" data-toggle="tooltip" data-original-title="Eliminar" type="submit">
     									<i class="fa fa-remove"></i> </button>

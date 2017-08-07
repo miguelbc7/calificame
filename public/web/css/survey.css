@@ -9,6 +9,8 @@ body {
 }
 body label {
   line-height: 40px;
+  margin-bottom: 20px;
+  font-size: 0.9em;
 
 }
 
@@ -22,8 +24,8 @@ body label {
   100% {
     height: 200px;
     width: 200px;
-    margin-left: -80px;
-    margin-top: -80px;
+    margin-left: -85px;
+    margin-top: -85px;
     opacity: 0;
   }
 }
@@ -37,6 +39,10 @@ body label {
   overflow-y: show;
 }
 
+.MarginDirecto {
+  margin-left: -15px;
+}
+
 
 .center {
     margin:0 auto;
@@ -48,7 +54,7 @@ body label {
 }
 
 .thumbnail {
-    width: 900px;  
+    width: 700px;  
     height: auto;
     box-shadow:4px 2px 22px #080000;
     border-radius: 10px;
@@ -58,16 +64,19 @@ body label {
 .pregunta {
     color: #028ee4;
     font-family:Palatino Linotype;
+    font-size: 1.3em;
 }
 
 .posiinput {
   margin-top: 12px;
   margin-left: 10px;
+
 }
 
 .posibtn {
-  margin-top: 7px;
-  margin-left: 10px;
+  margin-top: 50px;
+  width: 600px;
+  margin-left: 60px;
 }
 
 .titulopreguntas {
@@ -109,7 +118,7 @@ body label {
 
 .hr {
     border: 1px solid #ccc;
-    width: 90%;
+    width: 70%;
     padding-left: 80px;
 }
 
@@ -124,27 +133,30 @@ body label {
   outline: none;
   color:#000;
   position:relative;
-  width: 200px;
+  width: 270px;
   max-width: 600px;
-  height: 80px;
+  height: 40px;
   border: 3px solid #cccccc;
   padding: 5px;
   font-family: Tahoma, sans-serif;
   background-position: bottom right;
   background-repeat: no-repeat;
   border-radius: 5px;
+  margin-top: 25px;
   transition-duration: 1.7s;
   resize: none;
+  margin: 0 auto;
+  text-indent: 30px;
 }
 
 textarea:focus{
 
 font-size: 1.0em;
 color: #000;
-width: 250px;
-height: 160px;
+width: 270px;
+height: 80px;
 transition-duration: 1.2s;
-text-indent: 25px;
+text-indent: 30px;
 }
 
 /*============================================================
@@ -162,8 +174,8 @@ text-indent: 25px;
   right: 0;
   bottom: 0;
   left: 0;
-  height: 40px;
-  width: 40px;
+  height: 30px;
+  width: 30px;
   transition: all 0.15s ease-out 0s;
   background: #788282;
   border: none;
@@ -188,9 +200,11 @@ text-indent: 25px;
   position: absolute;
   content: '✔';
   display: inline-block;
-  font-size: 26.66667px;
+  font-size: 16.66667px;
   text-align: center;
   line-height: 40px;
+  margin-left: -5px;
+  margin-top: -2px;
 }
 .option-input:checked::after {
   -webkit-animation: click-wave 0.65s;
@@ -237,159 +251,6 @@ text-indent: 25px;
 /*============================================================
   Para Dispositivos Maximo 993px a 1200px
 ==============================================================*/
-/*@media screen and  (min-width: 1201px) {
-
-  body label {
-  line-height: 40px;
-  display: inline-block;
-  font-size: 1.3em;
-  margin-top: -25px;
-}
-
-nav {
-  width: 100%;
-}
-
-.thumbnail {
-  width:1120px;  
-  height: auto;
-  box-shadow:4px 2px 22px #080000;
-  border-radius: 10px;
-  margin-top: 90px;
-}
-
-.imgnav {
-    width: 370px;
-    margin-left: 20px;
-  }
-
-  .imglogo {
-  width: 300px;
-  height: 280px;
-}
-
-.hr {
-    border: 1px solid #ccc;
-    width: 90%;
-    padding-left: 80px;
-}
-
-.posibtn {
-  margin-top: 7px;
-  margin-left: 10px;
-}*/
-
-/*============================================================
------------------------iNPUT TEXTTAREA------------------------
-==============================================================*/
-
-/*
-.textarea {
-  display:block;
-  outline: none;
-  color:#000;
-  position:relative;
-  width: 300px;
-  max-width: 600px;
-  height: 80px;
-  border: 3px solid #cccccc;
-  padding: 5px;
-  font-family: Tahoma, sans-serif;
-  background-position: bottom right;
-  background-repeat: no-repeat;
-  border-radius: 5px;
-  transition-duration: 1.7s;
-  resize: none;
-}
-
-textarea:focus{
-
-font-size: 1.4em;
-color: #000;
-width: 300px;
-height: 160px;
-transition-duration: 1.2s;
-text-indent: 25px;
-}*/
-
-/*============================================================
---------------------------SELECTOR----------------------------
-==============================================================*/
-
-/*.option-input {
-  -webkit-appearance: none;
-  -moz-appearance: none;
-  -ms-appearance: none;
-  -o-appearance: none;
-  appearance: none;
-  position: relative;
-  top: 33.33333px;
-  right: 0;
-  bottom: 0;
-  left: 0;
-  height: 70px;
-  width: 70px;
-  transition: all 0.15s ease-out 0s;
-  background: #788282;
-  border: none;
-  color: #fff;
-  cursor: pointer;
-  display: inline-block;
-  margin-left: -50px;
-  margin-right: 0.5rem;
-  outline: none;
-  position: relative;
-  z-index: 1000;
-}
-.option-input:hover {
-  background: #9faab7;
-
-}
-.option-input:checked {
-  background: #40e0d0;
-}
-.option-input:checked::before {
-  height: 40px;
-  width: 40px;
-  position: absolute;
-  content: '✔';
-  display: inline-block;
-  font-size: 36.66667px;
-  text-align: center;
-  line-height: 40px;
-  margin-left: 15px;
-  margin-top: 13px;
-}
-.option-input:checked::after {
-  -webkit-animation: click-wave 0.65s;
-  -moz-animation: click-wave 0.65s;
-  animation: click-wave 0.65s;
-  background: #40e0d0;
-  content: '';
-  display: block;
-  position: relative;
-  z-index: 100;
-}
-.option-input.radio {
-  border-radius: 50%;
-  outline: none !important;
-  margin-left: 40px;
-}
-.option-input.radio::after {
-  border-radius: 50%;
-}
-
-footer {
-  background-color: #222;
-  width: 100%;
-}
-
-
-}*/
-
-/*============================================================
-  Para Dispositivos Maximo 993px a 1200px
-==============================================================*/
 @media (min-width: 993px) and (max-width: 1199px) {
 
   body label {
@@ -420,12 +281,13 @@ nav {
 }
 
 .posibtn {
-  margin-top: 7px;
-  margin-left: 10px;
-}
+    margin-top: 50px;
+    width: 600px;
+    margin-left: 10px;
+  }
 
 /*============================================================
------------------------iNPUT TEXTTAREA------------------------
+-----------------------iNPUT TEXTAREA------------------------
 ==============================================================*/
 
 
@@ -436,15 +298,17 @@ nav {
   position:relative;
   width: 250px;
   max-width: 600px;
-  height: 80px;
+  height: 40px;
   border: 3px solid #cccccc;
   padding: 5px;
+  margin: 0 auto;
   font-family: Tahoma, sans-serif;
   background-position: bottom right;
   background-repeat: no-repeat;
   border-radius: 5px;
   transition-duration: 1.7s;
   resize: none;
+  text-indent: 0px;
 }
 
 textarea:focus{
@@ -452,7 +316,7 @@ textarea:focus{
 font-size: 1.0em;
 color: #000;
 width: 250px;
-height: 160px;
+height: 80px;
 transition-duration: 1.2s;
 text-indent: 25px;
 }
@@ -472,8 +336,8 @@ text-indent: 25px;
   right: 0;
   bottom: 0;
   left: 0;
-  height: 40px;
-  width: 40px;
+  height: 30px;
+  width: 30px;
   transition: all 0.15s ease-out 0s;
   background: #788282;
   border: none;
@@ -499,9 +363,10 @@ text-indent: 25px;
   position: absolute;
   content: '✔';
   display: inline-block;
-  font-size: 26.66667px;
+  font-size: 16.66667px;
   text-align: center;
   line-height: 40px;
+  margin-top: -4px;
 }
 .option-input:checked::after {
   -webkit-animation: click-wave 0.65s;
@@ -550,10 +415,6 @@ nav {
     padding-left: 80px;
 }
 
-.posibtn {
-  margin-top: 7px;
-  margin-left: 10px;
-}
 
 .option-input {
   -webkit-appearance: none;
@@ -582,7 +443,7 @@ nav {
 }
 
 .thumbnail {
-  width:720px;  
+  width:620px;  
   height: auto;
   box-shadow:4px 2px 22px #080000;
   border-radius: 10px;
@@ -593,6 +454,12 @@ nav {
   width: 240px;
   margin-left: 20px;
 }
+
+.posibtn {
+    margin-top: 50px;
+    width: 530px;
+    margin-left: 60px;
+  }
 
 .imglogo {
   width: 190px;
@@ -611,26 +478,28 @@ nav {
   outline: none;
   color:#000;
   position:relative;
-  width: 680px !important;
+  width: 200px !important;
   max-width: 800px !important;
   margin: 10px;
-  height: 80px;
+  height: 50px;
   border: 3px solid #cccccc;
   padding: 5px;
+  margin: 0 auto;
   font-family: Tahoma, sans-serif;
   background-position: bottom right;
   background-repeat: no-repeat;
   border-radius: 5px;
   transition-duration: 1.7s;
   resize: none;
+  text-indent: 0px;
 }
 
 textarea:focus{
 
   font-size: 1.0em;
   color: #000;
-  width: 680px;
-  height: 160px;
+  width: 200px;
+  height: 100px;
   transition-duration: 1.2s;
   text-indent: 25px;
 }
@@ -707,9 +576,13 @@ nav {
   font-size: 1.2em;
 }
 
+
 .posibtn {
-  margin: 10px auto; 
-}
+    margin-top: 50px;
+    width: 430px;
+    margin-left: 60px;
+  }
+
 
 
 .textarea {
@@ -717,26 +590,29 @@ nav {
   outline: none;
   color:#000;
   position:relative;
-  width: 480px;
+  width: 230px !important;
   margin: 10px;
   max-width: 600px;
-  height: 80px;
+  height: 50px;
   border: 3px solid #cccccc;
   padding: 5px;
+  margin: 0 auto;
   font-family: Tahoma, sans-serif;
   background-position: bottom right;
   background-repeat: no-repeat;
   border-radius: 5px;
   transition-duration: 1.7s;
   resize: none;
+  text-indent: 0px;
 }
+
 
 textarea:focus{
 
   font-size: 1.0em;
   color: #000;
-  width: 480px;
-  height: 160px;
+  width: 230px;
+  height: 80px;
   transition-duration: 1.2s;
   text-indent: 25px;
 }
@@ -747,14 +623,11 @@ footer {
 }
 
 .posiinput{
-    float: left;
-    margin-left: 380px;
+    margin-left: 1px;
+    margin-bottom: 5px;
   }
 
-  .posiinput2{
-    float: right;
-    margin-top: -26px;
-  }
+  
 
 }
 
@@ -775,6 +648,16 @@ footer {
 
   nav {
     width: 100%;
+  }
+
+  .centrarindirecta label {
+    text-align: left;
+    margin-left: 70px;
+  }
+
+  .centrardirecta label {
+    text-align: left;
+    margin-left: 85px;
   }
 
   .option-input {
@@ -803,6 +686,19 @@ footer {
   z-index: 1000;
 }
 
+.option-input:checked::before {
+  height: 40px;
+  width: 40px;
+  position: absolute;
+  content: '✔';
+  display: inline-block;
+  font-size: 16.66667px;
+  text-align: center;
+  line-height: 40px;
+  margin-top: 2px;
+  margin-left: 0.5px;
+}
+
   .thumbnail {
     width: 390px;  
     height: auto;
@@ -814,11 +710,6 @@ footer {
   .imgnav {
     width: 220px;
     margin-left: 20px;
-  }
-
-  .center label {
-    text-align: left;
-    margin-left: 40px;
   }
 
 
@@ -836,8 +727,11 @@ footer {
 
 
   .posibtn {
-    margin: 10px auto; 
+    margin-top: 50px;
+    width: 300px;
+    margin-left: 60px;
   }
+
 
 
   .textarea {
@@ -845,28 +739,30 @@ footer {
     outline: none;
     color:#000;
     position:relative;
-    width: 350px;
+    width: 200px;
     margin: 10px;
     max-width: 600px;
-    height: 80px;
+    height: 50px;
     border: 3px solid #cccccc;
     padding: 5px;
+    margin: 0 auto;
     font-family: Tahoma, sans-serif;
     background-position: bottom right;
     background-repeat: no-repeat;
     border-radius: 5px;
     transition-duration: 1.7s;
     resize: none;
+    text-indent: 0px;
   }
 
   textarea:focus{
 
     font-size: 1.0em;
     color: #000;
-    width: 350px;
+    width: 200px;
     height: 160px;
     transition-duration: 1.2s;
-    text-indent: 25px;
+    text-indent: 5px;
   }
 
   footer {
@@ -893,14 +789,17 @@ footer {
     display: block !important;
   }
 
-  label.posicionInLine {
-    display: inline-block;
-  }
-
 
   nav {
     width: 100%;
   }
+
+  .posibtn {
+    margin-top: 50px;
+    width: 250px;
+    margin-left: 60px;
+  }
+
 
   .thumbnail {
     width: 280px;  
@@ -915,14 +814,14 @@ footer {
     margin-left: 20px;
   }
 
-  .center label {
+  .centrarindirecta label {
     text-align: left;
-    margin-left: 40px;
+    margin-left: 60px;
   }
 
-  .container-fluid {
-    margin: 0;
-    padding: 0;
+  .centrardirecta label {
+    text-align: left;
+    margin-left: 75px;
   }
 
   .imglogo {
@@ -933,23 +832,7 @@ footer {
   .pregunta {
     color: #028ee4;
     font-family:Palatino Linotype;
-    font-size: 1.2em;
-  }
-
-  .posicion1 {
-    float: left;
-    margin-left: 20px !important;
-  }
-
-  .posicion0 {
-    float: left;
-    margin-left: -25px !important;
-  }
-
-
-  .posicion2 {
-    float: left;
-    margin-left: -10px !important;
+    font-size: 1.1em;
   }
 
   .posibtn {
@@ -962,10 +845,10 @@ footer {
     outline: none;
     color:#000;
     position:relative;
-    width: 250px;
-    margin: 10px;
+    width: 200px;
+    margin: 10px 10px 10px 35px;
     max-width: 600px;
-    height: 80px;
+    height: 40px;
     border: 3px solid #cccccc;
     padding: 5px;
     font-family: Tahoma, sans-serif;
@@ -974,16 +857,17 @@ footer {
     border-radius: 5px;
     transition-duration: 1.7s;
     resize: none;
+    text-indent: 0px;
   }
 
   textarea:focus{
 
     font-size: 1.0em;
     color: #000;
-    width: 250px;
-    height: 160px;
+    width: 200px;
+    height: 80px;
     transition-duration: 1.2s;
-    text-indent: 25px;
+    text-indent: 0px;
   }
 
   footer {
@@ -998,7 +882,6 @@ footer {
 
 }
 
-/*Encuestas Animacion */
 @charset "UTF-8";
 
 /*!

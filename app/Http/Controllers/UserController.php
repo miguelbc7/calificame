@@ -67,7 +67,8 @@ class UserController extends Controller
      */
     public function edit($id)
     {
-        //
+        $user = User::find($id);
+        return view('data.user.edit', ['user' => $user]);
     }
 
     /**
@@ -91,6 +92,11 @@ class UserController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+    public function profile($id)
+    {
+        
     }
 
     public function validateu($id)

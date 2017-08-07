@@ -17,6 +17,7 @@ class CreateAnswersDetailsTable extends Migration
             $table->increments('id');
             $table->integer('answer');
             $table->string('comment')->nullable();
+            $table->date('date');
             $table->integer('answer_id')->unsigned();
             $table->foreign('answer_id')->references('id')->on('answers');
             $table->integer('survey_id')->unsigned();
