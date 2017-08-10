@@ -11,7 +11,7 @@ class Payment extends Model
     *
     * @var string
     */
-    protected $table = 'Payments';
+    protected $table = 'payments';
 
     /**
      * The attributes that are mass assignable.

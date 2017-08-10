@@ -1,11 +1,11 @@
 @extends('adminlte::layouts.app')
 
 @section('htmlheader_title')
-	Graficas de la Encuesta
+	Tendencias de la Encuesta
 @endsection
 
 @section('contentheader_title')
-    Graficas de la Encuesta
+    Tendencias de la Encuesta
 @endsection
 
 @section('main-content')
@@ -14,20 +14,17 @@
 		{!! Charts::assets() !!}
 		<center>
 	   		{!! $chart->render() !!}
-
 		</center>
-		<br>
 	@endif
-
+	<br>
 	@foreach($chart2 as $c)
 		<center>
 		   	{!! $c->render() !!}
 		</center>
-		<br>
+	<br>
 	@endforeach
 
-	<div class="pull-right">
-		<a href="{{ route('pregraphs', $survey->id)}}" class="btn btn-default btn3d">Atras</a>
-	</div>
+<div class="pull-right">
+	{!!link_to_route('surveys.index', $title = 'Atras',  $parameters = '', $attributes = ['class' => 'btn btn-default btn3d', 'style'=>'-webkit-border-radius: 8px;-moz-border-radius: 8px;border-radius: 8px;'])!!}
 </div>
 @endsection

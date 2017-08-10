@@ -7,6 +7,7 @@
     "require": {
         "php": ">=5.6.4",
         "acacha/admin-lte-template-laravel": "4.*",
+        "barryvdh/laravel-dompdf": "^0.8.0",
         "consoletvs/charts": "3.*",
         "khill/lavacharts": "3.0.*",
         "laravel/framework": "5.4.*",

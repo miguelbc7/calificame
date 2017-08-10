@@ -1,11 +1,11 @@
 @extends('adminlte::layouts.app')
 
 @section('htmlheader_title')
-	Seleccionar Fechas
+	Generar Tendencias
 @endsection
 
 @section('contentheader_title')
-    Seleccionar Fechas
+    Generar Tendencias
 @endsection
 
 @section('main-content')
@@ -16,7 +16,7 @@
 			<div class="box">
 				<div class="box-header with-border">
 					<div class="col-md-9">
-						<h3 class="box-title">Estadisticas</h3>
+						<h3 class="box-title">Generar Tendencias</h3>
 					</div>
 					@if(Session::Has('message'))
 	            		<div class="alert alert-success alert-dismissible" role="alert">
@@ -36,24 +36,23 @@
 			        @endif
 				</div>
 
-			<div class="box-body">
+				<div class="box-body">
 				<div class="col-md-12">
-					<h3 class="box-title">Estadistica General</h3>
+					<h3 class="box-title">Tendencias Generales</h3>
 				</div>
 				<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
 					<div class="form-group col-xs-3 col-sm-3 col-md-3 col-lg-3 col-xl-3">
-						<a href="{{ route('graphs', $surveys->id)}}" class="btn btn-primary">Estadisticas Generales de preguntas</a>
+						<a href="{{ route('graphs', $surveys->id)}}" class="btn btn-primary">Tendencias Generales de Preguntas</a>
 					</div>
-
 					<div class="form-group col-xs-3 col-sm-3 col-md-3 col-lg-3 col-xl-3">
-						<a href="{{ route('graphs', $surveys->id)}}" class="btn btn-primary">Estadisticas Generales de satisfaccion</a>
+						<a href="{{ route('graphs', $surveys->id)}}" class="btn btn-primary">Tendencias Generales de Satisfaccion</a>
 					</div>
 				</div>
 				<div class="col-md-6">
-					<h3 class="box-title">Estadisticas de Preguntas Por fecha</h3>
+					<h3 class="box-title">Tendencias de Preguntas Por fecha</h3>
 				</div>
 				<div class="col-md-6">
-					<h3 class="box-title">Estadisticas de Satisfaccion Por fecha</h3>
+					<h3 class="box-title">Tendencias de Satisfaccion Por fecha</h3>
 				</div>
 				{!!Form::model($surveys,['route'=>['graphsDate',$surveys],'method'=>'PUT', 'files' => true])!!}
 				<div class="form-group col-xs-6 col-sm-6 col-md-6 col-lg-6 col-xl-6">
@@ -70,10 +69,11 @@
 							</div>
 							<br>
 						</div>
-						<div class="pull-right">
-							{!!Form::submit('Buscar',['class'=>'btn btn-primary', 'style'=>'-webkit-border-radius: 8px;-moz-border-radius: 8px;border-radius: 8px;'])!!}
 
-							{!!Form::close()!!}
+						<div class="pull-right">
+							{!!Form::submit('Generar',['class'=>'btn btn-primary', 'style'=>'-webkit-border-radius: 8px;-moz-border-radius: 8px;border-radius: 8px;'])!!}
+
+							{!!Form::close()!!}	
 						</div>
 					</div>
 				</div>
@@ -92,16 +92,17 @@
 							</div>
 							<br>
 						</div>
-						<div class="pull-right">
-							{!!Form::submit('Buscar',['class'=>'btn btn-primary', 'style'=>'-webkit-border-radius: 8px;-moz-border-radius: 8px;border-radius: 8px;'])!!}
 
-							{!!Form::close()!!}
+						<div class="pull-right">
+							{!!Form::submit('Generar',['class'=>'btn btn-primary', 'style'=>'-webkit-border-radius: 8px;-moz-border-radius: 8px;border-radius: 8px;'])!!}
+
+							{!!Form::close()!!}		
 						</div>
 					</div>
 				</div>
 				<div class="pull-right">
 
-				{!!link_to_route('surveys.index', $title = 'Atras',  $parameters = '', $attributes = ['class' => 'btn btn-default btn3d', 'style'=>'-webkit-border-radius: 8px;-moz-border-radius: 8px;border-radius: 8px;'])!!}
+					{!!link_to_route('surveys.index', $title = 'Atras',  $parameters = '', $attributes = ['class' => 'btn btn-default btn3d', 'style'=>'-webkit-border-radius: 8px;-moz-border-radius: 8px;border-radius: 8px;'])!!}
 				</div>
 				</div>
 				<div class="box-footer clearfix">	

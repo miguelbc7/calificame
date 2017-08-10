@@ -55,9 +55,12 @@ Route::get('lang/{lang}', function ($lang) {
         Route::get('surveys/{id}/questions', array('as'=>'surques', 'uses'=>'SurveysController@questions'));
         Route::get('surveys/{id}/links', array('as'=>'links', 'uses'=>'SurveysController@links'));
         Route::get('surveys/{id}/answers', array('as'=>'suranswers', 'uses'=>'SurveysController@suranswers'));
+        Route::get('surveys/{id}/fliers', array('as'=>'fliers', 'uses'=>'SurveysController@fliers'));
         Route::get('surveys/{id}/pregraphs', array('as'=>'pregraphs', 'uses'=>'SurveysController@pregraphs'));
         Route::get('surveys/{id}/graphs', array('as'=>'graphs', 'uses'=>'SurveysController@graphs'));
         Route::put('surveys/{id}/graphsDate', array('as'=>'graphsDate', 'uses'=>'SurveysController@graphsDate'));
+        Route::get('surveys/{id}/pretrends', array('as'=>'pretrends', 'uses'=>'SurveysController@pretrends'));
+        Route::get('surveys/{id}/trends', array('as'=>'trends', 'uses'=>'SurveysController@trends'));
 
         Route::get('surveys/{id}/up', array('as'=>'up', 'uses'=>'Surveys_QuestionsController@up'));
         Route::get('surveys/{id}/down', array('as'=>'down', 'uses'=>'Surveys_QuestionsController@down'));

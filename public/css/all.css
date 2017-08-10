@@ -23836,4 +23836,20 @@ box-shadow: 0px 35px 77px -17px rgba(0,0,0,0.64);
   text-align: center;
 }
 
+.tile {
+  width:300px;
+  height:250px;
+  margin:10px;
+  background-color:#99aeff;
+  display:inline-block;
+  background-size:cover;
+  position:relative;
+  cursor:pointer;
+  transition: all 0.4s ease-out;
+  box-shadow: 0px 35px 77px -17px rgba(0,0,0,0.44);
+  overflow:hidden;
+  color: #000;
+  font-family:'Roboto';
+}
+
 /*   Diseño de Hipervinculo  */

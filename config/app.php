@@ -208,10 +208,14 @@ return [
         Milon\Barcode\BarcodeServiceProvider::class,
 
         /*
-        * ConsoleTV Charts PRovider
+        * ConsoleTV Charts Provider
         */
         ConsoleTVs\Charts\ChartsServiceProvider::class,
 
+        /*
+        * Barryvdh DomPDF Provider
+        */
+        Barryvdh\DomPDF\ServiceProvider::class,
     ],
 
     /*
@@ -297,6 +301,11 @@ return [
         * ConsoleTV Charts Alias
         */
         'Charts' => ConsoleTVs\Charts\Facades\Charts::class,
+
+        /*
+        * Barryvdh DomPDF Alias
+        */
+        'PDF' => Barryvdh\DomPDF\Facade::class,
     ],
 
 ];

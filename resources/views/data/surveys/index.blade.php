@@ -65,6 +65,7 @@
 						<thead>
 							<tr>
 								<th class="fondo">Nombre</th>
+								<th class="fondo">Fecha</th>
 								<th class="fondo">Opciones</th>
 							</tr>
 						</thead>
@@ -72,6 +73,7 @@
 						<tbody>
 							<tr>
 								<td>{!!$s->name!!}</td>
+								<td>{!!$s->date!!}</td>
 								<td style="text-align: right;">
 									
 									{!!Form::open(['route'=>['surveys.destroy', $s], 'method'=>'DELETE'])!!}					
@@ -84,7 +86,11 @@
 
 										<a href="{{ route('suranswers', $s->id) }}" class="btn btn-info" data-toggle="tooltip" data-original-title="Respuestas de los Clientes" type="suranswers"><i class="fa fa-address-card-o"></i></a>
 
-										<a href="{{ route('pregraphs', $s->id) }}" class="btn btn-warning" data-toggle="tooltip" data-original-title="Estadisticas de la Encuesta" type="fbshare"><i class="fa fa-pie-chart"></i></a>
+										<a href="{{ route('pregraphs', $s->id) }}" class="btn btn-warning" data-toggle="tooltip" data-original-title="Estadisticas de la Encuesta" type="graphs"><i class="fa fa-pie-chart"></i></a>
+
+										<a href="{{ route('pretrends', $s->id) }}" class="btn btn-warning" data-toggle="tooltip" data-original-title="Tendencias de la Encuesta" type="trends"><i class="fa fa-line-chart"></i></a>
+
+										<a href="{{ route('fliers', $s->id) }}" class="btn btn-success" data-toggle="tooltip" data-original-title="Volante de la Encuesta" type="fbshare"><i class="fa fa-address-book-o"></i></a>
 										
 										<button class="btn btn-danger" data-toggle="tooltip" data-original-title="Eliminar" type="submit">
     									<i class="fa fa-remove"></i> </button>
