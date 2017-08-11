@@ -38,8 +38,8 @@
         </div>
     </div>
     <div class="pull-right">
-	    <button class="btn btn-primary btn3d">Imprimir</button>
-	    {!!link_to_route('surveys.index', $title = 'Atras',  $parameters = '', $attributes = ['class' => 'btn btn-default btn3d', 'style'=>'-webkit-border-radius: 8px;-moz-border-radius: 8px;border-radius: 8px;'])!!}
+        <a href="{{ route('flierpdf', $surveys->id) }}" target="_blank" class="btn btn-primary" data-toggle="tooltip" data-original-title="Imprimir" type="edit">Imprimir</a>
+        {!!link_to_route('surveys.index', $title = 'Atras',  $parameters = '', $attributes = ['class' => 'btn btn-default btn3d', 'style'=>'-webkit-border-radius: 8px;-moz-border-radius: 8px;border-radius: 8px;'])!!}
 	</div>
 
 	<script src="https://code.jquery.com/jquery-3.2.1.js" integrity="sha256-DZAnKJ/6XZ9si04Hgrsxu/8s717jcIzLy3oi35EouyE=" crossorigin="anonymous"></script>

@@ -24,7 +24,7 @@
 	<br>
 	@endforeach
 
-<div class="pull-right">
-	{!!link_to_route('surveys.index', $title = 'Atras',  $parameters = '', $attributes = ['class' => 'btn btn-default btn3d', 'style'=>'-webkit-border-radius: 8px;-moz-border-radius: 8px;border-radius: 8px;'])!!}
-</div>
+	<div class="pull-right">
+		<a href="{{ route('pretrends', $survey->id)}}" class="btn btn-default btn3d">Atras</a>
+	</div>
 @endsection
