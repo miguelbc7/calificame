@@ -80,7 +80,23 @@ class UserController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $this->validate($request, [
+            'company' => 'required|max:255',
+        ]);
+
+        $user = User::find($id);
+        $user->company = $request->company;
+        if(isset($request->avatar))
+        {
+            $destinationPath = 'img/Users/'.$id.'/avatar/'; // upload path
+            $destinationPath2 = base_path() . '/public/img/Users/'.Auth::id().'/avatar/'; // upload path
+            $extension = 'jpg'; // getting image extension
+            $fileName = 'avatar.'.$extension; // renameing image
+            $request->file('avatar')->move($destinationPath2, $fileName); // uploading file to given path
+            $user->image = $destinationPath.'/'.$fileName;
+        }
+        $user->save();
+        return redirect('/admin')->with('message','Usuario Actualizado Correctamente');
     }
 
     /**
@@ -274,6 +290,34 @@ class UserController extends Controller
     public function getCancelR()
     {
         return redirect()->route('renew');
+    }
+
+    public function editpass($id)
+    {
+        $user = User::find($id);
+        return view('data.user.editpass', ['user' => $user]);
+    }
+
+    public function updatepass(Request $request, $id)
+    {
+        $this->validate($request, [
+            'old_password' => 'required|min:8|max:255|old_password:' . Auth::user()->password ,
+            'password' => 'required|min:8|max:255|confirmed',
+            'password_confirmation' => 'required|min:8|max:255',
+        ]);
+
+        $user = User::find($id);
+
+        if(hash::check(bcrypt($request->old_password), $user->password))
+        {
+            return Redirect::back()->with('error','Contraseña actual erronea');;
+        }
+        else
+        {
+            $user->password = bcrypt($request->password);
+            $user->save();
+            return redirect('/admin')->with('message','Contraseña Actualizada Correctamente');
+        } 
     }
 
 }

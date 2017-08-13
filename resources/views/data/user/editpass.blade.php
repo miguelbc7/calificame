@@ -1,11 +1,11 @@
 @extends('adminlte::layouts.app')
 
 @section('htmlheader_title')
-	Perfil
+	Cambiar Contraseña
 @endsection
 
 @section('contentheader_title')
-    Perfil
+    Cambiar Contraseña
 @endsection
 
 @section('main-content')
@@ -16,7 +16,7 @@
 			<div class="box">
 				<div class="box-header with-border">
 					<div class="col-md-9">
-						<h3 class="box-title">Editar Perfil</h3>
+						<h3 class="box-title">Cambiar Contraseña</h3>
 					</div>
 					@if(Session::Has('message'))
 					<div class="alert alert-success alert-dismissible" role="alert">
@@ -44,18 +44,25 @@
 					@endif
 				</div>
 				<div class="box-body">
-				{!!Form::model($user,['route'=>['user.update',$user],'method'=>'PUT', 'files' => true])!!}
+				{!!Form::model($user,['route'=>['updatepass',$user],'method'=>'PUT', 'files' => true])!!}
 				<div class="form-group col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
 					<div class="row">
-						<div class="col-xs-1 col-sm-1 col-md-6 col-lg-12 col-xl-12">
-							<div data-toggle="tooltip" title data-original-title="El nombre de la compañia no tiene parametros especificos">
-								{!!Form::text('company',null,['class'=>'form-control','placeholder'=>'Ingrese el nombre', 'style'=>'-webkit-border-radius: 8px;-moz-border-radius: 8px;border-radius: 8px;'])!!}
+						<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
+							<div data-toggle="tooltip" title data-original-title="Su Contraseña actual">
+								{!!Form::label('Contraseña actual')!!}
+								{!!Form::password('old_password',null,['class'=>'form-control','placeholder'=>'Ingrese la contraseña actual', 'style'=>'-webkit-border-radius: 8px;-moz-border-radius: 8px;border-radius: 8px;'])!!}
 							</div>
 						</div>
-						<div class="col-xs-1 col-sm-1 col-md-6 col-lg-12 col-xl-12">
-							<div data-toggle="tooltip" title data-original-title="El avatar de la compañia no tiene parametros especificos">
-								{!!Form::label('Avatar')!!}
-                                {!!Form::file('avatar',null,['class'=>'form-control', 'style'=>'-webkit-border-radius: 8px;-moz-border-radius: 8px;border-radius: 8px;'])!!}
+						<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
+							<div data-toggle="tooltip" title data-original-title="Su nueva contraseña">
+								{!!Form::label('Contraseña nueva')!!}
+								{!!Form::password('password',null,['class'=>'form-control','placeholder'=>'Ingrese la contraseña nueva', 'style'=>'-webkit-border-radius: 8px;-moz-border-radius: 8px;border-radius: 8px;'])!!}
+							</div>
+						</div>
+						<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
+							<div data-toggle="tooltip" title data-original-title="Repita su nueva contraseña">
+								{!!Form::label('Repita su contraseña nueva')!!}
+                                {!!Form::password('password_confirmation',null,['class'=>'form-control','placeholder'=>'Repita la contraseña nueva', 'style'=>'-webkit-border-radius: 8px;-moz-border-radius: 8px;border-radius: 8px;'])!!}
 							</div>
 						</div>
 					</div>

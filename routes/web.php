@@ -45,6 +45,8 @@ Route::get('lang/{lang}', function ($lang) {
         Route::get('admin', array('as'=>'admin', 'uses'=>'HomeController@admin'));
         Route::resource('user', 'UserController');
         Route::get('user/{id}/profile', array('as'=>'profile', 'uses'=>'UserController@profile'));
+        Route::get('user/{id}/editpass', array('as'=>'editpass', 'uses'=>'UserController@editpass'));
+        Route::get('user/{id}/updatepass', array('as'=>'updatepass', 'uses'=>'UserController@updatepass'));
 
         Route::resource('questions', 'QuestionsController');
         Route::resource('surveys', 'SurveysController');

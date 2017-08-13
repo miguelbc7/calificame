@@ -144,9 +144,6 @@
                             </li>-->
                             <!-- Menu Footer-->
                             <li class="user-footer">
-                                <div class="pull-left">
-                                    <a href="{{ route('user.edit', Auth::id()) }}" class="btn btn-default btn-flat">{{ trans('adminlte_lang::message.profile') }}</a>
-                                </div>
                                 <div class="pull-right">
                                     <a href="{{ url('/logout') }}" class="btn btn-default btn-flat" id="logout"
                                        onclick="event.preventDefault();
@@ -159,6 +156,12 @@
                                         <input type="submit" value="logout" style="display: none;">
                                     </form>
 
+                                </div>
+                                <div class="pull-right">
+                                    <a href="{{ route('editpass', Auth::id()) }}" class="btn btn-default btn-flat">Contraseña</a>
+                                </div>
+                                <div class="pull-right">
+                                    <a href="{{ route('user.edit', Auth::id()) }}" class="btn btn-default btn-flat">{{ trans('adminlte_lang::message.profile') }}</a>
                                 </div>
                             </li>
                         </ul>
