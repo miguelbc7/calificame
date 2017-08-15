@@ -47,6 +47,7 @@
             @endif
             @if(Session::get('utype') == 1)
             <li><a href="{{ url('users') }}"><i class="fa fa-user"></i> <span>Usuarios</span></a></li>
+            <li><a href="{{ url('socialnetworks/1/edit') }}"><i class="fa fa-share-square-o"></i><span>Redes Sociales</span></a></li>
             @endif
         </ul><!-- /.sidebar-menu -->
     </section>

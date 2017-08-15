@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Session;
 use Redirect;
+use Mail;
 use Illuminate\Routing\Route;
 use Illuminate\Support\Facades\Auth;
 use App\Surveys;
@@ -13,6 +14,7 @@ use App\Questions;
 use App\Surveys_Questions;
 use App\Answers;
 use App\AnswersDetails;
+use App\User;
 
 class AnswersController extends Controller
 {
@@ -57,8 +59,13 @@ class AnswersController extends Controller
             $answer->email = $request->email;
         }
         $answer->date = date('Y-m-d');
+        $answer->calification = 1;
         $answer->survey_id = $request->survey_id;
         $answer->save();
+
+        $i = 0;
+        $j = 0;
+        $cal = 0;
 
         foreach($surquestions as $sq)
         {
@@ -76,10 +83,70 @@ class AnswersController extends Controller
             $answerdetail->answer_id = $answer->id;
             $answerdetail->survey_id = $answer->survey_id;
             $answerdetail->question_id = $request->question_id.$sq->position;
-            $answerdetail->save();
-       }
-       return Redirect::back();
 
+            if($request->answer == 1)
+            {
+               $cal = 30;
+            }
+            elseif($request->answer == 2)
+            {
+                $cal = 0;
+            }
+            elseif($request->answer == 3)
+            {
+                $cal = 0;
+            }
+            elseif($request->answer == 4)
+            {
+                $cal = 10;
+            }
+            elseif($request->answer == 5)
+            {
+                $cal = 20;
+            }
+            elseif($request->answer == 6)
+            {
+                $cal = 30;
+            }
+
+            $i = $i + $cal;
+            $j++;
+
+            $answerdetail->save();
+        }
+
+        $answer2 = Answers::find($answer->id);
+        $answer2->calification = $i/$j;
+        $answer2->save();
+        $survey = Surveys::find($answer2->survey_id);
+        $user = User::find($survey->user_id);
+
+        $suranswers = Answers::join('surveys', 'answers.survey_id', '=', 'surveys.id')->select('answers.id AS id', 'answers.name AS name', 'answers.email AS email', 'surveys.id as surid', 'answers.calification AS calification')->where('answers.id', '=', $answer2->id)->first();
+        $questions = Surveys_Questions::join('questions', 'surveys_questions.question_id', '=', 'questions.id')->join('surveys', 'surveys_questions.survey_id', '=', 'surveys.id')->select('questions.question AS name')->where('surveys.id', '=', $survey->id)->get();
+        $answersdet =  AnswersDetails::join('questions', 'answers_details.question_id', '=', 'questions.id')->select('answers_details.id AS id', 'answers_details.answer AS answer', 'answers_details.survey_id AS survey', 'answers_details.answer_id AS ansid', 'answers_details.comment As comment', 'questions.id AS question_id')->where('answers_details.answer_id', '=', $answer2->id)->get();
+
+
+        if($answer2->calification > 5 && $answer2->calification <= 10)
+        {
+            $c = 'Regular';
+        }
+        elseif($answer2->calification >= 0 && $answer2->calification <= 5)
+        {
+            $c = 'Mala';  
+        }
+
+        $title = 'Resultado de Encuesta #'.$survey->id;
+        $content = 'Has recibido una calificacion '.$c.', puedes verificar iniciando sesion en la plataforma de calificame';
+        Mail::send('data.emails.badanswers', ['title' => $title, 'content' => $content, 'suranswers' => $suranswers, 'questions' => $questions, 'answersdet' => $answersdet, 'survey' => $survey, 'user' => $user], function ($message) use ($c, $user)
+        {
+
+            $message->from('miguel.lm21@gmail.com', 'Calificame')->subject('Has recibido una calificacion '.$c);
+
+            $message->to($user->email);
+
+        });
+
+        return Redirect::back();
     }
 
     /**

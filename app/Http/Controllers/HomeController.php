@@ -12,9 +12,11 @@ use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 use Session;
 use App;
+use Mail;
 use Redirect;
 use App\User;
 use App\Payment;
+use App\SocialNetworks;
 
 /**
  * Class HomeController
@@ -39,7 +41,61 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('pages.index');
+        $socialnetworks = SocialNetworks::find(1);
+        $day = date('d');
+        $m = date('m');
+        $year = date('Y');
+
+        if($m == 1)
+        {
+            $month = 'Enero'; 
+        }
+        elseif($m == 2)
+        {
+            $month = 'Febrero';
+        }
+        elseif($m == 3)
+        {
+            $month = 'Marzo';
+        }
+        elseif($m == 4)
+        {
+            $month = 'Abril';
+        }
+        elseif($m == 5)
+        {
+            $month = 'Mayo';
+        }
+        elseif($m == 6)
+        {
+            $month = 'Junio';
+        }
+        elseif($m == 7)
+        {
+            $month = 'Julio';
+        }
+        elseif($m == 8)
+        {
+            $month = 'Agosto';
+        }
+        elseif($m == 9)
+        {
+            $month = 'Septiembre';
+        }
+        elseif($m == 10)
+        {
+            $month = 'Octubre';
+        }
+        elseif($m == 11)
+        {
+            $month = 'Noviembre';
+        }
+        elseif($m == 12)
+        {
+            $month = 'Diciembre';
+        }
+
+        return view('pages.index', ['day' => $day, 'month' => $month, 'year' => $year, 'socialnetworks' => $socialnetworks]);
     }
 
     public function terms()
@@ -98,6 +154,21 @@ class HomeController extends Controller
             $user->image = $destinationPath.'/avatar.png';
             $user->save();
         }
+
+        $user = User::find(Auth::id());
+
+        $title = 'Registro en Calificame Completado';
+        $content = 'Bienvenido, '.$user->name.' Has completado tu registro en calificame';
+        Mail::send('data.emails.badanswers', ['title' => $title, 'content' => $content], function ($message) use ($user)
+        {
+
+            $message->from('miguel.lm21@gmail.com', 'Calificame')->subject('Registro en Calificame Completado');
+
+            $message->to($user->email);
+
+        });
+
+
         return view('adminlte::home');
     }
 
@@ -113,7 +184,7 @@ class HomeController extends Controller
 
         if(isset($do))
         {
-            if($do->dateOut >= date('Y-m-d'))
+            if($do->dateOut <= date('Y-m-d'))
             {
                 $user->status = 2;
                 $user->save();
@@ -215,7 +286,7 @@ class HomeController extends Controller
             $price3 = '6 Mes: $2000 por sucursal';
             $price4 = '12 Mes: $4000 por sucursal';
 
-            Mail::send('data.renews.email', ['title' => $title, 'content' => $content, 'price1' => $price1, 'price2' => $price2, 'price3' => $price3, 'price4' => $price4, 'bank' => $bank, 'account' => $account, 'name' => $name, 'cable' => $cable], function ($message)
+            Mail::send('data.emails.renew', ['title' => $title, 'content' => $content, 'price1' => $price1, 'price2' => $price2, 'price3' => $price3, 'price4' => $price4, 'bank' => $bank, 'account' => $account, 'name' => $name, 'cable' => $cable], function ($message)
             {
 
                 $message->from('miguel.lm21@gmail.com', 'Calificame')->subject('Datos para transferencias o depositos en Calificame');

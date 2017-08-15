@@ -52,6 +52,7 @@ Route::get('lang/{lang}', function ($lang) {
         Route::resource('surveys', 'SurveysController');
         Route::resource('surveys_questions', 'Surveys_QuestionsController');
         Route::resource('answersdetails', 'AnswersDetailsController');
+        Route::resource('socialnetworks', 'SocialNetworksController');
        
 
         Route::get('surveys/{id}/questions', array('as'=>'surques', 'uses'=>'SurveysController@questions'));

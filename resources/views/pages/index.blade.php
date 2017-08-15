@@ -160,7 +160,7 @@ Webflow.push(function () {
   <div class="nav--fixed w-nav" data-animation="default" data-collapse="medium" data-duration="400" data-ix="display-none">
     <div class="w-container">
       <a class="w-nav-brand" href="{{ URL('/') }}">
-        <img alt="calificame" class="nav__logo" src="{{ asset('web/images/logo.png') }}" width="150" height="50">
+        <img alt="calificame" class="nav__logo" src="{{ asset('web/images/logo.png') }}" width="150" height="30">
       </a>
       <nav class="nav_menu w-clearfix w-nav-menu" role="navigation">
         <a class="nav__link w-nav-link" href="#why-calificame">{{ Lang::get('message.menu1') }}</a>
@@ -178,7 +178,7 @@ Webflow.push(function () {
   <div class="hero" data-ix="display-nav">
     <div class="nav w-nav" data-animation="default" data-collapse="medium" data-duration="400">
       <div class="w-container">
-        <a class="w-nav-brand" href="{{ URL('/') }}"><img alt="calificame" class="nav__logo" src="{{ asset('web/images/logo.png') }}" width="160" height="50"></a>
+        <a class="w-nav-brand" href="{{ URL('/') }}"><img alt="calificame" class="nav__logo" src="{{ asset('web/images/logo.png') }}" width="200" height="40"></a>
         <nav class="nav_menu nav_menu_not_fixed w-nav-menu" role="navigation">
           <a class="nav__link w-nav-link" href="#why-calificame">{{ Lang::get('message.menu1') }}</a>
           <a class="nav__link w-nav-link" href="#how-it-works">{{ Lang::get('message.menu2') }}</a>
@@ -232,7 +232,7 @@ Webflow.push(function () {
   <!-- Beneficios de Usar -->
   <div class="section whycalificame" id="why-calificame">
     <div class="w-container">
-     <h2 class="section__header">{{ Lang::get('message.why') }} <img alt="calificame" class="nav__logo" src="{{ asset('web/images/logo.png') }}" width="183" height="50"></h2> 
+     <h2 class="section__header">{{ Lang::get('message.why') }} <img alt="calificame" class="nav__logo" src="{{ asset('web/images/logo.png') }}" width="200" height="40"></h2> 
       <div class="w-row">
         <div class="column w-col w-col-4">
           <div class="whycalificame__imagecontainer">
@@ -697,9 +697,9 @@ Webflow.push(function () {
       <div class="container">
         <div class="row">
           <div class="OurBlog">
-            <img alt="calificame" class="nav__logo" src="{{ asset('web/images/logo.png') }}" width="250" height="60">
+            <img alt="calificame" class="nav__logo" src="{{ asset('web/images/logo.png') }}" width="260" height="50">
             <p>Encuestas fáciles para tu restaurante.</p>
-            <div class="post-blog-date">19 Julio 2017.</div>
+            <div class="post-blog-date">{{ $day }} de {{ $month }} de {{ $year }}</div>
           </div>
           <div class=" col-lg-8 col-lg-offset-2">
             <div class="col-sm-4">
@@ -742,11 +742,11 @@ Webflow.push(function () {
     </div>
     <div class="footer-bottom-layout">
       <div class="socialMedia-footer"> 
-      <a class="footer__sociallink w-inline-block" href="https://www.facebook.com/calificame/">
+      <a class="footer__sociallink w-inline-block" href="https://{{ $socialnetworks->facebook }}">
       <img alt="Facebook" class="footer__socialimage" src="{{ asset('web/images/facebook.png') }}" width="42"></a> 
-      <a class="footer__sociallink w-inline-block" href="https://twitter.com/calificame">
+      <a class="footer__sociallink w-inline-block" href="https://{{ $socialnetworks->twitter }}">
       <img alt="Twitter" class="footer__socialimage" src="{{ asset('web/images/twitter.png') }}" width="43"></a> 
-      <a class="footer__sociallink w-inline-block" href="https://www.linkedin.com/company/calificame">
+      <a class="footer__sociallink w-inline-block" href="https://{{ $socialnetworks->linkedin }}">
       <img alt="LinkedIn" class="footer__socialimage" src="{{ asset('web/images/linkedin.png') }}" width="42"></a> 
       </div>
       <div class="copyright-tag">Copyright © 2017 Califícame. All Rights Reserved.</div>

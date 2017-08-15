@@ -18,6 +18,7 @@ class CreateAnswersTable extends Migration
             $table->string('name')->nullable();
             $table->string('email')->nullable();
             $table->date('date');
+            $table->integer('calification');
             $table->integer('survey_id')->unsigned();
             $table->foreign('survey_id')->references('id')->on('surveys');
             $table->timestamps();
