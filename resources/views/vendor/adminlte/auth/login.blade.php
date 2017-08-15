@@ -5,12 +5,12 @@
 @endsection
 
 @section('content')
-<body class="hold-transition login-page">
+<body class="hold-transition login-page" id="loginfondo">
     <div id="app" v-cloak>
         <div class="login-box">
             <div class="login-logo">
                 <a href="{{ url('/home') }}">
-                <img alt="calificame" class="nav__logo" src="{{ asset('web/images/logo.png') }}" width="300" height="70"></a>
+                <img alt="calificame" class="nav__logo" src="{{ asset('web/images/logo.png') }}" width="300" height="70" style="margin-top: 30px;"></a>
             </div><!-- /.login-logo -->
 
         @if (count($errors) > 0)
@@ -24,7 +24,7 @@
             </div>
         @endif
 
-    <div class="login-box-body">
+        <div class="login-box-body">
         <p class="login-box-msg"> {{ trans('adminlte_lang::message.siginsession') }} </p>
 
         <form action="{{ url('/login') }}" method="post">
@@ -42,14 +42,14 @@
                 <span class="glyphicon glyphicon-lock form-control-feedback"></span>
             </div>
             <div class="row">
-                <div class="col-xs-8">
+                <div class="col-xs-7">
                     <div class="checkbox icheck">
                         <label>
                             <input style="display:none;" type="checkbox" name="remember"> {{ trans('adminlte_lang::message.remember') }}
                         </label>
                     </div>
                 </div><!-- /.col -->
-                <div class="col-xs-4">
+                <div class="col-xs-5">
                     <button type="submit" class="btn btn-primary btn-ms btn-flat">{{ trans('adminlte_lang::message.buttonsign') }}</button>
                 </div><!-- /.col -->
             </div>

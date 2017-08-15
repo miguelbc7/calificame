@@ -23,37 +23,36 @@
 <!DOCTYPE html><!-- Last Published: Mon Jun 26 2017 11:32:10 GMT+0000 (UTC) --><html data-wf-domain="www.calificame.com" data-wf-page="58ff57253eae93580fa17c3f" data-wf-site="576bbb263b0f04c134edb9ab">
 <!-- Mirrored from www.calificame.com/ by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 27 Jun 2017 15:01:08 GMT -->
 <head>
-  <meta charset="utf-8">
-  <title>Calificame – Encuestas de Satisfacción para tu Restaurante</title>
-  <meta content="calificame es un sistema para hacer encuestas de satisfacción fáciles para restaurantes. Pruébalo gratis durante 30 días y descubre la opinión de tus clientes." name="description">
-  <meta content="calificame – Encuestas de Satisfacción para tu Restaurante" property="og:title"><meta content="calificame es un sistema para hacer encuestas de satisfacción fáciles para restaurantes. Pruébalo gratis durante 30 días y descubre la opinión de tus clientes." property="og:description">
-  <meta content="summary" name="twitter:card">
-  <meta content="width=device-width, initial-scale=1" name="viewport">
+<meta charset="utf-8">
+<title>Calificame – Encuestas de Satisfacción para tu Restaurante</title>
+<meta content="calificame es un sistema para hacer encuestas de satisfacción fáciles para restaurantes. Pruébalo gratis durante 30 días y descubre la opinión de tus clientes." name="description">
+<meta content="calificame – Encuestas de Satisfacción para tu Restaurante" property="og:title"><meta content="calificame es un sistema para hacer encuestas de satisfacción fáciles para restaurantes. Pruébalo gratis durante 30 días y descubre la opinión de tus clientes." property="og:description">
+<meta content="summary" name="twitter:card">
+<meta content="width=device-width, initial-scale=1" name="viewport">
 
+<!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<!-- jQuery library -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<!-- Latest compiled JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<!-- Latest compiled and minified CSS -->
 
-  <!-- Latest compiled and minified CSS -->
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-  <!-- jQuery library -->
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-  <!-- Latest compiled JavaScript -->
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-  <!-- Latest compiled and minified CSS -->
+<link href="{{ asset('web/css/webflow.css') }}" rel="stylesheet" type="text/css">
+<!--<script src="{{ asset('web/js/webfont.js') }}"></script>-->
+<!--<script type="text/javascript">WebFont.load({
+google: {
+  families: ["Open Sans:300,300italic,400,400italic,600,600italic,700,700italic,800,800italic","Source Sans Pro:300,300italic,regular,600"]
+}
+});
+</script>-->
+<!--[if lt IE 9]><script src="https://cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv.min.js" type="text/javascript"></script><![endif]-->
+<script type="text/javascript">!function(o,c){var n=c.documentElement,t=" w-mod-";n.className+=t+"js",("ontouchstart"in o||o.DocumentTouch&&c instanceof DocumentTouch)&&(n.className+=t+"touch")}(window,document);
+</script>
+<link href="{{ asset('web/images/favicon-32.png') }}" rel="shortcut icon" type="image/x-icon">
+<link href="{{ asset('web/images/favicon-256.png') }}" rel="apple-touch-icon">
 
-  <link href="{{ asset('web/css/webflow.css') }}" rel="stylesheet" type="text/css">
-  <!--<script src="{{ asset('web/js/webfont.js') }}"></script>-->
-  <!--<script type="text/javascript">WebFont.load({
-  google: {
-    families: ["Open Sans:300,300italic,400,400italic,600,600italic,700,700italic,800,800italic","Source Sans Pro:300,300italic,regular,600"]
-  }
-  });
-  </script>-->
-  <!--[if lt IE 9]><script src="https://cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv.min.js" type="text/javascript"></script><![endif]-->
-  <script type="text/javascript">!function(o,c){var n=c.documentElement,t=" w-mod-";n.className+=t+"js",("ontouchstart"in o||o.DocumentTouch&&c instanceof DocumentTouch)&&(n.className+=t+"touch")}(window,document);
-  </script>
-  <link href="{{ asset('web/images/favicon-32.png') }}" rel="shortcut icon" type="image/x-icon">
-  <link href="{{ asset('web/images/favicon-256.png') }}" rel="apple-touch-icon">
-  
-  <script type="text/javascript" src="{{ asset('web/js/jstz.min.js') }}"></script>
+<script type="text/javascript" src="{{ asset('web/js/jstz.min.js') }}"></script>
 
 <script type="text/javascript">
 var Webflow = Webflow || [];
@@ -160,7 +159,7 @@ Webflow.push(function () {
   <div class="nav--fixed w-nav" data-animation="default" data-collapse="medium" data-duration="400" data-ix="display-none">
     <div class="w-container">
       <a class="w-nav-brand" href="{{ URL('/') }}">
-        <img alt="calificame" class="nav__logo" src="{{ asset('web/images/logo.png') }}" width="150" height="30">
+        <img alt="calificame" class="nav__logo" id="nav__logoTOP" src="{{ asset('web/images/logo.png') }}" width="180" height="50">
       </a>
       <nav class="nav_menu w-clearfix w-nav-menu" role="navigation">
         <a class="nav__link w-nav-link" href="#why-calificame">{{ Lang::get('message.menu1') }}</a>
@@ -169,7 +168,7 @@ Webflow.push(function () {
         <a class="button nav__button w-button" href="#plans">{{ Lang::get('message.menu4') }}</a>
       </nav>
 
-      <div class="menu_button w-nav-button">
+      <div class="menu_button w-nav-button" id="w-icon-nav-menu">
         <div class="w-icon-nav-menu"></div>
       </div>
     </div>
@@ -177,8 +176,8 @@ Webflow.push(function () {
 
   <div class="hero" data-ix="display-nav">
     <div class="nav w-nav" data-animation="default" data-collapse="medium" data-duration="400">
+    <a class="w-nav-brand logo-right logo-right2" href="{{ URL('/') }}"><img alt="calificame" class="nav__logo logo-right" src="{{ asset('web/images/logo.png') }}"></a>
       <div class="w-container">
-        <a class="w-nav-brand" href="{{ URL('/') }}"><img alt="calificame" class="nav__logo" src="{{ asset('web/images/logo.png') }}" width="200" height="40"></a>
         <nav class="nav_menu nav_menu_not_fixed w-nav-menu" role="navigation">
           <a class="nav__link w-nav-link" href="#why-calificame">{{ Lang::get('message.menu1') }}</a>
           <a class="nav__link w-nav-link" href="#how-it-works">{{ Lang::get('message.menu2') }}</a>
@@ -229,10 +228,12 @@ Webflow.push(function () {
     </div>
   </div>
 
-  <!-- Beneficios de Usar -->
+    <!-- Beneficios de Usar Hidden -->
   <div class="section whycalificame" id="why-calificame">
     <div class="w-container">
-     <h2 class="section__header">{{ Lang::get('message.why') }} <img alt="calificame" class="nav__logo" src="{{ asset('web/images/logo.png') }}" width="200" height="40"></h2> 
+     <h2 class="section__header hidden-xs" >{{ Lang::get('message.why') }} <img alt="calificame" class="nav__logo" src="{{ asset('web/images/logo.png') }}" width="183" height="50"></h2>
+      <h2 class="section__header hidden-sm hidden-md hidden-lg">{{ Lang::get('message.why') }}</h2>
+       <img alt="calificame" class="nav__logo hidden-sm hidden-md hidden-lg" id="logo-calificame" src="{{ asset('web/images/logo.png') }}">  
       <div class="w-row">
         <div class="column w-col w-col-4">
           <div class="whycalificame__imagecontainer">
@@ -697,12 +698,12 @@ Webflow.push(function () {
       <div class="container">
         <div class="row">
           <div class="OurBlog">
-            <img alt="calificame" class="nav__logo" src="{{ asset('web/images/logo.png') }}" width="260" height="50">
+            <img alt="calificame" class="nav__logo" id="nav__logo" src="{{ asset('web/images/logo.png') }}" width="340" height="60">
             <p>Encuestas fáciles para tu restaurante.</p>
-            <div class="post-blog-date">{{ $day }} de {{ $month }} de {{ $year }}</div>
+            <div class="post-blog-date">19 Julio 2017.</div>
           </div>
           <div class=" col-lg-8 col-lg-offset-2">
-            <div class="col-sm-4">
+            <div class="col-sm-4 col-xs-offset-0">
               <div class="footer-col-item">
                 <h4>Encuentranos</h4>
                 <address>
@@ -713,7 +714,7 @@ Webflow.push(function () {
                 </address>
               </div>
             </div>
-            <div class="col-sm-4">
+            <div class="col-sm-4" id="col-left">
               <div class="footer-col-item">
                 <h4>Compromiso</h4>
                 <div class="item-contact"> 
@@ -725,12 +726,12 @@ Webflow.push(function () {
             </div>
             <div class="col-sm-4">
               <div class="footer-col-item">
-                <h4>Contáctanos</h4>
-                <form class="signUpNewsletter" action="" method="get">
+                <h4 id="col-left-text">Contáctanos</h4>
+                <form class="signUpNewsletter" action="" method="get" id="col-left-form">
                   <textarea class="form-control" rows="2" placeholder="Dejanos tu comentario..."></textarea>
                 </form>
                 <br>
-                <form class="signUpNewsletter" action="" method="get">
+                <form class="signUpNewsletter" action="" method="get" id="col-left-form">
                   <input name="" class="gt-email form-control" placeholder="You@youremail.com" type="text">
                   <input name="" class="btn-go" value="Go" type="button">
                 </form>
@@ -742,11 +743,11 @@ Webflow.push(function () {
     </div>
     <div class="footer-bottom-layout">
       <div class="socialMedia-footer"> 
-      <a class="footer__sociallink w-inline-block" href="https://{{ $socialnetworks->facebook }}">
+      <a class="footer__sociallink w-inline-block" href="https://www.facebook.com/calificame/">
       <img alt="Facebook" class="footer__socialimage" src="{{ asset('web/images/facebook.png') }}" width="42"></a> 
-      <a class="footer__sociallink w-inline-block" href="https://{{ $socialnetworks->twitter }}">
+      <a class="footer__sociallink w-inline-block" href="https://twitter.com/calificame">
       <img alt="Twitter" class="footer__socialimage" src="{{ asset('web/images/twitter.png') }}" width="43"></a> 
-      <a class="footer__sociallink w-inline-block" href="https://{{ $socialnetworks->linkedin }}">
+      <a class="footer__sociallink w-inline-block" href="https://www.linkedin.com/company/calificame">
       <img alt="LinkedIn" class="footer__socialimage" src="{{ asset('web/images/linkedin.png') }}" width="42"></a> 
       </div>
       <div class="copyright-tag">Copyright © 2017 Califícame. All Rights Reserved.</div>

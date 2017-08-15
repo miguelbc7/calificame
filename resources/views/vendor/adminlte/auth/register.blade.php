@@ -6,11 +6,11 @@
 
 @section('content')
 
-<body class="hold-transition register-page">
+<body class="hold-transition register-page" style="margin-top: -60px;">
     <div id="app" v-cloak>
         <div class="register-box">
             <div class="register-logo">
-                <a href="{{ url('/') }}"><b>Keweno</b></a>
+                <img alt="calificame" class="nav__logo" src="{{ asset('web/images/logo.png') }}" width="300" height="70"></a>
             </div>
 
             @if (count($errors) > 0)
