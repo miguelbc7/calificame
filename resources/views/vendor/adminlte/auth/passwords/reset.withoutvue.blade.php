@@ -11,7 +11,7 @@
     <div id="app">
         <div class="login-box">
             <div class="login-logo">
-                <a href="{{ url('/home') }}"><b>Admin</b>LTE</a>
+                <img alt="calificame" class="nav__logo" src="{{ asset('web/images/logo.png') }}" width="230" height="40"></a>
             </div><!-- /.login-logo -->
 
             @if (session('status'))
