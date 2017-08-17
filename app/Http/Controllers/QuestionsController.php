@@ -9,6 +9,7 @@ use Redirect;
 use Illuminate\Routing\Route;
 use Illuminate\Support\Facades\Auth;
 use App\Questions;
+use App\Surveys_Questions;
 
 class QuestionsController extends Controller
 {
@@ -104,8 +105,17 @@ class QuestionsController extends Controller
      */
     public function destroy($id)
     {
-        $questions = Questions::find($id);
-        $questions->delete();
-        return redirect('/questions')->with('error','Pregunta Eliminada Correctamente');
+        $surques = Surveys_Questions::where('question_id', '=', $id)->count();
+        if($surques == 0)
+        {
+            $questions = Questions::find($id);
+            $questions->delete();
+            return redirect('/questions')->with('message','Pregunta Eliminada Correctamente');
+        }
+        else
+        {
+            return redirect('/questions')->with('error','No se puede eliminar la pregunta porque esta asignada a una encuesta');
+        }
+        
     }
 }
