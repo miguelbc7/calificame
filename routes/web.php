@@ -25,7 +25,7 @@ Route::post('userstore', array('as'=>'userstore', 'uses'=>'HomeController@userst
 Route::get('regis', array('as'=>'regis', 'uses'=>'HomeController@regis'));
 Route::get('logi', array('as'=>'logi', 'uses'=>'HomeController@login'));
 
-Route::get('saveuser', array('as'=>'saveuser', 'uses'=>'HomeController@saveuser'));
+Route::post('saveuser', array('as'=>'saveuser', 'uses'=>'HomeController@saveuser'));
 Route::get('getDone', ['as'=>'getDone','uses'=>'HomeController@getDone']);
 Route::get('getCancel', ['as'=>'getCancel','uses'=>'HomeController@getCancel']);
 

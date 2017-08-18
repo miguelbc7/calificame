@@ -7,34 +7,46 @@
   <link rel="stylesheet" href="css/flier.css'">
 </head>
   <body>
-
     <div class="container">
-        <div class="row">
-            <div id="parte1" class="col-lg-6">
-                <div class="center">
-                    <img class="card-image" src="web/images/logo2.png">
-                    <h2>Participa</h2>
-                    <p class="styleP">
+        <div class="row" style="border: 1px solid #000;">
+            <div class="col-lg-6">
+                <div style="text-align: center">
+                    <img  width="250px" height="250px" src="web/images/logo2.png">
+                    <h2 style="color: #028ee4;font-weight: 900;text-align: left;margin-left: 30px;text-align: center;">Participa</h2>
+                    <p style="font-size: 1.4em;margin: 30px;text-align: justify;text-indent: 30px;">
                        Te hacemos una cordial invitación a participar en la encuesta de nuestra {empresa}. Donde buscamos saber tu opinion acerca de nuestro servicio, ayudandonos a mejorar como empresa.
-                       <p class="styleP">Su encuesta sera tratanda de forma confidencial y no serán utilizadas para ningún propósito distinto a la investigación.</p>
+                       <p style="font-size: 1.4em;margin: 30px;text-align: justify;text-indent: 30px;">Su encuesta sera tratanda de forma confidencial y no serán utilizadas para ningún propósito distinto a la investigación.</p>
                     </p>
                 </div>
             </div>
+        </div>
+
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+
+        <div class="row" style="border: 1px solid #000;">
             <div id="parte2" class="col-lg-6">
 
-                <h2 class="center padingh2"> Desde este link podras participar en nuestra encuesta.</h2>
-                <div class="margin">
-                    <span class="Link">https://www.google.co.ve/</span>
+                <h2 style="text-align:center;padding-top: 50px;"> Desde este link podras participar en nuestra encuesta.</h2>
+                <div style="text-align:center;">
+                    <span style="font-size: 1.5em;color: #000;">https://www.google.co.ve/</span>
                 </div>
 
-                <div class="center">
-                    <img class="card-image-QR" src="img/codigoqr.png">
-                    <p class="p-qr">Codigo QR</p>
+                <div style="text-align:center;">
+                    <p style="  color: #028ee4;font-size: 1.4em;font-weight: 500;">Codigo QR</p>
+                    <img height="250" width="250" src="img/codigoqr.png">
                 </div>
-
-                <img class="imglogo" src="img/logotrans.png" alt="logo">
-
+                
             </div>
+          </div>
         </div>
     </div>
 

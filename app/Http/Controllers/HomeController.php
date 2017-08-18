@@ -276,7 +276,7 @@ class HomeController extends Controller
         elseif($request->pay == 2)
         {
             $title = 'Datos para transferencias o depositos';
-            $content = 'Debes enviar un correo electronico a esta direccion '.Auth::user()->email.' con el comprobante de pago y detallando cuantas sucursales registraras';
+            $content = 'Debes enviar un correo electronico a esta direccion '.$request->email.' con el comprobante de pago y detallando cuantas sucursales registraras';
             $bank = 'Banco: Banorte';
             $account = 'Numero de Cuenta: 0570103211';
             $name = 'Nombre: Meliton Alcaraz Manjarrez';
@@ -285,13 +285,14 @@ class HomeController extends Controller
             $price2 = '3 Mes: $1100 por sucursal';
             $price3 = '6 Mes: $2000 por sucursal';
             $price4 = '12 Mes: $4000 por sucursal';
+            $email = $request->email;
 
-            Mail::send('data.emails.renew', ['title' => $title, 'content' => $content, 'price1' => $price1, 'price2' => $price2, 'price3' => $price3, 'price4' => $price4, 'bank' => $bank, 'account' => $account, 'name' => $name, 'cable' => $cable], function ($message)
+            Mail::send('data.emails.renew', ['title' => $title, 'content' => $content, 'price1' => $price1, 'price2' => $price2, 'price3' => $price3, 'price4' => $price4, 'bank' => $bank, 'account' => $account, 'name' => $name, 'cable' => $cable], function ($message) use ($email)
             {
 
                 $message->from('miguel.lm21@gmail.com', 'Calificame')->subject('Datos para transferencias o depositos en Calificame');
 
-                $message->to($request->email);
+                $message->to($email);
 
             });
 
