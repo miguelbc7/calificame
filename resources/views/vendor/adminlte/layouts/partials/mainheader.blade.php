@@ -2,7 +2,7 @@
 <header class="main-header">
 
     <!-- Logo -->
-    <a href="{{ url('/home') }}" class="logo">
+    <a href="#" class="logo">
         <!-- mini logo for sidebar mini 50x50 pixels -->
         <span class="logo-mini"><img  src="{{ asset('web/images/favicon-32.fw.png') }}"></span>
         <!-- logo for regular state and mobile devices -->

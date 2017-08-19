@@ -52,7 +52,7 @@
 						</div>
 						<div class="col-xs-12 col-sm-12 col-md-5 col-lg-5 col-xl-5">
 							<div data-toggle="tooltip" title data-original-title="Directo: Si o No / Indirecto: Opciones">
-								{!!Form::label('Tambien puedes escoger de nuestras preguntas recomendadas')!!}
+								{!!Form::label('Seleccione el tipo de pregunta')!!}
 								{!!Form::select('type', ['1' => 'Respuesta Directa (Si - No)', '2' => 'Respuesta de Seleccion Multiple (Excelente - Bueno - Regular - Malo)'], null, ['class'=>'form-control', 'placeholder' => 'Seleccione el tipo de pregunta', 'style'=>'-webkit-border-radius: 8px;-moz-border-radius: 8px;border-radius: 8px;'])!!}
 							</div>
 						</div>
@@ -78,6 +78,7 @@
 					<div class="row">
 						<div class="col-xs-11 col-sm-11 col-md-11 col-lg-11">
 							<div data-toggle="tooltip" title data-original-title="Preguntas previamente creadas">
+								{!!Form::label('Tambien puedes escoger de nuestras preguntas recomendadas')!!}
 								{!!Form::select('question_id',$questions, null, ['class'=>'form-control','placeholder'=>'Seleccione la pregunta', 'style'=>'-webkit-border-radius: 8px;-moz-border-radius: 8px;border-radius: 8px;'])!!}
 								{!!Form::hidden('survey_id',$surveys->id)!!}
 							</div>

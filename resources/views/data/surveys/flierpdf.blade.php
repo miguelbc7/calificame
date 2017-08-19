@@ -49,12 +49,12 @@
 
                 <h2 style="text-align:center;padding-top: 50px;"> Desde este link podras participar en nuestra encuesta.</h2>
                 <div style="text-align:center;">
-                    <span style="font-size: 1.5em;color: #000;">127.0.0.1:8000/surveys/{{ $surveys->id }}/survey</span>
+                    <span style="font-size: 1.5em;color: #000;">tutophoton.com.ve/encuestas/public/surveys/{{ $surveys->id }}/survey</span>
                 </div>
 
                 <div style="text-align:center;">
                     <p style="  color: #028ee4;font-size: 1.4em;font-weight: 500;">Codigo QR</p>
-                    <img src="data:image/png;base64,{{DNS2D::getBarcodePNG('http://127.0.0.1:8000/surveys/'.$surveys->id.'/survey', 'QRCODE')}}" alt="barcode" width="250" height="250" />
+                    <img src="data:image/png;base64,{{DNS2D::getBarcodePNG('http://tutophoton.com.ve/encuestas/public/surveys/'.$surveys->id.'/survey', 'QRCODE')}}" alt="barcode" width="250" height="250" />
                 </div>
                 
             </div>
