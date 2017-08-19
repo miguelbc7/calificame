@@ -123,6 +123,8 @@ class SurveysController extends Controller
     public function destroy($id)
     {
         $surques = Surveys_Questions::where('survey_id', '=', $id)->delete();
+        $answersdetails = AnswersDetails::where('survey_id', '=', $id)->delete();
+        $answers = Answers::where('survey_id', '=', $id)->delete();
         $surveys = Surveys::find($id);
         $surveys->delete();
         return redirect('/surveys')->with('error','Encuesta Eliminada Correctamente');
