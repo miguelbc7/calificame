@@ -63,6 +63,8 @@ class AnswersController extends Controller
         $answer->survey_id = $request->survey_id;
         $answer->save();
 
+        $ansid = $answer->id;
+
         $i = 0;
         $j = 0;
         $cal = 0;
@@ -84,27 +86,27 @@ class AnswersController extends Controller
             $answerdetail->survey_id = $answer->survey_id;
             $answerdetail->question_id = $request->question_id.$sq->position;
 
-            if($request->answer == 1)
+            if($request->input('option'.$sq->position) == 1)
             {
                $cal = 30;
             }
-            elseif($request->answer == 2)
+            elseif($request->input('option'.$sq->position) == 2)
             {
                 $cal = 0;
             }
-            elseif($request->answer == 3)
+            elseif($request->input('option'.$sq->position) == 3)
             {
                 $cal = 0;
             }
-            elseif($request->answer == 4)
+            elseif($request->input('option'.$sq->position) == 4)
             {
                 $cal = 10;
             }
-            elseif($request->answer == 5)
+            elseif($request->input('option'.$sq->position) == 5)
             {
                 $cal = 20;
             }
-            elseif($request->answer == 6)
+            elseif($request->input('option'.$sq->position) == 6)
             {
                 $cal = 30;
             }
@@ -114,10 +116,10 @@ class AnswersController extends Controller
 
             $answerdetail->save();
         }
-
-        $answer2 = Answers::find($answer->id);
+        $answer2 = Answers::find($ansid);
         $answer2->calification = $i/$j;
         $answer2->save();
+        
         $survey = Surveys::find($answer2->survey_id);
         $user = User::find($survey->user_id);
 
@@ -129,22 +131,31 @@ class AnswersController extends Controller
         if($answer2->calification > 5 && $answer2->calification <= 10)
         {
             $c = 'Regular';
+             $title = 'Resultado de Encuesta #'.$survey->id;
+            $content = 'Has recibido una calificacion '.$c.', puedes verificar iniciando sesion en la plataforma de calificame';
+            Mail::send('data.emails.badanswers', ['title' => $title, 'content' => $content, 'suranswers' => $suranswers, 'questions' => $questions, 'answersdet' => $answersdet, 'survey' => $survey, 'user' => $user], function ($message) use ($c, $user)
+            {
+
+                $message->from('miguel.lm21@gmail.com', 'Calificame')->subject('Has recibido una calificacion '.$c);
+
+                $message->to($user->email);
+
+            });
         }
         elseif($answer2->calification >= 0 && $answer2->calification <= 5)
         {
-            $c = 'Mala';  
+            $c = 'Mala';
+            $title = 'Resultado de Encuesta #'.$survey->id;
+            $content = 'Has recibido una calificacion '.$c.', puedes verificar iniciando sesion en la plataforma de calificame';
+            Mail::send('data.emails.badanswers', ['title' => $title, 'content' => $content, 'suranswers' => $suranswers, 'questions' => $questions, 'answersdet' => $answersdet, 'survey' => $survey, 'user' => $user], function ($message) use ($c, $user)
+            {
+
+                $message->from('miguel.lm21@gmail.com', 'Calificame')->subject('Has recibido una calificacion '.$c);
+
+                $message->to($user->email);
+
+            });
         }
-
-        $title = 'Resultado de Encuesta #'.$survey->id;
-        $content = 'Has recibido una calificacion '.$c.', puedes verificar iniciando sesion en la plataforma de calificame';
-        Mail::send('data.emails.badanswers', ['title' => $title, 'content' => $content, 'suranswers' => $suranswers, 'questions' => $questions, 'answersdet' => $answersdet, 'survey' => $survey, 'user' => $user], function ($message) use ($c, $user)
-        {
-
-            $message->from('miguel.lm21@gmail.com', 'Calificame')->subject('Has recibido una calificacion '.$c);
-
-            $message->to($user->email);
-
-        });
 
         return Redirect::back();
     }
