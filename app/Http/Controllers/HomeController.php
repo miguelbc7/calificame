@@ -300,9 +300,9 @@ class HomeController extends Controller
             $user->company = $request->company;
             $user->email = $request->email;
             $user->password = bcrypt($request->password);
-            $users->type = 2;
-            $users->status = 2;
-            $users->branch = $request->branch;
+            $user->type = 2;
+            $user->status = 2;
+            $user->branch = $request->branch;
 
             if(isset($request->avatar))
             {
@@ -311,7 +311,7 @@ class HomeController extends Controller
                 $extension = 'jpg'; // getting image extension
                 $fileName = 'avatar.'.$extension; // renameing image
                 $request->file('avatar')->move($destinationPath2, $fileName); // uploading file to given path
-                $user->image = $destinationPath.'/'.$fileName;
+                $user->avatar = $destinationPath.'/'.$fileName;
                 $user->save();      
             }
             else
@@ -319,7 +319,7 @@ class HomeController extends Controller
                 $destinationPath = 'img/Users/0/avatar/'; // upload path
                 $destinationPath2 = base_path() . '/public/img/Users/0/avatar/'; // upload path
                 $extension = 'jpg'; // getting image extension
-                $user->image = $destinationPath.'/avatar.png';
+                $user->avatar = $destinationPath.'/avatar.png';
                 $user->save();
             }
 

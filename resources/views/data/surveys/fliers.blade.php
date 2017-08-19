@@ -26,11 +26,12 @@
 
                 <h2 class="center padingh2"> Desde este link podras participar en nuestra encuesta.</h2>
                 <div class="margin">
-                    <span class="Link">https://www.google.co.ve/</span>
+                    <span class="Link"><a href="{{ url('surveys/'.$surveys->id.'/survey') }}"><h4> 127.0.0.1:8000/surveys/{{ $surveys->id }}/survey </h4></a></span>
                 </div>
 
                 <div class="center">
-                    <img class="card-image-QR" width="300px" height="300px" src="{{ asset('img/codigoqr.png') }}">
+                   <a href="{{ url('surveys/'.$surveys->id.'/survey') }}">
+                        <img src="data:image/png;base64,{{DNS2D::getBarcodePNG('http://127.0.0.1:8000/surveys/'.$surveys->id.'/survey', 'QRCODE')}}" alt="barcode" width="200" height="200" /></a>
                     <p class="p-qr">Codigo QR</p>
                 </div>
 

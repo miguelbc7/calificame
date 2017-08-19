@@ -45,13 +45,15 @@
 					<div class="row">
 						<div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 col-xl-6">
 							<div data-toggle="tooltip" title data-original-title="La pregunta debe ser de respuesta cerrada">
+								{!!Form::label('Escribe la pregunta')!!}
 								{!!Form::text('question',null,['class'=>'form-control','placeholder'=>'Ingrese la pregunta', 'autofocus'=>'autofocus', 'style'=>'-webkit-border-radius: 8px;-moz-border-radius: 8px;border-radius: 8px;'])!!}
 								{!!Form::hidden('survey_id',$surveys->id)!!}
 							</div>
 						</div>
 						<div class="col-xs-12 col-sm-12 col-md-5 col-lg-5 col-xl-5">
 							<div data-toggle="tooltip" title data-original-title="Directo: Si o No / Indirecto: Opciones">
-								{!!Form::select('type', ['1' => 'Directo', '2' => 'Indirecto'], null, ['class'=>'form-control', 'placeholder' => 'Seleccione un tipo', 'style'=>'-webkit-border-radius: 8px;-moz-border-radius: 8px;border-radius: 8px;'])!!}
+								{!!Form::label('Tambien puedes escoger de nuestras preguntas recomendadas')!!}
+								{!!Form::select('type', ['1' => 'Respuesta Directa (Si - No)', '2' => 'Respuesta de Seleccion Multiple (Excelente - Bueno - Regular - Malo)'], null, ['class'=>'form-control', 'placeholder' => 'Seleccione el tipo de pregunta', 'style'=>'-webkit-border-radius: 8px;-moz-border-radius: 8px;border-radius: 8px;'])!!}
 							</div>
 						</div>
 						<div class="pull-left">
@@ -118,7 +120,7 @@
 												
 												{!!Form::open(['route'=>['surveys.destroy', $s], 'method'=>'DELETE'])!!}					
 												<div class="btn-group">
-													<a href="{{ route('surveys.edit', $s->id) }}" class="btn btn-default" type="edit"><i class="fa fa-edit"></i></a>
+													<a href="{{ route('questions.edit', $s->id) }}" class="btn btn-default" type="edit"><i class="fa fa-edit"></i></a>
 														@if($s->position == 1 && $count == 1)
 
 														@elseif($s->position == 1 && $count != 1)

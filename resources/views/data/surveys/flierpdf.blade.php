@@ -31,18 +31,30 @@
         <br>
         <br>
         <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
 
         <div class="row" style="border: 1px solid #000;">
             <div id="parte2" class="col-lg-6">
 
                 <h2 style="text-align:center;padding-top: 50px;"> Desde este link podras participar en nuestra encuesta.</h2>
                 <div style="text-align:center;">
-                    <span style="font-size: 1.5em;color: #000;">https://www.google.co.ve/</span>
+                    <span style="font-size: 1.5em;color: #000;">127.0.0.1:8000/surveys/{{ $surveys->id }}/survey</span>
                 </div>
 
                 <div style="text-align:center;">
                     <p style="  color: #028ee4;font-size: 1.4em;font-weight: 500;">Codigo QR</p>
-                    <img height="250" width="250" src="img/codigoqr.png">
+                    <img src="data:image/png;base64,{{DNS2D::getBarcodePNG('http://127.0.0.1:8000/surveys/'.$surveys->id.'/survey', 'QRCODE')}}" alt="barcode" width="250" height="250" />
                 </div>
                 
             </div>
