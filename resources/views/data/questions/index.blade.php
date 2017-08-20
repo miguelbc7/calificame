@@ -70,16 +70,15 @@
 							<tr>
 								<td>{!!$q->question!!}</td>
 								<td align="right">
-									
-									{!!Form::open(['route'=>['questions.destroy', $q], 'method'=>'DELETE'])!!}					
-									<div class="btn-group">
-										<a href="{{ route('questions.edit', $q->id) }}" class="btn btn-default" data-toggle="tooltip" title data-original-title="Editar" type="edit"><i class="fa fa-edit"></i></a>
-										
-										<button class="btn btn-danger" data-toggle="tooltip" title data-original-title="Eliminar" type="submit">
-    									<i class="fa fa-remove"></i> </button>
-									</div>
-									{!!Form::close()!!}
-									
+									@if($q->user_id == Auth::id())	
+										<div class="btn-group">
+											<a href="{{ route('questions.edit', $q->id) }}" class="btn btn-default" data-toggle="tooltip" title data-original-title="Editar" type="edit"><i class="fa fa-edit"></i></a>
+											{!!Form::open(['route'=>['questions.destroy', $q], 'method'=>'DELETE'])!!}
+												<button class="btn btn-danger" data-toggle="tooltip" title data-original-title="Eliminar" type="submit">
+	    										<i class="fa fa-remove"></i> </button>
+	    									{!!Form::close()!!}
+										</div>
+									@endif
 								</td>
 							</tr>
 						</tbody>

@@ -59,7 +59,6 @@
 					<table class="table table-bordered table-hover">
 						<thead>
 							<tr>
-								<th class="fondo">Numero</th>
 								<th class="fondo">Nombre</th>
 								<th class="fondo">Email</th>
 								@foreach($questions as $q)
@@ -72,9 +71,7 @@
 						</thead>
 						@foreach($suranswers as $s)
 						<tbody>
-							<tr>
-								<td>{!!$s->id!!}</td>
-								
+							<tr>								
 								@if(isset($s->name))
 									<td>{!!$s->name!!}</td>
 								@else
