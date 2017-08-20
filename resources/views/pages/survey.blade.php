@@ -32,7 +32,7 @@
             <img class="imglogo img-circle animated  pulse" width="200px" height="180px" src="{{ asset($user->avatar) }}" alt="logo">
         </div>
         @foreach($surquestions as $sq)
-            <input type="text" name="question_id{{ $sq->position }}" value="{{ $sq->question_id }}">
+            <input type="hidden" name="question_id{{ $sq->position }}" value="{{ $sq->question_id }}">
             
             @if($sq->type == 1)
 

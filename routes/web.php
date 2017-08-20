@@ -18,6 +18,7 @@ Route::get('terms', array('as'=>'terms', 'uses'=>'HomeController@terms'));
 Route::get('privacy', array('as'=>'privacy', 'uses'=>'HomeController@privacy'));
 Route::get('contract', array('as'=>'contract', 'uses'=>'HomeController@contract'));
 Route::get('surveys/{id}/survey', 'SurveysController@survey');
+Route::get('surveys/{id}/shared', array('as' => 'shared', 'uses' => 'SurveysController@shared') );
 Route::resource('answers', 'AnswersController');
 
 Route::post('userstore', array('as'=>'userstore', 'uses'=>'HomeController@userstore'));
