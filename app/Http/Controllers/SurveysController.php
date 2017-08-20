@@ -268,6 +268,7 @@ class SurveysController extends Controller
         {
             if($q->type == 1)
             {
+
                 $si2[$i] = AnswersDetails::where('survey_id', '=', $id)->where('answer', '=', '1')->where('question_id', '=', $q->qid)->count();
                 $no2[$i] = AnswersDetails::where('survey_id', '=', $id)->where('answer', '=', '2')->where('question_id', '=', $q->qid)->count();
 
@@ -561,7 +562,7 @@ class SurveysController extends Controller
                 }
                 else
                 {
-                    $s[$i] = $si2[$i].' respuestas Si';
+                    $s2[$i] = $si2[$i].' respuestas Si';
                 }
                  
                 if($no2[$i] == 1)

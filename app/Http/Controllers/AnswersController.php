@@ -73,6 +73,7 @@ class AnswersController extends Controller
         {
             $this->validate($request, [
                 'option'.$sq->position => 'required',
+                'question_id'.$sq->position => 'required',
             ]);
 
             $answerdetail = new AnswersDetails;
@@ -84,7 +85,7 @@ class AnswersController extends Controller
             $answerdetail->date = date('Y-m-d');
             $answerdetail->answer_id = $answer->id;
             $answerdetail->survey_id = $answer->survey_id;
-            $answerdetail->question_id = $request->question_id.$sq->position;
+            $answerdetail->question_id = $request->input('question_id'.$sq->position);
 
             if($request->input('option'.$sq->position) == 1)
             {

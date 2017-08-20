@@ -116,11 +116,11 @@
 									@endif
 								@endforeach
 								
-								@if($s->calification > 21)
+								@if($s->calification > 25)
 									<td style="color:#fff; background-color: #5c7ef6">Excelente</td>
-								@elseif($s->calification > 10 && $s->calification <= 20)
+								@elseif($s->calification > 15 && $s->calification <= 24)
 									<td style="background-color: #5cf65e">Buena</td>
-								@elseif($s->calification > 5 && $s->calification <= 10)
+								@elseif($s->calification > 5 && $s->calification <= 14)
 									<td style="background-color: ##edf65c">Regular</td>
 								@elseif($s->calification >= 0 && $s->calification = 5)
 									<td style="color:#fff; background-color: #f65c6e">Mala</td>
