@@ -139,7 +139,7 @@ class SurveysController extends Controller
     {
         $surveys = Surveys::find($id);
         $surquestions = Surveys_Questions::join('questions', 'surveys_questions.question_id', '=', 'questions.id')->select('surveys_questions.id AS id', 'questions.question AS question', 'surveys_questions.position AS position')->where('surveys_questions.survey_id', '=', $id)->orderBy('position', 'asc')->paginate(10);
-        $questions = Questions::where('user_id', '=', Auth::id())->orderBy('question')->pluck('question', 'id');
+        $questions = Questions::where('user_id', '=', Auth::id())->orderBy('id')->pluck('question', 'id');
         $last = Surveys_Questions::select('position')->orderBy('position', 'desc')->first();
         $count = Surveys_Questions::join('questions', 'surveys_questions.question_id', '=', 'questions.id')->select('surveys_questions.id AS id', 'questions.question AS question', 'surveys_questions.position AS position')->where('surveys_questions.survey_id', '=', $id)->count();
 

@@ -49,8 +49,8 @@
 							</div>
 							<div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 col-xl-6">
 								<div data-toggle="tooltip" title data-original-title="Directo: Si o No / Indirecto: Opciones">
-									{!!Form::label('Tipo de pregunta')!!}
-									{!!Form::select('type', ['1' => 'Respuesta Directa (Si - No)', '2' => 'Respuesta de Seleccion Multiple (Excelente - Bueno - Regular - Malo)'], null, ['class'=>'form-control', 'placeholder' => 'Seleccione el tipo de pregunta', 'style'=>'-webkit-border-radius: 8px;-moz-border-radius: 8px;border-radius: 8px;'])!!}
+									{!!Form::label('Tipo de respuesta')!!}
+									{!!Form::select('type', ['1' => 'Respuesta Directa (Si - No)', '2' => 'Respuesta de Seleccion Multiple (Excelente - Bueno - Regular - Malo)'], null, ['class'=>'form-control', 'placeholder' => 'Seleccione el tipo de respuesta', 'style'=>'-webkit-border-radius: 8px;-moz-border-radius: 8px;border-radius: 8px;'])!!}
 								</div>
 							</div>
 						</div>
