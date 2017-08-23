@@ -18,6 +18,7 @@ Route::get('terms', array('as'=>'terms', 'uses'=>'HomeController@terms'));
 Route::get('privacy', array('as'=>'privacy', 'uses'=>'HomeController@privacy'));
 Route::get('contract', array('as'=>'contract', 'uses'=>'HomeController@contract'));
 Route::get('surveys/{id}/survey', 'SurveysController@survey');
+Route::get('surveys/surveyFinish', 'SurveysController@surveyFinish');
 Route::get('surveys/{id}/shared', array('as' => 'shared', 'uses' => 'SurveysController@shared') );
 Route::resource('answers', 'AnswersController');
 
@@ -79,6 +80,9 @@ Route::get('lang/{lang}', function ($lang) {
 
         Route::get('surveys/{id}/fullUp', array('as'=>'fullUp', 'uses'=>'Surveys_QuestionsController@fullUp'));
         Route::get('surveys/{id}/fullDown', array('as'=>'fullDown', 'uses'=>'Surveys_QuestionsController@fullDown'));
+
+        Route::get('questions/{id}/enable', array('as'=>'enable', 'uses'=>'QuestionsController@enable'));
+        Route::get('questions/{id}/disable', array('as'=>'disable', 'uses'=>'QuestionsController@disable'));
 
         Route::get('renew', array('as'=>'renew', 'uses'=>'UserController@renew'));
         Route::post('renewpaypal', array('as'=>'renewpaypal', 'uses'=>'UserController@renewpaypal'));

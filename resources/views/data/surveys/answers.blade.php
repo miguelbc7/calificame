@@ -94,19 +94,16 @@
 												<td>No</td>
 												<td>{!!$a->comment!!}</td>
 											@elseif($a->answer == 3)
-												<td>Muy Malo</td>
-												<td>{!!$a->comment!!}</td>
-											@elseif($a->answer == 4)
 												<td>Malo</td>
 												<td>{!!$a->comment!!}</td>
-											@elseif($a->answer == 5)
+											@elseif($a->answer == 4)
 												<td>Regular</td>
 												<td>{!!$a->comment!!}</td>
-											@elseif($a->answer == 6)
+											@elseif($a->answer == 5)
 												<td>Bueno</td>
 												<td>{!!$a->comment!!}</td>
-											@elseif($a->answer == 7)
-												<td>Muy Bueno</td>
+											@elseif($a->answer == 6)
+												<td>Excelente</td>
 												<td>{!!$a->comment!!}</td>
 											@endif
 										@endif

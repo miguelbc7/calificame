@@ -10,13 +10,9 @@
 
 @section('main-content')
 <div class="box-body">
-	@if(isset($chart))
-		{!! Charts::assets() !!}
-		<center>
-	   		{!! $chart->render() !!}
-		</center>
-	@endif
-	<br>
+
+	{!! Charts::assets() !!}
+
 	@foreach($chart2 as $c)
 		<center>
 		   	{!! $c->render() !!}

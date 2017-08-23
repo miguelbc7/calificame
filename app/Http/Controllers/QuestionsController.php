@@ -49,6 +49,7 @@ class QuestionsController extends Controller
 
         $questions = new Questions;
         $questions->fill($request->all());
+        $questions->status = 1;
         $questions->user_id = Auth::id();
         $questions->save();
         return redirect('/questions')->with('message','Pregunta Registrada Correctamente');
@@ -114,8 +115,24 @@ class QuestionsController extends Controller
         }
         else
         {
-            return redirect('/questions')->with('error','No se puede eliminar la pregunta porque esta asignada a una encuesta');
+            return redirect('/questions')->with('message','No se puede eliminar la pregunta porque esta asignada a una encuesta');
         }
         
+    }
+
+    public function enable($id)
+    {
+        $question = Questions::find($id);
+        $question->status = 1;
+        $question->save();
+        return redirect()->back();
+    }
+
+    public function disable($id)
+    {
+        $question = Questions::find($id);
+        $question->status = 2;
+        $question->save();
+        return redirect()->back();
     }
 }

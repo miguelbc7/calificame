@@ -73,6 +73,13 @@
 									@if($q->user_id == Auth::id())	
 										<div class="btn-group">
 											<a href="{{ route('questions.edit', $q->id) }}" class="btn btn-default" data-toggle="tooltip" title data-original-title="Editar" type="edit"><i class="fa fa-edit"></i></a>
+											@if(Auth::user()->type == 1)
+												@if($q->status == 1)
+													<a href="{{ route('disable', $q->id) }}" class="btn btn-warning" data-toggle="tooltip" title data-original-title="Deshabilitar" type="edit"><i class="fa fa-edit"></i></a>
+												@elseif($q->status == 2)
+													<a href="{{ route('enable', $q->id) }}" class="btn btn-info" data-toggle="tooltip" title data-original-title="Habilitar" type="edit"><i class="fa fa-edit"></i></a>
+												@endif
+											@endif
 											{!!Form::open(['route'=>['questions.destroy', $q], 'method'=>'DELETE'])!!}
 												<button class="btn btn-danger" data-toggle="tooltip" title data-original-title="Eliminar" type="submit">
 	    										<i class="fa fa-remove"></i> </button>

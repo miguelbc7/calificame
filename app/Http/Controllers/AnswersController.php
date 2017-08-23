@@ -157,8 +157,8 @@ class AnswersController extends Controller
 
             });
         }
-
-        return Redirect::back();
+        Session::put('surveyid', $request->survey_id);
+        return view('pages.surveyFinish');
     }
 
     /**
