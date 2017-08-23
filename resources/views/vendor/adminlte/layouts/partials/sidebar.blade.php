@@ -39,7 +39,9 @@
                 <a href="#"><i class='fa fa-cog'></i> <span>Data</span> <i class="fa fa-angle-left pull-right"></i></a>
                 <ul class="treeview-menu">
                     <li><a href="{{ url('surveys') }}">Encuestas</a></li>
-                    <li><a href="{{ url('questions') }}">Preguntas</a></li>
+                    @if(Session::get('utype') == 1)
+                        <li><a href="{{ url('questions') }}">Preguntas</a></li>
+                    @endif
                 </ul>
             </li>
             @elseif(Session::get('status') == 2)
