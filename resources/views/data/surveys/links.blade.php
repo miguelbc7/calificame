@@ -23,7 +23,9 @@
 			    			<div class="row" style="text-align: center;">
 			    				<div class="col-xs-12 col-sm-12 col-md-12">
 			    					<div class="col-xs-1 col-sm-1 col-md-3 col-lg-4 col-xl-4" data-toggle="tooltip" title data-original-title="Hipervinculo a la encuesta en formato normal">
-									<a href="{{ url('surveys/'.$survey->id.'/survey') }}"><h4> tutophoton.com.ve/encuestas/public/surveys/{{ $survey->id }}/survey </h4></a>
+									<a href="{{ url('surveys/'.$survey->id.'/survey') }}">
+										<h4> tutophoton.com.ve/encuestas/public/surveys/{{ $survey->id }}/survey </h4>
+									</a>
 								</div>
 			    				</div>
 			    			</div>

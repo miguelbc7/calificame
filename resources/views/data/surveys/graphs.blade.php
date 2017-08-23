@@ -11,6 +11,10 @@
 @section('main-content')
 
 <div class="box-body">
+	<div style="text-align: center;">
+		Fecha: {{ date('d-m-Y') }}
+	</div>
+	<br>
 	{!! Charts::assets() !!}
 
 	@foreach($chart2 as $c)
@@ -21,6 +25,7 @@
 	@endforeach
 
 	<div class="pull-right">
+		<a href="{{ route('graphpdf', $survey->id) }}" target="_blank" class="btn btn-primary" data-toggle="tooltip" data-original-title="Imprimir" type="edit">Imprimir como PDF</a>
 		<a href="{{ route('pregraphs', $survey->id)}}" class="btn btn-default btn3d">Atras</a>
 	</div>
 </div>

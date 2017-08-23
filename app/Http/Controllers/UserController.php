@@ -93,7 +93,7 @@ class UserController extends Controller
             $extension = 'jpg'; // getting image extension
             $fileName = 'avatar.'.$extension; // renameing image
             $request->file('avatar')->move($destinationPath2, $fileName); // uploading file to given path
-            $user->image = $destinationPath.'/'.$fileName;
+            $user->avatar = $destinationPath.'/'.$fileName;
         }
         $user->save();
         return redirect('/admin')->with('message','Usuario Actualizado Correctamente');

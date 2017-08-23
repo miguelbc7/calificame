@@ -196,6 +196,7 @@ class SurveysController extends Controller
         $questions = Surveys_Questions::join('questions', 'surveys_questions.question_id', '=', 'questions.id')->join('surveys', 'surveys_questions.survey_id', '=', 'surveys.id')->select('questions.question AS name', 'questions.id as qid', 'questions.type as type', 'surveys_questions.position as position')->where('surveys.id', '=', $id)->get();
         $answersdet =  AnswersDetails::join('questions', 'answers_details.question_id', '=', 'questions.id')->select('answers_details.id AS id', 'answers_details.answer AS answer', 'answers_details.survey_id AS survey', 'answers_details.answer_id AS ansid', 'answers_details.comment As comment', 'questions.id as qid')->where('answers_details.survey_id', '=', $id)->get();
 
+        Session::put('surid', $id);
         $survey = Surveys::find($id);
 
         $i = 0;
@@ -204,26 +205,32 @@ class SurveysController extends Controller
         {
             if($q->type == 1)
             {
-
+                $count[$i] = AnswersDetails::where('survey_id', '=', $id)->where('question_id', '=', $q->qid)->whereIn('answer', [1, 2])->count();
                 $si2[$i] = AnswersDetails::where('survey_id', '=', $id)->where('answer', '=', '1')->where('question_id', '=', $q->qid)->count();
                 $no2[$i] = AnswersDetails::where('survey_id', '=', $id)->where('answer', '=', '2')->where('question_id', '=', $q->qid)->count();
 
+                $subPercentSi[$i] = $si2[$i]/$count[$i];
+                $percentSi[$i] = $subPercentSi[$i]*100;
+
+                $subPercentNo[$i] = $no2[$i]/$count[$i];
+                $percentNo[$i] = $subPercentNo[$i]*100;
+
                 if($si2[$i] == 1)
                 {
-                    $s2[$i] = $si2[$i].' respuesta Si';
+                    $s2[$i] = 'Si '.$percentSi[$i].'% ('.$si2[$i].' respuesta)';
                 }
                 else
                 {
-                    $s2[$i] = $si2[$i].' respuestas Si';
+                    $s2[$i] = 'Si '.$percentSi[$i].'% ('.$si2[$i].' respuestas)';
                 }
                  
                 if($no2[$i] == 1)
                 {
-                    $n2[$i] = $no2[$i].' respuesta No';
+                    $n2[$i] = 'No '.$percentNo[$i].'% ('.$no2[$i].' respuesta)';
                 }
                 else
                 {
-                    $n2[$i] = $no2[$i].' respuestas No';
+                    $n2[$i] = 'No '.$percentNo[$i].' %('.$no2[$i].' respuestas)';
                 }
 
                 $chart2[] = Charts::create('pie', 'fusioncharts')
@@ -237,46 +244,58 @@ class SurveysController extends Controller
             }
             elseif($q->type == 2)
             {
-
+                $count[$j] = AnswersDetails::where('survey_id', '=', $id)->where('question_id', '=', $q->qid)->whereIn('answer', [3,4,5,6])->count();
                 $malo2[$j] = AnswersDetails::where('survey_id', '=', $id)->where('answer', '=', '3')->where('question_id', '=', $q->qid)->count();
                 $regular2[$j] = AnswersDetails::where('survey_id', '=', $id)->where('answer', '=', '4')->where('question_id', '=', $q->qid)->count();
                 $bueno2[$j] = AnswersDetails::where('survey_id', '=', $id)->where('answer', '=', '5')->where('question_id', '=', $q->qid)->count();
                 $excelente2[$j] = AnswersDetails::where('survey_id', '=', $id)->where('answer', '=', '6')->where('question_id', '=', $q->qid)->count();
 
+                $subPercentMalo[$j] = $malo2[$j]/$count[$j];
+                $percentMalo[$j] = $subPercentMalo[$j]*100;
+
+                $subPercentRegular[$j] = $regular2[$j]/$count[$j];
+                $percentRegular[$j] = $subPercentRegular[$j]*100;
+
+                $subPercentBueno[$j] = $bueno2[$j]/$count[$j];
+                $percentBueno[$j] = $subPercentBueno[$j]*100;
+
+                $subPercentExcelente[$j] = $excelente2[$j]/$count[$j];
+                $percentExcelente[$j] = $subPercentExcelente[$j]*100;
+
                 if($malo2[$j] == 1)
                 {
-                    $m2[$j] = $malo2[$j].' respuesta Malo';
+                    $m2[$j] = 'Malo '.$percentMalo[$j].'% ('.$malo2[$j].' respuesta)';
                 }
                 else
                 {
-                    $m2[$j] = $malo2[$j].' respuestas Malo';
+                    $m2[$j] = 'Malo '.$percentMalo[$j].'% ('.$malo2[$j].' respuestas)';
                 }
 
                 if($regular2[$j] == 1)
                 {
-                    $r2[$j] = $regular2[$j].' respuesta Regular';
+                    $r2[$j] = 'Regular '.$percentRegular[$j].'% ('.$regular2[$j].' respuesta)';
                 }
                 else
                 {
-                    $r2[$j] = $regular2[$j].' respuestas Regular';
+                    $r2[$j] = 'Regular '.$percentRegular[$j].'% ('.$regular2[$j].' respuestas)';
                 }
 
                 if($bueno2[$j] == 1)
                 {
-                    $b2[$j] = $bueno2[$j].' respuesta Bueno';
+                    $b2[$j] = 'Bueno '.$percentBueno[$j].'% ('.$bueno2[$j].' respuesta)';
                 }
                 else
                 {
-                    $b2[$j] = $bueno2[$j].' respuestas Bueno';
+                    $b2[$j] = 'Bueno '.$percentBueno[$j].'% ('.$bueno2[$j].' respuestas)';
                 }
 
                 if($excelente2[$j] == 1)
                 {
-                    $e2[$j] = $excelente2[$j].' respuesta Excelente';
+                    $e2[$j] = 'Excelente '.$percentExcelente[$j].'% ('.$excelente2[$j].' respuesta)';
                 }
                 else
                 {
-                    $e2[$j] = $excelente2[$j].' respuestas Excelente';
+                    $e2[$j] = 'Excelente '.$percentExcelente[$j].'% ('.$excelente2[$j].' respuestas)';
                 }
 
                 $chart2[] = Charts::create('pie', 'fusioncharts')
@@ -306,25 +325,32 @@ class SurveysController extends Controller
         {
             if($q->type == 1)
             {
+                $count[$i] = AnswersDetails::where('survey_id', '=', $id)->where('question_id', '=', $q->qid)->whereIn('answer', [1, 2])->count();
                 $satisfecho2[$i] = AnswersDetails::where('survey_id', '=', $id)->where('answer', '=', '1')->where('question_id', '=', $q->qid)->count();
                 $insatisfecho2[$i] = AnswersDetails::where('survey_id', '=', $id)->where('answer', '=', '2')->where('question_id', '=', $q->qid)->count();
 
+                $subPercentSas[$i] = $satisfecho2[$i]/$count[$i];
+                $percentSas[$i] = $subPercentSas[$i]*100;
+
+                $subPercentInsas[$i] = $insatisfecho2[$i]/$count[$i];
+                $percentInsas[$i] = $subPercentInsas[$i]*100;
+
                 if($satisfecho2[$i] == 1)
                 {
-                    $s2[$i] = $satisfecho2[$i].' respuesta Satisfecho';
+                    $s2[$i] = 'Satisfecho '.$percentSas[$i].'% ('.$satisfecho2[$i].' respuesta)';
                 }
                 else
                 {
-                    $s2[$i] = $satisfecho2[$i].' respuestas Satisfechos';
+                    $s2[$i] = 'Satisfecho '.$percentSas[$i].'% ('.$satisfecho2[$i].' respuestas)';
                 }
                  
                 if($insatisfecho2[$i] == 1)
                 {
-                    $i2[$i] = $insatisfecho2[$i].' respuesta Insatisfecho';
+                    $i2[$i] = 'Insatisfecho '.$percentInsas[$i].'% ('.$insatisfecho2[$i].' respuesta)';
                 }
                 else
                 {
-                    $i2[$i] = $insatisfecho2[$i].' respuestas Insatisfechos';
+                    $i2[$i] = 'Insatisfecho '.$percentInsas[$i].'% ('.$insatisfecho2[$i].' respuestas)';
                 }
 
                 $chart2[] = Charts::create('pie', 'fusioncharts')
@@ -338,26 +364,32 @@ class SurveysController extends Controller
             }
             elseif($q->type == 2)
             {
-
+                $count[$j] = AnswersDetails::where('survey_id', '=', $id)->where('question_id', '=', $q->qid)->whereIn('answer', [3,4,5,6])->count();
                 $satisfecho2[$j] = AnswersDetails::where('survey_id', '=', $id)->where('answer', '=', '5')->orWhere('answer', '=', '6')->where('question_id', '=', $q->qid)->count();
                 $insatisfecho2[$j] = AnswersDetails::where('survey_id', '=', $id)->where('answer', '=', '3')->orWhere('answer', '=', '4')->where('question_id', '=', $q->qid)->count();
 
+                $subPercentSas[$j] = $satisfecho2[$j]/$count[$j];
+                $percentSas[$j] = $subPercentSas[$j]*100;
+
+                $subPercentInsas[$j] = $insatisfecho2[$j]/$count[$j];
+                $percentInsas[$j] = $subPercentInsas[$j]*100;
+
                 if($satisfecho2[$j] == 1)
                 {
-                    $s2[$j] = $satisfecho2[$j].' respuesta Satisfecho';
+                    $s2[$i] = 'Satisfecho '.$percentSas[$j].'% ('.$satisfecho2[$j].' respuesta)';
                 }
                 else
                 {
-                    $s2[$j] = $satisfecho2[$j].' respuesta Satisfechos';
+                    $s2[$i] = 'Satisfecho '.$percentSas[$j].'% ('.$satisfecho2[$j].' respuestas)';
                 }
                  
                 if($insatisfecho2[$j] == 1)
                 {
-                    $i2[$j] = $insatisfecho2[$j].' respuestas Insatisfecho';
+                    $i2[$j] = 'Insatisfecho '.$percentInsas[$j].'% ('.$insatisfecho2[$j].' respuesta)';
                 }
                 else
                 {
-                    $i2[$j] = $insatisfecho2[$j].' respuestas Insatisfechos';
+                    $i2[$j] = 'Insatisfecho '.$percentInsas[$j].'% ('.$insatisfecho2[$j].' respuestas)';
                 }
 
                 $chart2[] = Charts::create('pie', 'fusioncharts')
@@ -392,25 +424,32 @@ class SurveysController extends Controller
         {
             if($q->type == 1)
             {
+                $count[$i] = AnswersDetails::where('survey_id', '=', $id)->where('question_id', '=', $q->qid)->whereIn('answer', [1, 2])->whereBetween('date', [$request->dateOne, $request->dateTwo])->count();
                 $si2[$i] = AnswersDetails::where('survey_id', '=', $id)->where('answer', '=', '1')->where('question_id', '=', $q->qid)->whereBetween('date', [$request->dateOne, $request->dateTwo])->count();
                 $no2[$i] = AnswersDetails::where('survey_id', '=', $id)->where('answer', '=', '2')->where('question_id', '=', $q->qid)->whereBetween('date', [$request->dateOne, $request->dateTwo])->count();
 
+                $subPercentSi[$i] = $si2[$i]/$count[$i];
+                $percentSi[$i] = $subPercentSi[$i]*100;
+
+                $subPercentNo[$i] = $no2[$i]/$count[$i];
+                $percentNo[$i] = $subPercentNo[$i]*100;
+
                 if($si2[$i] == 1)
                 {
-                    $s2[$i] = $si2[$i].' respuesta Si';
+                    $s2[$i] = 'Si '.$percentSi[$i].'% ('.$si2[$i].' respuesta)';
                 }
                 else
                 {
-                    $s2[$i] = $si2[$i].' respuestas Si';
+                    $s2[$i] = 'Si '.$percentSi[$i].'% ('.$si2[$i].' respuestas)';
                 }
                  
                 if($no2[$i] == 1)
                 {
-                    $n2[$i] = $no2[$i].' respuesta No';
+                    $n2[$i] = 'No '.$percentNo[$i].'% ('.$no2[$i].' respuesta)';
                 }
                 else
                 {
-                    $n2[$i] = $no2[$i].' respuestas No';
+                    $n2[$i] = 'No '.$percentNo[$i].' %('.$no2[$i].' respuestas)';
                 }
 
                 $chart2[] = Charts::create('pie', 'fusioncharts')
@@ -424,46 +463,58 @@ class SurveysController extends Controller
             }
             elseif($q->type == 2)
             {
-
+                $count[$j] = AnswersDetails::where('survey_id', '=', $id)->where('question_id', '=', $q->qid)->whereIn('answer', [3,4,5,6])->whereBetween('date', [$request->dateOne, $request->dateTwo])->count();
                 $malo2[$j] = AnswersDetails::where('survey_id', '=', $id)->where('answer', '=', '3')->where('question_id', '=', $q->qid)->whereBetween('date', [$request->dateOne, $request->dateTwo])->count();
                 $regular2[$j] = AnswersDetails::where('survey_id', '=', $id)->where('answer', '=', '4')->where('question_id', '=', $q->qid)->whereBetween('date', [$request->dateOne, $request->dateTwo])->count();
                 $bueno2[$j] = AnswersDetails::where('survey_id', '=', $id)->where('answer', '=', '5')->where('question_id', '=', $q->qid)->whereBetween('date', [$request->dateOne, $request->dateTwo])->count();
                 $excelente2[$j] = AnswersDetails::where('survey_id', '=', $id)->where('answer', '=', '6')->where('question_id', '=', $q->qid)->whereBetween('date', [$request->dateOne, $request->dateTwo])->count();
 
+                $subPercentMalo[$j] = $malo2[$j]/$count[$j];
+                $percentMalo[$j] = $subPercentMalo[$j]*100;
+
+                $subPercentRegular[$j] = $regular2[$j]/$count[$j];
+                $percentRegular[$j] = $subPercentRegular[$j]*100;
+
+                $subPercentBueno[$j] = $bueno2[$j]/$count[$j];
+                $percentBueno[$j] = $subPercentBueno[$j]*100;
+
+                $subPercentExcelente[$j] = $excelente2[$j]/$count[$j];
+                $percentExcelente[$j] = $subPercentExcelente[$j]*100;
+
                 if($malo2[$j] == 1)
                 {
-                    $m2[$j] = $malo2[$j].' respuesta Malo';
+                    $m2[$j] = 'Malo '.$percentMalo[$j].'% ('.$malo2[$j].' respuesta)';
                 }
                 else
                 {
-                    $m2[$j] = $malo2[$j].' respuestas Malo';
+                    $m2[$j] = 'Malo '.$percentMalo[$j].'% ('.$malo2[$j].' respuestas)';
                 }
 
                 if($regular2[$j] == 1)
                 {
-                    $r2[$j] = $regular2[$j].' respuesta Regular';
+                    $r2[$j] = 'Regular '.$percentRegular[$j].'% ('.$regular2[$j].' respuesta)';
                 }
                 else
                 {
-                    $r2[$j] = $regular2[$j].' respuestas Regular';
+                    $r2[$j] = 'Regular '.$percentRegular[$j].'% ('.$regular2[$j].' respuestas)';
                 }
 
                 if($bueno2[$j] == 1)
                 {
-                    $b2[$j] = $bueno2[$j].' respuesta Bueno';
+                    $b2[$j] = 'Bueno '.$percentBueno[$j].'% ('.$bueno2[$j].' respuesta)';
                 }
                 else
                 {
-                    $b2[$j] = $bueno2[$j].' respuestas Bueno';
+                    $b2[$j] = 'Bueno '.$percentBueno[$j].'% ('.$bueno2[$j].' respuestas)';
                 }
 
                 if($excelente2[$j] == 1)
                 {
-                    $e2[$j] = $excelente2[$j].' respuesta Excelente';
+                    $e2[$j] = 'Excelente '.$percentExcelente[$j].'% ('.$excelente2[$j].' respuesta)';
                 }
                 else
                 {
-                    $e2[$j] = $excelente2[$j].' respuestas Excelente';
+                    $e2[$j] = 'Excelente '.$percentExcelente[$j].'% ('.$excelente2[$j].' respuestas)';
                 }
 
                 $chart2[] = Charts::create('pie', 'fusioncharts')
@@ -498,25 +549,32 @@ class SurveysController extends Controller
         {
             if($q->type == 1)
             {
+                $count[$i] = AnswersDetails::where('survey_id', '=', $id)->where('question_id', '=', $q->qid)->whereIn('answer', [1, 2])->whereBetween('date', [$request->dateOne, $request->dateTwo])->count();
                 $satisfecho2[$i] = AnswersDetails::where('survey_id', '=', $id)->where('answer', '=', '1')->where('question_id', '=', $q->qid)->whereBetween('date', [$request->dateOne, $request->dateTwo])->count();
                 $insatisfecho2[$i] = AnswersDetails::where('survey_id', '=', $id)->where('answer', '=', '2')->where('question_id', '=', $q->qid)->whereBetween('date', [$request->dateOne, $request->dateTwo])->count();
 
+                $subPercentSas[$i] = $satisfecho2[$i]/$count[$i];
+                $percentSas[$i] = $subPercentSas[$i]*100;
+
+                $subPercentInsas[$i] = $insatisfecho2[$i]/$count[$i];
+                $percentInsas[$i] = $subPercentInsas[$i]*100;
+
                 if($satisfecho2[$i] == 1)
                 {
-                    $s2[$i] = $satisfecho2[$i].' respuesta Satisfecho';
+                    $s2[$i] = 'Satisfecho '.$percentSas[$i].'% ('.$satisfecho2[$i].' respuesta)';
                 }
                 else
                 {
-                    $s2[$i] = $satisfecho2[$i].' respuestas Satisfechos';
+                    $s2[$i] = 'Satisfecho '.$percentSas[$i].'% ('.$satisfecho2[$i].' respuestas)';
                 }
                  
                 if($insatisfecho2[$i] == 1)
                 {
-                    $i2[$i] = $insatisfecho2[$i].' respuesta Insatisfecho';
+                    $i2[$i] = 'Insatisfecho '.$percentInsas[$i].'% ('.$insatisfecho2[$i].' respuesta)';
                 }
                 else
                 {
-                    $i2[$i] = $insatisfecho2[$i].' respuestas Insatisfechos';
+                    $i2[$i] = 'Insatisfecho '.$percentInsas[$i].'% ('.$insatisfecho2[$i].' respuestas)';
                 }
 
                 $chart2[] = Charts::create('pie', 'fusioncharts')
@@ -530,26 +588,32 @@ class SurveysController extends Controller
             }
             elseif($q->type == 2)
             {
-
+                $count[$j] = AnswersDetails::where('survey_id', '=', $id)->where('question_id', '=', $q->qid)->whereIn('answer', [3,4,5,6])->whereBetween('date', [$request->dateOne, $request->dateTwo])->count();
                 $satisfecho2[$j] = AnswersDetails::where('survey_id', '=', $id)->where('answer', '=', '5')->orWhere('answer', '=', '6')->where('question_id', '=', $q->qid)->whereBetween('date', [$request->dateOne, $request->dateTwo])->count();
                 $insatisfecho2[$j] = AnswersDetails::where('survey_id', '=', $id)->where('answer', '=', '3')->orWhere('answer', '=', '4')->where('question_id', '=', $q->qid)->whereBetween('date', [$request->dateOne, $request->dateTwo])->count();
 
+                $subPercentSas[$j] = $satisfecho2[$j]/$count[$j];
+                $percentSas[$j] = $subPercentSas[$j]*100;
+
+                $subPercentInsas[$j] = $insatisfecho2[$j]/$count[$j];
+                $percentInsas[$j] = $subPercentInsas[$j]*100;
+
                 if($satisfecho2[$j] == 1)
                 {
-                    $s2[$j] = $satisfecho2[$j].' respuesta Satisfecho';
+                    $s2[$i] = 'Satisfecho '.$percentSas[$j].'% ('.$satisfecho2[$j].' respuesta)';
                 }
                 else
                 {
-                    $s2[$j] = $satisfecho2[$j].' respuesta Satisfechos';
+                    $s2[$i] = 'Satisfecho '.$percentSas[$j].'% ('.$satisfecho2[$j].' respuestas)';
                 }
                  
                 if($insatisfecho2[$j] == 1)
                 {
-                    $i2[$j] = $insatisfecho2[$j].' respuestas Insatisfecho';
+                    $i2[$j] = 'Insatisfecho '.$percentInsas[$j].'% ('.$insatisfecho2[$j].' respuesta)';
                 }
                 else
                 {
-                    $i2[$j] = $insatisfecho2[$j].' respuestas Insatisfechos';
+                    $i2[$j] = 'Insatisfecho '.$percentInsas[$j].'% ('.$insatisfecho2[$j].' respuestas)';
                 }
 
                 $chart2[] = Charts::create('pie', 'fusioncharts')
