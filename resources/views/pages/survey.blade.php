@@ -80,8 +80,7 @@
                     </div>
                 </div>
                 <div class="col-lg-12 col-xs-12">
-                    {!!Form::label('Comentario:')!!}<br>
-                    {!!Form::textarea('comment'.$sq->position,null,['class'=>'textarea', 'placeholder' => 'Ingrese su comentario aquí!!'])!!}
+                    {!!Form::textarea('comment'.$sq->position,null,['class'=>'textarea', 'placeholder' => 'Agregar comentario adicional...'])!!}
                     <br>
                 </div>
             </div>
