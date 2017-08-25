@@ -233,8 +233,17 @@ class SurveysController extends Controller
                     $n2[$i] = 'No '.$percentNo[$i].' %('.$no2[$i].' respuestas)';
                 }
 
+                if(isset($dateOne) && isset($dateTwo))
+                {
+                    $name = $q->name.'<br>Desde: '. $dateOne . ' - Hasta: ' .$dateTwo;
+                }
+                else
+                {
+                    $name = $q->name.'<br>Fecha: '. date('d-m-Y');
+                }
+
                 $chart2[] = Charts::create('pie', 'fusioncharts')
-                    ->title($q->name)
+                    ->title($name)
                     ->colors(['#c51010', '#1610c5'])
                     ->labels([$n2[$i], $s2[$i]])
                     ->values([$no2[$i], $si2[$i]])
@@ -298,8 +307,17 @@ class SurveysController extends Controller
                     $e2[$j] = 'Excelente '.$percentExcelente[$j].'% ('.$excelente2[$j].' respuestas)';
                 }
 
+                if(isset($dateOne) && isset($dateTwo))
+                {
+                    $name = $q->name.'<br>Desde: '. $dateOne . ' - Hasta: ' .$dateTwo;
+                }
+                else
+                {
+                    $name = $q->name.'<br>Fecha: '. date('d-m-Y');
+                }
+
                 $chart2[] = Charts::create('pie', 'fusioncharts')
-                    ->title($q->name)
+                    ->title($name)
                     ->colors(['#7185ea', '#2bb426', '#d9e330', '#bf331a'])
                     ->labels([$e2[$j], $b2[$j], $r2[$j], $m2[$j]])
                     ->values([$excelente2[$j], $bueno2[$j], $regular2[$j], $malo2[$j]])
@@ -353,8 +371,17 @@ class SurveysController extends Controller
                     $i2[$i] = 'Insatisfecho '.$percentInsas[$i].'% ('.$insatisfecho2[$i].' respuestas)';
                 }
 
+                if(isset($dateOne) && isset($dateTwo))
+                {
+                    $name = $q->name.'<br>Desde: '. $dateOne . ' - Hasta: ' .$dateTwo;
+                }
+                else
+                {
+                    $name = $q->name.'<br>Fecha: '. date('d-m-Y');
+                }
+
                 $chart2[] = Charts::create('pie', 'fusioncharts')
-                    ->title($q->name)
+                    ->title($name)
                     ->colors(['#1610c5', '#c51010'])
                     ->labels([$s2[$i], $i2[$i]])
                     ->values([$satisfecho2[$i], $insatisfecho2[$i]])
@@ -392,8 +419,17 @@ class SurveysController extends Controller
                     $i2[$j] = 'Insatisfecho '.$percentInsas[$j].'% ('.$insatisfecho2[$j].' respuestas)';
                 }
 
+                if(isset($dateOne) && isset($dateTwo))
+                {
+                    $name = $q->name.'<br>Desde: '. $dateOne . ' - Hasta: ' .$dateTwo;
+                }
+                else
+                {
+                    $name = $q->name.'<br>Fecha: '. date('d-m-Y');
+                }
+
                 $chart2[] = Charts::create('pie', 'fusioncharts')
-                    ->title($q->name)
+                    ->title($name)
                     ->colors(['#1610c5', '#c51010'])
                     ->labels([$s2[$j], $i2[$j]])
                     ->values([$satisfecho2[$j], $insatisfecho2[$j]])
@@ -456,8 +492,17 @@ class SurveysController extends Controller
                     $n2[$i] = 'No '.$percentNo[$i].' %('.$no2[$i].' respuestas)';
                 }
 
+                if(isset($dateOne) && isset($dateTwo))
+                {
+                    $name = $q->name.'<br>Desde: '. $dateOne . ' - Hasta: ' .$dateTwo;
+                }
+                else
+                {
+                    $name = $q->name.'<br>Fecha: '. date('d-m-Y');
+                }
+
                 $chart2[] = Charts::create('pie', 'fusioncharts')
-                    ->title($q->name)
+                    ->title($name)
                     ->colors(['#c51010', '#1610c5'])
                     ->labels([$n2[$i], $s2[$i]])
                     ->values([$no2[$i], $si2[$i]])
@@ -521,8 +566,17 @@ class SurveysController extends Controller
                     $e2[$j] = 'Excelente '.$percentExcelente[$j].'% ('.$excelente2[$j].' respuestas)';
                 }
 
+                if(isset($dateOne) && isset($dateTwo))
+                {
+                    $name = $q->name.'<br>Desde: '. $dateOne . ' - Hasta: ' .$dateTwo;
+                }
+                else
+                {
+                    $name = $q->name.'<br>Fecha: '. date('d-m-Y');
+                }
+
                 $chart2[] = Charts::create('pie', 'fusioncharts')
-                    ->title($q->name)
+                    ->title($name)
                     ->colors(['#7185ea', '#2bb426', '#d9e330', '#bf331a'])
                     ->labels([$e2[$j], $b2[$j], $r2[$j], $m2[$j]])
                     ->values([$excelente2[$j], $bueno2[$j], $regular2[$j], $malo2[$j]])
@@ -585,8 +639,17 @@ class SurveysController extends Controller
                     $i2[$i] = 'Insatisfecho '.$percentInsas[$i].'% ('.$insatisfecho2[$i].' respuestas)';
                 }
 
+                if(isset($dateOne) && isset($dateTwo))
+                {
+                    $name = $q->name.'<br>Desde: '. $dateOne . ' - Hasta: ' .$dateTwo;
+                }
+                else
+                {
+                    $name = $q->name.'<br>Fecha: '. date('d-m-Y');
+                }
+
                 $chart2[] = Charts::create('pie', 'fusioncharts')
-                    ->title($q->name)
+                    ->title($name)
                     ->colors(['#1610c5', '#c51010'])
                     ->labels([$s2[$i], $i2[$i]])
                     ->values([$satisfecho2[$i], $insatisfecho2[$i]])
@@ -624,8 +687,17 @@ class SurveysController extends Controller
                     $i2[$j] = 'Insatisfecho '.$percentInsas[$j].'% ('.$insatisfecho2[$j].' respuestas)';
                 }
 
+                if(isset($dateOne) && isset($dateTwo))
+                {
+                    $name = $q->name.'<br>Desde: '. $dateOne . ' - Hasta: ' .$dateTwo;
+                }
+                else
+                {
+                    $name = $q->name.'<br>Fecha: '. date('d-m-Y');
+                }
+
                 $chart2[] = Charts::create('pie', 'fusioncharts')
-                    ->title($q->name)
+                    ->title($name)
                     ->colors([ '#1610c5', '#c51010'])
                     ->labels([$s2[$j], $i2[$j]])
                     ->values([$satisfecho2[$j], $insatisfecho2[$j]])

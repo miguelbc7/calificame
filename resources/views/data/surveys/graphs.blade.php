@@ -11,18 +11,12 @@
 @section('main-content')
 
 <div class="box-body">
-	<div style="text-align: center;">
-		@if(isset($dateOne) && isset($dateTwo))
-			Desde: {{ $dateOne }} - Hasta: {{ $dateTwo }}
-		@else
-			Fecha: {{ date('d-m-Y') }}
-		@endif
-	</div>
 	<br>
 	{!! Charts::assets() !!}
 
 	@foreach($chart2 as $c)
 		<center>
+
 		   	{!! $c->render() !!}
 		</center>
 		<br>
