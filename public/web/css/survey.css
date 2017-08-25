@@ -62,9 +62,10 @@ body label {
 }
 
 .pregunta {
-    color: #028ee4;
+    color: #000000;
     font-family:Palatino Linotype;
-    font-size: 1.3em;
+    font-size: 1.5em;
+    font-weight: bold;
 }
 
 .posiinput {
@@ -467,9 +468,10 @@ nav {
 }
 
 .pregunta {
-  color: #028ee4;
+  color: #000000;
   font-family:Palatino Linotype;
-  font-size: 1.2em;
+  font-size: 1.4em;
+  font-weight: bold;
 }
 
 
@@ -571,9 +573,10 @@ nav {
 }
 
 .pregunta {
-  color: #028ee4;
+  color: #000000;
   font-family:Palatino Linotype;
-  font-size: 1.2em;
+  font-size: 1.4em;
+  font-weight: bold;
 }
 
 
@@ -719,9 +722,10 @@ footer {
   }
 
   .pregunta {
-    color: #028ee4;
+    color: #000000;
     font-family:Palatino Linotype;
-    font-size: 1.2em;
+    font-size: 1.4em;
+    font-weight: bold;
   }
 
 
@@ -830,9 +834,10 @@ footer {
   }
 
   .pregunta {
-    color: #028ee4;
+    color: #000000;
     font-family:Palatino Linotype;
-    font-size: 1.1em;
+    font-size: 1.3em;
+    font-weight: bold;
   }
 
   .posibtn {

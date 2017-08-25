@@ -12,7 +12,11 @@
 
 <div class="box-body">
 	<div style="text-align: center;">
-		Fecha: {{ date('d-m-Y') }}
+		@if(isset($dateOne) && isset($dateTwo))
+			Desde: {{ $dateOne }} - Hasta: {{ $dateTwo }}
+		@else
+			Fecha: {{ date('d-m-Y') }}
+		@endif
 	</div>
 	<br>
 	{!! Charts::assets() !!}

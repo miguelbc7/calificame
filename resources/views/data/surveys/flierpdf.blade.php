@@ -11,7 +11,7 @@
         <div class="row" style="border: 1px solid #000;">
             <div class="col-lg-6">
                 <div style="text-align: center">
-                    <img  width="250px" height="250px" src="web/images/logo2.png">
+                    <img  width="250px" height="250px" src="{{ Auth::user()->avatar }}">
                     <h2 style="color: #028ee4;font-weight: 900;text-align: left;margin-left: 30px;text-align: center;">Participa</h2>
                     <p style="font-size: 1.4em;margin: 30px;text-align: justify;text-indent: 30px;">
                        Te hacemos una cordial invitación a participar en la encuesta de nuestra {empresa}. Donde buscamos saber tu opinion acerca de nuestro servicio, ayudandonos a mejorar como empresa.

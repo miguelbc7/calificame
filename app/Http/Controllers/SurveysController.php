@@ -365,8 +365,8 @@ class SurveysController extends Controller
             elseif($q->type == 2)
             {
                 $count[$j] = AnswersDetails::where('survey_id', '=', $id)->where('question_id', '=', $q->qid)->whereIn('answer', [3,4,5,6])->count();
-                $satisfecho2[$j] = AnswersDetails::where('survey_id', '=', $id)->where('answer', '=', '5')->orWhere('answer', '=', '6')->where('question_id', '=', $q->qid)->count();
-                $insatisfecho2[$j] = AnswersDetails::where('survey_id', '=', $id)->where('answer', '=', '3')->orWhere('answer', '=', '4')->where('question_id', '=', $q->qid)->count();
+                $satisfecho2[$j] = AnswersDetails::where('survey_id', '=', $id)->where('question_id', '=', $q->qid)->whereIn('answer', [5, 6])->count();
+                $insatisfecho2[$j] = AnswersDetails::where('survey_id', '=', $id)->where('question_id', '=', $q->qid)->whereIn('answer', [3, 4])->count();
 
                 $subPercentSas[$j] = $satisfecho2[$j]/$count[$j];
                 $percentSas[$j] = $subPercentSas[$j]*100;
@@ -376,11 +376,11 @@ class SurveysController extends Controller
 
                 if($satisfecho2[$j] == 1)
                 {
-                    $s2[$i] = 'Satisfecho '.$percentSas[$j].'% ('.$satisfecho2[$j].' respuesta)';
+                    $s2[$j] = 'Satisfecho '.$percentSas[$j].'% ('.$satisfecho2[$j].' respuesta)';
                 }
                 else
                 {
-                    $s2[$i] = 'Satisfecho '.$percentSas[$j].'% ('.$satisfecho2[$j].' respuestas)';
+                    $s2[$j] = 'Satisfecho '.$percentSas[$j].'% ('.$satisfecho2[$j].' respuestas)';
                 }
                  
                 if($insatisfecho2[$j] == 1)
@@ -394,7 +394,7 @@ class SurveysController extends Controller
 
                 $chart2[] = Charts::create('pie', 'fusioncharts')
                     ->title($q->name)
-                    ->colors([ '#1610c5', '#c51010'])
+                    ->colors(['#1610c5', '#c51010'])
                     ->labels([$s2[$j], $i2[$j]])
                     ->values([$satisfecho2[$j], $insatisfecho2[$j]])
                     ->dimensions(1000,500)
@@ -420,6 +420,10 @@ class SurveysController extends Controller
 
         $i = 0;
         $j = 0;
+        
+        $dateOne = date("d-m-Y", strtotime($request->dateOne));
+        $dateTwo = date("d-m-Y", strtotime($request->dateTwo));
+
         foreach($questions as $q)
         {
             if($q->type == 1)
@@ -527,7 +531,7 @@ class SurveysController extends Controller
                 $j++;
             }
         }
-        return view('data.surveys.graphs', ['suranswers' => $suranswers, 'questions' => $questions, 'answersdet' => $answersdet, 'chart2' => $chart2, 'survey' => $survey]);
+        return view('data.surveys.graphs', ['suranswers' => $suranswers, 'questions' => $questions, 'answersdet' => $answersdet, 'chart2' => $chart2, 'survey' => $survey, 'dateOne' => $dateOne, 'dateTwo' => $dateTwo]);
     }
 
     public function graphsDateSatisfaction(Request $request, $id)
@@ -545,6 +549,10 @@ class SurveysController extends Controller
 
         $i = 0;
         $j = 0;
+
+        $dateOne = $request->dateOne;
+        $dateTwo = $request->dateTwo;
+
         foreach($questions as $q)
         {
             if($q->type == 1)
@@ -589,8 +597,8 @@ class SurveysController extends Controller
             elseif($q->type == 2)
             {
                 $count[$j] = AnswersDetails::where('survey_id', '=', $id)->where('question_id', '=', $q->qid)->whereIn('answer', [3,4,5,6])->whereBetween('date', [$request->dateOne, $request->dateTwo])->count();
-                $satisfecho2[$j] = AnswersDetails::where('survey_id', '=', $id)->where('answer', '=', '5')->orWhere('answer', '=', '6')->where('question_id', '=', $q->qid)->whereBetween('date', [$request->dateOne, $request->dateTwo])->count();
-                $insatisfecho2[$j] = AnswersDetails::where('survey_id', '=', $id)->where('answer', '=', '3')->orWhere('answer', '=', '4')->where('question_id', '=', $q->qid)->whereBetween('date', [$request->dateOne, $request->dateTwo])->count();
+                $satisfecho2[$j] = AnswersDetails::where('survey_id', '=', $id)->where('question_id', '=', $q->qid)->whereIn('answer', [5, 6])->whereBetween('date', [$request->dateOne, $request->dateTwo])->count();
+                $insatisfecho2[$j] = AnswersDetails::where('survey_id', '=', $id)->where('question_id', '=', $q->qid)->whereIn('answer', [3, 4])->whereBetween('date', [$request->dateOne, $request->dateTwo])->count();
 
                 $subPercentSas[$j] = $satisfecho2[$j]/$count[$j];
                 $percentSas[$j] = $subPercentSas[$j]*100;
@@ -600,11 +608,11 @@ class SurveysController extends Controller
 
                 if($satisfecho2[$j] == 1)
                 {
-                    $s2[$i] = 'Satisfecho '.$percentSas[$j].'% ('.$satisfecho2[$j].' respuesta)';
+                    $s2[$j] = 'Satisfecho '.$percentSas[$j].'% ('.$satisfecho2[$j].' respuesta)';
                 }
                 else
                 {
-                    $s2[$i] = 'Satisfecho '.$percentSas[$j].'% ('.$satisfecho2[$j].' respuestas)';
+                    $s2[$j] = 'Satisfecho '.$percentSas[$j].'% ('.$satisfecho2[$j].' respuestas)';
                 }
                  
                 if($insatisfecho2[$j] == 1)
@@ -626,7 +634,7 @@ class SurveysController extends Controller
                 $j++;
             }
         }
-        return view('data.surveys.graphs', ['suranswers' => $suranswers, 'questions' => $questions, 'answersdet' => $answersdet, 'chart2' => $chart2, 'survey' => $survey]);
+        return view('data.surveys.graphs', ['suranswers' => $suranswers, 'questions' => $questions, 'answersdet' => $answersdet, 'chart2' => $chart2, 'survey' => $survey, 'dateOne' => $dateOne, 'dateTwo' => $dateTwo]);
     }
 
     public function pretrends($id)

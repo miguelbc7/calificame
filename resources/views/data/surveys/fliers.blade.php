@@ -14,7 +14,7 @@
         <div class="row">
             <div id="parte1" class="col-lg-6">
                 <div class="center">
-                    <img class="card-image" width="300px" height="300px" src="{{ asset('web/images/logo2.png') }}">
+                    <img class="card-image" width="300px" height="300px" src="{{ asset(Auth::user()->avatar) }}">
                     <h2>Participa</h2>
                     <p class="styleP">
                        Te hacemos una cordial invitación a participar en la encuesta de nuestra {empresa}. Donde buscamos saber tu opinion acerca de nuestro servicio, ayudandonos a mejorar como empresa.
