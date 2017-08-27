@@ -23,13 +23,13 @@
               <div class="text">
               <h2 class="animate-text">Módulo de Encuestas</h2>
               <p class="animate-text">En este módulo podras crear todas tus encuestas.</p>
-              <a href="{{ url('surveys') }}" class="btn btn-primary animate-text btn-ms btn-block">Encuestas</a> 
-              <div class="dots">
+              <a href="{{ url('surveys') }}" class="btn btn-primary animate-text btn-ms btn-block">Encuestas</a>
+            <div class="dots">
               </div>
               </div>
              </div>
           </div>
-          <div class="col-sm-6">
+          <!--<div class="col-sm-6">
             <div class="tile"> 
               <img src="{{ asset('web/images/questions.png') }}"/>
               <div class="text">
@@ -39,7 +39,7 @@
             <div class="dots">
               </div>
               </div>
-             </div>
+             </div>-->
           </div>
         </div>
     </div>

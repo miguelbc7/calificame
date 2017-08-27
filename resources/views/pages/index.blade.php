@@ -220,11 +220,9 @@ Webflow.push(function () {
       <h1 class="hero__heading">{{ Lang::get('message.slogan') }}</h1>
       <p class="hero__subheading">{{ Lang::get('message.subslogan') }}</p>
       <div class="hero__videocontainer">
-        <div class="hero__video w-embed w-video" style="padding-top: 56.17021276595745%;">
-          <iframe class="embedly-embed" src="http://cdn.embedly.com/widgets/media.html?src=https%3A%2F%2Fplayer.vimeo.com%2Fvideo%2F129528622&amp;url=https%3A%2F%2Fvimeo.com%2F129528622&amp;image=http%3A%2F%2Fi.vimeocdn.com%2Fvideo%2F521080412_640.jpg&amp;key=c4e54deccf4d4ec997a64902e9a30300&amp;type=text%2Fhtml&amp;schema=vimeo" scrolling="no" frameborder="0" allowfullscreen></iframe>
-        </div>
+          <img src="{{ asset('web/images/index.jpg') }}">
       </div>
-      <a class="button hero__cta w-button" href="#plans">{{ Lang::get('message.button1') }}&nbsp;</a>
+      <a class="button hero__cta w-button" href="#plans">Crea tu cuenta&nbsp;</a>
     </div>
   </div>
 
@@ -430,8 +428,8 @@ Webflow.push(function () {
       
         <div class="plans section" id="plans">
           <div class="container w-container">
-            <h2 class="section__header">{{ Lang::get('message.planslogan') }}</h2>
-            <p class="customers_subheading">{{ Lang::get('message.plansubslogan') }}</p>
+            <!--<h2 class="section__header">Planes</h2>-->
+            <!--<p class="customers_subheading">{{ Lang::get('message.plansubslogan') }}</p>-->
             <div class="pricingcard__container" data-ix="close-contact">
               
               <div class="pricingcard__card">
@@ -453,8 +451,8 @@ Webflow.push(function () {
 
               <div class="pricingcard__card pricingcard__card--highlighted">
                 <div class="pricingcard__headercontainer">
-                  <h3 class="pricingcard__heading">{{ Lang::get('message.plan2') }}</h3>
-                  <div class="pricingcard__maspopular">{{ Lang::get('message.subplan2') }}</div>
+                  <h3 class="pricingcard__heading">Plan Sin Limites</h3>
+                  <div class="pricingcard__maspopular"></div>
                   <div class="pricingcard__pricingwraper">
                     <div class="pricingcard__pricing">{{ Lang::get('message.price2') }}<br><em class="pricingcard__pricing--em">{{ Lang::get('message.subprice2') }}</em>
                     </div>
@@ -462,13 +460,14 @@ Webflow.push(function () {
                 </div>
 
                 <ul class="pricingcard__features">
-                  <li>{{ Lang::get('message.plandes2.1') }}</li>
-                  <li>{{ Lang::get('message.plandes2.2') }}</li>
-                  <li>{{ Lang::get('message.plandes2.3') }}</li>
-                  <li>{{ Lang::get('message.plandes2.4') }}</li>
+                  <li>Encuestas personalizadas</li>
+                  <li>Aplicacion Ilimitada de encuestas</li>
+                  <li>Alertas en tu email de clientes no satisfechos</li>
+                  <li>Resultados en estadisticas de satisfaccion</li>
+                  <li>Resultados de cada cliente</li>
                 </ul>
 
-                <a class="button w-button" href="{{ URL('regis') }}">{{ Lang::get('message.planbutton2') }}</a>
+                <a class="button w-button" href="{{ URL('regis') }}">$400 Pesos Mensuales</a>
               </div>
 
               <div class="pricingcard__card">

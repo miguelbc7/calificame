@@ -17,7 +17,7 @@ Route::get('index', array('as'=>'index', 'uses'=>'HomeController@index'));
 Route::get('terms', array('as'=>'terms', 'uses'=>'HomeController@terms'));
 Route::get('privacy', array('as'=>'privacy', 'uses'=>'HomeController@privacy'));
 Route::get('contract', array('as'=>'contract', 'uses'=>'HomeController@contract'));
-Route::get('{id}', 'SurveysController@survey');
+Route::get('surveys/{id}/survey', 'SurveysController@survey');
 Route::get('surveys/surveyFinish', 'SurveysController@surveyFinish');
 Route::get('surveys/{id}/shared', array('as' => 'shared', 'uses' => 'SurveysController@shared') );
 Route::resource('answers', 'AnswersController');

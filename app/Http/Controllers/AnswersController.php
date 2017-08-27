@@ -48,6 +48,8 @@ class AnswersController extends Controller
     {
         $surveys = Surveys::find($request->survey_id);
         $surquestions = Surveys_Questions::join('questions', 'surveys_questions.question_id', '=', 'questions.id')->select('surveys_questions.id AS id', 'questions.question AS question', 'surveys_questions.position AS position')->where('surveys_questions.survey_id', '=', $request->survey_id)->get();
+        //$questions = Questions::where('survey_id', '=', $request->survey_id)->count();
+        //$max = $questions * 25;
 
         $answer = new Answers;
         if ($request->name != null)
@@ -89,7 +91,7 @@ class AnswersController extends Controller
 
             if($request->input('option'.$sq->position) == 1)
             {
-               $cal = 30;
+               $cal = 25;
             }
             elseif($request->input('option'.$sq->position) == 2)
             {
@@ -101,7 +103,7 @@ class AnswersController extends Controller
             }
             elseif($request->input('option'.$sq->position) == 4)
             {
-                $cal = 10;
+                $cal = 15;
             }
             elseif($request->input('option'.$sq->position) == 5)
             {
@@ -109,7 +111,7 @@ class AnswersController extends Controller
             }
             elseif($request->input('option'.$sq->position) == 6)
             {
-                $cal = 30;
+                $cal = 25;
             }
 
             $i = $i + $cal;
@@ -118,7 +120,10 @@ class AnswersController extends Controller
             $answerdetail->save();
         }
         $answer2 = Answers::find($ansid);
-        $answer2->calification = $i/$j;
+        $max = $j * 25;
+        $subCal = $i/$j;
+        $cal = $subCal*100;
+        $answer2->calification = $cal;
         $answer2->save();
         
         $survey = Surveys::find($answer2->survey_id);
@@ -129,7 +134,7 @@ class AnswersController extends Controller
         $answersdet =  AnswersDetails::join('questions', 'answers_details.question_id', '=', 'questions.id')->select('answers_details.id AS id', 'answers_details.answer AS answer', 'answers_details.survey_id AS survey', 'answers_details.answer_id AS ansid', 'answers_details.comment As comment', 'questions.id AS question_id')->where('answers_details.answer_id', '=', $answer2->id)->get();
 
 
-        if($answer2->calification > 5 && $answer2->calification <= 10)
+        if($answer2->calification > 65 && $answer2->calification <= 75)
         {
             $c = 'Regular';
              $title = 'Resultado de Encuesta #'.$survey->id;
@@ -143,7 +148,7 @@ class AnswersController extends Controller
 
             });
         }
-        elseif($answer2->calification >= 0 && $answer2->calification <= 5)
+        elseif($answer2->calification >= 0 && $answer2->calification <= 64)
         {
             $c = 'Mala';
             $title = 'Resultado de Encuesta #'.$survey->id;

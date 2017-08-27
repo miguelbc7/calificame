@@ -158,7 +158,15 @@ class SurveysController extends Controller
     public function survey($id)
     {
         $surveys = Surveys::find($id);
-        $user = User::find($surveys->user_id);
+        if(isset($surveys))
+        {
+            $user = User::find($surveys->user_id);
+        }
+        else
+        {
+            $user = 0;
+        }
+        
         $surquestions = Surveys_Questions::join('questions', 'surveys_questions.question_id', '=', 'questions.id')->select('surveys_questions.id AS id', 'questions.id AS question_id', 'questions.question AS question', 'surveys_questions.position AS position', 'questions.type AS type')->where('surveys_questions.survey_id', '=', $id)->get();
         return view('pages.survey', ['surveys'=>$surveys, 'surquestions'=>$surquestions, 'user'=>$user]);
     }
