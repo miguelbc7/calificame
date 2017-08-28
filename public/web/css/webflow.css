@@ -1805,7 +1805,7 @@ ol, ul {
 }
 .pricingcard__card {
     display:flex;
-    width:320px;
+  /*  width:320px;*/
     margin:16px 20px;
     padding-top:0;
     padding-bottom:16px;
@@ -1834,10 +1834,7 @@ ol, ul {
     padding-top:20px;
     padding-bottom:20px;
     border-radius:5px 5px 0 0;
-    background-color:#6290ca;
-    background-image:url("../images/fondonew.png");
-    background-position:0 0;
-    background-size:150px;
+    background-color:#6cd2f7;
     font-family:'Source Sans Pro', sans-serif;
     color:#505c6a;
     font-size:32px;
@@ -2049,7 +2046,8 @@ ol, ul {
     text-align:center;
 }
 .button:hover {
-    background-color:#3869a7
+    background-color:#299cc9;
+    text-decoration: none;
 }
 .button.nav__button {
     margin-top:15px;

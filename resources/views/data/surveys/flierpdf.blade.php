@@ -1,66 +1,38 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>Flier</title>
-  <link href="web/css/bootstrap.min.css" rel="stylesheet">
-  <link rel="stylesheet" href="css/flier.css'">
+    <meta charset="UTF-8">
+    <title>Folleto</title>
 </head>
-  <body>
-    <div class="container">
-        <div class="row" style="border: 1px solid #000;">
-            <div class="col-lg-6">
-                <div style="text-align: center">
-                    <img  width="250px" height="250px" src="{{ Auth::user()->avatar }}">
-                    <h2 style="color: #028ee4;font-weight: 900;text-align: left;margin-left: 30px;text-align: center;">Participa</h2>
-                    <p style="font-size: 1.4em;margin: 30px;text-align: justify;text-indent: 30px;">
-                       Te hacemos una cordial invitación a participar en la encuesta de nuestra {empresa}. Donde buscamos saber tu opinion acerca de nuestro servicio, ayudandonos a mejorar como empresa.
-                       <p style="font-size: 1.4em;margin: 30px;text-align: justify;text-indent: 30px;">Su encuesta sera tratanda de forma confidencial y no serán utilizadas para ningún propósito distinto a la investigación.</p>
-                    </p>
-                </div>
+<body>
+    <div style="padding-right: 15px; padding-left: 15px;margin-right: 50px;margin-left: 50px;margin-top: 50px; border: 1px solid #000;">
+        <div style="margin: 0 auto; text-align: center;">
+            <img width="150" height="150" src="{{ asset(Auth::user()->avatar) }}" alt="logo">
+        </div>
+        <div style="margin-right: -15px; margin-left: -15px;background-color: #FF5200;color:#fff; text-align: center;">
+        <b style="font-size: 60px;">AYÚDANOS</b><br>
+        <b style="font-size: 60px;">A MEJORAR!</b>
+        </div>
+        <div style="margin-right: -15px; margin-left: -15px;background-color: #dce0e2;"><p style="text-align: center; margin: 0 auto; font-size: 35px;">Compártenos tu opinión en nuestro breve encuesta en menus de 30 segundos</p></div>
+        <div style="margin-right: -15px; margin-left: -15px; margin-top: 5px;">
+            <div style="position:relative;min-height:1px;padding-right: 15px;padding-left:15px; float:left; width: 50%;margin: 0 auto;text-align: center;background-color: #ccc;">
+                <h2>SCANEA EL</h2>
+                <h1>CODIGO</h1>
+                <h2>QR <img width="30" height="30" src="{{ asset('web/images/arrowright.png') }}" alt=""></h2>
+                <h2>O INGRESA</h2>
+                <h2> a <img width="30" height="30" src="{{ asset('web/images/arrowdown.png') }}" alt=""></h2>
+            </div>
+            <div style="position:relative;min-height:1px;padding-right: 15px;padding-left:15px; float:left; width: 50%;margin: 0 auto;text-align: center;">
+                <img src="data:image/png;base64,{{DNS2D::getBarcodePNG('http://tutophoton.com.ve/encuestas/public/surveys/'.$surveys->id.'/survey', 'QRCODE')}}" alt="barcode" width="350" height="254" />
             </div>
         </div>
-
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-
-        <div class="row" style="border: 1px solid #000;">
-            <div id="parte2" class="col-lg-6">
-
-                <h2 style="text-align:center;padding-top: 50px;"> Desde este link podras participar en nuestra encuesta.</h2>
-                <div style="text-align:center;">
-                    <span style="font-size: 1.5em;color: #000;">tutophoton.com.ve/encuestas/public/surveys/{{ $surveys->id }}/survey</span>
-                </div>
-
-                <div style="text-align:center;">
-                    <p style="  color: #028ee4;font-size: 1.4em;font-weight: 500;">Codigo QR</p>
-                    <img src="data:image/png;base64,{{DNS2D::getBarcodePNG('http://tutophoton.com.ve/encuestas/public/surveys/'.$surveys->id.'/survey', 'QRCODE')}}" alt="barcode" width="250" height="250" />
-                </div>
-                
+        <div style="margin-right: -15px; margin-left: -15px;">
+            <div><h3 style="margin: 0 auto;text-align: center; color: #fff">&nbsp;</h3></div><br>
+            <div style="padding-right: 15px; padding-left: 15px;"><h3 style="margin: 0 auto;text-align: center;">calificame.mx/79</h3></div>
+            <div style="padding-right: 15px; padding-left: 15px;    background-color: #FF5200;color:#fff;text-align: center;"><h3 style="margin: 0 auto;text-align: center;">TU OPINIÓN ES LO MAS IMPORTANTE</h3></div>
+            <div style="padding-right: 15px; padding-left: 15px;background-color: #ccc;"><h2 style="margin: 0 auto;text-align: center;">calificame.mx</h2>
             </div>
-          </div>
         </div>
     </div>
-
 </body>
 </html>

@@ -29,7 +29,8 @@
               </div>
              </div>
           </div>
-          <!--<div class="col-sm-6">
+          @if(Session::get('utype') == 1)
+          <div class="col-sm-6">
             <div class="tile"> 
               <img src="{{ asset('web/images/questions.png') }}"/>
               <div class="text">
@@ -39,8 +40,9 @@
             <div class="dots">
               </div>
               </div>
-             </div>-->
+             </div>
           </div>
+          @endif
         </div>
     </div>
 

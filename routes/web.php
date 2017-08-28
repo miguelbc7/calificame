@@ -62,6 +62,7 @@ Route::get('lang/{lang}', function ($lang) {
         Route::get('surveys/{id}/answers', array('as'=>'suranswers', 'uses'=>'SurveysController@suranswers'));
         Route::get('surveys/{id}/fliers', array('as'=>'fliers', 'uses'=>'SurveysController@fliers'));
         Route::get('surveys/{id}/flierpdf', array('as'=>'flierpdf', 'uses'=>'SurveysController@flierpdf'));
+        Route::get('surveys/{id}/flierminipdf', array('as'=>'flierminipdf', 'uses'=>'SurveysController@flierminipdf'));
 
         Route::get('surveys/{id}/graphpdf', array('as'=>'graphpdf', 'uses'=>'SurveysController@graphsQuestionsPDF'));
         

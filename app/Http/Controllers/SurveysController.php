@@ -1071,7 +1071,13 @@ class SurveysController extends Controller
         $view =  \View::make('data.surveys.flierpdf', compact('surveys', 'date', 'invoice'))->render();
         $pdf = \App::make('dompdf.wrapper');
         $pdf->loadHTML($view);
-        return $pdf->stream('flier.pdf');
+        $pdf->setPaper('A3','landscape');
+        return $pdf->setWarnings(false)->stream('flier.pdf');
+    }
+
+    public function flierminipdf($id)
+    {
+
     }
 
     public function shared($id)

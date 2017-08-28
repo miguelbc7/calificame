@@ -424,7 +424,37 @@ Webflow.push(function () {
     });
 </script>
 <!-- Section Plan de Pagos con Carousel Nuevo Script / 24/7 -->   
+        <section>
+          <div class="testimonial w-hidden-tiny">
+                <div class="testimonial__container w-container">
+                  <div class="testimonial__quotecontainer">
+                    <div class="testimonial__quote">“Con califícame se lo que sucede en mi restaurante todo el tiempo, cuando algún cliente tiene una queja lo solucionamos inmediatamente”</div>
+                  </div>
+                  <div class="testimonial__authorcontainer">
+                    <img class="testimonial__authorpicture" src="{{ asset('web/images/manfred.png') }}">
+                    <div>
+                      <div class="testimonia__authorname"> Saddam Gavilanes </div>
+                      <div class="testimonial__authortitle">Maz Salads</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
 
+              <div class="testimonial w-hidden-tiny">
+                <div class="testimonial__container w-container">
+                  <div class="testimonial__quotecontainer">
+                    <div class="testimonial__quote">“Gracias a califícame ahorramos dinero y mucho tiempo conociendo los productos que los clientes prefieren y nos enfocamos en eso”</div>
+                  </div>
+                  <div class="testimonial__authorcontainer">
+                    <img class="testimonial__authorpicture" src="{{ asset('web/images/foto.png') }}"><div>
+                      <div class="testimonia__authorname">Martha López</div>
+                      <div class="testimonial__authortitle">Pikantojoz</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <hr>
+        </section>
       
         <div class="plans section" id="plans">
           <div class="container w-container">
@@ -454,17 +484,18 @@ Webflow.push(function () {
                   <h3 class="pricingcard__heading">Plan Sin Limites</h3>
                   <div class="pricingcard__maspopular"></div>
                   <div class="pricingcard__pricingwraper">
+                    <br>
                     <div class="pricingcard__pricing">{{ Lang::get('message.price2') }}<br><em class="pricingcard__pricing--em">{{ Lang::get('message.subprice2') }}</em>
                     </div>
-                  </div>
                 </div>
+               </div>
 
                 <ul class="pricingcard__features">
-                  <li>Encuestas personalizadas</li>
-                  <li>Aplicacion Ilimitada de encuestas</li>
-                  <li>Alertas en tu email de clientes no satisfechos</li>
-                  <li>Resultados en estadisticas de satisfaccion</li>
-                  <li>Resultados de cada cliente</li>
+                  <b><img width="40" height="40" src="web/images/check2.png">&nbsp;&nbsp;&nbsp;Encuestas personalizadas</b><br>
+                  <b><img width="40" height="40" src="web/images/check2.png">&nbsp;&nbsp;&nbsp;Aplicacion Ilimitada de encuestas</b><br>
+                  <b><img width="40" height="40" src="web/images/check2.png">&nbsp;&nbsp;&nbsp;Alertas en tu email de clientes no satisfechos</b><br>
+                  <b><img width="40" height="40" src="web/images/check2.png">&nbsp;&nbsp;&nbsp;Resultados en estadisticas de satisfaccion</b><br>
+                  <b><img width="40" height="40" src="web/images/check2.png">&nbsp;&nbsp;&nbsp;Resultados de cada cliente</b><br>
                 </ul>
 
                 <a class="button w-button" href="{{ URL('regis') }}">$400 Pesos Mensuales</a>
@@ -632,34 +663,7 @@ Webflow.push(function () {
             </div>
           </div>-->
           
-          <!--
-          <div class="testimonial w-hidden-tiny">
-            <div class="testimonial__container w-container">
-              <div class="testimonial__quotecontainer">
-                <div class="testimonial__quote">{{ Lang::get('message.review1') }}</div>
-              </div>
-              <div class="testimonial__authorcontainer">
-                <img class="testimonial__authorpicture" src="{{ asset('web/images/manfred.png') }}"><div>
-                  <div class="testimonia__authorname">{{ Lang::get('message.reviewer1') }}</div>
-                  <div class="testimonial__authortitle">{{ Lang::get('message.reviewerdes1') }}</div>
-                </div>
-              </div>
-            </div>
-          </div>
 
-          <div class="testimonial w-hidden-tiny">
-            <div class="testimonial__container w-container">
-              <div class="testimonial__quotecontainer">
-                <div class="testimonial__quote">{{ Lang::get('message.review2') }}</div>
-              </div>
-              <div class="testimonial__authorcontainer">
-                <img class="testimonial__authorpicture" src="{{ asset('web/images/foto.png') }}"><div>
-                  <div class="testimonia__authorname">{{ Lang::get('message.reviewer2') }}</div>
-                  <div class="testimonial__authortitle">{{ Lang::get('message.reviewerdes2') }}</div>
-                </div>
-              </div>
-            </div>
-          </div> -->
 
       <!-- Desactivado <div class="footer">
           <div class="w-container">

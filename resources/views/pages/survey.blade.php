@@ -13,9 +13,9 @@
 </head>
 
 <body>
-    <div class="center">
+    <!--<div class="center">
         <img id="preloader" src="{{ asset('web/images/preloader4.gif') }}" alt="">
-    </div>
+    </div>-->
     {!!Form::open(['route'=>'answers.store', 'method'=>'POST', 'files' => true])!!}
     <nav id="hola" class="navbar navbar-inverse navbar-fixed-top animated fadeIn">
         <div class="container-fluid">
@@ -105,6 +105,7 @@
 </body>
 <footer class="hidden-sm hidden-md hidden-lg">
     <div class="row center">
+    {!!Form::open(['route'=>'answers.store', 'method'=>'POST', 'files' => true])!!}
         <div class="col-xs-12 col-md-6">
             {!!Form::email('name', null, ['class'=>'posiinput', 'autofocus'=>'autofocus', 'placeholder'=>'Nombre completo'])!!}
         </div>
@@ -113,7 +114,8 @@
             {!!Form::hidden('survey_id',$surveys->id)!!} 
         </div>
     </div>
-        <br>
+    {!!Form::close()!!}
+    <br>
 </footer>
 
 </html>
