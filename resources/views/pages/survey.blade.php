@@ -17,7 +17,7 @@
         <img id="preloader" src="{{ asset('web/images/preloader4.gif') }}" alt="">
     </div>-->
     {!!Form::open(['route'=>'answers.store', 'method'=>'POST', 'files' => true])!!}
-    <nav id="hola" class="navbar navbar-inverse navbar-fixed-top animated fadeIn">
+   <nav id="hola" class="navbar navbar-inverse animated fadeIn">
         <div class="container-fluid">
             <div class="centro">
                 <img class="imgnav animated bounceInLeft" height="50px" width="250px" src="{{ asset('web/images/logotrans.png') }}" alt="">
