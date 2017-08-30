@@ -1563,8 +1563,8 @@ ol, ul {
 .hero {
     z-index:0;
     padding-top:16px;
-    background-image:-webkit-radial-gradient(circle farthest-corner at 50% 50%, rgba(216, 227, 242, 0), rgba(216, 227, 242, .45)), url("../images/fondonew.png");
-    background-image:radial-gradient(circle farthest-corner at 50% 50%, rgba(216, 227, 242, 0), rgba(216, 227, 242, .45)), url("../images/fondonew.png");
+    background-image:-webkit-radial-gradient(circle farthest-corner at 50% 50%, rgba(216, 227, 242, 0), rgba(216, 227, 242, .45)), url("");
+    background-image:radial-gradient(circle farthest-corner at 50% 50%, rgba(216, 227, 242, 0), rgba(216, 227, 242, .45)), url("");
     background-position:0 0, 0 0;
     background-size:auto;
 }
@@ -1632,7 +1632,7 @@ ol, ul {
     background-color:transparent
 }
 .nav.legal {
-    background-image:url("../images/fondonew.png");
+    background-image:url("");
     background-position:0 0;
     background-size:150px
 }
@@ -1725,7 +1725,7 @@ ol, ul {
     margin-left:auto;
     padding:8px 16px;
     border-radius:5px;
-    background-image:url("../images/fondonew.png");
+    background-image:url("");
     background-position:0 0;
     background-size:90px
 }
@@ -1872,7 +1872,7 @@ ol, ul {
     background-size: auto;
 }
 .nav--fixed, .pricingcard__heading--basic {
-    background-image:url("../images/fondonew.png");
+    background-image:url("");
     background-position:0 0;
     background-size:90px
 }
@@ -2334,12 +2334,12 @@ html.w-mod-js[data-ix=handsup] {
         float:left
     }
     .nav_menu {
-        background-image:url ("../images/fondonew.png");
+        background-image:url ("");
         background-position:0 0;
         background-size:90px
     }
     .nav_menu.nav_menu_not_fixed {
-        background-image:url("../images/fondonew.png");
+        background-image:url("");
         background-size:150px
     }
     .menu_button {
@@ -2701,7 +2701,7 @@ body {
 /* Section Facil de Usar Style Css */
 
 #how-it-works {
-    background-image:url("../images/fondosection.png");
+    background-color:#ffffff;
 }
 /* Section Facil de Usar Style Css */
 

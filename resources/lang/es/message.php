@@ -33,23 +33,23 @@ return [
 
         //Why use Calificame
         'why' => 'Beneficios de usar ...',
-        'why1' => 'Mide tu servicio',
-        'whydes1' => 'Measure at all times the quality of your services and products, detect the failures of your business and correct them before it is too late.',
-        'why2' => 'Vende mucho más',
-        'whydes2' => 'Tus clientes son lo más importante, ellos saben lo que funciona, escúchalos y multiplícalos.',
-        'why3' => 'Monitoreo 24/7',
-        'whydes3' => 'Conoce lo que sucede en tu negocio aun cuando no estés.',
+        'why1' => '¡Midelo!',
+        'whydes1' => 'Mide tu servicio las 24hrs del dia. Aun no estés.',
+        'why2' => '¡Escuchalos!',
+        'whydes2' => 'Conoce la opinion, quejas y sugerencias de tus clientes.',
+        'why3' => '¡Mejoralo!',
+        'whydes3' => 'Recibe alertas inmediatas en tu correo cuando algun cliente no este satisfecho y compensalo',
         'why4' => 'Alertas',
         'whydes4' => 'Recibe en tu correo electrónico  una alerta inmediata  si algún cliente tiene una queja o no está satisfecho.',
 
         //How does it work
         'how' => '¡Muy Facil de Usar!',
-        'how1' => 'Crea tu encuesta',
-        'howdes1' => 'Crea las preguntas que deseas o elige de las preguntas prediseñadas.',
-        'how2' => 'Hazla visible',
-        'howdes2' => 'Tus clientes la contestaran a través de un código QR o un URL que las llevara a tu encuesta y lo harán en menos de 30 segundos.',
-        'how3' => 'Conoce la opinión de tus clientes',
-        'howdes3' => 'Todos los resultados estarán disponibles en tu panel de control o mediante tu correo electrónico.',
+        'how1' => '¡Crea tu encuesta!',
+        'howdes1' => 'Crea las preguntas que deseas o elige de las preguntas ya prediseñadas.',
+        'how2' => '¡Hazla visible!',
+        'howdes2' => '¡Tus clientes contestaran en segundos! A través de un código QR en su celular o ingresando una URL. O si deseas desde una tablet en tu establecimiento',
+        'how3' => '¡Enterate!',
+        'howdes3' => 'Todas las opiniones y estadisticas en tu panel de control siempre disponibles',
 
         //Plans
         'planslogan' => 'Pruébalo 30 días gratis',

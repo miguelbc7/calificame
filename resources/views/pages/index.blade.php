@@ -76,86 +76,6 @@ Webflow.push(function () {
 </script>
 </head>
 <body class="body">
-  <div class="signupbasic" data-ix="modal-interaction">
-    <a class="close_link" data-ix="close-signup-basic" href="#">Cerrar</a>
-    <h2 class="modal_header">Prueba calificame gratis</h2>
-    <div class="signupform__container w-form">
-      <form action="https://dashboard.calificame.com/users" data-name="Email Form" id="signup_basic_form" method="post" name="email-form">
-        <input autofocus="autofocus" class="signupform__field w-input" data-name="business[name]" id="business[name]-4" maxlength="256" name="business[name]" placeholder="Nombre de tu negocio" required="required" type="text">
-        <input class="signupform__field w-input" data-name="user[email]" id="user[email]-4" maxlength="256" name="user[email]" placeholder="Tu e-mail" required="required" type="email">
-        <input class="signupform__field w-input" data-name="user[password]" id="user[password]-4" maxlength="256" name="user[password]" placeholder="Una contraseña" required="required" type="password">
-        <div class="w-embed">
-          <input id="user_time_zone_modal" type="hidden" name="user[time_zone]" value="">
-          <input id="business_subscription_plan_id_basic" type="hidden" name="business[subscription][plan_id]" value="basic">
-        </div>
-        <div class="signupform__buttoncontainer">
-          <input class="big button w-button" data-wait="Por favor, espera" type="submit" value="Crear cuenta" wait="Por favor, espera">
-          <div class="modal_formterms">Al registrarte aceptas nuestros&nbsp;<a href="http://calificame.com/es/terms-and-conditions/" class="modal_formtems--link">terminos y condiciones</a>.</div>
-        </div>
-      </form>
-        
-      <div class="formsuccess success-message w-form-done" id="formSuccess">
-        <div class="text-block">Registro completado correctamente</div>
-      </div>
-      <div class="w-form-fail">
-        <div class="text-block-4">Se ha producido un error mandando el formulario</div>
-      </div>
-    </div>
-  </div>
-
-  <div class="signuppro" data-ix="modal-interaction">
-    <a class="close_link" data-ix="close-signup-pro" href="#">Cerrar</a>
-    <h2 class="modal_header">Prueba calificame gratis</h2>
-    <div class="signupform__container w-form">
-      <form action="https://dashboard.calificame.com/users" data-name="Email Form" id="signup_pro_form" method="post" name="email-form">
-        <input autofocus="autofocus" class="signupform__field w-input" data-name="business[name]" id="business[name]-4" maxlength="256" name="business[name]" placeholder="Nombre de tu negocio" required="required" type="text">
-        <input class="signupform__field w-input" data-name="user[email]" id="user[email]-4" maxlength="256" name="user[email]" placeholder="Tu e-mail" required="required" type="email">
-        <input class="signupform__field w-input" data-name="user[password]" id="user[password]-4" maxlength="256" name="user[password]" placeholder="Una contraseña" required="required" type="password">
-        <div class="w-embed">
-          <input id="user_time_zone_modal" type="hidden" name="user[time_zone]" value="">
-          <input id="business_subscription_plan_id_pro" type="hidden" name="business[subscription][plan_id]" value="pro">
-        </div>
-        <div class="signupform__buttoncontainer">
-          <input class="big button w-button" data-wait="Por favor, espera" type="submit" value="Crear cuenta" wait="Por favor, espera">
-          <div class="modal_formterms">Al registrarte aceptas nuestros&nbsp;<a href="http://calificame.com/es/terms-and-conditions/" class="modal_formtems--link">terminos y condiciones</a>.
-          </div>
-        </div>
-      </form>
-
-      <div class="success-message w-form-done">
-        <div class="text-block-2">Registro completado correctamente</div>
-      </div>
-
-      <div class="w-form-fail">
-        <div class="text-block-3">Se ha producido un error mandando el formulario</div>
-      </div>
-    </div>
-  </div>
-
-  <div class="contactform" data-ix="modal-interaction">
-    <a class="close_link" data-ix="close-contact-form" href="#">Cerrar</a>
-    <h2 class="modal_header">Contáctanos</h2>
-    <div class="signupform__container w-form">
-      <form data-name="Email Form" id="email-form" method="post" name="email-form">
-        <input autofocus="autofocus" class="signupform__field w-input" data-name="business-name" id="business-name-2" maxlength="256" name="business-name" placeholder="Nombre de tu negocio" required="required" type="text">
-        <input class="signupform__field w-input" data-name="user-name" id="user-name" maxlength="256" name="user-name" placeholder="Tu nombre" required="required" type="text">
-        <input class="signupform__field w-input" data-name="e-mail" id="e-mail" maxlength="256" name="e-mail" placeholder="Tu e-mail" required="required" type="email">
-        <textarea class="signupform__field w-input" data-name="description" id="description" maxlength="5000" name="description" placeholder="Tu mensaje"></textarea>
-        <div class="signupform__buttoncontainer">
-          <input class="big button w-button" data-wait="Por favor, espera" type="submit" value="Enviar mensaje" wait="Por favor, espera">
-        </div>
-      </form>
-
-      <div class="success-message w-form-done">
-        <div>¡Gracias! Tu mensaje se ha guardado correctamente.</div>
-      </div>
-
-      <div class="error-message w-form-fail">
-        <div>Se ha producido un error mandando el formulario.</div>
-      </div>
-    </div>
-  </div>
-
   <div class="nav--fixed w-nav" data-animation="default" data-collapse="medium" data-duration="400" data-ix="display-none">
     <div class="w-container">
       <a class="w-nav-brand" href="{{ URL('/') }}">
@@ -217,17 +137,17 @@ Webflow.push(function () {
     </div>
 
     <div class="w-container">
-      <h1 class="hero__heading">{{ Lang::get('message.slogan') }}</h1>
-      <p class="hero__subheading">{{ Lang::get('message.subslogan') }}</p>
-      <div class="hero__videocontainer">
+      <h1 class="hero__heading">Mejora tus servicios y multiplica tus clientes</h1>
+      <p class="hero__subheading">Ahora tus clientes ya podran dar su opinion desde su celular y calificar tu servicio</p>
+      <!--<div class="hero__videocontainer">
           <img src="{{ asset('web/images/index.jpg') }}">
-      </div>
+      </div>-->
       <a class="button hero__cta w-button" href="#plans">Crea tu cuenta&nbsp;</a>
     </div>
   </div>
 
     <!-- Beneficios de Usar Hidden -->
-  <div class="section whycalificame" id="why-calificame">
+  <div class="section whycalificame" id="why-calificame" style="background-color: #92d6f6">
     <div class="w-container">
      <h2 class="section__header hidden-xs" >{{ Lang::get('message.why') }} <img alt="calificame" class="nav__logo" src="{{ asset('web/images/logo.png') }}" width="183" height="50"></h2>
       <h2 class="section__header hidden-sm hidden-md hidden-lg">{{ Lang::get('message.why') }}</h2>
@@ -702,22 +622,20 @@ Webflow.push(function () {
         <div class="row">
           <div class="OurBlog">
             <img alt="calificame" class="nav__logo" id="nav__logo" src="{{ asset('web/images/logo.png') }}" width="340" height="60">
-            <p>Encuestas fáciles para tu restaurante.</p>
-            <div class="post-blog-date">19 Julio 2017.</div>
+            <!--<p>Encuestas fáciles para tu restaurante.</p>-->
+            <!--<div class="post-blog-date">19 Julio 2017.</div>-->
           </div>
           <div class=" col-lg-8 col-lg-offset-2">
-            <div class="col-sm-4 col-xs-offset-0">
+            <div class="col-sm-6 col-xs-offset-0">
               <div class="footer-col-item">
-                <h4>Encuentranos</h4>
+                <h4>¿Alguna duda? Escribenos</h4>
                 <address>
-                2011-2017 © Emtrics S.L.<br>
-                Leganitos 47, 9º (Arrabe Integra)
-                28013 Madrid
-                Spain
+                contacto@calificame.mx
+                Celular: 6671007521
                 </address>
               </div>
             </div>
-            <div class="col-sm-4" id="col-left">
+            <!--<div class="col-sm-4" id="col-left">
               <div class="footer-col-item">
                 <h4>Compromiso</h4>
                 <div class="item-contact"> 
@@ -726,8 +644,8 @@ Webflow.push(function () {
                 <a href="{{ URL('contract') }}" class="legal-link">{{ Lang::get('message.contract') }}</a> 
                 </div>
               </div>
-            </div>
-            <div class="col-sm-4">
+            </div>-->
+            <div class="col-sm-6">
               <div class="footer-col-item">
                 <h4 id="col-left-text">Contáctanos</h4>
                 <form class="signUpNewsletter" action="" method="get" id="col-left-form">
@@ -735,7 +653,7 @@ Webflow.push(function () {
                 </form>
                 <br>
                 <form class="signUpNewsletter" action="" method="get" id="col-left-form">
-                  <input name="" class="gt-email form-control" placeholder="You@youremail.com" type="text">
+                  <input name="" class="gt-email form-control" placeholder="contacto@calificame.mx" type="text">
                   <input name="" class="btn-go" value="Go" type="button">
                 </form>
               </div>
