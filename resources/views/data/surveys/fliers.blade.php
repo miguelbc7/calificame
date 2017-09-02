@@ -41,7 +41,7 @@
         </div>
         <div class="pull-right">
             <a href="{{ route('flierpdf', $surveys->id) }}" target="_blank" class="btn btn-primary" data-toggle="tooltip" data-original-title="Imprimir" type="edit">Imprimir en tamaño original</a>
-            <a href="{{ route('flierpdf', $surveys->id) }}" target="_blank" class="btn btn-primary" data-toggle="tooltip" data-original-title="Imprimir" type="edit">Imprimir en tamaño menor</a>
+            <a href="{{ route('flierminipdf', $surveys->id) }}" target="_blank" class="btn btn-primary" data-toggle="tooltip" data-original-title="Imprimir" type="edit">Imprimir en tamaño menor</a>
             {!!link_to_route('surveys.index', $title = 'Atras',  $parameters = '', $attributes = ['class' => 'btn btn-default btn3d', 'style'=>'-webkit-border-radius: 8px;-moz-border-radius: 8px;border-radius: 8px;'])!!}
         </div>
     </div>

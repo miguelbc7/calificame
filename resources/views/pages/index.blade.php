@@ -351,7 +351,6 @@ Webflow.push(function () {
                     <div class="testimonial__quote">“Con califícame se lo que sucede en mi restaurante todo el tiempo, cuando algún cliente tiene una queja lo solucionamos inmediatamente”</div>
                   </div>
                   <div class="testimonial__authorcontainer">
-                    <img class="testimonial__authorpicture" src="{{ asset('web/images/manfred.png') }}">
                     <div>
                       <div class="testimonia__authorname"> Saddam Gavilanes </div>
                       <div class="testimonial__authortitle">Maz Salads</div>
@@ -363,12 +362,12 @@ Webflow.push(function () {
               <div class="testimonial w-hidden-tiny">
                 <div class="testimonial__container w-container">
                   <div class="testimonial__quotecontainer">
-                    <div class="testimonial__quote">“Gracias a califícame ahorramos dinero y mucho tiempo conociendo los productos que los clientes prefieren y nos enfocamos en eso”</div>
+                    <div class="testimonial__quote">{{ Lang::get('message.review2') }}</div>
                   </div>
                   <div class="testimonial__authorcontainer">
-                    <img class="testimonial__authorpicture" src="{{ asset('web/images/foto.png') }}"><div>
-                      <div class="testimonia__authorname">Martha López</div>
-                      <div class="testimonial__authortitle">Pikantojoz</div>
+                  <div>
+                      <div class="testimonia__authorname">{{ Lang::get('message.reviewer2') }}</div>
+                      <div class="testimonial__authortitle">{{ Lang::get('message.reviewerdes2') }}</div>
                     </div>
                   </div>
                 </div>

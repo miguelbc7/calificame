@@ -1077,7 +1077,15 @@ class SurveysController extends Controller
 
     public function flierminipdf($id)
     {
-
+        $id = Session::get('surid');
+        $surveys = Surveys::find($id);
+        $date = date('Y-m-d');
+        $invoice = "Flier de ".$surveys->name;
+        $view =  \View::make('data.surveys.flierminipdf', compact('surveys', 'date', 'invoice'))->render();
+        $pdf = \App::make('dompdf.wrapper');
+        $pdf->loadHTML($view);
+        $pdf->setPaper('A3','landscape');
+        return $pdf->setWarnings(false)->stream('flier.pdf');
     }
 
     public function shared($id)
