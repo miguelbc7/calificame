@@ -121,7 +121,7 @@ class AnswersController extends Controller
         }
         $answer2 = Answers::find($ansid);
         $max = $j * 25;
-        $subCal = $i/$j;
+        $subCal = $i/$max;
         $cal = $subCal*100;
         $answer2->calification = $cal;
         $answer2->save();
