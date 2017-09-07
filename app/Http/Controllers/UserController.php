@@ -88,8 +88,8 @@ class UserController extends Controller
         $user->company = $request->company;
         if(isset($request->avatar))
         {
-            $destinationPath = 'img/Users/'.$id.'/avatar/'; // upload path
-            $destinationPath2 = base_path() . '/public/img/Users/'.Auth::id().'/avatar/'; // upload path
+            $destinationPath = 'img/users/'.$id.'/avatar'; // upload path
+            $destinationPath2 = base_path() . '/public/img/users/'.Auth::id().'/avatar'; // upload path
             $extension = 'jpg'; // getting image extension
             $fileName = 'avatar.'.$extension; // renameing image
             $request->file('avatar')->move($destinationPath2, $fileName); // uploading file to given path

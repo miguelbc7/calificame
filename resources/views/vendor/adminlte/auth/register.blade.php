@@ -29,32 +29,8 @@
 
                 <!--<register-form></register-form>-->
 
-                    <form class="form-horizontal" role="form" method="POST" action="{{ route('saveuser') }}">
+                    {!!Form::open(['route'=>'saveuser', 'method'=>'POST', 'files' => true])!!}
                         {{ csrf_field() }}
-
-                        <div class="form-group has-feedback{{ $errors->has('type') ? ' has-error' : '' }}">
-                            <div class="col-md-12">
-                                {!!Form::select('type', ['1' => '1 mes', '2' => '3 meses', '3'=>'6 meses', '4'=>'12 meses'], null, ['class'=>'form-control', 'placeholder' => 'Seleccione un plan'])!!}
-                            </div>
-                        </div>
-
-                        <div class="form-group has-feedback{{ $errors->has('pay') ? ' has-error' : '' }}">
-                            <div class="col-md-12">
-                                {!!Form::select('pay', ['1' => 'Paypal', '2' => 'Otro metodo'], null, ['class'=>'form-control', 'placeholder' => 'Seleccione un metodo de pago'])!!}
-                            </div>
-                        </div>
-
-                        <div class="form-group has-feedback{{ $errors->has('branch') ? ' has-error' : '' }}">
-                            <div class="col-md-12">
-                                <input id="branch" type="number" class="form-control" placeholder="Numero de sucursales" name="branch" value="{{ old('branch') }}" required>
-
-                                @if ($errors->has('branch'))
-                                    <span class="help-block">
-                                        <strong>{{ $errors->first('branch') }}</strong>
-                                    </span>
-                                @endif
-                            </div>
-                        </div>
 
                         <div class="form-group has-feedback{{ $errors->has('company') ? ' has-error' : '' }}">
 
@@ -104,10 +80,9 @@
                                 <input id="password-confirm" type="password" class="form-control" placeholder="Vuelva a escribir la contraseña" name="password_confirmation" required>
                             </div>
                         </div>
-
-                        <div class="form-group has-feedback{{ $errors->has('avatar') ? ' has-error' : '' }}">
-                            <div class="col-md-12">
-                                {!!Form::label('Avatar')!!}
+                        
+                        <div class="form-group has-feedback">
+                            <div class="col-xs-1 col-sm-1 col-md-6 col-lg-12 col-xl-12">
                                 {!!Form::file('avatar',null,['class'=>'form-control', 'style'=>'-webkit-border-radius: 8px;-moz-border-radius: 8px;border-radius: 8px;'])!!}
                             </div>
                         </div>
@@ -124,7 +99,7 @@
                         </div>
 
 
-                    </form>
+                    {!! Form::close() !!}
 
                 @include('adminlte::auth.partials.social_login')
 

@@ -184,7 +184,7 @@ class SurveysController extends Controller
 
     public function suranswers($id)
     {
-        $suranswers = Answers::join('surveys', 'answers.survey_id', '=', 'surveys.id')->select('answers.id AS id', 'answers.name AS name', 'answers.email AS email', 'surveys.id as surid', 'answers.calification as calification')->where('surveys.id', '=', $id)->paginate(10);
+        $suranswers = Answers::join('surveys', 'answers.survey_id', '=', 'surveys.id')->select('answers.id AS id', 'answers.name AS name', 'answers.email AS email', 'answers.created_at AS created_at', 'surveys.id as surid', 'answers.calification as calification')->where('surveys.id', '=', $id)->orderBy('created_at', 'DESC')->paginate(10);
         $questions = Surveys_Questions::join('questions', 'surveys_questions.question_id', '=', 'questions.id')->join('surveys', 'surveys_questions.survey_id', '=', 'surveys.id')->select('questions.question AS name')->where('surveys.id', '=', $id)->get();
         $answersdet =  AnswersDetails::join('questions', 'answers_details.question_id', '=', 'questions.id')->select('answers_details.id AS id', 'answers_details.answer AS answer', 'answers_details.survey_id AS survey', 'answers_details.answer_id AS ansid', 'answers_details.comment As comment')->where('answers_details.survey_id', '=', $id)->get();
 
@@ -1071,7 +1071,7 @@ class SurveysController extends Controller
         $view =  \View::make('data.surveys.flierpdf', compact('surveys', 'date', 'invoice'))->render();
         $pdf = \App::make('dompdf.wrapper');
         $pdf->loadHTML($view);
-        $pdf->setPaper('A3','landscape');
+        $pdf->setPaper('A3');
         return $pdf->setWarnings(false)->stream('flier.pdf');
     }
 
@@ -1084,7 +1084,7 @@ class SurveysController extends Controller
         $view =  \View::make('data.surveys.flierminipdf', compact('surveys', 'date', 'invoice'))->render();
         $pdf = \App::make('dompdf.wrapper');
         $pdf->loadHTML($view);
-        $pdf->setPaper('A3','landscape');
+        $pdf->setPaper('A3');
         return $pdf->setWarnings(false)->stream('flier.pdf');
     }
 

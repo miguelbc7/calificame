@@ -23,7 +23,7 @@
                 <img class="imgnav animated bounceInLeft" height="50px" width="250px" src="{{ asset('web/images/logotrans.png') }}" alt="">
             </div>
             {!!Form::email('email', null, ['class'=>'posiinput pull-right hidden-xs', 'placeholder'=>'Correo electronico'])!!}
-            {!!Form::text('name', null, ['class'=>'posiinput pull-right hidden-xs', 'autofocus'=>'autofocus', 'placeholder'=>'Nombre completo'])!!}
+            {!!Form::text('name', null, ['class'=>'posiinput pull-right hidden-xs', 'placeholder'=>'Nombre completo'])!!}
             {!!Form::hidden('survey_id',$surveys->id)!!} 
         </div>
     </nav>
@@ -107,7 +107,7 @@
     <div class="row center">
     {!!Form::open(['route'=>'answers.store', 'method'=>'POST', 'files' => true])!!}
         <div class="col-xs-12 col-md-6">
-            {!!Form::email('name', null, ['class'=>'posiinput', 'autofocus'=>'autofocus', 'placeholder'=>'Nombre completo'])!!}
+            {!!Form::email('name', null, ['class'=>'posiinput', 'placeholder'=>'Nombre completo'])!!}
         </div>
         <div class="col-xs-12 col-md-6">
             {!!Form::text('email', null, ['class'=>'posiinput2', 'placeholder'=>'Correo electronico'])!!}

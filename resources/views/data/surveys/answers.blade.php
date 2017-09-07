@@ -59,6 +59,7 @@
 					<table class="table table-bordered table-hover">
 						<thead>
 							<tr>
+								<th class="fondo">Fecha y Hora</th>
 								<th class="fondo">Nombre</th>
 								<th class="fondo">Email</th>
 								@foreach($questions as $q)
@@ -71,7 +72,8 @@
 						</thead>
 						@foreach($suranswers as $s)
 						<tbody>
-							<tr>								
+							<tr>				
+								<td>{!!$s->created_at!!}</td>				
 								@if(isset($s->name))
 									<td>{!!$s->name!!}</td>
 								@else

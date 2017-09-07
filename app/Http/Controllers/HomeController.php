@@ -206,192 +206,57 @@ class HomeController extends Controller
     public function saveuser(Request $request)
     {
         $this->validate($request, [
-            'type' => 'required',
-            'pay' => 'required',
-            'branch' => 'required',
             'company' => 'required|max:255|unique:users',
             'email' => 'required|email|max:255|unique:users',
             'password' => 'required|min:6|confirmed',
-            'terms'    => 'required',
+            'terms' => 'required',
         ]);
 
-        if($request->pay == 1)
-        {
-            if($request->type == 1)
-            {
-                $total = 400 * $request->branch;
-            }
-            elseif($request->type == 2)
-            {
-                $total = 1100 * $request->branch;
-            }
-            elseif($request->type == 3)
-            {
-                $total = 2000 * $request->branch;
-            }
-            elseif($request->type == 4)
-            {
-                $total = 4000 * $request->branch;
-            }
-
-            Session::put('company', $request->company);
-            Session::put('email', $request->email);
-            Session::put('password', $request->password);
-            Session::put('type', $request->type);
-            Session::put('amount', $total);
-            Session::put('branch', $request->branch);
-
-            if(isset($request->avatar))
-            {
-                Session::put('avatar', $request->avatar);
-            }
-            
-
-            session_start();
-            $payer = PayPal::Payer();
-            $payer->setPaymentMethod('paypal');
-            $amount = PayPal:: Amount();
-            $amount->setCurrency('MXN');
-            $amount->setTotal($total);
-
-            $transaction = PayPal::Transaction();
-            $transaction->setAmount($amount);
-            $transaction->setDescription('Buy in Calificame for $'.$total);
-
-            $redirectUrls = PayPal:: RedirectUrls();
-            $redirectUrls->setReturnUrl(route('getDone'));
-            $redirectUrls->setCancelUrl(route('getCancel'));
-
-            $payment = PayPal::Payment();
-            $payment->setIntent('sale');
-            $payment->setPayer($payer);
-            $payment->setRedirectUrls($redirectUrls);
-            $payment->setTransactions(array($transaction));
-
-            $response = $payment->create($this->_apiContext);
-            $redirectUrl = $response->links[1]->href;
-
-            return redirect()->to( $redirectUrl );
-        }
-        elseif($request->pay == 2)
-        {
-            $title = 'Datos para transferencias o depositos';
-            $content = 'Debes enviar un correo electronico a esta direccion '.$request->email.' con el comprobante de pago y detallando cuantas sucursales registraras';
-            $bank = 'Banco: Banorte';
-            $account = 'Numero de Cuenta: 0570103211';
-            $name = 'Nombre: Meliton Alcaraz Manjarrez';
-            $cable = 'Cable Interbancaria: 072 730 00570103211 7';
-            $price1 = '1 Mes: $400 por sucursal';
-            $price2 = '3 Mes: $1100 por sucursal';
-            $price3 = '6 Mes: $2000 por sucursal';
-            $price4 = '12 Mes: $4000 por sucursal';
-            $email = $request->email;
-
-            Mail::send('data.emails.renew', ['title' => $title, 'content' => $content, 'price1' => $price1, 'price2' => $price2, 'price3' => $price3, 'price4' => $price4, 'bank' => $bank, 'account' => $account, 'name' => $name, 'cable' => $cable], function ($message) use ($email)
-            {
-
-                $message->from('miguel.lm21@gmail.com', 'Calificame')->subject('Datos para transferencias o depositos en Calificame');
-
-                $message->to($email);
-
-            });
-
-            $user = New User;
-            $user->company = $request->company;
-            $user->email = $request->email;
-            $user->password = bcrypt($request->password);
-            $user->type = 2;
-            $user->status = 2;
-            $user->branch = $request->branch;
-
-            if(isset($request->avatar))
-            {
-                $destinationPath = 'img/Users/'.Auth::id().'/avatar/'; // upload path
-                $destinationPath2 = base_path() . '/public/img/Users/'.Auth::id().'/avatar/'; // upload path
-                $extension = 'jpg'; // getting image extension
-                $fileName = 'avatar.'.$extension; // renameing image
-                $request->file('avatar')->move($destinationPath2, $fileName); // uploading file to given path
-                $user->avatar = $destinationPath.'/'.$fileName;
-                $user->save();      
-            }
-            else
-            {
-                $destinationPath = 'img/Users/0/avatar/'; // upload path
-                $destinationPath2 = base_path() . '/public/img/Users/0/avatar/'; // upload path
-                $extension = 'jpg'; // getting image extension
-                $user->avatar = $destinationPath.'/avatar.png';
-                $user->save();
-            }
-
-            return redirect('/home');
-        }
-    }
-
-    public function getDone(Request $request)
-    {
-        $id = $request->get('paymentId');
-        $token = $request->get('token');
-        $payer_id = $request->get('PayerID');
-        
-        $payment = PayPal::getById($id, $this->_apiContext);
-
-        $paymentExecution = PayPal::PaymentExecution();
-
-        $paymentExecution->setPayerId($payer_id);
-        $executePayment = $payment->execute($paymentExecution, $this->_apiContext);
-
         $user = New User;
-        $user->company = Session::get('company');
-        $user->email = Session::get('email');
-        $user->password = bcrypt(Session::get('password'));
+        $user->company = $request->company;
+        $user->email = $request->email;
+        $user->password = bcrypt($request->password);
         $user->type = 2;
         $user->status = 1;
-        $user->branch = Session::get('branch');
+        $user->branch = 1;
         $user->save();
-        
-        auth()->login($user);
 
-        $user = User::find(Auth::id());
-        if(!null(Session::get('avatar')))
+        if(isset($request->avatar))
         {
-            $destinationPath = 'img/Users/'.Auth::id().'/avatar/'; // upload path
-            $destinationPath2 = base_path() . '/public/img/Users/'.Auth::id().'/avatar/'; // upload path
+            $us = User::find($user->id);
+            $destinationPath = 'img/users/'.$user->id.'/avatar'; // upload path
+            $destinationPath2 = base_path() . '/public/img/users/'.$user->id.'/avatar'; // upload path
             $extension = 'jpg'; // getting image extension
             $fileName = 'avatar.'.$extension; // renameing image
             $request->file('avatar')->move($destinationPath2, $fileName); // uploading file to given path
-            $user->image = $destinationPath.'/'.$fileName;
-            $user->save();      
+            $us->avatar = $destinationPath.'/'.$fileName;
+            $us->save();
         }
-        else
-        {
-            $destinationPath = 'img/Users/0/avatar/'; // upload path
-            $destinationPath2 = base_path() . '/public/img/Users/0/avatar/'; // upload path
-            $extension = 'jpg'; // getting image extension
-            $user->image = $destinationPath.'/avatar.png';
-            $user->save();
-        }
-        $user->save();
 
-        $payment = Payment::where('user_id', '=', Auth::id())->first();
+        $payment = New Payment;
+        $payment->dateIn = date('Y-m-d');
         $dateIn = date('Y-m-d');
-        $payment->dateIn = $dateIn;
-        $dateOut = strtotime ( '+12 month' , strtotime ( $dateIn ) ) ;
-        $dateOut = date ( 'Y-m-j' , $dateOut );
-        $payment->dateOut = $dateOut;
-        $payment->amount = Session::get('amount');
-        $payment->type = Session::get('type');
-        $payment->user_id = Auth::id();
+        $dateOut = strtotime('+1 month', strtotime($dateIn));
+        $dateOut2 = date('Y-m-d', $dateOut);
+        $payment->dateOut = $dateOut2;
+        $payment->amount = 0;
+        $payment->type = 1;
+        $payment->user_id = $user->id;
         $payment->save();
-        
 
-        // Clear the shopping cart, write to database, send notifications, etc.
+        $title = 'Bienvenido a Calificame';
+        $content = 'Nos complace en darte la bienvenida a Calificame '.$request->name.', esperamos disfrutes de tu mes gratuito';
+        $email = $request->email;
 
-        // Thank the user for the purchase
-        return redirect()->route('admin');
-    }
+        Mail::send('data.emails.newuser', ['title' => $title, 'content' => $content], function ($message) use ($email)
+        {
 
-    public function getCancel()
-    {
-        return redirect()->route('home');
+            $message->from('contacto@calificame.mx', 'Calificame')->subject('Bienvenido a Calificame');
+
+            $message->to($email);
+
+        });
+
+        return redirect('/home');
     }
 }
