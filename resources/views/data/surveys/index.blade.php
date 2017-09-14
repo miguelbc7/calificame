@@ -76,7 +76,7 @@
 								<td>{!!$s->date!!}</td>
 								<td style="text-align: right;">
 									
-									{!!Form::open(['route'=>['surveys.destroy', $s], 'method'=>'DELETE'])!!}					
+									{!!Form::open(['route'=>['surveys.destroy', $s], 'method'=>'DELETE', 'onsubmit' => 'return ConfirmDelete()'])!!}					
 									<div class="btn-group">
 										<a href="{{ route('surveys.edit', $s->id) }}" class="btn btn-default" data-toggle="tooltip" data-original-title="Editar" type="edit"><i class="fa fa-edit"></i></a>
 
@@ -113,3 +113,16 @@
 </section>
 
 @endsection
+
+<script>
+
+  function ConfirmDelete()
+  {
+  var x = confirm("¿Esta seguro que desea borrar esta encuesta? tome en cuenta que perdera toda la informacion referente a ella");
+  if (x)
+    return true;
+  else
+    return false;
+  }
+
+</script>

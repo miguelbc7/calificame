@@ -13,6 +13,7 @@ use Illuminate\Routing\Route;
 use Illuminate\Support\Facades\Auth;
 use App\User;
 use App\Payment;
+use App\User_Payment;
 
 class UserController extends Controller
 {
@@ -84,12 +85,12 @@ class UserController extends Controller
             'company' => 'required|max:255',
         ]);
 
-        $user = User::find($id);
+        $user = User::find(Auth::id());
         $user->company = $request->company;
         if(isset($request->avatar))
         {
-            $destinationPath = 'img/users/'.$id.'/avatar'; // upload path
-            $destinationPath2 = base_path() . '/public/img/users/'.Auth::id().'/avatar'; // upload path
+            $destinationPath = 'img/users/'.Auth::id().'/avatar'; // upload path
+            $destinationPath2 = base_path() . '/public_html/img/users/'.Auth::id().'/avatar'; // upload path
             $extension = 'jpg'; // getting image extension
             $fileName = 'avatar.'.$extension; // renameing image
             $request->file('avatar')->move($destinationPath2, $fileName); // uploading file to given path
@@ -160,10 +161,13 @@ class UserController extends Controller
         }
         $payment->dateOut = $dateOut;
         $payment->amount = $amount;
-        $payment->user_id = $id;
         $payment->save();
         $user->status = 1;
         $user->save();
+        $userpay = New User_Payment;
+        $userpay->user_id = $user->id;
+        $userpay->payment_id = $payment->id;
+        $userpay->save();
         return redirect('/users')->with('message','Usuario Activado Correctamente');
     }
 
@@ -241,7 +245,7 @@ class UserController extends Controller
         $price3 = '6 Mes: $2000 por sucursal';
         $price4 = '12 Mes: $4000 por sucursal';
 
-        Mail::send('data.emails.renew', ['title' => $title, 'content' => $content, 'price1' => $price1, 'price2' => $price2, 'price3' => $price3, 'price4' => $price4, 'bank' => $bank, 'account' => $account, 'name' => $name, 'cable' => $cable], function ($message)
+        Mail::send('data.emailsf.renew', ['title' => $title, 'content' => $content, 'price1' => $price1, 'price2' => $price2, 'price3' => $price3, 'price4' => $price4, 'bank' => $bank, 'account' => $account, 'name' => $name, 'cable' => $cable], function ($message)
         {
 
             $message->from('miguel.lm21@gmail.com', 'Calificame')->subject('Datos para transferencias o depositos en Calificame');
@@ -267,7 +271,8 @@ class UserController extends Controller
         $executePayment = $payment->execute($paymentExecution, $this->_apiContext);
 
         $user = User::find(Auth::id());
-        $payment = Payment::where('user_id', '=', Auth::id())->first();
+        $userpay = User_Payment::select('id', 'payment_id')->where('user_id', '=', Auth::id())->first();
+        $payment = Payment::find($userpay->payment_id);
         $dateIn = date('Y-m-d');
         $payment->dateIn = $dateIn;
         $dateOut = strtotime ( '+12 month' , strtotime ( $dateIn ) ) ;
@@ -275,11 +280,14 @@ class UserController extends Controller
         $payment->dateOut = $dateOut;
         $payment->amount = Session::get('amount');
         $payment->type = Session::get('type');
-        $payment->user_id = Auth::id();
         $payment->save();
         $user->status = 1;
         $user->branch = Session::get('branch');
         $user->save();
+        $userpay = User_Payment::find($userpay->id);
+        $userpay->user_id = Auth::id();
+        $userpay->payment_id = $payment->id;
+        $userpay->save();
 
         // Clear the shopping cart, write to database, send notifications, etc.
 

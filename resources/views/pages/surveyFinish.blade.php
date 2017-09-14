@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html lang="es">
 
-<head>
-    <meta charset="UTF-8">
+<head><meta http-equiv="Content-Type" content="text/html; charset=euc-jp">
+    
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
     <title>Encuesta terminada con exito</title>
@@ -13,9 +13,9 @@
 </head>
 
 <body>
-    <div class="center">
+    <!--<div class="center">
         <img id="preloader" src="{{ asset('web/images/preloader4.gif') }}" alt="">
-    </div>
+    </div>-->
     <nav id="hola" class="navbar navbar-inverse navbar-fixed-top animated fadeIn">
         <div class="container-fluid">
             <div class="centro">
@@ -26,7 +26,8 @@
     <div class="thumbnail center fondo animated fadeIn">
         <div class="margin">
             <h3>Gracias por compartir tu opinion</h3>
-            <a href="{{ url('surveys/'.Session::get("surveyid").'/survey') }}" class="btn btn-success">¿Alguien mas desea contestar la encuesta?</a>
+            <a href="{{ url('s/'.Session::get('surveyid')) }}" class="btn btn-success">¿Alguien mas desea contestar la encuesta?</a>
+            <a href="https://www.facebook.com/sharer/sharer.php?title=Mira+lo+que+opinan+nuestros+clientes&u=http://calificame.mx/s/{{ Session::get('surveyid')) }}/shared&display=popup" class="btn btn-primary">Comparte tu experiencia en Facebook</a>
         </div> 
     </div>
     <hr>

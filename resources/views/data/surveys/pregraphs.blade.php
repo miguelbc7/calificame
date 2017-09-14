@@ -48,7 +48,7 @@
 				{!!Form::model($surveys,['route'=>['graphsDateQuestions',$surveys],'method'=>'PUT', 'files' => true])!!}
 				<div class="form-group col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
 					<div class="col-md-6">
-						<h3 class="box-title">Estadisticas de Preguntas Por fecha</h3>
+						<h3 class="box-title">Estadisticas de Preguntas Por Fecha</h3>
 					</div>
 					<div class="row">
 						<div class="col-xs-1 col-sm-1 col-md-6 col-lg-12 col-xl-12">
@@ -60,6 +60,26 @@
 						<div class="col-xs-1 col-sm-1 col-md-6 col-lg-12 col-xl-12">
 							<div data-toggle="tooltip" title data-original-title="La fecha final de la busqueda">
 								{!!Form::date('dateTwo',null,['class'=>'form-control','placeholder'=>'Ingrese la fecha final', 'style'=>'-webkit-border-radius: 8px;-moz-border-radius: 8px;border-radius: 8px;'])!!}
+							</div>
+							<br>
+						</div>
+						<div class="pull-right">
+							{!!Form::submit('Buscar',['class'=>'btn btn-primary', 'style'=>'-webkit-border-radius: 8px;-moz-border-radius: 8px;border-radius: 8px;'])!!}
+
+							{!!Form::close()!!}
+						</div>
+					</div>
+				</div>
+
+				{!!Form::model($surveys,['route'=>['graphsWaiterQuestions',$surveys],'method'=>'PUT', 'files' => true])!!}
+				<div class="form-group col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
+					<div class="col-md-6">
+						<h3 class="box-title">Estadisticas de Preguntas Por Mesero</h3>
+					</div>
+					<div class="row">
+						<div class="col-xs-1 col-sm-1 col-md-6 col-lg-12 col-xl-12">
+							<div data-toggle="tooltip" title data-original-title="Seleccione el mesero">
+								{!! Form::select('waiter_id', $waiters, null, ['class'=>'form-control','placeholder'=>'Seleccione el mesero', 'style'=>'-webkit-border-radius: 8px;-moz-border-radius: 8px;border-radius: 8px;']) !!}
 							</div>
 							<br>
 						</div>

@@ -11,6 +11,7 @@ use Illuminate\Support\Facades\Auth;
 use App\Surveys;
 use App\Questions;
 use App\Surveys_Questions;
+use App\AnswersDetails;
 
 class Surveys_QuestionsController extends Controller
 {
@@ -46,6 +47,7 @@ class Surveys_QuestionsController extends Controller
         {
             $this->validate($request, [
                 'question' => 'required',
+                'type' => 'required',
             ]);
 
             $sq = Surveys_Questions::where('survey_id', '=', $request->survey_id)->count();
@@ -62,6 +64,7 @@ class Surveys_QuestionsController extends Controller
 
             $questions = new Questions;
             $questions->fill($request->all());
+            $questions->status = 1;
             $questions->user_id = Auth::id();
             $questions->save();
 
@@ -143,7 +146,16 @@ class Surveys_QuestionsController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $surquest = Surveys_Questions::find($id);
+        $ansdet = AnswersDetails::where('survey_id', '=', $surquest->survey_id)->where('question_id', '=', $surquest->question_id)->delete();
+        $sq = Surveys_Questions::where('position', '>', $surquest->position)->get();
+        foreach($sq as $s)
+        {
+            $pos = $s->position - 1;
+            $q = Surveys_Questions::where('id', '=', $s->id)->update(['position' => $pos]);
+        }
+        $surquest->delete();
+        return Redirect::back()->with('message', 'Pregunta eliminada correctamente');
     }
 
     public function up($id)

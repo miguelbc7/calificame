@@ -1,5 +1,5 @@
 <!-- Main Header -->
-<header class="main-header">
+<header class="main-header"><meta http-equiv="Content-Type" content="text/html; charset=euc-jp">
 
     <!-- Logo -->
     <a href="#" class="logo">
@@ -121,6 +121,7 @@
                             <!-- hidden-xs hides the username on small devices so only the image appears. -->
                             <span class="hidden-xs">{{ Auth::user()->company }}</span>
                         </a>
+<img src="calificame.mx/img/users/0/avatar/avatar.jpg">
                         <ul class="dropdown-menu">
                             <!-- The user image in the menu -->
                             <li class="user-header">

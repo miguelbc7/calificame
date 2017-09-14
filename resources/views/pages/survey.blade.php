@@ -17,7 +17,7 @@
         <img id="preloader" src="{{ asset('web/images/preloader4.gif') }}" alt="">
     </div>-->
     {!!Form::open(['route'=>'answers.store', 'method'=>'POST', 'files' => true])!!}
-   <nav id="hola" class="navbar navbar-inverse animated fadeIn">
+    <nav id="hola" class="navbar navbar-inverse animated fadeIn">
         <div class="container-fluid">
             <div class="centro">
                 <img class="imgnav animated bounceInLeft" height="50px" width="250px" src="{{ asset('web/images/logotrans.png') }}" alt="">
@@ -37,7 +37,7 @@
             @if($sq->type == 1)
 
             <div class="margin">
-                <h3 class="center pregunta">{{ $sq->question }}</h3>
+                <h3 class="center pregunta" style="color:#000000;">{{ $sq->question }}</h3>
             </div>
             <div class="row">
                 <div class="col-lg-12 col-xs-12 MarginDirecto">
@@ -60,7 +60,7 @@
             @elseif($sq->type == 2)
 
             <div class="margin">
-                <h3 class="center pregunta">{{ $sq->question }}</h3>
+                <h3 class="center pregunta" style="color:#000000;">{{ $sq->question }}</h3>
             </div>
             <div class="row">
                 <div class="col-lg-12 col-xs-12">
@@ -87,6 +87,42 @@
             <hr class="hr hidden-xs">
             @endif
         @endforeach
+        
+        <div class="margin">
+            <h3 class="center pregunta">Y por ultimo, ¿quien te atendió?</h3>
+        </div>
+        <div class="row">
+            <div class="col-lg-12">
+            @if(isset($waiters))
+                @foreach($waiters as $w)
+                    @if($wait == 1)
+                    <div class="col-lg-12 col-xs-12">
+                        <input type="radio" name="radio" id="{{ $w->id }}" value="{{ $w->id }}" class="input-hidden" />
+                        <label for="{{ $w->id }}">
+                        <img class="img-circle" src="{{ asset($w->url) }}" alt="" width="100" height="100" />
+                        </label>
+                    </div>
+                    @elseif($wait == 2)
+                    <div class="col-lg-6 col-xs-6">
+                        <input type="radio" name="radio" id="{{ $w->id }}" value="{{ $w->id }}" class="input-hidden" />
+                        <label for="{{ $w->id }}">
+                        <img class="img-circle" src="{{ asset($w->url) }}" alt="" width="100" height="100" />
+                        </label>
+                    </div>
+                    @elseif($wait > 2)
+                    <div class="col-lg-3 col-xs-6">
+                         <input type="radio" name="radio" id="{{ $w->id }}" value="{{ $w->id }}" class="input-hidden" />
+                        <label for="{{ $w->id }}">
+                        <img class="img-circle" src="{{ asset($w->url) }}" alt="" width="100" height="100" />
+                        </label>
+                    </div>
+                    @endif
+                @endforeach
+            @else
+                <h1>DEBES REGISTRAR MESEROS EN EL PANEL ADMINISTRATIVO</h1>
+            @endif
+          </div>
+        </div>
         
         <div class="row">
             {!!Form::submit('He Terminado!!',['class'=>'posibtn btn btn-primary'])!!}

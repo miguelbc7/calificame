@@ -17,6 +17,7 @@ use Redirect;
 use App\User;
 use App\Payment;
 use App\SocialNetworks;
+use App\User_Payment;
 
 /**
  * Class HomeController
@@ -129,42 +130,53 @@ class HomeController extends Controller
         ]);
 
         $user = new User;
-        $user->fill($request->all());
-        $user->password = bcrypt($request->password);
+        $user->company = $request->company;
+        $user->email = $request->email;
+        $user->type = 1;
+        $user->branch = 1;
+        $user->status = 1;
+        $user->password = $request->password;
         $user->save();
         auth()->login($user);
 
         $user = User::find(Auth::id());
-        
-        if(isset($request->avatar))
-        {
-            $destinationPath = 'img/Users/'.Auth::id().'/avatar/'; // upload path
-            $destinationPath2 = base_path() . '/public/img/Users/'.Auth::id().'/avatar/'; // upload path
-            $extension = 'jpg'; // getting image extension
-            $fileName = 'avatar.'.$extension; // renameing image
-            $request->file('avatar')->move($destinationPath2, $fileName); // uploading file to given path
-            $user->image = $destinationPath.'/'.$fileName;
-            $user->save();      
-        }
-        else
-        {
-            $destinationPath = 'img/Users/0/avatar/'; // upload path
-            $destinationPath2 = base_path() . '/public/img/Users/0/avatar/'; // upload path
-            $extension = 'jpg'; // getting image extension
-            $user->image = $destinationPath.'/avatar.png';
-            $user->save();
-        }
+
+        $destinationPath = 'img/Users/'.Auth::id().'/avatar/'; // upload path
+        $destinationPath2 = base_path() . '/public/img/Users/'.Auth::id().'/avatar/'; // upload path
+        $extension = 'jpg'; // getting image extension
+        $fileName = 'avatar.'.$extension; // renameing image
+        $request->file('avatar')->move($destinationPath2, $fileName); // uploading file to given path
+        $user->avatar = $destinationPath.'/'.$fileName;
+        $user->save();
+        $payment = New Payment;
+        $payment->dateIn = date('Y-m-d');
+        $dateIn = date('Y-m-d');
+        $dateOut = strtotime('+1 month', strtotime($dateIn));
+        $dateOut2 = date('Y-m-d', $dateOut);
+        $payment->dateOut = $dateOut2;
+        $payment->amount = 0;
+        $payment->type = 1;
+        $payment->save();
+        $userpay = New User_Payment;
+        $userpay->user_id = $user->id;
+        $userpay->payment_id = $payment->id;
+        $userpay->save();
 
         $user = User::find(Auth::id());
 
         $title = 'Registro en Calificame Completado';
         $content = 'Bienvenido, '.$user->name.' Has completado tu registro en calificame';
-        Mail::send('data.emails.badanswers', ['title' => $title, 'content' => $content], function ($message) use ($user)
+
+        $emails = Emails::join('user_email', 'emails.id', '=', 'user_email.email_id')->join('users', 'user_email.user_id', '=', 'users.id')->select('emails.id as id', 'emails.email as email', 'users.email as uemail')->where('user_id', '=', Auth::id())->get();
+
+        $em = $user->email;
+        
+        Mail::send('data.emailsf.newuser', ['title' => $title, 'content' => $content], function ($message) use ($em)
         {
 
-            $message->from('miguel.lm21@gmail.com', 'Calificame')->subject('Registro en Calificame Completado');
+            $message->from('contacto@calificame.mx', 'Calificame')->subject('Bienvenido a Calificame');
 
-            $message->to($user->email);
+            $message->to($em);
 
         });
 
@@ -180,7 +192,8 @@ class HomeController extends Controller
     public function admin()
     {
         $user = User::find(Auth::id());
-        $do = Payment::where('user_id', '=', Auth::id())->orderBy('dateOut', 'desc')->first();
+        $userpay = User_Payment::select('payment_id')->where('user_id', '=', Auth::id())->first();
+        $do = Payment::where('id', '=', $userpay->payment_id)->orderBy('dateOut', 'desc')->first();
 
         if(isset($do))
         {
@@ -209,13 +222,14 @@ class HomeController extends Controller
             'company' => 'required|max:255|unique:users',
             'email' => 'required|email|max:255|unique:users',
             'password' => 'required|min:6|confirmed',
+            'password_confirmation' => 'required|min:6',
             'terms' => 'required',
         ]);
 
         $user = New User;
         $user->company = $request->company;
         $user->email = $request->email;
-        $user->password = bcrypt($request->password);
+        $user->password = $request->password;
         $user->type = 2;
         $user->status = 1;
         $user->branch = 1;
@@ -241,19 +255,23 @@ class HomeController extends Controller
         $payment->dateOut = $dateOut2;
         $payment->amount = 0;
         $payment->type = 1;
-        $payment->user_id = $user->id;
         $payment->save();
+        $userpay = New User_Payment;
+        $userpay->user_id = $user->id;
+        $userpay->payment_id = $payment->id;
+        $userpay->save();
 
         $title = 'Bienvenido a Calificame';
         $content = 'Nos complace en darte la bienvenida a Calificame '.$request->name.', esperamos disfrutes de tu mes gratuito';
-        $email = $request->email;
 
-        Mail::send('data.emails.newuser', ['title' => $title, 'content' => $content], function ($message) use ($email)
+        $em = $user->email;
+
+        Mail::send('data.emailsf.newuser', ['title' => $title, 'content' => $content], function ($message) use ($em)
         {
 
             $message->from('contacto@calificame.mx', 'Calificame')->subject('Bienvenido a Calificame');
 
-            $message->to($email);
+            $message->to($em);
 
         });
 

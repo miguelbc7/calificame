@@ -8,6 +8,7 @@ use Session;
 use Redirect;
 use Charts;
 use DOMPDF;
+use DB;
 use Illuminate\Routing\Route;
 use Illuminate\Support\Facades\Auth;
 use App\Surveys;
@@ -16,6 +17,8 @@ use App\Surveys_Questions;
 use App\Answers;
 use App\AnswersDetails;
 use App\User;
+use App\Waiters;
+use App\User_Waiter;
 
 class SurveysController extends Controller
 {
@@ -139,7 +142,7 @@ class SurveysController extends Controller
     {
         $surveys = Surveys::find($id);
         $surquestions = Surveys_Questions::join('questions', 'surveys_questions.question_id', '=', 'questions.id')->select('surveys_questions.id AS id', 'questions.question AS question', 'surveys_questions.position AS position')->where('surveys_questions.survey_id', '=', $id)->orderBy('position', 'asc')->paginate(10);
-        $questions = Questions::where('user_id', '=', Auth::id())->orderBy('id')->pluck('question', 'id');
+        $questions = Questions::where('user_id', '=', Auth::id())->orWhere('user_id', '=', 1)->orderBy('id')->pluck('question', 'id');
         $last = Surveys_Questions::select('position')->orderBy('position', 'desc')->first();
         $count = Surveys_Questions::join('questions', 'surveys_questions.question_id', '=', 'questions.id')->select('surveys_questions.id AS id', 'questions.question AS question', 'surveys_questions.position AS position')->where('surveys_questions.survey_id', '=', $id)->count();
 
@@ -168,7 +171,10 @@ class SurveysController extends Controller
         }
         
         $surquestions = Surveys_Questions::join('questions', 'surveys_questions.question_id', '=', 'questions.id')->select('surveys_questions.id AS id', 'questions.id AS question_id', 'questions.question AS question', 'surveys_questions.position AS position', 'questions.type AS type')->where('surveys_questions.survey_id', '=', $id)->get();
-        return view('pages.survey', ['surveys'=>$surveys, 'surquestions'=>$surquestions, 'user'=>$user]);
+        $waiters = Waiters::join('user_waiters', 'waiters.id', '=', 'user_waiters.waiter_id')->join('users', 'user_waiters.user_id', '=', 'users.id')->select('waiters.id as id', 'waiters.name as name', 'waiters.lastname as lastname', 'waiters.url as url')->where('user_id', '=', Auth::id())->get();
+        $wait = Waiters::join('user_waiters', 'waiters.id', '=', 'user_waiters.waiter_id')->join('users', 'user_waiters.user_id', '=', 'users.id')->select('waiters.id as id', 'waiters.name as name', 'waiters.lastname as lastname', 'waiters.url as url')->where('user_id', '=', Auth::id())->count();
+
+        return view('pages.survey', ['surveys'=>$surveys, 'surquestions'=>$surquestions, 'user'=>$user, 'waiters'=>$waiters, 'wait'=>$wait]);
     }
 
     public function surveyFinish()
@@ -184,17 +190,19 @@ class SurveysController extends Controller
 
     public function suranswers($id)
     {
-        $suranswers = Answers::join('surveys', 'answers.survey_id', '=', 'surveys.id')->select('answers.id AS id', 'answers.name AS name', 'answers.email AS email', 'answers.created_at AS created_at', 'surveys.id as surid', 'answers.calification as calification')->where('surveys.id', '=', $id)->orderBy('created_at', 'DESC')->paginate(10);
+        $suranswers = Answers::join('surveys', 'answers.survey_id', '=', 'surveys.id')->select('answers.id AS id', 'answers.name AS name', 'answers.email AS email', 'answers.created_at AS created_at', 'surveys.id as surid', 'answers.calification as calification', 'answers.waiter_id as waiter_id')->where('surveys.id', '=', $id)->orderBy('created_at', 'DESC')->paginate(10);
         $questions = Surveys_Questions::join('questions', 'surveys_questions.question_id', '=', 'questions.id')->join('surveys', 'surveys_questions.survey_id', '=', 'surveys.id')->select('questions.question AS name')->where('surveys.id', '=', $id)->get();
         $answersdet =  AnswersDetails::join('questions', 'answers_details.question_id', '=', 'questions.id')->select('answers_details.id AS id', 'answers_details.answer AS answer', 'answers_details.survey_id AS survey', 'answers_details.answer_id AS ansid', 'answers_details.comment As comment')->where('answers_details.survey_id', '=', $id)->get();
+        $waiters = Waiters::get();
 
-        return view('data.surveys.answers', ['suranswers'=>$suranswers, 'questions'=>$questions, 'answersdet'=>$answersdet]);
+        return view('data.surveys.answers', ['suranswers'=>$suranswers, 'questions'=>$questions, 'answersdet'=>$answersdet, 'waiters'=>$waiters]);
     }
 
     public function pregraphs($id)
     {
         $surveys = Surveys::find($id);
-        return view('data.surveys.pregraphs', ['surveys'=>$surveys]);
+        $waiters = Waiters::join('user_waiters', 'waiters.id', '=', 'user_waiters.waiter_id')->join('users', 'user_waiters.user_id', '=', 'users.id')->select('waiters.id as id', DB::raw("CONCAT(waiters.name,' ',waiters.lastname)  AS name"), 'waiters.url as url')->where('user_id', '=', Auth::id())->pluck('name', 'id');
+        return view('data.surveys.pregraphs', ['surveys'=>$surveys, 'waiters'=>$waiters]);
     }
 
     public function graphsQuestions($id)
@@ -217,28 +225,29 @@ class SurveysController extends Controller
                 $si2[$i] = AnswersDetails::where('survey_id', '=', $id)->where('answer', '=', '1')->where('question_id', '=', $q->qid)->count();
                 $no2[$i] = AnswersDetails::where('survey_id', '=', $id)->where('answer', '=', '2')->where('question_id', '=', $q->qid)->count();
 
-                $subPercentSi[$i] = $si2[$i]/$count[$i];
-                $percentSi[$i] = $subPercentSi[$i]*100;
+                $subPercentSi[$i] = $si2[$i]*100;
+                $percentSi[$i] = $subPercentSi[$i]/$count[$i];
+                
+                $subPercentNo[$i] = $no2[$i]*100;
+                $percentNo[$i] = $subPercentNo[$i]/$count[$i];
 
-                $subPercentNo[$i] = $no2[$i]/$count[$i];
-                $percentNo[$i] = $subPercentNo[$i]*100;
 
                 if($si2[$i] == 1)
                 {
-                    $s2[$i] = 'Si '.$percentSi[$i].'% ('.$si2[$i].' respuesta)';
+                    $s2[$i] = 'Si '.number_format($percentSi[$i], 2, ',', ' ').'% ('.$si2[$i].' respuesta)';
                 }
                 else
                 {
-                    $s2[$i] = 'Si '.$percentSi[$i].'% ('.$si2[$i].' respuestas)';
+                    $s2[$i] = 'Si '.number_format($percentSi[$i], 2, ',', ' ').'% ('.$si2[$i].' respuestas)';
                 }
                  
                 if($no2[$i] == 1)
                 {
-                    $n2[$i] = 'No '.$percentNo[$i].'% ('.$no2[$i].' respuesta)';
+                    $n2[$i] = 'No '.number_format($percentNo[$i], 2, ',', ' ').'% ('.$no2[$i].' respuesta)';
                 }
                 else
                 {
-                    $n2[$i] = 'No '.$percentNo[$i].' %('.$no2[$i].' respuestas)';
+                    $n2[$i] = 'No '.number_format($percentNo[$i], 2, ',', ' ').' %('.$no2[$i].' respuestas)';
                 }
 
                 if(isset($dateOne) && isset($dateTwo))
@@ -281,38 +290,38 @@ class SurveysController extends Controller
 
                 if($malo2[$j] == 1)
                 {
-                    $m2[$j] = 'Malo '.$percentMalo[$j].'% ('.$malo2[$j].' respuesta)';
+                    $m2[$j] = 'Malo '.number_format($percentMalo[$j], 2, ',', ' ').'% ('.$malo2[$j].' respuesta)';
                 }
                 else
                 {
-                    $m2[$j] = 'Malo '.$percentMalo[$j].'% ('.$malo2[$j].' respuestas)';
+                    $m2[$j] = 'Malo '.number_format($percentMalo[$j], 2, ',', ' ').'% ('.$malo2[$j].' respuestas)';
                 }
 
                 if($regular2[$j] == 1)
                 {
-                    $r2[$j] = 'Regular '.$percentRegular[$j].'% ('.$regular2[$j].' respuesta)';
+                    $r2[$j] = 'Regular '.number_format($percentRegular[$j], 2, ',', ' ').'% ('.$regular2[$j].' respuesta)';
                 }
                 else
                 {
-                    $r2[$j] = 'Regular '.$percentRegular[$j].'% ('.$regular2[$j].' respuestas)';
+                    $r2[$j] = 'Regular '.number_format($percentRegular[$j], 2, ',', ' ').'% ('.$regular2[$j].' respuestas)';
                 }
 
                 if($bueno2[$j] == 1)
                 {
-                    $b2[$j] = 'Bueno '.$percentBueno[$j].'% ('.$bueno2[$j].' respuesta)';
+                    $b2[$j] = 'Bueno '.number_format($percentBueno[$j], 2, ',', ' ').'% ('.$bueno2[$j].' respuesta)';
                 }
                 else
                 {
-                    $b2[$j] = 'Bueno '.$percentBueno[$j].'% ('.$bueno2[$j].' respuestas)';
+                    $b2[$j] = 'Bueno '.number_format($percentBueno[$j], 2, ',', ' ').'% ('.$bueno2[$j].' respuestas)';
                 }
 
                 if($excelente2[$j] == 1)
                 {
-                    $e2[$j] = 'Excelente '.$percentExcelente[$j].'% ('.$excelente2[$j].' respuesta)';
+                    $e2[$j] = 'Excelente '.number_format($percentExcelente[$j], 2, ',', ' ').'% ('.$excelente2[$j].' respuesta)';
                 }
                 else
                 {
-                    $e2[$j] = 'Excelente '.$percentExcelente[$j].'% ('.$excelente2[$j].' respuestas)';
+                    $e2[$j] = 'Excelente '.number_format($percentExcelente[$j], 2, ',', ' ').'% ('.$excelente2[$j].' respuestas)';
                 }
 
                 if(isset($dateOne) && isset($dateTwo))
@@ -363,20 +372,20 @@ class SurveysController extends Controller
 
                 if($satisfecho2[$i] == 1)
                 {
-                    $s2[$i] = 'Satisfecho '.$percentSas[$i].'% ('.$satisfecho2[$i].' respuesta)';
+                    $s2[$i] = 'Satisfecho '.number_format($percentSas[$i], 2, ',', ' ').'% ('.$satisfecho2[$i].' respuesta)';
                 }
                 else
                 {
-                    $s2[$i] = 'Satisfecho '.$percentSas[$i].'% ('.$satisfecho2[$i].' respuestas)';
+                    $s2[$i] = 'Satisfecho '.number_format($percentSas[$i], 2, ',', ' ').'% ('.$satisfecho2[$i].' respuestas)';
                 }
                  
                 if($insatisfecho2[$i] == 1)
                 {
-                    $i2[$i] = 'Insatisfecho '.$percentInsas[$i].'% ('.$insatisfecho2[$i].' respuesta)';
+                    $i2[$i] = 'Insatisfecho '.number_format($percentInsas[$i], 2, ',', ' ').'% ('.$insatisfecho2[$i].' respuesta)';
                 }
                 else
                 {
-                    $i2[$i] = 'Insatisfecho '.$percentInsas[$i].'% ('.$insatisfecho2[$i].' respuestas)';
+                    $i2[$i] = 'Insatisfecho '.number_format($percentInsas[$i], 2, ',', ' ').'% ('.$insatisfecho2[$i].' respuestas)';
                 }
 
                 if(isset($dateOne) && isset($dateTwo))
@@ -411,20 +420,20 @@ class SurveysController extends Controller
 
                 if($satisfecho2[$j] == 1)
                 {
-                    $s2[$j] = 'Satisfecho '.$percentSas[$j].'% ('.$satisfecho2[$j].' respuesta)';
+                    $s2[$j] = 'Satisfecho '.number_format($percentSas[$j], 2, ',', ' ').'% ('.$satisfecho2[$j].' respuesta)';
                 }
                 else
                 {
-                    $s2[$j] = 'Satisfecho '.$percentSas[$j].'% ('.$satisfecho2[$j].' respuestas)';
+                    $s2[$j] = 'Satisfecho '.number_format($percentSas[$j], 2, ',', ' ').'% ('.$satisfecho2[$j].' respuestas)';
                 }
                  
                 if($insatisfecho2[$j] == 1)
                 {
-                    $i2[$j] = 'Insatisfecho '.$percentInsas[$j].'% ('.$insatisfecho2[$j].' respuesta)';
+                    $i2[$j] = 'Insatisfecho '.number_format($percentInsas[$j], 2, ',', ' ').'% ('.$insatisfecho2[$j].' respuesta)';
                 }
                 else
                 {
-                    $i2[$j] = 'Insatisfecho '.$percentInsas[$j].'% ('.$insatisfecho2[$j].' respuestas)';
+                    $i2[$j] = 'Insatisfecho '.number_format($percentInsas[$j], 2, ',', ' ').'% ('.$insatisfecho2[$j].' respuestas)';
                 }
 
                 if(isset($dateOne) && isset($dateTwo))
@@ -484,20 +493,20 @@ class SurveysController extends Controller
 
                 if($si2[$i] == 1)
                 {
-                    $s2[$i] = 'Si '.$percentSi[$i].'% ('.$si2[$i].' respuesta)';
+                    $s2[$i] = 'Si '.number_format($percentSi[$i], 2, ',', ' ').'% ('.$si2[$i].' respuesta)';
                 }
                 else
                 {
-                    $s2[$i] = 'Si '.$percentSi[$i].'% ('.$si2[$i].' respuestas)';
+                    $s2[$i] = 'Si '.number_format($percentSi[$i], 2, ',', ' ').'% ('.$si2[$i].' respuestas)';
                 }
                  
                 if($no2[$i] == 1)
                 {
-                    $n2[$i] = 'No '.$percentNo[$i].'% ('.$no2[$i].' respuesta)';
+                    $n2[$i] = 'No '.number_format($percentNo[$i], 2, ',', ' ').'% ('.$no2[$i].' respuesta)';
                 }
                 else
                 {
-                    $n2[$i] = 'No '.$percentNo[$i].' %('.$no2[$i].' respuestas)';
+                    $n2[$i] = 'No '.number_format($percentNo[$i], 2, ',', ' ').' %('.$no2[$i].' respuestas)';
                 }
 
                 if(isset($dateOne) && isset($dateTwo))
@@ -540,38 +549,38 @@ class SurveysController extends Controller
 
                 if($malo2[$j] == 1)
                 {
-                    $m2[$j] = 'Malo '.$percentMalo[$j].'% ('.$malo2[$j].' respuesta)';
+                    $m2[$j] = 'Malo '.number_format($percentMalo[$j], 2, ',', ' ').'% ('.$malo2[$j].' respuesta)';
                 }
                 else
                 {
-                    $m2[$j] = 'Malo '.$percentMalo[$j].'% ('.$malo2[$j].' respuestas)';
+                    $m2[$j] = 'Malo '.number_format($percentMalo[$j], 2, ',', ' ').'% ('.$malo2[$j].' respuestas)';
                 }
 
                 if($regular2[$j] == 1)
                 {
-                    $r2[$j] = 'Regular '.$percentRegular[$j].'% ('.$regular2[$j].' respuesta)';
+                    $r2[$j] = 'Regular '.number_format($percentRegular[$j], 2, ',', ' ').'% ('.$regular2[$j].' respuesta)';
                 }
                 else
                 {
-                    $r2[$j] = 'Regular '.$percentRegular[$j].'% ('.$regular2[$j].' respuestas)';
+                    $r2[$j] = 'Regular '.number_format($percentRegular[$j], 2, ',', ' ').'% ('.$regular2[$j].' respuestas)';
                 }
 
                 if($bueno2[$j] == 1)
                 {
-                    $b2[$j] = 'Bueno '.$percentBueno[$j].'% ('.$bueno2[$j].' respuesta)';
+                    $b2[$j] = 'Bueno '.number_format($percentBueno[$j], 2, ',', ' ').'% ('.$bueno2[$j].' respuesta)';
                 }
                 else
                 {
-                    $b2[$j] = 'Bueno '.$percentBueno[$j].'% ('.$bueno2[$j].' respuestas)';
+                    $b2[$j] = 'Bueno '.number_format($percentBueno[$j], 2, ',', ' ').'% ('.$bueno2[$j].' respuestas)';
                 }
 
                 if($excelente2[$j] == 1)
                 {
-                    $e2[$j] = 'Excelente '.$percentExcelente[$j].'% ('.$excelente2[$j].' respuesta)';
+                    $e2[$j] = 'Excelente '.number_format($percentExcelente[$j], 2, ',', ' ').'% ('.$excelente2[$j].' respuesta)';
                 }
                 else
                 {
-                    $e2[$j] = 'Excelente '.$percentExcelente[$j].'% ('.$excelente2[$j].' respuestas)';
+                    $e2[$j] = 'Excelente '.number_format($percentExcelente[$j], 2, ',', ' ').'% ('.$excelente2[$j].' respuestas)';
                 }
 
                 if(isset($dateOne) && isset($dateTwo))
@@ -594,6 +603,145 @@ class SurveysController extends Controller
             }
         }
         return view('data.surveys.graphs', ['suranswers' => $suranswers, 'questions' => $questions, 'answersdet' => $answersdet, 'chart2' => $chart2, 'survey' => $survey, 'dateOne' => $dateOne, 'dateTwo' => $dateTwo]);
+    }
+
+    public function graphsWaiterQuestions(Request $request, $id)
+    {
+        $this->validate($request, [
+            'waiter_id' => 'required',
+        ]);
+
+        $suranswers = Answers::join('surveys', 'answers.survey_id', '=', 'surveys.id')->select('answers.id AS id', 'answers.name AS name', 'answers.email AS email', 'surveys.id as surid')->where('surveys.id', '=', $id)->where('answers.waiter_id', '=', $request->waiter_id)->paginate(10);
+        $questions = Surveys_Questions::join('questions', 'surveys_questions.question_id', '=', 'questions.id')->join('surveys', 'surveys_questions.survey_id', '=', 'surveys.id')->select('questions.question AS name', 'questions.id as qid', 'questions.type as type', 'surveys_questions.position as position')->where('surveys.id', '=', $id)->get();
+        $answersdet =  AnswersDetails::join('questions', 'answers_details.question_id', '=', 'questions.id')->select('answers_details.id AS id', 'answers_details.answer AS answer', 'answers_details.survey_id AS survey', 'answers_details.answer_id AS ansid', 'answers_details.comment As comment', 'questions.id as qid')->where('answers_details.survey_id', '=', $id)->get();
+
+        $survey = Surveys::find($id);
+
+        $i = 0;
+        $j = 0;
+
+        $waiter = Waiters::find($request->waiter_id);
+        $waid = $request->waiter_id;
+        $wai = $waiter->name.' '.$waiter->lastname;
+
+        foreach($questions as $q)
+        {
+            if($q->type == 1)
+            {
+                $count[$i] = AnswersDetails::join('answers', 'answers_details.answer_id', '=', 'answers.id')->where('answers_details.survey_id', '=', $id)->where('answers_details.question_id', '=', $q->qid)->whereIn('answer', [1, 2])->where('answers.waiter_id', '=', $waid)->count();
+                $si2[$i] = AnswersDetails::join('answers', 'answers_details.answer_id', '=', 'answers.id')->where('answers_details.survey_id', '=', $id)->where('answers_details.answer', '=', '1')->where('answers_details.question_id', '=', $q->qid)->where('answers.waiter_id', '=', $waid)->count();
+                $no2[$i] = AnswersDetails::join('answers', 'answers_details.answer_id', '=', 'answers.id')->where('answers_details.survey_id', '=', $id)->where('answers_details.answer', '=', '2')->where('answers_details.question_id', '=', $q->qid)->where('answers.waiter_id', '=', $waid)->count();
+
+                $subPercentSi[$i] = $si2[$i]/$count[$i];
+                $percentSi[$i] = $subPercentSi[$i]*100;
+
+                $subPercentNo[$i] = $no2[$i]/$count[$i];
+                $percentNo[$i] = $subPercentNo[$i]*100;
+
+                if($si2[$i] == 1)
+                {
+                    $s2[$i] = 'Si '.number_format($percentSi[$i], 2, ',', ' ').'% ('.$si2[$i].' respuesta)';
+                }
+                else
+                {
+                    $s2[$i] = 'Si '.number_format($percentSi[$i], 2, ',', ' ').'% ('.$si2[$i].' respuestas)';
+                }
+                 
+                if($no2[$i] == 1)
+                {
+                    $n2[$i] = 'No '.number_format($percentNo[$i], 2, ',', ' ').'% ('.$no2[$i].' respuesta)';
+                }
+                else
+                {
+                    $n2[$i] = 'No '.number_format($percentNo[$i], 2, ',', ' ').' %('.$no2[$i].' respuestas)';
+                }
+
+                if(isset($waiter))
+                {
+                    $name = $q->name.'<br>Mesero: '. $wai;
+                }
+
+                $chart2[] = Charts::create('pie', 'fusioncharts')
+                    ->title($name)
+                    ->colors(['#c51010', '#1610c5'])
+                    ->labels([$n2[$i], $s2[$i]])
+                    ->values([$no2[$i], $si2[$i]])
+                    ->dimensions(1000,500)
+                    ->responsive(false);
+                $i++;
+            }
+            elseif($q->type == 2)
+            {
+                $count[$j] = AnswersDetails::join('answers', 'answers_details.answer_id', '=', 'answers.id')->where('answers_details.survey_id', '=', $id)->where('answers_details.question_id', '=', $q->qid)->whereIn('answers_details.answer', [3,4,5,6])->count();
+                $malo2[$j] = AnswersDetails::join('answers', 'answers_details.answer_id', '=', 'answers.id')->where('answers_details.survey_id', '=', $id)->where('answers_details.answer', '=', '3')->where('answers_details.question_id', '=', $q->qid)->count();
+                $regular2[$j] = AnswersDetails::join('answers', 'answers_details.answer_id', '=', 'answers.id')->where('answers_details.survey_id', '=', $id)->where('answers_details.answer', '=', '4')->where('answers_details.question_id', '=', $q->qid)->count();
+                $bueno2[$j] = AnswersDetails::join('answers', 'answers_details.answer_id', '=', 'answers.id')->where('answers_details.survey_id', '=', $id)->where('answers_details.answer', '=', '5')->where('answers_details.question_id', '=', $q->qid)->count();
+                $excelente2[$j] = AnswersDetails::join('answers', 'answers_details.answer_id', '=', 'answers.id')->where('answers_details.survey_id', '=', $id)->where('answers_details.answer', '=', '6')->where('answers_details.question_id', '=', $q->qid)->count();
+
+                $subPercentMalo[$j] = $malo2[$j]/$count[$j];
+                $percentMalo[$j] = $subPercentMalo[$j]*100;
+
+                $subPercentRegular[$j] = $regular2[$j]/$count[$j];
+                $percentRegular[$j] = $subPercentRegular[$j]*100;
+
+                $subPercentBueno[$j] = $bueno2[$j]/$count[$j];
+                $percentBueno[$j] = $subPercentBueno[$j]*100;
+
+                $subPercentExcelente[$j] = $excelente2[$j]/$count[$j];
+                $percentExcelente[$j] = $subPercentExcelente[$j]*100;
+
+                if($malo2[$j] == 1)
+                {
+                    $m2[$j] = 'Malo '.number_format($percentMalo[$j], 2, ',', ' ').'% ('.$malo2[$j].' respuesta)';
+                }
+                else
+                {
+                    $m2[$j] = 'Malo '.number_format($percentMalo[$j], 2, ',', ' ').'% ('.$malo2[$j].' respuestas)';
+                }
+
+                if($regular2[$j] == 1)
+                {
+                    $r2[$j] = 'Regular '.number_format($percentRegular[$j], 2, ',', ' ').'% ('.$regular2[$j].' respuesta)';
+                }
+                else
+                {
+                    $r2[$j] = 'Regular '.number_format($percentRegular[$j], 2, ',', ' ').'% ('.$regular2[$j].' respuestas)';
+                }
+
+                if($bueno2[$j] == 1)
+                {
+                    $b2[$j] = 'Bueno '.number_format($percentBueno[$j], 2, ',', ' ').'% ('.$bueno2[$j].' respuesta)';
+                }
+                else
+                {
+                    $b2[$j] = 'Bueno '.number_format($percentBueno[$j], 2, ',', ' ').'% ('.$bueno2[$j].' respuestas)';
+                }
+
+                if($excelente2[$j] == 1)
+                {
+                    $e2[$j] = 'Excelente '.number_format($percentExcelente[$j], 2, ',', ' ').'% ('.$excelente2[$j].' respuesta)';
+                }
+                else
+                {
+                    $e2[$j] = 'Excelente '.number_format($percentExcelente[$j], 2, ',', ' ').'% ('.$excelente2[$j].' respuestas)';
+                }
+
+                if(isset($waiter))
+                {
+                    $name = $q->name.'<br>Mesero: '. $wai;
+                }
+
+                $chart2[] = Charts::create('pie', 'fusioncharts')
+                    ->title($name)
+                    ->colors(['#7185ea', '#2bb426', '#d9e330', '#bf331a'])
+                    ->labels([$e2[$j], $b2[$j], $r2[$j], $m2[$j]])
+                    ->values([$excelente2[$j], $bueno2[$j], $regular2[$j], $malo2[$j]])
+                    ->dimensions(1000,500)
+                    ->responsive(false);
+                $j++;
+            }
+        }
+        return view('data.surveys.graphs', ['suranswers' => $suranswers, 'questions' => $questions, 'answersdet' => $answersdet, 'chart2' => $chart2, 'survey' => $survey]);
     }
 
     public function graphsDateSatisfaction(Request $request, $id)
@@ -631,20 +779,20 @@ class SurveysController extends Controller
 
                 if($satisfecho2[$i] == 1)
                 {
-                    $s2[$i] = 'Satisfecho '.$percentSas[$i].'% ('.$satisfecho2[$i].' respuesta)';
+                    $s2[$i] = 'Satisfecho '.number_format($percentSas[$i], 2, ',', ' ').'% ('.$satisfecho2[$i].' respuesta)';
                 }
                 else
                 {
-                    $s2[$i] = 'Satisfecho '.$percentSas[$i].'% ('.$satisfecho2[$i].' respuestas)';
+                    $s2[$i] = 'Satisfecho '.number_format($percentSas[$i], 2, ',', ' ').'% ('.$satisfecho2[$i].' respuestas)';
                 }
                  
                 if($insatisfecho2[$i] == 1)
                 {
-                    $i2[$i] = 'Insatisfecho '.$percentInsas[$i].'% ('.$insatisfecho2[$i].' respuesta)';
+                    $i2[$i] = 'Insatisfecho '.number_format($percentInsas[$i], 2, ',', ' ').'% ('.$insatisfecho2[$i].' respuesta)';
                 }
                 else
                 {
-                    $i2[$i] = 'Insatisfecho '.$percentInsas[$i].'% ('.$insatisfecho2[$i].' respuestas)';
+                    $i2[$i] = 'Insatisfecho '.number_format($percentInsas[$i], 2, ',', ' ').'% ('.$insatisfecho2[$i].' respuestas)';
                 }
 
                 if(isset($dateOne) && isset($dateTwo))
@@ -679,20 +827,20 @@ class SurveysController extends Controller
 
                 if($satisfecho2[$j] == 1)
                 {
-                    $s2[$j] = 'Satisfecho '.$percentSas[$j].'% ('.$satisfecho2[$j].' respuesta)';
+                    $s2[$j] = 'Satisfecho '.number_format($percentSas[$j], 2, ',', ' ').'% ('.$satisfecho2[$j].' respuesta)';
                 }
                 else
                 {
-                    $s2[$j] = 'Satisfecho '.$percentSas[$j].'% ('.$satisfecho2[$j].' respuestas)';
+                    $s2[$j] = 'Satisfecho '.number_format($percentSas[$j], 2, ',', ' ').'% ('.$satisfecho2[$j].' respuestas)';
                 }
                  
                 if($insatisfecho2[$j] == 1)
                 {
-                    $i2[$j] = 'Insatisfecho '.$percentInsas[$j].'% ('.$insatisfecho2[$j].' respuesta)';
+                    $i2[$j] = 'Insatisfecho '.number_format($percentInsas[$j], 2, ',', ' ').'% ('.$insatisfecho2[$j].' respuesta)';
                 }
                 else
                 {
-                    $i2[$j] = 'Insatisfecho '.$percentInsas[$j].'% ('.$insatisfecho2[$j].' respuestas)';
+                    $i2[$j] = 'Insatisfecho '.number_format($percentInsas[$j], 2, ',', ' ').'% ('.$insatisfecho2[$j].' respuestas)';
                 }
 
                 if(isset($dateOne) && isset($dateTwo))
@@ -715,6 +863,119 @@ class SurveysController extends Controller
             }
         }
         return view('data.surveys.graphs', ['suranswers' => $suranswers, 'questions' => $questions, 'answersdet' => $answersdet, 'chart2' => $chart2, 'survey' => $survey, 'dateOne' => $dateOne, 'dateTwo' => $dateTwo]);
+    }
+
+    public function graphsWaiterSatisfaction(Request $request, $id)
+    {
+        $this->validate($request, [
+            'waiter_id' => 'required',
+        ]);
+
+        $suranswers = Answers::join('surveys', 'answers.survey_id', '=', 'surveys.id')->select('answers.id AS id', 'answers.name AS name', 'answers.email AS email', 'surveys.id as surid')->where('surveys.id', '=', $id)->paginate(10);
+        $questions = Surveys_Questions::join('questions', 'surveys_questions.question_id', '=', 'questions.id')->join('surveys', 'surveys_questions.survey_id', '=', 'surveys.id')->select('questions.question AS name', 'questions.id as qid', 'questions.type as type', 'surveys_questions.position as position')->where('surveys.id', '=', $id)->get();
+        $answersdet =  AnswersDetails::join('questions', 'answers_details.question_id', '=', 'questions.id')->select('answers_details.id AS id', 'answers_details.answer AS answer', 'answers_details.survey_id AS survey', 'answers_details.answer_id AS ansid', 'answers_details.comment As comment', 'questions.id as qid')->where('answers_details.survey_id', '=', $id)->get();
+
+        $survey = Surveys::find($id);
+
+        $i = 0;
+        $j = 0;
+
+        $waiter = Waiters::find($request->waiter_id);
+        $waid = $request->waiter_id;
+        $wai = $waiter->name.' '.$waiter->lastname;
+
+        foreach($questions as $q)
+        {
+            if($q->type == 1)
+            {
+                $count[$i] = AnswersDetails::join('answers', 'answers_details.answer_id', '=', 'answers.id')->where('answers_details.survey_id', '=', $id)->where('answers_details.question_id', '=', $q->qid)->whereIn('answers_details.answer', [1, 2])->where('answers.waiter_id', '=', $waid)->count();
+                $satisfecho2[$i] = AnswersDetails::join('answers', 'answers_details.answer_id', '=', 'answers.id')->where('answers_details.survey_id', '=', $id)->where('answers_details.answer', '=', '1')->where('answers_details.question_id', '=', $q->qid)->where('answers.waiter_id', '=', $waid)->count();
+                $insatisfecho2[$i] = AnswersDetails::join('answers', 'answers_details.answer_id', '=', 'answers.id')->where('answers_details.survey_id', '=', $id)->where('answers_details.answer', '=', '2')->where('answers_details.question_id', '=', $q->qid)->where('answers.waiter_id', '=', $waid)->count();
+
+                $subPercentSas[$i] = $satisfecho2[$i]/$count[$i];
+                $percentSas[$i] = $subPercentSas[$i]*100;
+
+                $subPercentInsas[$i] = $insatisfecho2[$i]/$count[$i];
+                $percentInsas[$i] = $subPercentInsas[$i]*100;
+
+                if($satisfecho2[$i] == 1)
+                {
+                    $s2[$i] = 'Satisfecho '.number_format($percentSas[$i], 2, ',', ' ').'% ('.$satisfecho2[$i].' respuesta)';
+                }
+                else
+                {
+                    $s2[$i] = 'Satisfecho '.number_format($percentSas[$i], 2, ',', ' ').'% ('.$satisfecho2[$i].' respuestas)';
+                }
+                 
+                if($insatisfecho2[$i] == 1)
+                {
+                    $i2[$i] = 'Insatisfecho '.number_format($percentInsas[$i], 2, ',', ' ').'% ('.$insatisfecho2[$i].' respuesta)';
+                }
+                else
+                {
+                    $i2[$i] = 'Insatisfecho '.number_format($percentInsas[$i], 2, ',', ' ').'% ('.$insatisfecho2[$i].' respuestas)';
+                }
+
+                if(isset($waiter))
+                {
+                    $name = $q->name.'<br>Mesero: '. $wai;
+                }
+
+                $chart2[] = Charts::create('pie', 'fusioncharts')
+                    ->title($name)
+                    ->colors(['#1610c5', '#c51010'])
+                    ->labels([$s2[$i], $i2[$i]])
+                    ->values([$satisfecho2[$i], $insatisfecho2[$i]])
+                    ->dimensions(1000,500)
+                    ->responsive(false);
+                $i++;
+            }
+            elseif($q->type == 2)
+            {
+                $count[$j] = AnswersDetails::join('answers', 'answers_details.answer_id', '=', 'answers.id')->where('survey_id', '=', $id)->where('question_id', '=', $q->qid)->whereIn('answer', [3,4,5,6])->where('answers.waiter_id', '=', $waid)->count();
+                $satisfecho2[$j] = AnswersDetails::join('answers', 'answers_details.answer_id', '=', 'answers.id')->where('survey_id', '=', $id)->where('question_id', '=', $q->qid)->whereIn('answer', [5, 6])->where('answers.waiter_id', '=', $waid)->count();
+                $insatisfecho2[$j] = AnswersDetails::join('answers', 'answers_details.answer_id', '=', 'answers.id')->where('survey_id', '=', $id)->where('question_id', '=', $q->qid)->whereIn('answer', [3, 4])->where('answers.waiter_id', '=', $waid)->count();
+
+                $subPercentSas[$j] = $satisfecho2[$j]/$count[$j];
+                $percentSas[$j] = $subPercentSas[$j]*100;
+
+                $subPercentInsas[$j] = $insatisfecho2[$j]/$count[$j];
+                $percentInsas[$j] = $subPercentInsas[$j]*100;
+
+                if($satisfecho2[$j] == 1)
+                {
+                    $s2[$j] = 'Satisfecho '.number_format($percentSas[$j], 2, ',', ' ').'% ('.$satisfecho2[$j].' respuesta)';
+                }
+                else
+                {
+                    $s2[$j] = 'Satisfecho '.number_format($percentSas[$j], 2, ',', ' ').'% ('.$satisfecho2[$j].' respuestas)';
+                }
+                 
+                if($insatisfecho2[$j] == 1)
+                {
+                    $i2[$j] = 'Insatisfecho '.number_format($percentInsas[$j], 2, ',', ' ').'% ('.$insatisfecho2[$j].' respuesta)';
+                }
+                else
+                {
+                    $i2[$j] = 'Insatisfecho '.number_format($percentInsas[$j], 2, ',', ' ').'% ('.$insatisfecho2[$j].' respuestas)';
+                }
+
+                if(isset($waiter))
+                {
+                    $name = $q->name.'<br>Mesero: '. $wai;
+                }
+
+                $chart2[] = Charts::create('pie', 'fusioncharts')
+                    ->title($name)
+                    ->colors(['#1610c5', '#c51010'])
+                    ->labels([$s2[$j], $i2[$j]])
+                    ->values([$satisfecho2[$j], $insatisfecho2[$j]])
+                    ->dimensions(1000,500)
+                    ->responsive(false);
+                $j++;
+            }
+        }
+        return view('data.surveys.graphs', ['suranswers' => $suranswers, 'questions' => $questions, 'answersdet' => $answersdet, 'chart2' => $chart2, 'survey' => $survey]);
     }
 
     public function pretrends($id)

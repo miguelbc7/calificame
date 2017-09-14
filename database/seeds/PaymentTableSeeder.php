@@ -17,7 +17,14 @@ class PaymentTableSeeder extends Seeder
             'dateOut' => '2017-09-28',
             'amount' => '400',
             'type' => '1',
-            'user_id' => '2',
+        ]);
+
+        DB::table('payments')->insert([
+            'id' => '2',
+            'dateIn' => '2017-09-27',
+            'dateOut' => '2017-09-28',
+            'amount' => '400',
+            'type' => '1',
         ]);
     }
 }

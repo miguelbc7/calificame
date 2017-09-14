@@ -119,9 +119,8 @@
 											<td align="center">{!!$s->question!!}</td>
 											<td align="right">
 												
-												{!!Form::open(['route'=>['surveys.destroy', $s], 'method'=>'DELETE'])!!}					
+												{!!Form::open(['route'=>['surveys_questions.destroy', $s], 'method'=>'DELETE'])!!}					
 												<div class="btn-group">
-													<a href="{{ route('questions.edit', $s->id) }}" class="btn btn-default" type="edit"><i class="fa fa-edit"></i></a>
 														@if($s->position == 1 && $count == 1)
 
 														@elseif($s->position == 1 && $count != 1)

@@ -21,6 +21,8 @@ class CreateAnswersTable extends Migration
             $table->integer('calification');
             $table->integer('survey_id')->unsigned();
             $table->foreign('survey_id')->references('id')->on('surveys');
+            $table->integer('waiter_id')->unsigned();
+            $table->foreign('waiter_id')->references('id')->on('waiters');
             $table->timestamps();
         });
     }

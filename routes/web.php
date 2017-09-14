@@ -17,7 +17,7 @@ Route::get('index', array('as'=>'index', 'uses'=>'HomeController@index'));
 Route::get('terms', array('as'=>'terms', 'uses'=>'HomeController@terms'));
 Route::get('privacy', array('as'=>'privacy', 'uses'=>'HomeController@privacy'));
 Route::get('contract', array('as'=>'contract', 'uses'=>'HomeController@contract'));
-Route::get('surveys/{id}/survey', 'SurveysController@survey');
+Route::get('s/{id}', 'SurveysController@survey');
 Route::get('surveys/surveyFinish', 'SurveysController@surveyFinish');
 Route::get('surveys/{id}/shared', array('as' => 'shared', 'uses' => 'SurveysController@shared') );
 Route::resource('answers', 'AnswersController');
@@ -55,7 +55,8 @@ Route::get('lang/{lang}', function ($lang) {
         Route::resource('surveys_questions', 'Surveys_QuestionsController');
         Route::resource('answersdetails', 'AnswersDetailsController');
         Route::resource('socialnetworks', 'SocialNetworksController');
-       
+        Route::resource('emails', 'EmailsController');
+        Route::resource('waiters', 'WaitersController');
 
         Route::get('surveys/{id}/questions', array('as'=>'surques', 'uses'=>'SurveysController@questions'));
         Route::get('surveys/{id}/links', array('as'=>'links', 'uses'=>'SurveysController@links'));
@@ -72,6 +73,8 @@ Route::get('lang/{lang}', function ($lang) {
         Route::get('surveys/{id}/graphsSatisfaction', array('as'=>'graphsSatisfaction', 'uses'=>'SurveysController@graphsSatisfaction'));
         Route::put('surveys/{id}/graphsDateQuestions', array('as'=>'graphsDateQuestions', 'uses'=>'SurveysController@graphsDateQuestions'));
         Route::put('surveys/{id}/graphsDateSatisfaction', array('as'=>'graphsDateSatisfaction', 'uses'=>'SurveysController@graphsDateSatisfaction'));
+        Route::put('surveys/{id}/graphsWaiterQuestions', array('as'=>'graphsWaiterQuestions', 'uses'=>'SurveysController@graphsWaiterQuestions'));
+        Route::put('surveys/{id}/graphsWaiterSatisfaction', array('as'=>'graphsWaiterSatisfaction', 'uses'=>'SurveysController@graphsWaiterSatisfaction'));
         Route::get('surveys/{id}/pretrends', array('as'=>'pretrends', 'uses'=>'SurveysController@pretrends'));
         Route::get('surveys/{id}/trendsQuestions', array('as'=>'trendsQuestions', 'uses'=>'SurveysController@trendsQuestions'));
         Route::get('surveys/{id}/trendsSatisfaction', array('as'=>'trendsSatisfaction', 'uses'=>'SurveysController@trendsSatisfaction'));

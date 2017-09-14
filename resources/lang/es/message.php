@@ -97,10 +97,10 @@ return [
         //Reviewers
         'reviewer1' => 'Saddam Gavilanes',
         'reviewerdes1' => 'Maz Salads',
-        'review1' => '“Con “xxxxxx” se lo que sucede en mi restaurante todo el tiempo, cuando algún cliente tiene una queja lo solucionamos inmediatamente”.',
+        'review1' => '“Con “Calificame” se lo que sucede en mi restaurante todo el tiempo, cuando algún cliente tiene una queja lo solucionamos inmediatamente”.',
         'reviewer2' => 'Martha López',
         'reviewerdes2' => 'Pikantojoz',
-        'review2' => '“Gracias a “xxxxxx” ahorramos dinero y mucho tiempo conociendo los productos que los clientes prefieren y nos enfocamos en eso”',
+        'review2' => '“Gracias a “Calificame” ahorramos dinero y mucho tiempo conociendo los productos que los clientes prefieren y nos enfocamos en eso”',
 
         //Footer
         'terms' => 'Términos y condiciones',

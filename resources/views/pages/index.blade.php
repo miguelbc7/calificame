@@ -103,31 +103,7 @@ Webflow.push(function () {
           <a class="nav__link w-nav-link" href="#how-it-works">{{ Lang::get('message.menu2') }}</a>
           <a class="nav__link w-nav-link" href="#plans">{{ Lang::get('message.menu3') }}</a>
           <a class="nav__link w-nav-link" href="{{ url('/logi') }}">{{ Lang::get('message.menu4') }}</a>
-          <div class="language_switch_dropdow w-dropdown w-hidden-medium w-hidden-small w-hidden-tiny" data-delay="0" data-hover="1">
-            <div class="language_switch_toggle w-dropdown-toggle w-hidden-medium w-hidden-small w-hidden-tiny">
-              @if(App::getLocale() == 'es')
-                <div class="language_swith_text">Español</div>
-              @elseif(App::getLocale() == 'en')
-                <div class="language_swith_text">English</div>
-              @elseif(App::getLocale() == 'pt-BR')
-                <div class="language_swith_text">Português</div>
-              @endif
-              <img class="language_switch_icon" src="{{ asset('web/images/triangle.png') }}">
-            </div>
 
-            <nav class="language_witch_list w-dropdown-list">
-            @if(App::getLocale() == 'es')
-              <a class="language_swith_link w-dropdown-link" href="{{ URL('lang', Lang::get('message.en')) }}">Ingles</a>
-              <a class="language_swith_link w-dropdown-link" href="{{ URL('lang', Lang::get('message.pt-BR')) }}">Portugués</a>
-            @elseif(App::getLocale() == 'en')
-              <a class="language_swith_link w-dropdown-link" href="{{ URL('lang', Lang::get('message.es')) }}">Spanish</a>
-              <a class="language_swith_link w-dropdown-link" href="{{ URL('lang', Lang::get('message.pt-BR')) }}">Portuguese</a>
-            @elseif(App::getLocale() == 'pt-BR')
-              <a class="language_swith_link w-dropdown-link" href="{{ URL('lang', Lang::get('message.es')) }}">Espanhol</a>
-              <a class="language_swith_link w-dropdown-link" href="{{ URL('lang', Lang::get('message.en')) }}">Inglês</a>
-            @endif
-            </nav>
-          </div>
         </nav>
 
         <div class="menu_toggle w-nav-button" id="menu">
@@ -137,12 +113,13 @@ Webflow.push(function () {
     </div>
 
     <div class="w-container">
-      <h1 class="hero__heading">Mejora tus servicios y multiplica tus clientes</h1>
+      <h1 class="hero__heading">Mejora tu servicio y multiplica tus clientes</h1>
       <p class="hero__subheading">Ahora tus clientes ya podran dar su opinion desde su celular y calificar tu servicio</p>
       <!--<div class="hero__videocontainer">
           <img src="{{ asset('web/images/index.jpg') }}">
       </div>-->
       <a class="button hero__cta w-button" href="#plans">Crea tu cuenta&nbsp;</a>
+      <h1 class="hero__subheading">¡Pruebalo 30 dias gratis!</h1>
     </div>
   </div>
 
@@ -399,6 +376,7 @@ Webflow.push(function () {
               </div>
 
               <div class="pricingcard__card pricingcard__card--highlighted">
+                <h1 class="hero__subheading">Pruebalo 30 dias gratis</h1>
                 <div class="pricingcard__headercontainer">
                   <h3 class="pricingcard__heading">Plan Sin Limites</h3>
                   <div class="pricingcard__maspopular"></div>

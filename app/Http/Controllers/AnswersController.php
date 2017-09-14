@@ -15,6 +15,8 @@ use App\Surveys_Questions;
 use App\Answers;
 use App\AnswersDetails;
 use App\User;
+use App\Emails;
+use App\User_Email;
 
 class AnswersController extends Controller
 {
@@ -46,6 +48,9 @@ class AnswersController extends Controller
      */
     public function store(Request $request)
     {
+        $this->validate($request, [
+            'radio' => 'required',
+        ]);
         $surveys = Surveys::find($request->survey_id);
         $surquestions = Surveys_Questions::join('questions', 'surveys_questions.question_id', '=', 'questions.id')->select('surveys_questions.id AS id', 'questions.question AS question', 'surveys_questions.position AS position')->where('surveys_questions.survey_id', '=', $request->survey_id)->get();
         //$questions = Questions::where('survey_id', '=', $request->survey_id)->count();
@@ -63,6 +68,7 @@ class AnswersController extends Controller
         $answer->date = date('Y-m-d');
         $answer->calification = 1;
         $answer->survey_id = $request->survey_id;
+        $answer->waiter_id = $request->radio;
         $answer->save();
 
         $ansid = $answer->id;
@@ -133,18 +139,26 @@ class AnswersController extends Controller
         $questions = Surveys_Questions::join('questions', 'surveys_questions.question_id', '=', 'questions.id')->join('surveys', 'surveys_questions.survey_id', '=', 'surveys.id')->select('questions.question AS name')->where('surveys.id', '=', $survey->id)->get();
         $answersdet =  AnswersDetails::join('questions', 'answers_details.question_id', '=', 'questions.id')->select('answers_details.id AS id', 'answers_details.answer AS answer', 'answers_details.survey_id AS survey', 'answers_details.answer_id AS ansid', 'answers_details.comment As comment', 'questions.id AS question_id')->where('answers_details.answer_id', '=', $answer2->id)->get();
 
+        $emails = Emails::join('user_email', 'emails.id', '=', 'user_email.email_id')->join('users', 'user_email.user_id', '=', 'users.id')->select('emails.id as id', 'emails.email as email', 'users.email as uemail')->where('user_id', '=', Auth::id())->get();
+
+        $ea = 0;
+        foreach($emails as $e)
+        {
+            $em[$ea] = $e->email;
+            $ea++; 
+        }
 
         if($answer2->calification > 65 && $answer2->calification <= 75)
         {
             $c = 'Regular';
-             $title = 'Resultado de Encuesta #'.$survey->id;
+            $title = 'Resultado de Encuesta #'.$survey->id;
             $content = 'Has recibido una calificacion '.$c.', puedes verificar iniciando sesion en la plataforma de calificame';
-            Mail::send('data.emails.badanswers', ['title' => $title, 'content' => $content, 'suranswers' => $suranswers, 'questions' => $questions, 'answersdet' => $answersdet, 'survey' => $survey, 'user' => $user], function ($message) use ($c, $user)
+            Mail::send('data.emailsf.badanswers', ['title' => $title, 'content' => $content, 'suranswers' => $suranswers, 'questions' => $questions, 'answersdet' => $answersdet, 'survey' => $survey, 'user' => $user, 'c' => $c], function ($message) use ($c, $user, $em)
             {
 
                 $message->from('miguel.lm21@gmail.com', 'Calificame')->subject('Has recibido una calificacion '.$c);
 
-                $message->to($user->email);
+                $message->to($em);
 
             });
         }
@@ -153,12 +167,12 @@ class AnswersController extends Controller
             $c = 'Mala';
             $title = 'Resultado de Encuesta #'.$survey->id;
             $content = 'Has recibido una calificacion '.$c.', puedes verificar iniciando sesion en la plataforma de calificame';
-            Mail::send('data.emails.badanswers', ['title' => $title, 'content' => $content, 'suranswers' => $suranswers, 'questions' => $questions, 'answersdet' => $answersdet, 'survey' => $survey, 'user' => $user], function ($message) use ($c, $user)
+            Mail::send('data.emailsf.badanswers', ['title' => $title, 'content' => $content, 'suranswers' => $suranswers, 'questions' => $questions, 'answersdet' => $answersdet, 'survey' => $survey, 'user' => $user, 'c' => $c], function ($message) use ($c, $user, $em)
             {
 
                 $message->from('miguel.lm21@gmail.com', 'Calificame')->subject('Has recibido una calificacion '.$c);
 
-                $message->to($user->email);
+                $message->to($em);
 
             });
         }

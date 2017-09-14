@@ -20,16 +20,16 @@
 			 			<div class="panel-body">
 			    		<div>
 			    		<div>	
-							<a style="word-wrap: break-word;" href="{{ url('surveys/'.$survey->id.'/survey')}}">
-								<p data-toggle="tooltip" title data-original-title="Hipervinculo a la encuesta en formato normal"> tutophoton.com.ve/encuestas/public/surveys/{{ $survey->id }}/survey</p>
+							<a style="word-wrap: break-word;" href="{{ url('s/'.$survey->id)}}">
+								<p data-toggle="tooltip" title data-original-title="Hipervinculo a la encuesta en formato normal"> calificame.mx/s/{{ $survey->id }}</p>
 							</a>
 			    			<hr>
 						</div>
 							<div>Codigo QR</div>
 							<br>
 							<div class="col-xs-12 col-xl-12" data-toggle="tooltip" title data-original-title="Hipervinculo a la encuesta en formato de codigo QR">
-								<a href="{{ url('surveys/'.$survey->id.'/survey') }}">
-								<img src="data:image/png;base64,{{DNS2D::getBarcodePNG('http://tutophoton.com.ve/encuestas/public/surveys/'.$survey->id.'/survey', 'QRCODE')}}" alt="barcode" width="120" height="120" /></a>
+								<a href="{{ url('s/'.$survey->id) }}">
+								<img src="data:image/png;base64,{{DNS2D::getBarcodePNG('http://calificame.mx/s/'.$survey->id, 'QRCODE')}}" alt="barcode" width="120" height="120" /></a>
 							</div>
 							
 							<div class="box-body col-md-6 col-lg-12 col-xl-12">

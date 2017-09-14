@@ -60,6 +60,7 @@
 						<thead>
 							<tr>
 								<th class="fondo">Fecha y Hora</th>
+								<th class="fondo">Mesero</th>
 								<th class="fondo">Nombre</th>
 								<th class="fondo">Email</th>
 								@foreach($questions as $q)
@@ -73,7 +74,17 @@
 						@foreach($suranswers as $s)
 						<tbody>
 							<tr>				
-								<td>{!!$s->created_at!!}</td>				
+								<td>{!! date('d-m-Y H:i:s', strtotime($s->created_at)) !!}</td>				
+								@if(isset($s->waiter_id))
+									@foreach($waiters as $w)
+										@if($s->waiter_id == $w->id)
+											<td>{!!$w->name!!} {!!$w->lastname!!}</td>
+										@endif
+									@endforeach
+								@else
+									<td>Anonimo</td>
+								@endif
+
 								@if(isset($s->name))
 									<td>{!!$s->name!!}</td>
 								@else
@@ -117,7 +128,7 @@
 								@elseif($s->calification > 75 && $s->calification <= 89)
 									<td style="background-color: #5cf65e">Buena</td>
 								@elseif($s->calification > 65 && $s->calification <= 75)
-									<td style="background-color: ##edf65c">Regular</td>
+									<td style="background-color: #edf65c">Regular</td>
 								@elseif($s->calification >= 0 && $s->calification = 64)
 									<td style="color:#fff; background-color: #f65c6e">Mala</td>
 								@endif
@@ -128,9 +139,9 @@
 									<div class="btn-group">
 										<!--<a href="{{ route('answers.edit', $s->id) }}" class="btn btn-default" data-toggle="tooltip" data-original-title="Editar" type="edit"><i class="fa fa-edit"></i></a>-->
 
-										<a href="https://www.facebook.com/sharer/sharer.php?title=Mira+lo+que+opinan+nuestros+clientes&u=https://tutophoton.com.ve/encuestas/public/surveys/{{ $s->id }}/shared&display=popup" class="btn btn-primary" data-toggle="tooltip" data-original-title="Compartir comentario en Facebook" type="fbshare"><i class="fa fa-facebook-square"></i></a>
+										<a href="https://www.facebook.com/sharer/sharer.php?title=Mira+lo+que+opinan+nuestros+clientes&u=http://calificame.mx/s/{{ $s->id }}/shared&display=popup" class="btn btn-primary" data-toggle="tooltip" data-original-title="Compartir comentario en Facebook" type="fbshare"><i class="fa fa-facebook-square"></i></a>
 
-										<a href="https://twitter.com/intent/tweet?text=Mira+lo+qué+opinan+nuestros+clientes&url=https://tutophoton.com.ve/encuestas/public/surveys/{{ $s->id }}/shared" class="btn btn-info" data-toggle="tooltip" data-original-title="Compartir comentario en Twitter" type="fbshare"><i class="fa fa-twitter-square"></i></a>
+										<a href="https://twitter.com/intent/tweet?text=Mira+lo+qué+opinan+nuestros+clientes&url=http://calificame.mx/s/{{ $s->id }}/shared" class="btn btn-info" data-toggle="tooltip" data-original-title="Compartir comentario en Twitter" type="fbshare"><i class="fa fa-twitter-square"></i></a>
 										
 										<!--<button class="btn btn-danger" data-toggle="tooltip" data-original-title="Eliminar" type="submit">
     									<i class="fa fa-remove"></i> </button>-->

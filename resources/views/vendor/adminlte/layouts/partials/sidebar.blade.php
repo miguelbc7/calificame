@@ -51,6 +51,8 @@
             <li><a href="{{ url('users') }}"><i class="fa fa-user"></i> <span>Usuarios</span></a></li>
             <li><a href="{{ url('socialnetworks/1/edit') }}"><i class="fa fa-share-square-o"></i><span>Redes Sociales</span></a></li>
             @endif
+            <li><a href="{{ url('emails') }}"><i class="fa fa-envelope-o"></i> <span>Correos</span></a></li>
+            <li><a href="{{ url('waiters') }}"><i class="fa fa-address-card-o"></i> <span>Meseros</span></a></li>
         </ul><!-- /.sidebar-menu -->
     </section>
     <!-- /.sidebar -->

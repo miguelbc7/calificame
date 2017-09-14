@@ -1,4 +1,22 @@
-/* Encuestas */
+.input-hidden {
+  position: absolute;
+  left: -9999px;
+}
+
+input[type=radio]:checked + label>img {
+  border: 1px solid #fff;
+  box-shadow: 0 0 5px 5px #40e0d0;
+}
+
+/* Stuff after this is only to make things more pretty */
+input[type=radio] + label>img {
+
+  width: 150px;
+  height: 150px;
+  transition: 500ms all;
+  cursor: pointer;
+}
+
 
 *{font-family: 'Roboto', sans-serif;}
 
@@ -31,13 +49,13 @@ body label {
 }
 
 
-.scroll {
+/*.scroll {
   overflow-y:hidden; 
 }
 
 .show{
   overflow-y: show;
-}
+}*/
 
 .MarginDirecto {
   margin-left: -15px;
@@ -62,7 +80,7 @@ body label {
 }
 
 .pregunta {
-    color: #000000;
+    color: #222;
     font-family:Palatino Linotype;
     font-size: 1.4em;
 }
@@ -229,7 +247,7 @@ text-indent: 30px;
 --------------------------ANIMACIONES-------------------------
 ==============================================================*/
 
-.bounceInLeft {
+/*.bounceInLeft {
   animation-delay: 4s;
 }
 
@@ -242,7 +260,7 @@ text-indent: 30px;
 .fadeIn  {
   animation-delay: 4s;
   animation-timing-function: ease-in;
-}
+}*/
 
 /*============================================================
 --------------------------MEDIA QUERY-------------------------
@@ -467,9 +485,9 @@ nav {
 }
 
 .pregunta {
-  color: #028ee4;
+  color: #222;
   font-family:Palatino Linotype;
-  font-size: 1.2em;
+  font-size: 1.3em;
 }
 
 
@@ -571,9 +589,9 @@ nav {
 }
 
 .pregunta {
-  color: #028ee4;
+  color: #222;
   font-family:Palatino Linotype;
-  font-size: 1.2em;
+  font-size: 1.3em;
 }
 
 
@@ -728,9 +746,9 @@ footer {
   }
 
   .pregunta {
-    color: #028ee4;
+    color: #222;
     font-family:Palatino Linotype;
-    font-size: 1.2em;
+    font-size: 1.3em;
   }
 
 
@@ -782,6 +800,26 @@ footer {
   .posiinput {
     margin-left: -1px;
     margin-bottom: 2px;
+  }
+
+
+
+  .input-hidden {
+    position: absolute;
+    left: -9999px;
+  }
+
+  input[type=radio]:checked + label>img {
+    border: 1px solid #fff;
+    box-shadow: 0 0 5px 5px #40e0d0;
+  }
+
+  /* Stuff after this is only to make things more pretty */
+  input[type=radio] + label>img {
+
+    width: 100px;
+    height: 100px;
+    transition: 500ms all;
   }
 
 
@@ -848,9 +886,9 @@ footer {
   }
 
   .pregunta {
-    color: #028ee4;
+    color: #222;
     font-family:Palatino Linotype;
-    font-size: 1.1em;
+    font-size: 1.2em;
   }
 
   .posibtn {
@@ -894,6 +932,24 @@ footer {
   .posiinput {
     margin-left: -1px;
     margin-bottom: 2px;
+  }
+
+  .input-hidden {
+    position: absolute;
+    left: -9999px;
+  }
+
+  input[type=radio]:checked + label>img {
+    border: 1px solid #fff;
+    box-shadow: 0 0 5px 5px #40e0d0;
+  }
+
+  /* Stuff after this is only to make things more pretty */
+  input[type=radio] + label>img {
+
+    width: 100px;
+    height: 100px;
+    transition: 500ms all;
   }
 
 }
