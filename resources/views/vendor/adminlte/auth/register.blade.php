@@ -33,58 +33,55 @@
                         {{ csrf_field() }}
 
                         <div class="form-group has-feedback{{ $errors->has('company') ? ' has-error' : '' }}">
+                            <input id="company" type="text" class="form-control" placeholder="Nombre de la compañia" name="company" value="{{ old('company') }}" required autofocus>
+                            <span class="glyphicon glyphicon-home form-control-feedback"></span>
 
-                            <div class="col-md-12">
-                                <input id="company" type="text" class="form-control" placeholder="Nombre de la compañia" name="company" value="{{ old('company') }}" required autofocus>
-                                <span class="glyphicon glyphicon-home form-control-feedback"></span>
-
-                                @if ($errors->has('name'))
-                                    <span class="help-block">
-                                        <strong>{{ $errors->first('name') }}</strong>
-                                    </span>
-                                @endif
-                            </div>
+                            @if ($errors->has('name'))
+                                <span class="help-block">
+                                    <strong>{{ $errors->first('name') }}</strong>
+                                </span>
+                            @endif
                         </div>
 
                         <div class="form-group has-feedback{{ $errors->has('email') ? ' has-error' : '' }}">
+                            <input id="email" type="email" class="form-control" placeholder="Correo Electrónico" name="email" value="{{ old('email') }}" required>
+                            <span class="glyphicon glyphicon-envelope form-control-feedback"></span>
 
-                            <div class="col-md-12">
-                                <input id="email" type="email" class="form-control" placeholder="Correo Electrónico" name="email" value="{{ old('email') }}" required>
-                                <span class="glyphicon glyphicon-envelope form-control-feedback"></span>
+                            @if ($errors->has('email'))
+                                <span class="help-block">
+                                    <strong>{{ $errors->first('email') }}</strong>
+                                </span>
+                            @endif
+                        </div>
 
-                                @if ($errors->has('email'))
-                                    <span class="help-block">
-                                        <strong>{{ $errors->first('email') }}</strong>
-                                    </span>
-                                @endif
-                            </div>
+                        <div class="form-group has-feedback{{ $errors->has('cellphone') ? ' has-error' : '' }}">
+                            <input id="cellphone" type="cellphone" class="form-control" placeholder="Numero de Celular" name="cellphone" value="{{ old('cellphone') }}" required>
+                            <span class="glyphicon glyphicon-earphone form-control-feedback"></span>
+
+                            @if ($errors->has('cellphone'))
+                                <span class="help-block">
+                                    <strong>{{ $errors->first('cellphone') }}</strong>
+                                </span>
+                            @endif
                         </div>
 
                         <div class="form-group has-feedback{{ $errors->has('password') ? ' has-error' : '' }}">
+                            <input id="password" type="password" class="form-control" placeholder="Contraseña" name="password" required>
+                            <span class="glyphicon glyphicon-lock form-control-feedback"></span>
 
-                            <div class="col-md-12">
-                                <input id="password" type="password" class="form-control" placeholder="Contraseña" name="password" required>
-                                <span class="glyphicon glyphicon-lock form-control-feedback"></span>
-
-                                @if ($errors->has('password'))
-                                    <span class="help-block">
-                                        <strong>{{ $errors->first('password') }}</strong>
-                                    </span>
-                                @endif
-                            </div>
+                            @if ($errors->has('password'))
+                                <span class="help-block">
+                                    <strong>{{ $errors->first('password') }}</strong>
+                                </span>
+                            @endif
                         </div>
 
                         <div class="form-group has-feedback">
-
-                            <div class="col-md-12">
-                                <input id="password-confirm" type="password" class="form-control" placeholder="Vuelva a escribir la contraseña" name="password_confirmation" required>
-                            </div>
+                            <input id="password-confirm" type="password" class="form-control" placeholder="Vuelva a escribir la contraseña" name="password_confirmation" required>
                         </div>
                         
                         <div class="form-group has-feedback">
-                            <div class="col-xs-1 col-sm-1 col-md-6 col-lg-12 col-xl-12">
-                                {!!Form::file('avatar',null,['class'=>'form-control', 'style'=>'-webkit-border-radius: 8px;-moz-border-radius: 8px;border-radius: 8px;'])!!}
-                            </div>
+                            {!!Form::file('avatar',null,['class'=>'form-control', 'style'=>'-webkit-border-radius: 8px;-moz-border-radius: 8px;border-radius: 8px;'])!!}
                         </div>
 
                         <div class="form-group has-feedback">

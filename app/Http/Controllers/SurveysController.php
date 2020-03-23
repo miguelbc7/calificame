@@ -7,10 +7,10 @@ use App\Http\Controllers\Controller;
 use Session;
 use Redirect;
 use Charts;
-use DOMPDF;
 use DB;
 use Illuminate\Routing\Route;
 use Illuminate\Support\Facades\Auth;
+use Datatables;
 use App\Surveys;
 use App\Questions;
 use App\Surveys_Questions;
@@ -57,6 +57,15 @@ class SurveysController extends Controller
             'name' => 'required|max:255',
         ]);
 
+        if(isset($request->flag))
+        {
+            $flag = 1;
+        }
+        else
+        {
+            $flag = 0;
+        }
+
         $s = Surveys::where('user_id', '=', Auth::id())->count();
 
         if($s < Auth::user()->branch)
@@ -64,6 +73,7 @@ class SurveysController extends Controller
             $surveys = new Surveys;
             $surveys->fill($request->all());
             $surveys->date = date('Y-m-d');
+            $surveys->flag = $flag;
             $surveys->user_id = Auth::id();
             $surveys->save();
             return redirect('/surveys/'.$surveys->id.'/questions')->with('message','Encuesta Registrada Correctamente');
@@ -142,7 +152,7 @@ class SurveysController extends Controller
     {
         $surveys = Surveys::find($id);
         $surquestions = Surveys_Questions::join('questions', 'surveys_questions.question_id', '=', 'questions.id')->select('surveys_questions.id AS id', 'questions.question AS question', 'surveys_questions.position AS position')->where('surveys_questions.survey_id', '=', $id)->orderBy('position', 'asc')->paginate(10);
-        $questions = Questions::where('user_id', '=', Auth::id())->orWhere('user_id', '=', 1)->orderBy('id')->pluck('question', 'id');
+        $questions = Questions::where('user_id', '=', 1)->orderBy('id')->pluck('question', 'id');
         $last = Surveys_Questions::select('position')->orderBy('position', 'desc')->first();
         $count = Surveys_Questions::join('questions', 'surveys_questions.question_id', '=', 'questions.id')->select('surveys_questions.id AS id', 'questions.question AS question', 'surveys_questions.position AS position')->where('surveys_questions.survey_id', '=', $id)->count();
 
@@ -171,10 +181,20 @@ class SurveysController extends Controller
         }
         
         $surquestions = Surveys_Questions::join('questions', 'surveys_questions.question_id', '=', 'questions.id')->select('surveys_questions.id AS id', 'questions.id AS question_id', 'questions.question AS question', 'surveys_questions.position AS position', 'questions.type AS type')->where('surveys_questions.survey_id', '=', $id)->get();
-        $waiters = Waiters::join('user_waiters', 'waiters.id', '=', 'user_waiters.waiter_id')->join('users', 'user_waiters.user_id', '=', 'users.id')->select('waiters.id as id', 'waiters.name as name', 'waiters.lastname as lastname', 'waiters.url as url')->where('user_id', '=', Auth::id())->get();
-        $wait = Waiters::join('user_waiters', 'waiters.id', '=', 'user_waiters.waiter_id')->join('users', 'user_waiters.user_id', '=', 'users.id')->select('waiters.id as id', 'waiters.name as name', 'waiters.lastname as lastname', 'waiters.url as url')->where('user_id', '=', Auth::id())->count();
+        $waiters = Waiters::join('user_waiters', 'waiters.id', '=', 'user_waiters.waiter_id')->join('users', 'user_waiters.user_id', '=', 'users.id')->select('waiters.id as id', 'waiters.name as name', 'waiters.url as url')->where('user_id', '=', Auth::id())->get();
+        $wait = Waiters::join('user_waiters', 'waiters.id', '=', 'user_waiters.waiter_id')->join('users', 'user_waiters.user_id', '=', 'users.id')->select('waiters.id as id', 'waiters.name as name', 'waiters.url as url')->where('user_id', '=', Auth::id())->count();
 
         return view('pages.survey', ['surveys'=>$surveys, 'surquestions'=>$surquestions, 'user'=>$user, 'waiters'=>$waiters, 'wait'=>$wait]);
+    }
+
+    public function survey2($id)
+    {
+        $answer2 = Answers::find($id);
+        $survey = Surveys::find($answer2->survey_id);
+
+        $waiters = Waiters::join('user_waiters', 'waiters.id', '=', 'user_waiters.waiter_id')->join('users', 'user_waiters.user_id', '=', 'users.id')->select('waiters.id as id', 'waiters.name as name', 'waiters.url as url')->where('waiters.status', '=', '1')->where('user_id', '=', $survey->user_id)->get();
+        $wait = Waiters::join('user_waiters', 'waiters.id', '=', 'user_waiters.waiter_id')->join('users', 'user_waiters.user_id', '=', 'users.id')->select('waiters.id as id', 'waiters.name as name', 'waiters.url as url')->where('waiters.status', '=', '1')->where('user_id', '=', $survey->user_id)->count();
+        return view('pages.survey2', ['answer2' => $answer2, 'waiters' => $waiters, 'wait' => $wait]);
     }
 
     public function surveyFinish()
@@ -190,19 +210,37 @@ class SurveysController extends Controller
 
     public function suranswers($id)
     {
-        $suranswers = Answers::join('surveys', 'answers.survey_id', '=', 'surveys.id')->select('answers.id AS id', 'answers.name AS name', 'answers.email AS email', 'answers.created_at AS created_at', 'surveys.id as surid', 'answers.calification as calification', 'answers.waiter_id as waiter_id')->where('surveys.id', '=', $id)->orderBy('created_at', 'DESC')->paginate(10);
+        $suranswers = Answers::join('surveys', 'answers.survey_id', '=', 'surveys.id')->select('answers.id AS id', 'answers.name AS name', 'answers.email AS email', 'answers.table as table', 'answers.created_at AS created_at', 'surveys.id as surid', 'answers.calification as calification', 'answers.waiter_id as waiter_id', 'surveys.flag as flag')->where('surveys.id', '=', $id)->orderBy('created_at', 'DESC')->paginate(10);
         $questions = Surveys_Questions::join('questions', 'surveys_questions.question_id', '=', 'questions.id')->join('surveys', 'surveys_questions.survey_id', '=', 'surveys.id')->select('questions.question AS name')->where('surveys.id', '=', $id)->get();
         $answersdet =  AnswersDetails::join('questions', 'answers_details.question_id', '=', 'questions.id')->select('answers_details.id AS id', 'answers_details.answer AS answer', 'answers_details.survey_id AS survey', 'answers_details.answer_id AS ansid', 'answers_details.comment As comment')->where('answers_details.survey_id', '=', $id)->get();
-        $waiters = Waiters::get();
+        $waiters = Waiters::join('user_waiters', 'waiters.id', '=', 'user_waiters.waiter_id')->select('waiters.id as id', 'waiters.name as name')->where('waiters.status', '=', 1)->where('user_waiters.user_id', '=', Auth::id())->get();
+        $waiter2 = Waiters::join('user_waiters', 'waiters.id', '=', 'user_waiters.waiter_id')->select('waiters.id as id', 'waiters.name as name')->where('waiters.status', '=', 2)->where('user_waiters.user_id', '=', Auth::id())->get();
 
-        return view('data.surveys.answers', ['suranswers'=>$suranswers, 'questions'=>$questions, 'answersdet'=>$answersdet, 'waiters'=>$waiters]);
+        $waiters2 = Waiters::join('user_waiters', 'waiters.id', '=', 'user_waiters.waiter_id')->select('waiters.id as id', 'waiters.name as name')->where('waiters.status', '=', 1)->where('user_waiters.user_id', '=', Auth::id())->get();
+        $survey = Surveys::find($id);
+
+        return view('data.surveys.answers', ['suranswers'=>$suranswers, 'questions'=>$questions, 'answersdet'=>$answersdet, 'waiters'=>$waiters, 'waiter2' => $waiter2, 'waiters2'=>$waiters2, 'survey'=>$survey]);
+    }
+
+    public function suranswersfilter($id, $id2)
+    {
+        $suranswers = Answers::join('surveys', 'answers.survey_id', '=', 'surveys.id')->select('answers.id AS id', 'answers.name AS name', 'answers.email AS email', 'answers.created_at AS created_at', 'surveys.id as surid', 'answers.calification as calification', 'answers.waiter_id as waiter_id', 'surveys.flag as flag')->where('surveys.id', '=', $id)->where('answers.waiter_id', '=', $id2)->orderBy('created_at', 'DESC')->paginate(10);
+        $questions = Surveys_Questions::join('questions', 'surveys_questions.question_id', '=', 'questions.id')->join('surveys', 'surveys_questions.survey_id', '=', 'surveys.id')->select('questions.question AS name')->where('surveys.id', '=', $id)->get();
+        $answersdet =  AnswersDetails::join('questions', 'answers_details.question_id', '=', 'questions.id')->select('answers_details.id AS id', 'answers_details.answer AS answer', 'answers_details.survey_id AS survey', 'answers_details.answer_id AS ansid', 'answers_details.comment As comment')->where('answers_details.survey_id', '=', $id)->get();
+        $waiters = Waiters::join('user_waiters', 'waiters.id', '=', 'user_waiters.waiter_id')->select('waiters.id as id', 'waiters.name as name')->where('user_waiters.user_id', '=', Auth::id())->get();
+        $waiters2 = Waiters::join('user_waiters', 'waiters.id', '=', 'user_waiters.waiter_id')->select('waiters.id as id', 'waiters.name as name')->where('waiters.status', '=', 1)->where('user_waiters.user_id', '=', Auth::id())->get();
+        $wai = Waiters::find($id2);
+        $survey = Surveys::find($id);
+
+        return view('data.surveys.answersfilter', ['suranswers'=>$suranswers, 'questions'=>$questions, 'answersdet'=>$answersdet, 'waiters'=>$waiters, 'waiters2'=>$waiters2, 'survey'=>$survey, 'wai'=>$wai]);
     }
 
     public function pregraphs($id)
     {
         $surveys = Surveys::find($id);
-        $waiters = Waiters::join('user_waiters', 'waiters.id', '=', 'user_waiters.waiter_id')->join('users', 'user_waiters.user_id', '=', 'users.id')->select('waiters.id as id', DB::raw("CONCAT(waiters.name,' ',waiters.lastname)  AS name"), 'waiters.url as url')->where('user_id', '=', Auth::id())->pluck('name', 'id');
-        return view('data.surveys.pregraphs', ['surveys'=>$surveys, 'waiters'=>$waiters]);
+        $waiters = Waiters::join('user_waiters', 'waiters.id', '=', 'user_waiters.waiter_id')->join('users', 'user_waiters.user_id', '=', 'users.id')->select('waiters.id as id', 'waiters.name AS name', 'waiters.url as url')->where('user_id', '=', Auth::id())->pluck('name', 'id');
+        $waiters2 = Waiters::join('user_waiters', 'waiters.id', '=', 'user_waiters.waiter_id')->join('users', 'user_waiters.user_id', '=', 'users.id')->select('waiters.id as id', 'waiters.name AS name', 'waiters.url as url')->where('waiters.status', '=', 1)->where('user_id', '=', Auth::id())->pluck('name', 'id');
+        return view('data.surveys.pregraphs', ['surveys'=>$surveys, 'waiters'=>$waiters, 'waiters2'=>$waiters2]);
     }
 
     public function graphsQuestions($id)
@@ -658,8 +696,9 @@ class SurveysController extends Controller
 
                 if(isset($waiter))
                 {
-                    $name = $q->name.'<br>Mesero: '. $wai;
+                    $name = $q->name.'<br>Mesero: '. $wai.'</br>Fecha: '.date('d-m-Y');
                 }
+
 
                 $chart2[] = Charts::create('pie', 'fusioncharts')
                     ->title($name)
@@ -728,7 +767,7 @@ class SurveysController extends Controller
 
                 if(isset($waiter))
                 {
-                    $name = $q->name.'<br>Mesero: '. $wai;
+                     $name = $q->name.'<br>Mesero: '. $wai.'</br>Fecha: '.date('d-m-Y');
                 }
 
                 $chart2[] = Charts::create('pie', 'fusioncharts')
@@ -918,7 +957,7 @@ class SurveysController extends Controller
 
                 if(isset($waiter))
                 {
-                    $name = $q->name.'<br>Mesero: '. $wai;
+                    $name = $q->name.'<br>Mesero: '. $wai.'</br>Fecha: '.date('d-m-Y');
                 }
 
                 $chart2[] = Charts::create('pie', 'fusioncharts')
@@ -932,9 +971,9 @@ class SurveysController extends Controller
             }
             elseif($q->type == 2)
             {
-                $count[$j] = AnswersDetails::join('answers', 'answers_details.answer_id', '=', 'answers.id')->where('survey_id', '=', $id)->where('question_id', '=', $q->qid)->whereIn('answer', [3,4,5,6])->where('answers.waiter_id', '=', $waid)->count();
-                $satisfecho2[$j] = AnswersDetails::join('answers', 'answers_details.answer_id', '=', 'answers.id')->where('survey_id', '=', $id)->where('question_id', '=', $q->qid)->whereIn('answer', [5, 6])->where('answers.waiter_id', '=', $waid)->count();
-                $insatisfecho2[$j] = AnswersDetails::join('answers', 'answers_details.answer_id', '=', 'answers.id')->where('survey_id', '=', $id)->where('question_id', '=', $q->qid)->whereIn('answer', [3, 4])->where('answers.waiter_id', '=', $waid)->count();
+                $count[$j] = AnswersDetails::join('answers', 'answers_details.answer_id', '=', 'answers.id')->where('answers_details.survey_id', '=', $id)->where('answers_details.question_id', '=', $q->qid)->whereIn('answers_details.answer', [3,4,5,6])->where('answers.waiter_id', '=', $waid)->count();
+                $satisfecho2[$j] = AnswersDetails::join('answers', 'answers_details.answer_id', '=', 'answers.id')->where('answers_details.survey_id', '=', $id)->where('answers_details.question_id', '=', $q->qid)->whereIn('answers_details.answer', [5, 6])->where('answers.waiter_id', '=', $waid)->count();
+                $insatisfecho2[$j] = AnswersDetails::join('answers', 'answers_details.answer_id', '=', 'answers.id')->where('answers_details.survey_id', '=', $id)->where('answers_details.question_id', '=', $q->qid)->whereIn('answers_details.answer', [3, 4])->where('answers.waiter_id', '=', $waid)->count();
 
                 $subPercentSas[$j] = $satisfecho2[$j]/$count[$j];
                 $percentSas[$j] = $subPercentSas[$j]*100;
@@ -962,7 +1001,7 @@ class SurveysController extends Controller
 
                 if(isset($waiter))
                 {
-                    $name = $q->name.'<br>Mesero: '. $wai;
+                    $name = $q->name.'<br>Mesero: '. $wai.'</br>Fecha: '.date('d-m-Y');
                 }
 
                 $chart2[] = Charts::create('pie', 'fusioncharts')

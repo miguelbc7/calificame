@@ -34,7 +34,7 @@ return [
         //Why use Calificame
         'why' => 'Beneficios de usar ...',
         'why1' => '¡Midelo!',
-        'whydes1' => 'Mide tu servicio las 24hrs del dia. Aun no estés.',
+        'whydes1' => 'Mide tu servicio las 24hrs del dia. Aun cuando no estés.',
         'why2' => '¡Escuchalos!',
         'whydes2' => 'Conoce la opinion, quejas y sugerencias de tus clientes.',
         'why3' => '¡Mejoralo!',
@@ -97,10 +97,10 @@ return [
         //Reviewers
         'reviewer1' => 'Saddam Gavilanes',
         'reviewerdes1' => 'Maz Salads',
-        'review1' => '“Con “Calificame” se lo que sucede en mi restaurante todo el tiempo, cuando algún cliente tiene una queja lo solucionamos inmediatamente”.',
+        'review1' => '“Con Calificame se lo que sucede en mi restaurante todo el tiempo, cuando algún cliente tiene una queja lo solucionamos inmediatamente”.',
         'reviewer2' => 'Martha López',
         'reviewerdes2' => 'Pikantojoz',
-        'review2' => '“Gracias a “Calificame” ahorramos dinero y mucho tiempo conociendo los productos que los clientes prefieren y nos enfocamos en eso”',
+        'review2' => '“Gracias a Calificame ahorramos dinero y mucho tiempo conociendo los productos que los clientes prefieren y nos enfocamos en eso”',
 
         //Footer
         'terms' => 'Términos y condiciones',

@@ -7,7 +7,6 @@
     "require": {
         "php": ">=5.6.4",
         "acacha/admin-lte-template-laravel": "4.*",
-        "barryvdh/laravel-dompdf": "^0.8.0",
         "consoletvs/charts": "4.*",
         "khill/lavacharts": "3.0.*",
         "laravel/framework": "5.4.*",
@@ -16,6 +15,7 @@
         "laravelcollective/html": "^5.4.0",
         "milon/barcode": "^5.3",
         "netshell/paypal": "dev-master",
+        "yajra/laravel-datatables-oracle": "~6.0",
         "zizaco/entrust": "5.2.x-dev"
     },
     "require-dev": {

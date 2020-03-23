@@ -64,7 +64,7 @@ return [
     |
     */
 
-    'timezone' => 'America/Mexico_City',
+    'timezone' => 'America/Mazatlan',
 
     /*
     |--------------------------------------------------------------------------
@@ -212,10 +212,8 @@ return [
         */
         ConsoleTVs\Charts\ChartsServiceProvider::class,
 
-        /*
-        * Barryvdh DomPDF Provider
-        */
-        Barryvdh\DomPDF\ServiceProvider::class,
+        Yajra\Datatables\DatatablesServiceProvider::class,
+
     ],
 
     /*
@@ -266,46 +264,42 @@ return [
         'View' => Illuminate\Support\Facades\View::class,
 
         /*
-        * Entrust Alias
+        * Entrust Aliases
         */
         'Entrust'   => Zizaco\Entrust\EntrustFacade::class,
 
         /*
-        * Netshell Paypal Alias
+        * Netshell Paypal Aliases
         */
         'Paypal' => Netshell\Paypal\Facades\Paypal::class,
 
         /*
-        * Socialite Alias
+        * Socialite Aliases
         */
         'Socialite' => Laravel\Socialite\Facades\Socialite::class,
 
         /*
-        * LaravelCollective Alias
+        * LaravelCollective Aliases
         */
         'Form' => Collective\Html\FormFacade::class,
         'Html' => Collective\Html\HtmlFacade::class,
 
         /*
-        * Acacha AdminLTE Alias
+        * Acacha AdminLTE Aliases
         */
         'AdminLTE' => Acacha\AdminLTETemplateLaravel\Facades\AdminLTE::class,
 
         /*
-        * Milon Barcode Alias
+        * Milon Barcode Aliases
         */
         'DNS1D' => Milon\Barcode\Facades\DNS1DFacade::class,
         'DNS2D' => Milon\Barcode\Facades\DNS2DFacade::class,
 
         /*
-        * ConsoleTV Charts Alias
+        * ConsoleTV Charts Aliases
         */
         'Charts' => ConsoleTVs\Charts\Facades\Charts::class,
 
-        /*
-        * Barryvdh DomPDF Alias
-        */
-        'PDF' => Barryvdh\DomPDF\Facade::class,
     ],
 
 ];

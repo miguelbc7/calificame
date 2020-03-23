@@ -42,7 +42,7 @@
 		</a>
 	</div>
 	<div class="col-md-1 noleftpadding">
-		<a href="{{ route('emails.create') }}" class="btn btn-success" data-toggle="tooltip" title data-original-title="Agregar Pregunta" type="button" style="width:100%;"><i class="fa fa-plus"></i></a>
+		<a href="{{ route('emails.create') }}" class="btn btn-success" data-toggle="tooltip" title data-original-title="Agregar Correo" type="button" style="width:100%;"><i class="fa fa-plus"></i></a>
 	</div>
 </div>
 
@@ -53,7 +53,7 @@
 			<div class="box">
 				<div class="box-header with-border">
 					<div class="col-md-9">
-						<h3 class="box-title">Lista de Correos</h3>
+						<h4 class="box-title">Cuando algún cliente califique el servicio como <b>Regular</b> o <b>Malo</b>, se enviara una notifiacion por correo electronico, ¿Que correos desea que reciban las alertas?</h4>
 					</div>
 				</div>
 				<div id="tbl-main" class="box-body">
@@ -71,15 +71,11 @@
 								<td>{!!$e->email!!}</td>
 								<td align="right">
 								<div class="btn-group">
-								@if($e->email == $e->uemail)
-
-								@else
 									<a href="{{ route('emails.edit', $e->id) }}" class="btn btn-default" data-toggle="tooltip" title data-original-title="Editar" type="edit"><i class="fa fa-edit"></i></a>
-									{!!Form::open(['route'=>['emails.destroy', $e], 'method'=>'DELETE'])!!}
+									{!!Form::open(['route'=>['emails.destroy', $e], 'method'=>'DELETE', 'onsubmit' => 'return ConfirmDelete()'])!!}
 										<button class="btn btn-danger" data-toggle="tooltip" title data-original-title="Eliminar" type="submit">
 	    								<i class="fa fa-remove"></i> </button>
 	    							{!!Form::close()!!}
-	    						@endif
 								</div>
 								</td>
 							</tr>
@@ -97,3 +93,16 @@
 </section>
 
 @endsection
+
+<script>
+
+  function ConfirmDelete()
+  {
+  var x = confirm("¿Esta seguro que desea borrar este Correo? tome en cuenta que perdera toda la informacion referente a ella");
+  if (x)
+    return true;
+  else
+    return false;
+  }
+
+</script>

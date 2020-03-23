@@ -44,11 +44,9 @@
 				<div class="form-group col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
 					<div class="row">
 						<div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 col-xl-6">
-							<div data-toggle="tooltip" title data-original-title="La pregunta debe ser de respuesta cerrada">
-								{!!Form::label('Escribe la pregunta')!!}
-								{!!Form::text('question',null,['class'=>'form-control','placeholder'=>'Ingrese la pregunta', 'autofocus'=>'autofocus', 'style'=>'-webkit-border-radius: 8px;-moz-border-radius: 8px;border-radius: 8px;'])!!}
-								{!!Form::hidden('survey_id',$surveys->id)!!}
-							</div>
+							{!!Form::label('Escribe la pregunta')!!}
+							{!!Form::text('question',null,['class'=>'form-control','placeholder'=>'Ingrese la pregunta', 'autofocus'=>'autofocus', 'style'=>'-webkit-border-radius: 8px;-moz-border-radius: 8px;border-radius: 8px;'])!!}
+							{!!Form::hidden('survey_id',$surveys->id)!!}
 						</div>
 						<div class="col-xs-12 col-sm-12 col-md-5 col-lg-5 col-xl-5">
 							<div data-toggle="tooltip" title data-original-title="Directo: Si o No / Indirecto: Opciones">

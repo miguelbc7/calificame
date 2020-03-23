@@ -43,6 +43,7 @@
 	</div>
 </div>
 
+<input type="hidden" id="hidden" value="{{ $survey->id }}">
 
 <section class="content">
 
@@ -54,47 +55,50 @@
 						<h3 class="box-title">Lista de Respuestas</h3>
 					</div>
 				</div>
+				<div class="box-header with-border">
+					<div class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
+						<label>Meseros Actuales</label>
+						<select class="form-control" onchange="location = this.value;">
+							<option value="{{ route('suranswers', $survey->id) }}">Todas las respuestas</option>
+						    @foreach($waiters as $w)
+						      <option value="{{ route('suranswersfilter', [$survey->id, $w->id]) }}">{{ $w->name }}</option>
+						    @endforeach
+					  	</select>
+					</div>
+				</div>
 				<div id="tbl-main" class="box-body">
 					<div class="table-responsive">
-					<table class="table table-bordered table-hover">
+					<table id="users-table" class="table table-bordered table-hover">
 						<thead>
 							<tr>
 								<th class="fondo">Fecha y Hora</th>
 								<th class="fondo">Mesero</th>
-								<th class="fondo">Nombre</th>
-								<th class="fondo">Email</th>
 								@foreach($questions as $q)
 									<th class="fondo">{{ $q->name }}</th>
 									<th class="fondo">Comentario</th>
 								@endforeach
 								<th class="fondo">Calificacion General</th>
 								<th class="fondo">Opciones</th>
+								<th class="fondo">Nombre</th>
+								<th class="fondo">Email</th>
+								<th class="fondo">Mesa</th>
 							</tr>
 						</thead>
 						@foreach($suranswers as $s)
 						<tbody>
 							<tr>				
 								<td>{!! date('d-m-Y H:i:s', strtotime($s->created_at)) !!}</td>				
-								@if(isset($s->waiter_id))
+								@if($s->flag == 1)
 									@foreach($waiters as $w)
 										@if($s->waiter_id == $w->id)
-											<td>{!!$w->name!!} {!!$w->lastname!!}</td>
+											<td>{!!$w->name!!}</td>
 										@endif
 									@endforeach
+									@if($s->waiter_id == NULL)
+										<td>No lo recuerda</td>
+									@endif
 								@else
-									<td>Anonimo</td>
-								@endif
-
-								@if(isset($s->name))
-									<td>{!!$s->name!!}</td>
-								@else
-									<td>Anonimo</td>
-								@endif
-
-								@if(isset($s->email))
-									<td>{!!$s->email!!}</td>
-								@else
-									<td>Anonimo</td>
+									<td>Sin Mesero</td>
 								@endif
 
 								@foreach($answersdet as $a)
@@ -149,6 +153,23 @@
 									<!--{!!Form::close()!!}-->
 									
 								</td>
+								@if(isset($s->name))
+									<td>{!!$s->name!!}</td>
+								@else
+									<td>Anonimo</td>
+								@endif
+
+								@if(isset($s->email))
+									<td>{!!$s->email!!}</td>
+								@else
+									<td>Anonimo</td>
+								@endif
+
+								@if(isset($s->table))
+									<td>{!!$s->table!!}</td>
+								@else
+									<td>Sin respuesta</td>
+								@endif
 							</tr>
 						</tbody>
 						@endforeach
@@ -170,3 +191,4 @@
 </section>
 
 @endsection
+

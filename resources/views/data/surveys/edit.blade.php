@@ -45,7 +45,7 @@
 							</div>
 						</div>
 					</div>
-					</div>
+				</div>
 				<div class="pull-right">
 				{!!Form::submit('Guardar',['class'=>'btn btn-primary', 'style'=>'-webkit-border-radius: 8px;-moz-border-radius: 8px;border-radius: 8px;'])!!}
 

@@ -16,20 +16,27 @@
     <!--<div class="center">
         <img id="preloader" src="{{ asset('web/images/preloader4.gif') }}" alt="">
     </div>-->
-    <nav id="hola" class="navbar navbar-inverse navbar-fixed-top animated fadeIn">
+    <nav id="hola" class="navbar navbar-inverse navbar-fixed-top animated">
         <div class="container-fluid">
             <div class="centro">
                 <img class="imgnav animated bounceInLeft" height="50px" width="250px" src="{{ asset('web/images/logotrans.png') }}" alt="">
             </div>
         </div>
     </nav>
-    <div class="thumbnail center fondo animated fadeIn">
+    <div class="thumbnail center fondo animated">
         <div class="margin">
             <h3>Gracias por compartir tu opinion</h3>
-            <a href="{{ url('s/'.Session::get('surveyid')) }}" class="btn btn-success">¿Alguien mas desea contestar la encuesta?</a>
-            <a href="https://www.facebook.com/sharer/sharer.php?title=Mira+lo+que+opinan+nuestros+clientes&u=http://calificame.mx/s/{{ Session::get('surveyid')) }}/shared&display=popup" class="btn btn-primary">Comparte tu experiencia en Facebook</a>
+            <!--<a href="{{ url('s/'.Session::get('surveyid')) }}" class="btn btn-success">¿Alguien mas desea contestar la encuesta?</a>-->
+            <!--<a href="https://www.facebook.com/sharer/sharer.php?title=Mira+lo+que+opinan+nuestros+clientes&u={{ url('s/'.Session::get('surveyid')) }}/shared&display=popup" class="btn btn-primary" data-toggle="tooltip" data-original-title="Compartir comentario en Facebook" type="fbshare">Comparte tu opinion en facebook</a>-->
+            <a href="{{ url('s/'.Session::get('surveyid')) }}" class="animated fadeIn"><img width="650px" height="450px" src="{{ asset('web/images/button.jpg') }}" alt=""></a>
         </div> 
     </div>
+    <br>
+    <br>
+    <div class=""> 
+
+    </div>
+
     <hr>
     <br>
 <script

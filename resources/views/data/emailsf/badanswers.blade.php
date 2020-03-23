@@ -4,8 +4,6 @@
 <h1>{{ $title }}</h1>
 <p>{{ $content }}</p>
 
-<p>Numero = {{ $suranswers->id }}</p>
-
 @if(isset($suranswers->name))
 	<p>Nombre: {{ $suranswers->name }}</p>
 @else
@@ -18,6 +16,10 @@
 	<p>Email: Anonimo</p>
 @endif
 
-<td>Calificacion: $c</td>
+@if(isset($suranswers->table))
+	<p>Por favor dirigirse a la Mesa {{ $suranswers->table }} para hablar con los clientes</p>
+@else
+	<p>No se registro la mesa al realizar la encuesta</p>
+@endif
 
 </html>

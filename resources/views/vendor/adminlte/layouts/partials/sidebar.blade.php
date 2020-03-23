@@ -53,6 +53,7 @@
             @endif
             <li><a href="{{ url('emails') }}"><i class="fa fa-envelope-o"></i> <span>Correos</span></a></li>
             <li><a href="{{ url('waiters') }}"><i class="fa fa-address-card-o"></i> <span>Meseros</span></a></li>
+            <li><a href="{{ url('support') }}"><i class="fa fa-phone"></i> <span>Soporte</span></a></li>
         </ul><!-- /.sidebar-menu -->
     </section>
     <!-- /.sidebar -->

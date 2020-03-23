@@ -22,6 +22,7 @@
             <div class="centro">
                 <img class="imgnav animated bounceInLeft" height="50px" width="250px" src="{{ asset('web/images/logotrans.png') }}" alt="">
             </div>
+            {!!Form::text('table', null, ['class'=>'posiinput pull-right hidden-xs', 'placeholder'=>'Numero de mesa'])!!}
             {!!Form::email('email', null, ['class'=>'posiinput pull-right hidden-xs', 'placeholder'=>'Correo electronico'])!!}
             {!!Form::text('name', null, ['class'=>'posiinput pull-right hidden-xs', 'placeholder'=>'Nombre completo'])!!}
             {!!Form::hidden('survey_id',$surveys->id)!!} 
@@ -88,42 +89,6 @@
             @endif
         @endforeach
         
-        <div class="margin">
-            <h3 class="center pregunta">Y por ultimo, ¿quien te atendió?</h3>
-        </div>
-        <div class="row">
-            <div class="col-lg-12">
-            @if(isset($waiters))
-                @foreach($waiters as $w)
-                    @if($wait == 1)
-                    <div class="col-lg-12 col-xs-12">
-                        <input type="radio" name="radio" id="{{ $w->id }}" value="{{ $w->id }}" class="input-hidden" />
-                        <label for="{{ $w->id }}">
-                        <img class="img-circle" src="{{ asset($w->url) }}" alt="" width="100" height="100" />
-                        </label>
-                    </div>
-                    @elseif($wait == 2)
-                    <div class="col-lg-6 col-xs-6">
-                        <input type="radio" name="radio" id="{{ $w->id }}" value="{{ $w->id }}" class="input-hidden" />
-                        <label for="{{ $w->id }}">
-                        <img class="img-circle" src="{{ asset($w->url) }}" alt="" width="100" height="100" />
-                        </label>
-                    </div>
-                    @elseif($wait > 2)
-                    <div class="col-lg-3 col-xs-6">
-                         <input type="radio" name="radio" id="{{ $w->id }}" value="{{ $w->id }}" class="input-hidden" />
-                        <label for="{{ $w->id }}">
-                        <img class="img-circle" src="{{ asset($w->url) }}" alt="" width="100" height="100" />
-                        </label>
-                    </div>
-                    @endif
-                @endforeach
-            @else
-                <h1>DEBES REGISTRAR MESEROS EN EL PANEL ADMINISTRATIVO</h1>
-            @endif
-          </div>
-        </div>
-        
         <div class="row">
             {!!Form::submit('He Terminado!!',['class'=>'posibtn btn btn-primary'])!!}
         </div>
@@ -142,6 +107,9 @@
 <footer class="hidden-sm hidden-md hidden-lg">
     <div class="row center">
     {!!Form::open(['route'=>'answers.store', 'method'=>'POST', 'files' => true])!!}
+        <div class="col-xs-12 col-md-6">
+            {!!Form::email('table', null, ['class'=>'posiinput', 'placeholder'=>'Numero de mesa'])!!}
+        </div>
         <div class="col-xs-12 col-md-6">
             {!!Form::email('name', null, ['class'=>'posiinput', 'placeholder'=>'Nombre completo'])!!}
         </div>

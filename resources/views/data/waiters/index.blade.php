@@ -42,7 +42,7 @@
 		</a>
 	</div>
 	<div class="col-md-1 noleftpadding">
-		<a href="{{ route('waiters.create') }}" class="btn btn-success" data-toggle="tooltip" title data-original-title="Agregar Pregunta" type="button" style="width:100%;"><i class="fa fa-plus"></i></a>
+		<a href="{{ route('waiters.create') }}" class="btn btn-success" data-toggle="tooltip" title data-original-title="Agregar Mesero" type="button" style="width:100%;"><i class="fa fa-plus"></i></a>
 	</div>
 </div>
 
@@ -63,7 +63,6 @@
 							<tr>
 								<th class="fondo">Foto</th>
 								<th class="fondo">Nombre</th>
-								<th class="fondo">Apellido</th>
 								<th style="text-align: center;" class="fondo">Opciones</th>
 							</tr>
 						</thead>
@@ -72,7 +71,6 @@
 							<tr>
 								<td><img src="{{ asset($w->url) }}" width="150px" height="150px"></td>
 								<td>{!!$w->name!!}</td>
-								<td>{!!$w->lastname!!}</td>
 								<td align="right">
 								<div class="btn-group">
 									<a href="{{ route('waiters.edit', $w->id) }}" class="btn btn-default" data-toggle="tooltip" title data-original-title="Editar" type="edit"><i class="fa fa-edit"></i></a>

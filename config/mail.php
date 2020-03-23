@@ -29,7 +29,7 @@ return [
     |
     */
 
-    'host' => env('MAIL_HOST', 'smtp.gmail.com'),
+    'host' => env('MAIL_HOST', 'mx28.hostgator.mx'),
 
     /*
     |--------------------------------------------------------------------------
@@ -56,8 +56,8 @@ return [
     */
 
     'from' => [
-        'address' => env('MAIL_FROM_ADDRESS', 'miguel.lm12@gmail.com'),
-        'name' => env('MAIL_FROM_NAME', 'miguel lopez'),
+        'address' => env('MAIL_FROM_ADDRESS', 'contacto@calificame.mx'),
+        'name' => env('MAIL_FROM_NAME', 'Calificame.mx'),
     ],
 
     /*
@@ -84,9 +84,9 @@ return [
     |
     */
 
-    'username' => env('MAIL_USERNAME', 'miguel.lm21@gmail.com'),
+    'username' => env('MAIL_USERNAME', 'contacto@calificame.mx'),
 
-    'password' => env('MAIL_PASSWORD', '04245129400'),
+    'password' => env('MAIL_PASSWORD', '12345'),
 
     /*
     |--------------------------------------------------------------------------

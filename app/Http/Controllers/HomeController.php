@@ -18,6 +18,8 @@ use App\User;
 use App\Payment;
 use App\SocialNetworks;
 use App\User_Payment;
+use App\Emails;
+use App\User_Email;
 
 /**
  * Class HomeController
@@ -132,6 +134,10 @@ class HomeController extends Controller
         $user = new User;
         $user->company = $request->company;
         $user->email = $request->email;
+        if(isset($request->cellphone))
+        {
+            $user->cellphone = $request->cellphone;
+        }
         $user->type = 1;
         $user->branch = 1;
         $user->status = 1;
@@ -141,8 +147,8 @@ class HomeController extends Controller
 
         $user = User::find(Auth::id());
 
-        $destinationPath = 'img/Users/'.Auth::id().'/avatar/'; // upload path
-        $destinationPath2 = base_path() . '/public/img/Users/'.Auth::id().'/avatar/'; // upload path
+        $destinationPath = 'img/users/'.Auth::id().'/avatar/'; // upload path
+        $destinationPath2 = base_path() . '/public/img/users/'.Auth::id().'/avatar/'; // upload path
         $extension = 'jpg'; // getting image extension
         $fileName = 'avatar.'.$extension; // renameing image
         $request->file('avatar')->move($destinationPath2, $fileName); // uploading file to given path
@@ -161,6 +167,15 @@ class HomeController extends Controller
         $userpay->user_id = $user->id;
         $userpay->payment_id = $payment->id;
         $userpay->save();
+
+        $email = New Emails;
+        $email = $request->email;
+        $email->save();
+
+        $eu = New User_Email;
+        $eu->user_id = $user->id;
+        $eu->email_id = $email->id;
+        $eu->save();
 
         $user = User::find(Auth::id());
 
@@ -229,6 +244,10 @@ class HomeController extends Controller
         $user = New User;
         $user->company = $request->company;
         $user->email = $request->email;
+        if(isset($request->cellphone))
+        {
+            $user->cellphone = $request->cellphone;
+        }
         $user->password = $request->password;
         $user->type = 2;
         $user->status = 1;
@@ -239,7 +258,7 @@ class HomeController extends Controller
         {
             $us = User::find($user->id);
             $destinationPath = 'img/users/'.$user->id.'/avatar'; // upload path
-            $destinationPath2 = base_path() . '/public/img/users/'.$user->id.'/avatar'; // upload path
+            $destinationPath2 = base_path() . '/public_html/img/users/'.$user->id.'/avatar'; // upload path
             $extension = 'jpg'; // getting image extension
             $fileName = 'avatar.'.$extension; // renameing image
             $request->file('avatar')->move($destinationPath2, $fileName); // uploading file to given path
@@ -261,6 +280,15 @@ class HomeController extends Controller
         $userpay->payment_id = $payment->id;
         $userpay->save();
 
+        $email = New Emails;
+        $email = $request->email;
+        $email->save();
+
+        $eu = New User_Email;
+        $eu->user_id = $user->id;
+        $eu->email_id = $email->id;
+        $eu->save();
+
         $title = 'Bienvenido a Calificame';
         $content = 'Nos complace en darte la bienvenida a Calificame '.$request->name.', esperamos disfrutes de tu mes gratuito';
 
@@ -276,5 +304,10 @@ class HomeController extends Controller
         });
 
         return redirect('/home');
+    }
+
+    public function support()
+    {
+        return view('data.user.support');
     }
 }

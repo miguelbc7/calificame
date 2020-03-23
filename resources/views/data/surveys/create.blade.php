@@ -49,6 +49,19 @@
 							</div>
 						</div>
 					</div>
+					<div class="form-group col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
+						<div class="row">
+							<div class="col-xs-1 col-sm-1 col-md-6 col-lg-12 col-xl-12">
+								<div data-toggle="tooltip" title data-original-title="Usara meseros">
+									{!!Form::label('¿Desea activar como ultima pregunta quien te atendio?')!!}
+									{!!Form::checkbox('flag', 0)!!}
+									<br>
+									{!!Form::label('Al activar el modo quien te atendio significa que cuando los clientes terminen de contestar la encuesta, el sistema arrojara una ultima pregunta que sera Y por ultimo ¿Quien te atendio? y apareceran las fotos y nombres de los meseros que tengas registrados en la seccion meseros, puedes agregar o eliminar meseros sin ningun problema. No olvides egistrar sus fotos y nombres en caso de tener activa esta función')!!}
+								</div>
+
+							</div>
+						</div>
+					</div>
 					<div class="pull-right">
 					{!!Form::submit('Registrar',['class'=>'btn btn-success btn3d', 'style'=>'-webkit-border-radius: 8px;-moz-border-radius: 8px;border-radius: 8px;'])!!}
 

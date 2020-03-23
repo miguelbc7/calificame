@@ -39,17 +39,10 @@
 				{!!Form::model($waiters,['route'=>['waiters.update',$waiters],'method'=>'PUT', 'files' => true])!!}
 				<div class="form-group col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
 					<div class="row">
-						<div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 col-xl-6">
+						<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
 							<div data-toggle="tooltip" title data-original-title="El nombre del mesero">
 								{!!Form::label('Nombre del Mesero')!!}
 								{!!Form::text('name',null,['class'=>'form-control','placeholder'=>'Ingrese el nombre del mesero', 'autofocus'=>'autofocus', 'style'=>'-webkit-border-radius: 8px;-moz-border-radius: 8px;border-radius: 8px;'])!!}
-							</div>
-						</div>
-						<div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 col-xl-6">
-							<div data-toggle="tooltip" title data-original-title="El apellido del mesero">
-								{!!Form::label('Apellido del Mesero')!!}
-								{!!Form::text('lastname',null,['class'=>'form-control','placeholder'=>'Ingrese el apellido del mesero', 'autofocus'=>'autofocus', 'style'=>'-webkit-border-radius: 8px;-moz-border-radius: 8px;border-radius: 8px;'])!!}
-								<br>
 							</div>
 						</div>
 					</div>

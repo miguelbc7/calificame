@@ -71,25 +71,27 @@
 					</div>
 				</div>
 
-				{!!Form::model($surveys,['route'=>['graphsWaiterQuestions',$surveys],'method'=>'PUT', 'files' => true])!!}
-				<div class="form-group col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
-					<div class="col-md-6">
-						<h3 class="box-title">Estadisticas de Preguntas Por Mesero</h3>
-					</div>
-					<div class="row">
-						<div class="col-xs-1 col-sm-1 col-md-6 col-lg-12 col-xl-12">
-							<div data-toggle="tooltip" title data-original-title="Seleccione el mesero">
-								{!! Form::select('waiter_id', $waiters, null, ['class'=>'form-control','placeholder'=>'Seleccione el mesero', 'style'=>'-webkit-border-radius: 8px;-moz-border-radius: 8px;border-radius: 8px;']) !!}
+				@if($surveys->flag == 1)
+					{!!Form::model($surveys,['route'=>['graphsWaiterQuestions',$surveys],'method'=>'PUT', 'files' => true])!!}
+					<div class="form-group col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
+						<div class="col-md-6">
+							<h3 class="box-title">Estadisticas de Preguntas Por Mesero</h3>
+						</div>
+						<div class="row">
+							<div class="col-xs-1 col-sm-1 col-md-6 col-lg-12 col-xl-12">
+								<div data-toggle="tooltip" title data-original-title="Seleccione el mesero">
+									{!! Form::select('waiter_id', $waiters2, null, ['class'=>'form-control','placeholder'=>'Seleccione el mesero', 'style'=>'-webkit-border-radius: 8px;-moz-border-radius: 8px;border-radius: 8px;']) !!}
+								</div>
+								<br>
 							</div>
-							<br>
-						</div>
-						<div class="pull-right">
-							{!!Form::submit('Buscar',['class'=>'btn btn-primary', 'style'=>'-webkit-border-radius: 8px;-moz-border-radius: 8px;border-radius: 8px;'])!!}
+							<div class="pull-right">
+								{!!Form::submit('Buscar',['class'=>'btn btn-primary', 'style'=>'-webkit-border-radius: 8px;-moz-border-radius: 8px;border-radius: 8px;'])!!}
 
-							{!!Form::close()!!}
+								{!!Form::close()!!}
+							</div>
 						</div>
 					</div>
-				</div>
+				@endif
 
 				<div class="col-md-12">
 					<h3 class="box-title">Estadistica General de Satisfaccion</h3>
@@ -125,6 +127,29 @@
 						</div>
 					</div>
 				</div>
+				
+				@if($surveys->flag == 1)
+					{!!Form::model($surveys,['route'=>['graphsWaiterSatisfaction',$surveys],'method'=>'PUT', 'files' => true])!!}
+					<div class="form-group col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
+						<div class="col-md-6">
+							<h3 class="box-title">Estadisticas de Preguntas Por Mesero</h3>
+						</div>
+						<div class="row">
+							<div class="col-xs-1 col-sm-1 col-md-6 col-lg-12 col-xl-12">
+								<div data-toggle="tooltip" title data-original-title="Seleccione el mesero">
+									{!! Form::select('waiter_id', $waiters2, null, ['class'=>'form-control','placeholder'=>'Seleccione el mesero', 'style'=>'-webkit-border-radius: 8px;-moz-border-radius: 8px;border-radius: 8px;']) !!}
+								</div>
+								<br>
+							</div>
+							<div class="pull-right">
+								{!!Form::submit('Buscar',['class'=>'btn btn-primary', 'style'=>'-webkit-border-radius: 8px;-moz-border-radius: 8px;border-radius: 8px;'])!!}
+
+								{!!Form::close()!!}
+							</div>
+						</div>
+					</div>
+				@endif
+
 				<div class="pull-right">
 
 				{!!link_to_route('surveys.index', $title = 'Atras',  $parameters = '', $attributes = ['class' => 'btn btn-default btn3d', 'style'=>'-webkit-border-radius: 8px;-moz-border-radius: 8px;border-radius: 8px;'])!!}

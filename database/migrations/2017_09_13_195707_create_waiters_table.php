@@ -16,8 +16,8 @@ class CreateWaitersTable extends Migration
         Schema::create('waiters', function (Blueprint $table) {
             $table->increments('id');
             $table->string('name');
-            $table->string('lastname');
             $table->string('url');
+            $table->integer('status');
             $table->timestamps();
         });
     }

@@ -96,6 +96,7 @@
 									@elseif($u->status = 2)
 									<a href="{{ route('uservalidate', $u->id) }}" class="btn btn-default" data-toggle="tooltip" data-original-title="Activar Usuario" type="edit"><i class="fa fa-play"></i></a>
 									@endif
+									<a href="{{ route('edituser', $u->id) }}" class="btn btn-warning" data-toggle="tooltip" data-original-title="Editar Usuario" type="edit"><i class="fa fa-play"></i></a>
 								</td>
 							</tr>
 						</tbody>

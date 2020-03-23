@@ -18,10 +18,5 @@ class Waiters extends Model
      *
      * @var array
      */
-    protected $fillable = ['name', 'lastname', 'url'];
-
-    public function getFullNameAttribute()
-    {
-        return $this->name. " " .$this->lastname;
-    }
+    protected $fillable = ['name', 'url'];
 }

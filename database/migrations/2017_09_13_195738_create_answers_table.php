@@ -17,11 +17,12 @@ class CreateAnswersTable extends Migration
             $table->increments('id');
             $table->string('name')->nullable();
             $table->string('email')->nullable();
+            $table->string('table')->nullable();
             $table->date('date');
             $table->integer('calification');
             $table->integer('survey_id')->unsigned();
             $table->foreign('survey_id')->references('id')->on('surveys');
-            $table->integer('waiter_id')->unsigned();
+            $table->integer('waiter_id')->unsigned()->nullable();
             $table->foreign('waiter_id')->references('id')->on('waiters');
             $table->timestamps();
         });

@@ -90,7 +90,7 @@
 
 										<!--<a href="{{ route('pretrends', $s->id) }}" class="btn btn-warning" data-toggle="tooltip" data-original-title="Tendencias de la Encuesta" type="trends"><i class="fa fa-line-chart"></i></a>-->
 
-										<a href="{{ route('fliers', $s->id) }}" class="btn btn-success" data-toggle="tooltip" data-original-title="Volante de la Encuesta" type="fbshare"><i class="fa fa-address-book-o"></i></a>
+										<!--<a href="{{ route('fliers', $s->id) }}" class="btn btn-success" data-toggle="tooltip" data-original-title="Volante de la Encuesta" type="fbshare"><i class="fa fa-address-book-o"></i></a>-->
 										
 										<button class="btn btn-danger" data-toggle="tooltip" data-original-title="Eliminar" type="submit">
     									<i class="fa fa-remove"></i> </button>

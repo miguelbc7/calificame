@@ -18,6 +18,7 @@ Route::get('terms', array('as'=>'terms', 'uses'=>'HomeController@terms'));
 Route::get('privacy', array('as'=>'privacy', 'uses'=>'HomeController@privacy'));
 Route::get('contract', array('as'=>'contract', 'uses'=>'HomeController@contract'));
 Route::get('s/{id}', 'SurveysController@survey');
+Route::get('s2/{id}', 'SurveysController@survey2');
 Route::get('surveys/surveyFinish', 'SurveysController@surveyFinish');
 Route::get('surveys/{id}/shared', array('as' => 'shared', 'uses' => 'SurveysController@shared') );
 Route::resource('answers', 'AnswersController');
@@ -49,6 +50,8 @@ Route::get('lang/{lang}', function ($lang) {
         Route::get('user/{id}/profile', array('as'=>'profile', 'uses'=>'UserController@profile'));
         Route::get('user/{id}/editpass', array('as'=>'editpass', 'uses'=>'UserController@editpass'));
         Route::get('user/{id}/updatepass', array('as'=>'updatepass', 'uses'=>'UserController@updatepass'));
+        Route::get('users/{id}/edituser', array('as'=>'edituser', 'uses'=>'UserController@edituser'));
+        Route::get('support', array('as'=>'support', 'uses'=>'HomeController@support'));
 
         Route::resource('questions', 'QuestionsController');
         Route::resource('surveys', 'SurveysController');
@@ -61,6 +64,7 @@ Route::get('lang/{lang}', function ($lang) {
         Route::get('surveys/{id}/questions', array('as'=>'surques', 'uses'=>'SurveysController@questions'));
         Route::get('surveys/{id}/links', array('as'=>'links', 'uses'=>'SurveysController@links'));
         Route::get('surveys/{id}/answers', array('as'=>'suranswers', 'uses'=>'SurveysController@suranswers'));
+        Route::get('surveys/{id}/answersfilter/{id2}', array('as'=>'suranswersfilter', 'uses'=>'SurveysController@suranswersfilter'));
         Route::get('surveys/{id}/fliers', array('as'=>'fliers', 'uses'=>'SurveysController@fliers'));
         Route::get('surveys/{id}/flierpdf', array('as'=>'flierpdf', 'uses'=>'SurveysController@flierpdf'));
         Route::get('surveys/{id}/flierminipdf', array('as'=>'flierminipdf', 'uses'=>'SurveysController@flierminipdf'));

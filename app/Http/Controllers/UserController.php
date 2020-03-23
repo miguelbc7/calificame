@@ -24,7 +24,7 @@ class UserController extends Controller
      */
     public function index()
     {
-        $users = User::join('payments', 'users.id', '=', 'payments.user_id')->select('users.id As id', 'users.company As company', 'users.email As email', 'users.status As status', 'payments.dateIn as datein', 'payments.dateOut as dateout')->where('users.type', '=', 2)->paginate(10);
+        $users = User::join('user_payment', 'users.id', '=', 'user_payment.user_id')->join('payments', 'user_payment.payment_id', '=', 'payments.id')->select('users.id As id', 'users.company As company', 'users.email As email', 'users.status As status', 'payments.dateIn as datein', 'payments.dateOut as dateout')->where('users.type', '=', 2)->paginate(10);
         return view('data.users.index', ['users'=>$users]);
     }
 
@@ -87,6 +87,10 @@ class UserController extends Controller
 
         $user = User::find(Auth::id());
         $user->company = $request->company;
+        if(isset($request->cellphone))
+        {
+            $user->cellphone = $request->cellphone;
+        }
         if(isset($request->avatar))
         {
             $destinationPath = 'img/users/'.Auth::id().'/avatar'; // upload path
@@ -248,7 +252,7 @@ class UserController extends Controller
         Mail::send('data.emailsf.renew', ['title' => $title, 'content' => $content, 'price1' => $price1, 'price2' => $price2, 'price3' => $price3, 'price4' => $price4, 'bank' => $bank, 'account' => $account, 'name' => $name, 'cable' => $cable], function ($message)
         {
 
-            $message->from('miguel.lm21@gmail.com', 'Calificame')->subject('Datos para transferencias o depositos en Calificame');
+            $message->from('contacto@calificame.mx', 'Calificame')->subject('Datos para transferencias o depositos en Calificame');
 
             $message->to(Auth::user()->email);
 
@@ -326,6 +330,25 @@ class UserController extends Controller
             $user->save();
             return redirect('/admin')->with('message','Contraseña Actualizada Correctamente');
         } 
+    }
+
+    public function edituser($id)
+    {
+        $users = User::find($id);
+        return view('data.users.edit', ['users' => $users]);
+    }
+
+    public function updateuser(Request $request, $id)
+    {
+        $this->validate($request, [
+            'company' => 'required|max:255',
+            'branch' => 'required',
+        ]);
+
+        $user = User::find($id);
+        $user->company = $request->company;
+        $user->branch = $request->branch:
+        $user->save();
     }
 
 }

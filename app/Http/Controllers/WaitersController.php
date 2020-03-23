@@ -21,7 +21,7 @@ class WaitersController extends Controller
      */
     public function index()
     {
-        $waiters = Waiters::join('user_waiters', 'waiters.id', '=', 'user_waiters.waiter_id')->join('users', 'user_waiters.user_id', '=', 'users.id')->select('waiters.id as id', 'waiters.name as name', 'waiters.lastname as lastname', 'waiters.url as url')->where('user_id', '=', Auth::id())->paginate(10);
+        $waiters = Waiters::join('user_waiters', 'waiters.id', '=', 'user_waiters.waiter_id')->join('users', 'user_waiters.user_id', '=', 'users.id')->select('waiters.id as id', 'waiters.name as name', 'waiters.url as url')->where('waiters.status', '=', 1)->where('user_id', '=', Auth::id())->paginate(10);
 
         return view('data.waiters.index', ['waiters'=>$waiters]);
     }
@@ -46,13 +46,13 @@ class WaitersController extends Controller
     {
         $this->validate($request, [
             'name' => 'required',
-            'lastname' => 'required',
             'url' => 'required',
         ]);
 
         $waiters = new Waiters;
         $waiters->fill($request->all());
         $waiters->url = 0;
+        $waiters->status = 1;
         $waiters->save();
 
         $waiters = Waiters::find($waiters->id);
@@ -105,7 +105,6 @@ class WaitersController extends Controller
     {
         $this->validate($request, [
             'name' => 'required',
-            'lastname' => 'required',
         ]);
 
         $waiters = Waiters::find($id);
@@ -133,9 +132,9 @@ class WaitersController extends Controller
      */
     public function destroy($id)
     {
-        $userwaiters = User_Waiter::where('waiter_id', '=', $id)->delete();
         $waiters = Waiters::find($id);
-        $waiters->delete();
+        $waiters->status = 0;
+        $waiters->save();
         return redirect('/waiters')->with('message','Mesero Eliminado Correctamente');
     }
 }
